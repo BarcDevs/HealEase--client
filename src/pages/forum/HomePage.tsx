@@ -1,5 +1,5 @@
 const HomePage = ({}) => (
-    <main className={'w-full min-h-screen'}>
+    <main className={'min-h-screen w-full p-6'}>
 
     </main>
 )
