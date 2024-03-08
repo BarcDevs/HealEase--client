@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
+import HomePage from '@/pages/forum/HomePage.tsx'
 
 export const Route = createFileRoute('/_forum/forum/')({
-  component: () => <div>Hello /(forum)/_forumLayout/forum/!</div>
+  component: HomePage
 })
