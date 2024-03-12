@@ -15,6 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as ForumImport } from './routes/_forum'
 import { Route as ForumForumIndexImport } from './routes/_forum/forum/index'
+import { Route as ForumForumTagsTagIdImport } from './routes/_forum/forum/tags/$tagId'
 import { Route as ForumForumProfileAuthorIdImport } from './routes/_forum/forum/profile/$authorId'
 import { Route as ForumForumPostsPostIdImport } from './routes/_forum/forum/posts/$postId'
 
@@ -36,6 +37,11 @@ const IndexLazyRoute = IndexLazyImport.update({
 
 const ForumForumIndexRoute = ForumForumIndexImport.update({
   path: '/forum/',
+  getParentRoute: () => ForumRoute,
+} as any)
+
+const ForumForumTagsTagIdRoute = ForumForumTagsTagIdImport.update({
+  path: '/forum/tags/$tagId',
   getParentRoute: () => ForumRoute,
 } as any)
 
@@ -73,6 +79,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForumForumProfileAuthorIdImport
       parentRoute: typeof ForumImport
     }
+    '/_forum/forum/tags/$tagId': {
+      preLoaderRoute: typeof ForumForumTagsTagIdImport
+      parentRoute: typeof ForumImport
+    }
   }
 }
 
@@ -84,6 +94,7 @@ export const routeTree = rootRoute.addChildren([
     ForumForumIndexRoute,
     ForumForumPostsPostIdRoute,
     ForumForumProfileAuthorIdRoute,
+    ForumForumTagsTagIdRoute,
   ]),
 ])
 

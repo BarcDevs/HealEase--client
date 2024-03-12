@@ -9,7 +9,8 @@ type RenderTagProps = {
 
 const Tag = ({tag: {_id, name, posts}, showCount}: RenderTagProps) => (
     <Link
-        to={`/forum/tags/${_id}`}
+        to={'/forum/tags/$tagId'}
+        params={{tagId: _id}}
         className={'flex justify-between gap-2'}
         key={name}>
         <Badge
