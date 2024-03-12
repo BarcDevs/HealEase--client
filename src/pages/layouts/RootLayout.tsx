@@ -10,13 +10,16 @@ const RootLayout = ({}) => {
 
     return (
         <>
-            <html lang="en" dir={dir}/>
+            <html lang="en" dir={dir}>
+            <body>
             <Header toggleDir={toggleDir}/>
             <div className={'relative flex'}>
                 <Outlet/>
             </div>
             {/*<Footer/>*/}
             <TanStackRouterDevtools/>
+            </body>
+            </html>
         </>
     )
 }
