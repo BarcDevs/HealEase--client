@@ -1,3 +1,5 @@
+import {User} from '@/types/index'
+
 type Post_Base = {
     _id: string
     body: string
@@ -18,3 +20,12 @@ export type Post = {
 } & Post_Base
 
 export type Reply = Post_Base
+
+export type Tag = {
+    _id: string
+    name: string
+    description: string
+    posts: Post[] | string
+    followers: User[] | string
+    createdAt: Date
+}
