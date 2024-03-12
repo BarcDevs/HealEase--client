@@ -2,12 +2,12 @@ import {Post} from '@/types/forum'
 
 export const posts: Post[] = [
     {
-        _id: '1',
+        _id: 'post1',
         title: 'Is it Normal to Experience Dizziness After Taking Medication?',
         body: 'I recently started a new medication, and I\'ve been feeling dizzy ever since. Is this a common side effect, or should I be concerned?',
-        tags: [{_id: '1', name: 'medication'},
-            {_id: '2', name: 'side effects'},
-            {_id: '3', name: 'dizziness'}],
+        tags: [{_id: 'tag1', name: 'medication'},
+            {_id: 'tag2', name: 'side effects'},
+            {_id: 'tag3', name: 'dizziness'}],
         author: {
             _id: '1',
             name: 'Patient123'
@@ -25,12 +25,12 @@ export const posts: Post[] = [
         category: 'medication'
     },
     {
-        _id: '2',
+        _id: 'post2',
         title: 'Dealing with Anxiety During Medical Tests',
         body: 'I have a medical test scheduled next week, and I\'m feeling extremely anxious about it. Does anyone have tips for managing anxiety during medical procedures?',
-        tags: [{_id: '4', name: 'anxiety'},
-            {_id: '5', name: 'medical tests'},
-            {_id: '6', name: 'stress management'}],
+        tags: [{_id: 'tag4', name: 'anxiety'},
+            {_id: 'tag5', name: 'medical tests'},
+            {_id: 'tag6', name: 'stress management'}],
         author: {
             _id: '2',
             name: 'AnxiousAva'
@@ -48,12 +48,12 @@ export const posts: Post[] = [
         category: 'stress management'
     },
     {
-        _id: '3',
+        _id: 'post3',
         title: 'Tips for Managing Chronic Pain',
         body: 'Living with chronic pain can be challenging. What are some effective strategies for managing pain on a daily basis?',
-        tags: [{_id: '7', name: 'chronic pain'},
-            {_id: '8', name: 'pain management'},
-            {_id: '9', name: 'self-care'}],
+        tags: [{_id: 'tag7', name: 'chronic pain'},
+            {_id: 'tag8', name: 'pain management'},
+            {_id: 'tag9', name: 'self-care'}],
         author: {
             _id: '3',
             name: 'PainWarrior'
