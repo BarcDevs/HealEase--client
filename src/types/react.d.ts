@@ -1,5 +1,5 @@
-import {ClassValue} from 'clsx'
+import {HTMLProps} from 'react'
 
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>
-type ClassName = ClassValue
+type ClassName = HTMLProps<HTMLElement>['className']
