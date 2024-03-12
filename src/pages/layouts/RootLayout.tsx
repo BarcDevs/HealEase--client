@@ -9,14 +9,15 @@ const RootLayout = ({}) => {
     const toggleDir = () => setDir(dir === 'ltr' ? 'rtl' : 'ltr')
 
     return (
-        <html lang="en" dir={dir}>
-        <Header toggleDir={toggleDir}/>
-        <div className={'relative flex'}>
-            <Outlet/>
-        </div>
-        {/*<Footer/>*/}
-        <TanStackRouterDevtools/>
-        </html>
+        <>
+            <html lang="en" dir={dir}/>
+            <Header toggleDir={toggleDir}/>
+            <div className={'relative flex'}>
+                <Outlet/>
+            </div>
+            {/*<Footer/>*/}
+            <TanStackRouterDevtools/>
+        </>
     )
 }
 
