@@ -103,11 +103,11 @@
     }
 
     /*region Flex*/
-    .flex_row {
+    .flex--row {
         @apply flex flex-row;
     }
 
-    .flex_col {
+    .flex--col {
         @apply flex flex-col;
     }
 
@@ -115,11 +115,11 @@
         @apply flex items-center justify-center;
     }
 
-    .flex-center-row {
+    .flex-row-center {
         @apply flex items-center justify-center flex-row;
     }
 
-    .flex-center-col {
+    .flex-col-center {
         @apply flex items-center justify-center flex-col;
     }
 
@@ -127,7 +127,7 @@
         @apply flex items-center justify-between;
     }
 
-    .flex-center-between-col {
+    .flex-col-center-between {
         @apply flex items-center justify-between flex-col;
     }
 
