@@ -6,6 +6,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+/**
+ * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.
+ *
+ * @param {Date} date - The date to convert to relative time format
+ * @return {string} The date in relative time format
+ */
 export const toRelative = (date: Date) => {
   return formatDistance(date, new Date(), {
     addSuffix: true
