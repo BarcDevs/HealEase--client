@@ -15,6 +15,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as ForumImport } from './routes/_forum'
 import { Route as ForumForumIndexImport } from './routes/_forum/forum/index'
+import { Route as ForumForumProfileAuthorIdImport } from './routes/_forum/forum/profile/$authorId'
+import { Route as ForumForumPostsPostIdImport } from './routes/_forum/forum/posts/$postId'
 
 // Create Virtual Routes
 
@@ -37,6 +39,16 @@ const ForumForumIndexRoute = ForumForumIndexImport.update({
   getParentRoute: () => ForumRoute,
 } as any)
 
+const ForumForumProfileAuthorIdRoute = ForumForumProfileAuthorIdImport.update({
+  path: '/forum/profile/$authorId',
+  getParentRoute: () => ForumRoute,
+} as any)
+
+const ForumForumPostsPostIdRoute = ForumForumPostsPostIdImport.update({
+  path: '/forum/posts/$postId',
+  getParentRoute: () => ForumRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -53,6 +65,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForumForumIndexImport
       parentRoute: typeof ForumImport
     }
+    '/_forum/forum/posts/$postId': {
+      preLoaderRoute: typeof ForumForumPostsPostIdImport
+      parentRoute: typeof ForumImport
+    }
+    '/_forum/forum/profile/$authorId': {
+      preLoaderRoute: typeof ForumForumProfileAuthorIdImport
+      parentRoute: typeof ForumImport
+    }
   }
 }
 
@@ -60,7 +80,11 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  ForumRoute.addChildren([ForumForumIndexRoute]),
+  ForumRoute.addChildren([
+    ForumForumIndexRoute,
+    ForumForumPostsPostIdRoute,
+    ForumForumProfileAuthorIdRoute,
+  ]),
 ])
 
 /* prettier-ignore-end */
