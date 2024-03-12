@@ -5,7 +5,9 @@ export const posts: Post[] = [
         _id: '1',
         title: 'Is it Normal to Experience Dizziness After Taking Medication?',
         body: 'I recently started a new medication, and I\'ve been feeling dizzy ever since. Is this a common side effect, or should I be concerned?',
-        tags: ['medication', 'side effects', 'dizziness'],
+        tags: [{_id: '1', name: 'medication'},
+            {_id: '2', name: 'side effects'},
+            {_id: '3', name: 'dizziness'}],
         author: {
             _id: '1',
             name: 'Patient123'
@@ -26,7 +28,9 @@ export const posts: Post[] = [
         _id: '2',
         title: 'Dealing with Anxiety During Medical Tests',
         body: 'I have a medical test scheduled next week, and I\'m feeling extremely anxious about it. Does anyone have tips for managing anxiety during medical procedures?',
-        tags: ['anxiety', 'medical tests', 'stress management'],
+        tags: [{_id: '4', name: 'anxiety'},
+            {_id: '5', name: 'medical tests'},
+            {_id: '6', name: 'stress management'}],
         author: {
             _id: '2',
             name: 'AnxiousAva'
@@ -47,7 +51,9 @@ export const posts: Post[] = [
         _id: '3',
         title: 'Tips for Managing Chronic Pain',
         body: 'Living with chronic pain can be challenging. What are some effective strategies for managing pain on a daily basis?',
-        tags: ['chronic pain', 'pain management', 'self-care'],
+        tags: [{_id: '7', name: 'chronic pain'},
+            {_id: '8', name: 'pain management'},
+            {_id: '9', name: 'self-care'}],
         author: {
             _id: '3',
             name: 'PainWarrior'
@@ -64,4 +70,4 @@ export const posts: Post[] = [
         },
         category: 'self-care'
     }
-];
+]
