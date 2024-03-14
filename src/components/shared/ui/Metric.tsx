@@ -7,7 +7,7 @@ type MetricProps = {
     value: string | number
     title: string
     isAuthor?: boolean
-    textStyles: ClassName
+    textStyles?: ClassName
 }
 
 const Metric = ({image, title, value, isAuthor, textStyles}: MetricProps) => {
