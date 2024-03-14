@@ -2,8 +2,10 @@ type Config = {
     serverUrl: string
 }
 
+const env = import.meta.env
+
 const config: Config = {
-    serverUrl: import.meta.env.VITE_SERVER_URL
+    serverUrl: env.VITE_SERVER_URL
 }
 
 export default config
