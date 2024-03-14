@@ -1,13 +1,15 @@
 import Page from '@/components/shared/ui/Page.tsx'
-import {useLoaderData} from '@tanstack/react-router'
+import {getRouteApi} from '@tanstack/react-router'
 import Post from '@/components/forum/Post.tsx'
 
+const route = getRouteApi('/_forum/forum/posts/$postId')
+
 const PostPage = ({}) => {
-    const post = useLoaderData({from: '/_forum/forum/posts/$postId'})
+    const post = route.useLoaderData()
 
     return (
         <Page>
-            <Post post={post}/>
+            {post && <Post post={post}/>}
         </Page>
     )
 }
