@@ -4,10 +4,10 @@ import {Badge} from '@/components/ui/badge.tsx'
 
 const FilterButtons = ({}) => (
     <section className={'flex-row-start gap-3 p-3'}>
-        {Object.entries(Filter).map(([filter, label]) => (
-            <Link key={filter} to={'/forum'} params={{filter}} className={'flex-center'}>
-                <Badge className={'subtle-medium rounded-md border-none px-4 py-2'}>
-                    {label}
+        {Object.values(Filter).map(filter => (
+            <Link key={filter} to={'/forum'} search={{filter}} className={'flex-center'}>
+                <Badge className={'rounded-md border-none px-4 py-2 capitalize'}>
+                    {filter}
                 </Badge>
             </Link>
         ))}

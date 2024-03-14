@@ -1,6 +1,6 @@
 export enum Filter {
-    newest = 'Newest',
-    popular = 'Popular',
-    hot = 'Hot',
-    unanswered = 'Unanswered'
+    newest = 'newest',
+    popular = 'popular',
+    hot = 'hot',
+    unanswered = 'unanswered'
 }
