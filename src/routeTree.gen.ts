@@ -15,8 +15,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as ForumImport } from './routes/_forum'
 import { Route as ForumForumIndexImport } from './routes/_forum/forum/index'
-import { Route as ForumForumTagsTagIdImport } from './routes/_forum/forum/tags/$tagId'
 import { Route as ForumForumProfileAuthorIdImport } from './routes/_forum/forum/profile/$authorId'
+import { Route as ForumForumPostsCreateImport } from './routes/_forum/forum/posts/create'
 import { Route as ForumForumPostsPostIdImport } from './routes/_forum/forum/posts/$postId'
 
 // Create Virtual Routes
@@ -40,13 +40,13 @@ const ForumForumIndexRoute = ForumForumIndexImport.update({
   getParentRoute: () => ForumRoute,
 } as any)
 
-const ForumForumTagsTagIdRoute = ForumForumTagsTagIdImport.update({
-  path: '/forum/tags/$tagId',
+const ForumForumProfileAuthorIdRoute = ForumForumProfileAuthorIdImport.update({
+  path: '/forum/profile/$authorId',
   getParentRoute: () => ForumRoute,
 } as any)
 
-const ForumForumProfileAuthorIdRoute = ForumForumProfileAuthorIdImport.update({
-  path: '/forum/profile/$authorId',
+const ForumForumPostsCreateRoute = ForumForumPostsCreateImport.update({
+  path: '/forum/posts/create',
   getParentRoute: () => ForumRoute,
 } as any)
 
@@ -75,12 +75,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForumForumPostsPostIdImport
       parentRoute: typeof ForumImport
     }
-    '/_forum/forum/profile/$authorId': {
-      preLoaderRoute: typeof ForumForumProfileAuthorIdImport
+    '/_forum/forum/posts/create': {
+      preLoaderRoute: typeof ForumForumPostsCreateImport
       parentRoute: typeof ForumImport
     }
-    '/_forum/forum/tags/$tagId': {
-      preLoaderRoute: typeof ForumForumTagsTagIdImport
+    '/_forum/forum/profile/$authorId': {
+      preLoaderRoute: typeof ForumForumProfileAuthorIdImport
       parentRoute: typeof ForumImport
     }
   }
@@ -93,8 +93,8 @@ export const routeTree = rootRoute.addChildren([
   ForumRoute.addChildren([
     ForumForumIndexRoute,
     ForumForumPostsPostIdRoute,
+    ForumForumPostsCreateRoute,
     ForumForumProfileAuthorIdRoute,
-    ForumForumTagsTagIdRoute,
   ]),
 ])
 
