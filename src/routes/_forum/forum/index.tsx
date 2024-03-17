@@ -6,8 +6,12 @@ import {ForumSearchParams} from '@/types/router'
 
 export const Route = createFileRoute('/_forum/forum/')({
     validateSearch: (params: Record<string, unknown>): ForumSearchParams => {
+        // TODO: Add validation
         return {
-            filter: params['filter'] as Filter || Filter.newest
+            filter: params['filter'] as Filter || Filter.newest,
+            tag: params['tagId'] as string,
+            category: params['categoryId'] as string,
+            search: params['search'] as string
         }
     },
     loader: async () => {
