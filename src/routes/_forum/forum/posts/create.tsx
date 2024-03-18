@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
+import PostFormPage from '@/pages/forum/PostFormPage.tsx'
 
 export const Route = createFileRoute('/_forum/forum/posts/create')({
-  component: () => <div>Hello /_forum/forum/posts/create!</div>
+  component: () => <PostFormPage type={'create'}/>
 })

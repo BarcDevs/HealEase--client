@@ -9,17 +9,17 @@ type RenderTagProps = {
 
 const Tag = ({tag: {_id, name, posts}, showCount}: RenderTagProps) => (
     <Link
-        to={'/forum/tags/$tagId'}
-        params={{tagId: _id}}
+        to={'/forum/'}
+        search={{tag: _id}}
         className={'flex justify-between gap-2'}
         key={name}>
         <Badge
-            className={'subtle-medium rounded-md border-none px-4 py-2 uppercase'}>
+            className={'rounded-md border-none px-4 py-2 uppercase'}>
             {name}
         </Badge>
 
         {showCount && (
-            <p className={'small-medium'}>
+            <p className={''}>
                 {posts.length}
             </p>
         )}
