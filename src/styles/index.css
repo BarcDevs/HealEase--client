@@ -103,11 +103,11 @@
     }
 
     /*region Flex*/
-    .flex_row {
-        @apply flex flex-row;
+    .flex--row {
+        @apply flex flex-row rtl:flex-row-reverse;
     }
 
-    .flex_col {
+    .flex--col {
         @apply flex flex-col;
     }
 
@@ -115,11 +115,11 @@
         @apply flex items-center justify-center;
     }
 
-    .flex-center-row {
-        @apply flex items-center justify-center flex-row;
+    .flex-row-center {
+        @apply flex items-center justify-center flex--row;
     }
 
-    .flex-center-col {
+    .flex-col-center {
         @apply flex items-center justify-center flex-col;
     }
 
@@ -127,7 +127,7 @@
         @apply flex items-center justify-between;
     }
 
-    .flex-center-between-col {
+    .flex-col-center-between {
         @apply flex items-center justify-between flex-col;
     }
 
@@ -144,7 +144,7 @@
     }
 
     .flex-row-between {
-        @apply flex flex-row justify-between;
+        @apply flex flex--row justify-between;
     }
 
     .flex-col-start {
@@ -152,11 +152,11 @@
     }
 
     .flex-row-start {
-        @apply flex flex-row items-start justify-start;
+        @apply flex flex--row items-start justify-start;
     }
 
     .flex-responsive {
-        @apply flex flex-row max-sm:flex-col;
+        @apply flex flex--row max-sm:flex-col;
     }
 
     .flex-center-responsive {

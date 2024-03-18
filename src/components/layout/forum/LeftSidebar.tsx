@@ -1,5 +1,6 @@
 const LeftSidebar = ({}) => (
-    <aside className={'w-64 min-h-screen border-r border-gray-200 p-4 overflow-y-auto sticky top-0 left-0 flex_col'}>
+    <aside
+        className={'flex_col sticky top-0 min-h-screen w-64 overflow-y-auto border-gray-200 p-4 ltr:left-0 ltr:border-r rtl:right-0 rtl:border-l'}>
         <p>Category 1</p>
         <p>Category 2</p>
         <p>Category 3</p>
