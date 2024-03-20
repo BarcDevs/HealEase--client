@@ -14,6 +14,8 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ForumImport } from './routes/_forum'
+import { Route as authSignupImport } from './routes/(auth)/signup'
+import { Route as authLoginImport } from './routes/(auth)/login'
 import { Route as ForumForumIndexImport } from './routes/_forum/forum/index'
 import { Route as ForumForumProfileAuthorIdImport } from './routes/_forum/forum/profile/$authorId'
 import { Route as ForumForumPostsCreateImport } from './routes/_forum/forum/posts/create'
@@ -34,6 +36,16 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const authSignupRoute = authSignupImport.update({
+  path: '/signup',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authLoginRoute = authLoginImport.update({
+  path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const ForumForumIndexRoute = ForumForumIndexImport.update({
   path: '/forum/',
@@ -67,6 +79,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForumImport
       parentRoute: typeof rootRoute
     }
+    '/(auth)/login': {
+      preLoaderRoute: typeof authLoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/signup': {
+      preLoaderRoute: typeof authSignupImport
+      parentRoute: typeof rootRoute
+    }
     '/_forum/forum/': {
       preLoaderRoute: typeof ForumForumIndexImport
       parentRoute: typeof ForumImport
@@ -96,6 +116,8 @@ export const routeTree = rootRoute.addChildren([
     ForumForumPostsCreateRoute,
     ForumForumProfileAuthorIdRoute,
   ]),
+  authLoginRoute,
+  authSignupRoute,
 ])
 
 /* prettier-ignore-end */
