@@ -9,7 +9,8 @@ export const loginSchema = z.object({
         .min(1, 'Password is required')
         .min(config.password.minLength,
             `Password must be at least ${config.password.minLength} characters`)
-        .regex(config.password.format, config.password.formatMessage)
+        .regex(config.password.format, config.password.formatMessage),
+    remember: z.boolean()
 })
 
 export type LoginSchema = z.infer<typeof loginSchema>

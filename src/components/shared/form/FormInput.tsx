@@ -4,6 +4,7 @@ import {Control, FieldValues, Path} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
 import {ClassName} from '@/types/react'
 import TextEditor from '@/components/shared/form/TextEditor.tsx'
+import {ReactNode} from 'react'
 
 type FormInputProps<T extends FieldValues> = {
     name: Path<T>
@@ -12,6 +13,8 @@ type FormInputProps<T extends FieldValues> = {
     description?: string
     type?: InputProps['type'] | 'editor'
     className?: ClassName
+    labelClassName?: ClassName
+    secondaryLabel?: ReactNode
     required?: boolean
     formControl: Control<T & FieldValues, unknown>
 } & InputProps
@@ -22,6 +25,8 @@ const FormInput = <T extends FieldValues>({
                                               placeholder,
                                               description,
                                               className,
+                                              labelClassName,
+                                              secondaryLabel,
                                               formControl,
                                               type,
                                               required,
@@ -34,11 +39,14 @@ const FormInput = <T extends FieldValues>({
             render={({field}) =>
                 (
                     <FormItem>
-                        {label &&
-                            <FormLabel htmlFor={field.name} className={'opacity-50'}>
-                                {label}
-                                {required && <span className={'text-red-500'}>*</span>}
-                            </FormLabel>}
+                        <div className="flex items-center">
+                            {label &&
+                                <FormLabel htmlFor={field.name} className={labelClassName}>
+                                    {label}
+                                    {required && <span className={'text-red-500'}>*</span>}
+                                </FormLabel>}
+                            {secondaryLabel}
+                        </div>
                         <FormControl>
                             {type === 'editor' ?
                                 <TextEditor placeholder={placeholder}
