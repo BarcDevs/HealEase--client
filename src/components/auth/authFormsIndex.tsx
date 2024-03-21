@@ -10,29 +10,27 @@ export const forms: Record<AuthType, {
     headline: string
     description?: string
     component: ReactNode
-    bottomButtonText?: string
-    bottomButtonLink?: React.ComponentProps<typeof Link>['to']
+    googleLogin?: boolean
+    reference?: {
+        text: string
+        linkText: string
+        link: React.ComponentProps<typeof Link>['to']
+    }
 }> = {
     login: {
         headline: 'Login',
         description: 'Enter your email below to login to your account',
-        component: <LoginForm/>,
-        bottomButtonText: 'Login with Google',
-        bottomButtonLink: '/google'
+        component: <LoginForm/>
     },
     signup: {
         headline: 'Sign up',
         description: 'Enter your information to create an account',
-        component: <SignupForm/>,
-        bottomButtonText: 'Sign up with Google',
-        bottomButtonLink: '/google'
+        component: <SignupForm/>
     },
     'forgot-password': {
         headline: 'Forgot password',
         description: 'Enter your email to reset your password',
-        component: <ForgotPasswordForm/>,
-        bottomButtonText: 'Go Back to Login',
-        bottomButtonLink: '/login'
+        component: <ForgotPasswordForm/>
     },
     'update-password': {
         headline: 'Update password',

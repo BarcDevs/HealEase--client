@@ -1,8 +1,8 @@
 import {Link} from '@tanstack/react-router'
 import Page from '@/components/shared/ui/Page.tsx'
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card.tsx'
-import {Button} from '@/components/ui/button.tsx'
 import {AuthType, forms} from '@/components/auth/authFormsIndex.tsx'
+import GoogleLoginButton from '@/components/auth/GoogleLoginButton.tsx'
 
 
 const AuthPage = ({type}: { type: AuthType }) => (
@@ -19,12 +19,8 @@ const AuthPage = ({type}: { type: AuthType }) => (
             <CardContent>
                 <div className="space-y-4">
                     {forms[type].component}
-                    {forms[type].bottomButtonText &&
-                        <Button className="w-full" variant="outline">
-                            <Link to={forms[type].bottomButtonLink || '/'}>
-                                {forms[type].bottomButtonText}
-                            </Link>
-                        </Button>}
+                    {forms[type].googleLogin &&
+                        <GoogleLoginButton type={type === 'signup' ? 'signup' : 'login'}/>}
                 </div>
                 {(type === 'login' || type === 'signup') &&
                     <div className="mt-4 text-center text-sm">
