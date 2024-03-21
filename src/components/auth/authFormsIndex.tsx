@@ -20,12 +20,24 @@ export const forms: Record<AuthType, {
     login: {
         headline: 'Login',
         description: 'Enter your email below to login to your account',
-        component: <LoginForm/>
+        component: <LoginForm/>,
+        googleLogin: true,
+        reference: {
+            text: 'Don\'t have an account?',
+            linkText: 'Sign up',
+            link: '/signup'
+        }
     },
     signup: {
         headline: 'Sign up',
         description: 'Enter your information to create an account',
-        component: <SignupForm/>
+        component: <SignupForm/>,
+        googleLogin: true,
+        reference: {
+            text: 'Already have an account?',
+            linkText: 'Login',
+            link: '/login'
+        }
     },
     'forgot-password': {
         headline: 'Forgot password',

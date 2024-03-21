@@ -4,6 +4,7 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import FormInput from '@/components/shared/form/FormInput.tsx'
 import {EmailInputSchema, emailInputSchema} from '@/validations/forms/emailInputSchema.ts'
+import {Link} from '@tanstack/react-router'
 
 const ForgotPasswordForm = ({}) => {
     const form = useForm<EmailInputSchema>({
@@ -30,6 +31,11 @@ const ForgotPasswordForm = ({}) => {
                 />
                 <Button className="w-full" type="submit">
                     Reset Password
+                </Button>
+                <Button className="w-full" variant="outline" type="button">
+                    <Link to={'/login'}>
+                        {'Back to Login'}
+                    </Link>
                 </Button>
             </form>
         </Form>

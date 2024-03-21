@@ -22,11 +22,11 @@ const AuthPage = ({type}: { type: AuthType }) => (
                     {forms[type].googleLogin &&
                         <GoogleLoginButton type={type === 'signup' ? 'signup' : 'login'}/>}
                 </div>
-                {(type === 'login' || type === 'signup') &&
+                {forms[type].reference &&
                     <div className="mt-4 text-center text-sm">
-                        {type === 'login' ? 'Don\'t have an account?' : 'Already have an account?'}
-                        <Link to={`/${type === 'login' ? 'signup' : 'login'}`}> <u>
-                            {type === 'login' ? 'Sign up' : 'Login'}
+                        {forms[type].reference?.text}
+                        <Link to={forms[type].reference?.link || '/'}> <u>
+                            {forms[type].reference?.linkText}
                         </u></Link>
                     </div>}
             </CardContent>
