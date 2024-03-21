@@ -3,8 +3,9 @@ import SignupForm from '@/components/auth/SignupForm.tsx'
 import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm.tsx'
 import {Fragment, ReactNode} from 'react'
 import {Link} from '@tanstack/react-router'
+import OtpForm from '@/components/auth/OtpForm.tsx'
 
-export type AuthType = 'login' | 'signup' | 'forgot-password' | 'update-password' | 'otp'
+export type AuthType = 'login' | 'signup' | 'forgot-password' | 'update-password' | 'verify'
 
 export const forms: Record<AuthType, {
     headline: string
@@ -49,9 +50,14 @@ export const forms: Record<AuthType, {
         description: 'Enter your new password below',
         component: <Fragment/>
     },
-    otp: {
-        headline: 'OTP',
-        description: 'Enter your OTP below',
-        component: <Fragment/>
+    verify: {
+        headline: 'Verify email',
+        description: 'Enter the verification code sent to your email',
+        component: <OtpForm/>,
+        reference: {
+            text: 'Didn\'t receive the code?',
+            linkText: 'Resend code',
+            link: '/resend-code'
+        }
     }
 }

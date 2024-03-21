@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ForumImport } from './routes/_forum'
+import { Route as authVerifyImport } from './routes/(auth)/verify'
 import { Route as authSignupImport } from './routes/(auth)/signup'
 import { Route as authLoginImport } from './routes/(auth)/login'
 import { Route as authForgotPasswordImport } from './routes/(auth)/forgot-password'
@@ -37,6 +38,11 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const authVerifyRoute = authVerifyImport.update({
+  path: '/verify',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const authSignupRoute = authSignupImport.update({
   path: '/signup',
@@ -97,6 +103,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authSignupImport
       parentRoute: typeof rootRoute
     }
+    '/(auth)/verify': {
+      preLoaderRoute: typeof authVerifyImport
+      parentRoute: typeof rootRoute
+    }
     '/_forum/forum/': {
       preLoaderRoute: typeof ForumForumIndexImport
       parentRoute: typeof ForumImport
@@ -129,6 +139,7 @@ export const routeTree = rootRoute.addChildren([
   authForgotPasswordRoute,
   authLoginRoute,
   authSignupRoute,
+  authVerifyRoute,
 ])
 
 /* prettier-ignore-end */
