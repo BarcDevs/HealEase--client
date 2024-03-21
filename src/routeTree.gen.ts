@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as ForumImport } from './routes/_forum'
 import { Route as authSignupImport } from './routes/(auth)/signup'
 import { Route as authLoginImport } from './routes/(auth)/login'
+import { Route as authForgotPasswordImport } from './routes/(auth)/forgot-password'
 import { Route as ForumForumIndexImport } from './routes/_forum/forum/index'
 import { Route as ForumForumProfileAuthorIdImport } from './routes/_forum/forum/profile/$authorId'
 import { Route as ForumForumPostsCreateImport } from './routes/_forum/forum/posts/create'
@@ -44,6 +45,11 @@ const authSignupRoute = authSignupImport.update({
 
 const authLoginRoute = authLoginImport.update({
   path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authForgotPasswordRoute = authForgotPasswordImport.update({
+  path: '/forgot-password',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -77,6 +83,10 @@ declare module '@tanstack/react-router' {
     }
     '/_forum': {
       preLoaderRoute: typeof ForumImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/forgot-password': {
+      preLoaderRoute: typeof authForgotPasswordImport
       parentRoute: typeof rootRoute
     }
     '/(auth)/login': {
@@ -116,6 +126,7 @@ export const routeTree = rootRoute.addChildren([
     ForumForumPostsCreateRoute,
     ForumForumProfileAuthorIdRoute,
   ]),
+  authForgotPasswordRoute,
   authLoginRoute,
   authSignupRoute,
 ])
