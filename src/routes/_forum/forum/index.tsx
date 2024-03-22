@@ -10,9 +10,11 @@ export const Route = createFileRoute('/_forum/forum/')({
         return {
             filter: params.filter || Filter.newest,
             ...params
-        }
+        } as ForumSearchParams
     },
-    beforeLoad: ({search}) => ({search}),
-    loader: ({context}) => fetchPosts(context.search),
+    // beforeLoad: ({search}) => ({search}),
+    loaderDeps: ({search}) => ({search}),
+    loader: async ({deps: {search}}) => await fetchPosts(search),
+    pendingComponent: () => <ForumHomePage isLoading/>,
     component: ForumHomePage
 })
