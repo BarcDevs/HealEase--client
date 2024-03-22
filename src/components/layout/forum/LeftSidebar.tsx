@@ -1,6 +1,8 @@
 import {groupedCategories} from '@/data/forum/categories.ts'
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from '@/components/ui/accordion.tsx'
 import {Link} from '@tanstack/react-router'
+import {ForumSearchParams} from '@/types/router'
+import {Filter} from '@/data/forum/filters.ts'
 
 const LeftSidebar = ({}) => {
     const categoryGroups = Object.keys(groupedCategories)
@@ -21,7 +23,11 @@ const LeftSidebar = ({}) => {
                                         key={category.key}
                                     >
                                         <Link to={'/forum'}
-                                              search={{category: category.key}}
+                                              search={(search: ForumSearchParams) => ({
+                                                  ...search,
+                                                  category: category.key,
+                                                  filter: search.filter || Filter.newest
+                                              })}
                                         >
                                             {category.name}
                                         </Link>
