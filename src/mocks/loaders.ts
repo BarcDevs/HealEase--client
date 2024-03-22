@@ -2,9 +2,9 @@ import {posts} from '@/mocks/post.ts'
 import {ForumSearchParams} from '@/types/router'
 import {Post} from '@/types/forum'
 
-export const fetchPosts = async (query?: ForumSearchParams): Promise<Post[]> => {
-    if (query?.category) {
-        return posts.filter(post => post.category === query.category)
+export const fetchPosts = async ({category}: ForumSearchParams): Promise<Post[]> => {
+    if (category) {
+        return posts.filter(post => post.category === category)
     }
 
     return posts
