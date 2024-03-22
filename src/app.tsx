@@ -1,4 +1,4 @@
-import {StrictMode} from 'react'
+import {useEffect, StrictMode} from 'react'
 import ReactDOM from 'react-dom/client'
 import {createRouter, RouterProvider} from '@tanstack/react-router'
 import * as Sentry from '@sentry/react'
