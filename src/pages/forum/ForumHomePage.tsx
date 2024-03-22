@@ -3,18 +3,24 @@ import PostList from '@/components/forum/PostList.tsx'
 import {getRouteApi} from '@tanstack/react-router'
 import FilterButtons from '@/components/forum/FilterButtons.tsx'
 import Headline from '@/components/forum/Headline.tsx'
-import {Post} from '@/types/forum'
+import {getCategory} from '@/data/forum/categories.ts'
 
 const route = getRouteApi('/_forum/forum/')
 
-const ForumHomePage = ({}) => {
-    const posts = route.useLoaderData<Post[]>()
+const ForumHomePage = ({isLoading}: { isLoading?: boolean }) => {
+    const posts = route.useLoaderData()
+    const {category} = route.useSearch()
 
     return (
         <Page>
-            <Headline title={'All Posts'} createPost/>
+            <Headline
+                title={category ? getCategory(category)?.name || 'Error' : 'All Posts'}
+                createPost/>
             <FilterButtons/>
-            <PostList posts={posts}/>
+            {isLoading ?
+                <p>Loading...</p> :
+                <PostList posts={posts}/>
+            }
         </Page>
     )
 }

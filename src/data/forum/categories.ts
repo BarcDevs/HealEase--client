@@ -38,6 +38,7 @@ const categories: Category[] = [
 const toGrouped = (categories: Category[]) => Object.groupBy(categories, ({group}) => group)
 
 export const groupedCategories = toGrouped(categories)
+export const getCategory = (key: string) => categories.find(category => category.key === key)
 export default categories
 
 // he: [
