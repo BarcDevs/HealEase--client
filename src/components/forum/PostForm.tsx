@@ -6,6 +6,7 @@ import FormInput from '@/components/shared/form/FormInput.tsx'
 import TagInput from '@/components/shared/form/TagInput.tsx'
 import schemaConfig from '@/config/schema/postForm.ts'
 import {getRouteApi} from '@tanstack/react-router'
+import {Button} from '@/components/ui/button.tsx'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -66,6 +67,15 @@ const PostForm = ({type}: PostFormProps) => {
                         placeholder={'Add tags'}
                         max={schemaConfig.tags.max}
                     />
+                    <div className={'flex--row mt-6 justify-end gap-4'}>
+                        <Button type={'submit'}>
+                            {type === 'create' ? 'Create Post' : 'Update Post'}
+                        </Button>
+                        {type === 'edit' &&
+                            <Button type={'button'} className={'bg-red-500 text-white'}>
+                                Delete Post
+                            </Button>}
+                    </div>
                 </form>
             </Form>
         </div>
