@@ -24,43 +24,64 @@ const Post = ({post: {title, body, author, tags, createdAt, votes, replies, view
                 <UserLabel user={author} withName/>
             </Link>
         </div>
-        <h3 className={'text-lg font-bold'}>{title}</h3>
+        <h3 className={'text-xl font-bold'}>{title}</h3>
         <p>{body}</p>
-        <div className={'flex flex-row items-center gap-2.5'}>
-            <Metric
-                image={'clock'}
-                title={''}
-                value={`posted ${toRelative(createdAt)}`}
-                textStyles={''}
-            />
+        <div className={'flex--row justify-between'}>
+            <div className={'flex--row items-center gap-2.5'}>
+                <Metric
+                    image={'clock'}
+                    title={''}
+                    value={`posted ${toRelative(createdAt)}`}
+                    textStyles={''}
+                />
 
-            <Metric
-                image={'like'}
-                title={''}
-                value={toShortNumber(votes.positive)}
-                textStyles={''}
-            />
+                <Metric
+                    image={'like'}
+                    title={''}
+                    value={toShortNumber(votes.positive)}
+                    textStyles={''}
+                />
 
-            <Metric
-                image={'dislike'}
-                title={''}
-                value={toShortNumber(votes.negative)}
-                textStyles={''}
-            />
+                <Metric
+                    image={'dislike'}
+                    title={''}
+                    value={toShortNumber(votes.negative)}
+                    textStyles={''}
+                />
 
-            <Metric
-                image={'message'}
-                title={''}
-                value={toShortNumber(replies.length)}
-                textStyles={''}
-            />
+                <Metric
+                    image={'message'}
+                    title={''}
+                    value={toShortNumber(replies.length)}
+                    textStyles={''}
+                />
 
-            <Metric
-                image={'eye'}
-                title={''}
-                value={toShortNumber(views)}
-                textStyles={''}
-            />
+                <Metric
+                    image={'eye'}
+                    title={''}
+                    value={toShortNumber(views)}
+                    textStyles={''}
+                />
+            </div>
+            <div className={'flex--row gap-1'}>
+                <Metric
+                    image={'upvote'}
+                    title={''}
+                    value={votes.positive}
+                    textStyles={''}
+                />
+
+                <Metric
+                    image={'downvote'}
+                    title={''}
+                    value={votes.negative}
+                    textStyles={''}
+                />
+
+                <button>
+                    <Icon name={'star-red'} size={16}/>
+                </button>
+            </div>
         </div>
         <div className={'flex flex-row gap-3'}>
             {tags.map(tag => (
