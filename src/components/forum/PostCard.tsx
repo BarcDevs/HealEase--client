@@ -41,9 +41,15 @@ const PostCard = ({post: {_id, title, tags, createdAt, author, views, replies, v
                 to={'/forum/profile/$authorId'}
                 params={{authorId: author._id}}
             >
-                <UserLabel
-                    user={author}
-                />
+                <div className={'flex items-center gap-1'}>
+                    <UserLabel
+                        user={author}
+                    />
+
+                    <span className={'line-clamp-1 text-sm opacity-80'}>
+                        {`• posted ${toRelative(createdAt)}`}
+                    </span>
+                </div>
             </Link>
 
             <div className={'flex flex-row items-center gap-2.5'}>
