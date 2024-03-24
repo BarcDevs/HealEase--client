@@ -5,10 +5,11 @@ import {twMerge} from 'tailwind-merge'
 
 type Props = {
     user: User
+    withName?: boolean
     textStyles?: string
 }
 
-const UserLabel = ({user: {image, firstName, lastName, username}, textStyles}: Props) => (
+const UserLabel = ({user: {image, firstName, lastName, username}, withName, textStyles}: Props) => (
     <div className={'flex-center flex-row flex-wrap gap-1'}>
         <Avatar>
             <AvatarImage src={image}/>
@@ -20,9 +21,9 @@ const UserLabel = ({user: {image, firstName, lastName, username}, textStyles}: P
         <div className={twMerge('flex--col font-bold', textStyles)}>
             <p>{username}</p>
 
-            <p className={'line-clamp-1 text-xs font-semibold max-sm:hidden'}>
+            {withName && <p className={'line-clamp-1 text-xs font-semibold max-sm:hidden'}>
                 {firstName} {lastName}
-            </p>
+            </p>}
         </div>
     </div>
 )

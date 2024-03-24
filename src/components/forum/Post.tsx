@@ -21,7 +21,7 @@ const Post = ({post: {title, body, author, tags, createdAt, votes, replies, view
             </Link>
             <div className={'flex--col'}>
                 <Link to={'/forum/profile/$authorId'} params={{authorId: author._id}}>
-                    <UserLabel user={author}/>
+                    <UserLabel user={author} withName/>
                 </Link>
                 <p>{toRelative(createdAt)}</p>
             </div>

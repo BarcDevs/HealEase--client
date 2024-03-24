@@ -43,7 +43,6 @@ const PostCard = ({post: {_id, title, tags, createdAt, author, views, replies, v
             >
                 <UserLabel
                     user={author}
-                    textStyles={'body-medium'}
                 />
             </Link>
 
