@@ -14,7 +14,7 @@ const LeftSidebar = ({}) => {
                 <Accordion type={'single'} collapsible>
                     <AccordionItem value={'all'}>
                         <Link to={'/forum'}
-                              className={'flex flex-1 items-center justify-between font-bold py-4'}>
+                              className={'flex flex-1 items-center justify-between py-4 font-bold'}>
                             <p>All Posts</p>
                         </Link>
                     </AccordionItem>
@@ -47,6 +47,5 @@ const LeftSidebar = ({}) => {
         </aside>
     )
 }
-
 
 export default LeftSidebar
