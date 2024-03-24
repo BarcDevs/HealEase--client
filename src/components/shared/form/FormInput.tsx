@@ -52,6 +52,7 @@ const FormInput = <T extends FieldValues>({
                                 <TextEditor placeholder={placeholder}
                                             onBlur={field.onBlur}
                                             onChange={field.onChange}
+                                            initialValue={field.value}
                                 /> :
                                 <Input placeholder={placeholder}
                                        type={type ?? 'text'}

@@ -6,17 +6,18 @@ type EditorProps = {
     onBlur: () => void,
     onChange: (content: string) => void
 
+    initialValue?: string
     placeholder?: string
 }
 
-const TextEditor = ({onBlur, onChange, placeholder}: EditorProps) => {
+const TextEditor = ({onBlur, onChange, placeholder, initialValue = ''}: EditorProps) => {
     const editorRef = useRef<any>(null)
 
     return (
         <Editor
             apiKey={config.tinyMceApiKey}
             onInit={(_evt, editor) => editorRef.current = editor}
-            initialValue={''}
+            initialValue={initialValue}
             onBlur={onBlur}
             onEditorChange={(content) => onChange(content)}
             init={{

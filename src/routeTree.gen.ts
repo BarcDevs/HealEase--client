@@ -22,6 +22,7 @@ import { Route as ForumForumIndexImport } from './routes/_forum/forum/index'
 import { Route as ForumForumProfileAuthorIdImport } from './routes/_forum/forum/profile/$authorId'
 import { Route as ForumForumPostsCreateImport } from './routes/_forum/forum/posts/create'
 import { Route as ForumForumPostsPostIdImport } from './routes/_forum/forum/posts/$postId'
+import { Route as ForumForumPostsPostIdEditImport } from './routes/_forum/forum/posts/$postId_.edit'
 
 // Create Virtual Routes
 
@@ -79,6 +80,11 @@ const ForumForumPostsPostIdRoute = ForumForumPostsPostIdImport.update({
   getParentRoute: () => ForumRoute,
 } as any)
 
+const ForumForumPostsPostIdEditRoute = ForumForumPostsPostIdEditImport.update({
+  path: '/forum/posts/$postId/edit',
+  getParentRoute: () => ForumRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -123,6 +129,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForumForumProfileAuthorIdImport
       parentRoute: typeof ForumImport
     }
+    '/_forum/forum/posts/$postId/edit': {
+      preLoaderRoute: typeof ForumForumPostsPostIdEditImport
+      parentRoute: typeof ForumImport
+    }
   }
 }
 
@@ -135,6 +145,7 @@ export const routeTree = rootRoute.addChildren([
     ForumForumPostsPostIdRoute,
     ForumForumPostsCreateRoute,
     ForumForumProfileAuthorIdRoute,
+    ForumForumPostsPostIdEditRoute,
   ]),
   authForgotPasswordRoute,
   authLoginRoute,

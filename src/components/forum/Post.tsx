@@ -11,85 +11,98 @@ type Props = {
     post: PostType
 }
 
-const Post = ({post: {title, body, author, tags, createdAt, votes, replies, views}}: Props) => (
-    <div className={'flex--col gap-5 p-3'}>
-        <div className={'flex--row justify-between gap-2.5'}>
-            <Link to={'/forum'}>
-                <Button className={'rounded-full bg-slate-500 p-2'}>
-                    <Icon name={'arrow-left'} size={25}/>
-                </Button>
-            </Link>
+const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies, views}}: Props) => {
+    const isAuthor = true
 
-            <Link to={'/forum/profile/$authorId'} params={{authorId: author._id}}>
-                <UserLabel user={author} withName/>
-            </Link>
-        </div>
-        <h3 className={'text-xl font-bold'}>{title}</h3>
-        <p>{body}</p>
-        <div className={'flex--row justify-between'}>
-            <div className={'flex--row items-center gap-2.5'}>
-                <Metric
-                    image={'clock'}
-                    title={''}
-                    value={`posted ${toRelative(createdAt)}`}
-                    textStyles={''}
-                />
+    return (
+        <div className={'flex--col gap-5 p-3'}>
+            <div className={'flex--row justify-between gap-2.5'}>
+                <Link to={'/forum'}>
+                    <Button className={'rounded-full bg-slate-500 p-2'}>
+                        <Icon name={'arrow-left'} size={25}/>
+                    </Button>
+                </Link>
 
-                <Metric
-                    image={'like'}
-                    title={''}
-                    value={toShortNumber(votes.positive)}
-                    textStyles={''}
-                />
-
-                <Metric
-                    image={'dislike'}
-                    title={''}
-                    value={toShortNumber(votes.negative)}
-                    textStyles={''}
-                />
-
-                <Metric
-                    image={'message'}
-                    title={''}
-                    value={toShortNumber(replies.length)}
-                    textStyles={''}
-                />
-
-                <Metric
-                    image={'eye'}
-                    title={''}
-                    value={toShortNumber(views)}
-                    textStyles={''}
-                />
+                <Link to={'/forum/profile/$authorId'} params={{authorId: author._id}}>
+                    <UserLabel user={author} withName/>
+                </Link>
             </div>
-            <div className={'flex--row gap-1'}>
-                <Metric
-                    image={'upvote'}
-                    title={''}
-                    value={votes.positive}
-                    textStyles={''}
-                />
+            <h3 className={'inline-flex items-center gap-2 text-xl font-bold'}>
+                {title}
+                {isAuthor &&
+                    <span>
+                        <Link to={'/forum/posts/$postId/edit'} params={{postId: _id}}>
+                           <Icon name={'edit'} size={16}/>
+                        </Link>
+                    </span>
+                }
+            </h3>
+            <p>{body}</p>
+            <div className={'flex--row justify-between'}>
+                <div className={'flex--row items-center gap-2.5'}>
+                    <Metric
+                        image={'clock'}
+                        title={''}
+                        value={`posted ${toRelative(createdAt)}`}
+                        textStyles={''}
+                    />
 
-                <Metric
-                    image={'downvote'}
-                    title={''}
-                    value={votes.negative}
-                    textStyles={''}
-                />
+                    <Metric
+                        image={'like'}
+                        title={''}
+                        value={toShortNumber(votes.positive)}
+                        textStyles={''}
+                    />
 
-                <button>
-                    <Icon name={'star-red'} size={16}/>
-                </button>
+                    <Metric
+                        image={'dislike'}
+                        title={''}
+                        value={toShortNumber(votes.negative)}
+                        textStyles={''}
+                    />
+
+                    <Metric
+                        image={'message'}
+                        title={''}
+                        value={toShortNumber(replies.length)}
+                        textStyles={''}
+                    />
+
+                    <Metric
+                        image={'eye'}
+                        title={''}
+                        value={toShortNumber(views)}
+                        textStyles={''}
+                    />
+                </div>
+                <div className={'flex--row gap-1'}>
+                    <Metric
+                        image={'upvote'}
+                        title={''}
+                        value={votes.positive}
+                        textStyles={''}
+                    />
+
+                    <Metric
+                        image={'downvote'}
+                        title={''}
+                        value={votes.negative}
+                        textStyles={''}
+                    />
+
+                    <button>
+                        <Icon name={'star-red'} size={16}/>
+                    </button>
+                </div>
+            </div>
+            <div className={'flex flex-row gap-3'}>
+                {tags.map(tag => (
+                    <Tag key={tag._id} tag={tag}/>
+                ))}
             </div>
         </div>
-        <div className={'flex flex-row gap-3'}>
-            {tags.map(tag => (
-                <Tag key={tag._id} tag={tag}/>
-            ))}
-        </div>
-    </div>
-)
+    )
+}
 
 
 export default Post

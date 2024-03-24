@@ -5,12 +5,17 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import FormInput from '@/components/shared/form/FormInput.tsx'
 import TagInput from '@/components/shared/form/TagInput.tsx'
 import schemaConfig from '@/config/schema/postForm.ts'
+import {getRouteApi} from '@tanstack/react-router'
 
 type PostFormProps = {
     type: 'create' | 'edit'
 }
 
+const route = getRouteApi('/_forum/forum/posts/$postId/edit')
+
 const PostForm = ({type}: PostFormProps) => {
+    const oldData = type === 'edit' ? route.useLoaderData() : undefined
+
     const form = useForm<PostSchema>({
         resolver: zodResolver(postSchema),
         defaultValues: {
@@ -18,7 +23,13 @@ const PostForm = ({type}: PostFormProps) => {
             title: '',
             content: '',
             tags: []
-        }
+        },
+        values: oldData ? {
+            category: oldData.category,
+            title: oldData.title,
+            content: oldData.body,
+            tags: [...oldData.tags.map(tag => tag.name)]
+        } : undefined
     })
 
     const onSubmit = (values: PostSchema) => {
