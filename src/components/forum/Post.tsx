@@ -5,6 +5,7 @@ import {toRelative, toShortNumber} from '@/lib/utils.ts'
 import {Button} from '@/components/ui/button.tsx'
 import Icon from '@/components/shared/ui/Icon.tsx'
 import {Link} from '@tanstack/react-router'
+import UserLabel from '@/components/shared/ui/UserLabel.tsx'
 
 type Props = {
     post: PostType
@@ -20,10 +21,7 @@ const Post = ({post: {title, body, author, tags, createdAt, votes, replies, view
             </Link>
             <div className={'flex--col'}>
                 <Link to={'/forum/profile/$authorId'} params={{authorId: author._id}}>
-                    <Metric image={author.image}
-                            value={author.name}
-                            title={''}
-                            isAuthor/>
+                    <UserLabel user={author}/>
                 </Link>
                 <p>{toRelative(createdAt)}</p>
             </div>

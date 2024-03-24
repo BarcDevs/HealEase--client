@@ -4,6 +4,7 @@ import {Link} from '@tanstack/react-router'
 import Metric from '@/components/shared/ui/Metric.tsx'
 import {toRelative, toShortNumber} from '@/lib/utils.ts'
 import Tag from '@/components/forum/Tag.tsx'
+import UserLabel from '@/components/shared/ui/UserLabel.tsx'
 
 type Props = {
     post: Post
@@ -40,12 +41,9 @@ const PostCard = ({post: {_id, title, tags, createdAt, author, views, replies, v
                 to={'/forum/profile/$authorId'}
                 params={{authorId: author._id}}
             >
-                <Metric
-                    image={author.image}
-                    value={author.name}
-                    title={`• posted ${toRelative(createdAt)}`}
-                    isAuthor
-                    textStyles={'body-medium text-dark400_light800'}
+                <UserLabel
+                    user={author}
+                    textStyles={'body-medium'}
                 />
             </Link>
 
