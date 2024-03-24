@@ -1,6 +1,6 @@
 import {Link} from '@tanstack/react-router'
 import {Badge} from '@/components/ui/badge.tsx'
-import {Tag as TagType} from '@/types/forum'
+import {Tag as TagType} from '@/types/forum.ts'
 
 type RenderTagProps = {
     showCount?: boolean

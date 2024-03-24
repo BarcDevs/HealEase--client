@@ -2,7 +2,7 @@ import {Control, FieldValues, Path} from 'react-hook-form'
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form.tsx'
 import {Input, InputProps} from '@/components/ui/input.tsx'
 import {twMerge} from 'tailwind-merge'
-import {ClassName} from '@/types/react'
+import {ClassName} from '@/types/react.ts'
 import {Fragment, useState} from 'react'
 import {Badge} from '@/components/ui/badge.tsx'
 

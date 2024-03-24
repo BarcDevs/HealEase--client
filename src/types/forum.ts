@@ -1,4 +1,4 @@
-import {User} from '@/types/index'
+import {User} from '@/types/index.ts'
 
 type Post_Base = {
     _id: string

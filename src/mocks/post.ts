@@ -1,6 +1,6 @@
 import {faker} from '@faker-js/faker'
 import categories from '@/data/forum/categories'
-import {Post} from '@/types/forum'
+import {Post} from '@/types/forum.ts'
 import {createFakeUser} from '@/mocks/users.ts'
 import {createFakeTag} from '@/mocks/tags.ts'
 

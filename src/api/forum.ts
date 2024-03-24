@@ -1,5 +1,5 @@
 import {api} from '@/api/index.ts'
-import {Post} from '@/types/forum'
+import {Post} from '@/types/forum.ts'
 
 export const fetchPosts = async () => api.get<Post[]>('/forum/posts')
 

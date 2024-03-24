@@ -1,4 +1,4 @@
-import {Post} from '@/types/forum'
+import {Post} from '@/types/forum.ts'
 import {Card, CardContent, CardFooter, CardHeader} from '@/components/ui/card.tsx'
 import {Link} from '@tanstack/react-router'
 import Metric from '@/components/shared/ui/Metric.tsx'

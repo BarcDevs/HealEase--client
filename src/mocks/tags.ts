@@ -1,5 +1,5 @@
 import {faker} from '@faker-js/faker'
-import {Tag} from '@/types/forum'
+import {Tag} from '@/types/forum.ts'
 
 export const createFakeTag = () : Tag => ({
     _id: faker.string.uuid(),

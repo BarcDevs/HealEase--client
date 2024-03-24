@@ -1,4 +1,4 @@
-import {ClassName} from '@/types/react'
+import {ClassName} from '@/types/react.ts'
 
 type IconProps = {
     name: string

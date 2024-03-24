@@ -1,4 +1,4 @@
-import {Post as PostType} from '@/types/forum'
+import {Post as PostType} from '@/types/forum.ts'
 import Tag from '@/components/forum/Tag.tsx'
 import Metric from '@/components/shared/ui/Metric.tsx'
 import {toRelative, toShortNumber} from '@/lib/utils.ts'

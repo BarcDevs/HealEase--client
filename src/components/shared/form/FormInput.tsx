@@ -2,7 +2,7 @@ import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessag
 import {Input, InputProps} from '@/components/ui/input.tsx'
 import {Control, FieldValues, Path} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
-import {ClassName} from '@/types/react'
+import {ClassName} from '@/types/react.ts'
 import TextEditor from '@/components/shared/form/TextEditor.tsx'
 import {ReactNode} from 'react'
 

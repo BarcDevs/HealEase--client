@@ -1,6 +1,6 @@
 import {posts} from '@/mocks/post.ts'
-import {ForumSearchParams} from '@/types/router'
-import {Post} from '@/types/forum'
+import {ForumSearchParams} from '@/types/router.ts'
+import {Post} from '@/types/forum.ts'
 import {Filter} from '@/data/forum/filters.ts'
 
 export const fetchPosts = async ({filter = Filter.newest, category}: ForumSearchParams): Promise<Post[]> => {
