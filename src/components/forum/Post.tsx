@@ -13,22 +13,27 @@ type Props = {
 
 const Post = ({post: {title, body, author, tags, createdAt, votes, replies, views}}: Props) => (
     <div className={'flex--col gap-5 p-3'}>
-        <div className={'flex flex-row items-center gap-2.5'}>
+        <div className={'flex--row justify-between gap-2.5'}>
             <Link to={'/forum'}>
                 <Button className={'rounded-full bg-slate-500 p-2'}>
                     <Icon name={'arrow-left'} size={25}/>
                 </Button>
             </Link>
-            <div className={'flex--col'}>
-                <Link to={'/forum/profile/$authorId'} params={{authorId: author._id}}>
-                    <UserLabel user={author} withName/>
-                </Link>
-                <p>{toRelative(createdAt)}</p>
-            </div>
+
+            <Link to={'/forum/profile/$authorId'} params={{authorId: author._id}}>
+                <UserLabel user={author} withName/>
+            </Link>
         </div>
         <h3 className={'text-lg font-bold'}>{title}</h3>
         <p>{body}</p>
         <div className={'flex flex-row items-center gap-2.5'}>
+            <Metric
+                image={'clock'}
+                title={''}
+                value={`posted ${toRelative(createdAt)}`}
+                textStyles={''}
+            />
+
             <Metric
                 image={'like'}
                 title={''}
