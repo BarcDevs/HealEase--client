@@ -23,7 +23,10 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
                     </Button>
                 </Link>
 
-                <Link to={'/forum/profile/$authorId'} params={{authorId: author._id}}>
+                <Link to={'/forum/profile/$authorId'}
+                      params={{authorId: author._id}}
+                      className={'ml-14'}
+                >
                     <UserLabel user={author} withName/>
                 </Link>
             </div>
