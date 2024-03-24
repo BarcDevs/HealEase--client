@@ -7,7 +7,9 @@ export type Language = {
 
 export type User = {
     _id: string
-    name: string
-    image: string
+    firstName: string
+    lastName: string
+    username: string
+    image?: string
     email: string
 }

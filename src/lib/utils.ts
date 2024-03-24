@@ -35,3 +35,14 @@ export const toShortNumber = (num: number): string => {
     return num.toString()
   }
 }
+
+/**
+ * Generates and returns the initials of the user based on the first characters of the first and last name.
+ *
+ * @param {string} firstName - The first name of the user.
+ * @param {string} lastName - The last name of the user.
+ * @return {string} The uppercase initials of the user.
+ */
+export const getUserFallback = (firstName: string, lastName: string) => {
+    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase()
+}
