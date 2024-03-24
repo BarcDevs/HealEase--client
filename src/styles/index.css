@@ -94,6 +94,7 @@
 }
 
 @layer utilities {
+    /*region Custom classnames*/
     .padding {
 
     }
@@ -102,9 +103,14 @@
         @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
     }
 
+    .metrics {
+        @apply flex--row items-center gap-2.5;
+    }
+    /*endregion*/
+
     /*region Flex*/
     .flex--row {
-        @apply flex flex-row rtl:flex-row-reverse;
+        @apply flex flex-row;
     }
 
     .flex--col {

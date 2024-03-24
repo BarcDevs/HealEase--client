@@ -39,7 +39,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
             </h3>
             <p>{body}</p>
             <div className={'flex--row justify-between'}>
-                <div className={'flex--row items-center gap-2.5'}>
+                <div className={'metrics'}>
                     <Metric
                         image={'clock'}
                         title={''}

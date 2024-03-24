@@ -36,12 +36,11 @@ const PostCard = ({post: {_id, title, tags, createdAt, author, views, replies, v
         </CardContent>
 
         <CardFooter className={'flex-row-between mt-6 w-full flex-wrap gap-3 p-0'}>
-            <Link
-                className={'flex-center flex-row gap-1'}
-                to={'/forum/profile/$authorId'}
-                params={{authorId: author._id}}
-            >
-                <div className={'flex items-center gap-1'}>
+            <div className={'flex--row flex-center gap-1'}>
+                <Link className={'flex items-center gap-1'}
+                      to={'/forum/profile/$authorId'}
+                      params={{authorId: author._id}}
+                >
                     <UserLabel
                         user={author}
                     />
@@ -49,10 +48,10 @@ const PostCard = ({post: {_id, title, tags, createdAt, author, views, replies, v
                     <span className={'line-clamp-1 text-sm opacity-80'}>
                         {`• posted ${toRelative(createdAt)}`}
                     </span>
-                </div>
-            </Link>
+                </Link>
+            </div>
 
-            <div className={'flex flex-row items-center gap-2.5'}>
+            <div className={'metrics'}>
                 <Metric
                     image={'like'}
                     title={'Votes'}
