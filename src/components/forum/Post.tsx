@@ -18,7 +18,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
         <div className={'flex--col gap-5 p-3'}>
             <div className={'flex--row justify-between gap-2.5'}>
                 <Link to={'/forum'}>
-                    <Button className={'rounded-full bg-slate-500 p-2'}>
+                    <Button className={'rounded-full bg-slate-500 p-2 rtl:rotate-180'}>
                         <Icon name={'arrow-left'} size={25}/>
                     </Button>
                 </Link>
