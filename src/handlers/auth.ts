@@ -10,11 +10,12 @@ export const getCsrfToken = () =>
 
 export const handleLogin = async (credentials: LoginSchema) => {
     const {data} = await login(credentials)
-    if (!data) return
+    if (!data) return false
 
     store.dispatch(setTokenAction(data.token))
     getMe().then(userData =>
         store.dispatch(loginAction(userData)))
+    return true
 }
 
 export const handleSignup = async (
