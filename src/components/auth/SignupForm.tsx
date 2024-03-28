@@ -2,11 +2,15 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {Form} from '@/components/ui/form.tsx'
 import FormInput from '@/components/shared/form/FormInput.tsx'
-import {Link} from '@tanstack/react-router'
+import {Link, useRouter} from '@tanstack/react-router'
 import {Button} from '@/components/ui/button.tsx'
 import {SignupSchema, signupSchema} from '@/validations/forms/signupSchema.ts'
+import {useAuth} from '@/hooks/useAuth.ts'
 
 const SignupForm = ({}) => {
+    const {register} = useAuth()
+    const router = useRouter()
+
     const form = useForm<SignupSchema>({
         resolver: zodResolver(signupSchema),
         defaultValues: {
@@ -19,8 +23,9 @@ const SignupForm = ({}) => {
     })
 
     const onSubmit = (values: SignupSchema) => {
-        // TODO: Add logic
-        console.log(values)
+        register(values)
+            .then(() => router.history.push('/login'))
+            .catch((err) => console.log(err.response.data))
     }
 
     return (
