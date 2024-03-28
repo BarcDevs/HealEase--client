@@ -6,7 +6,7 @@ const PostList = ({posts}: { posts: Post[] }) => (
         <ul>
             {posts.length > 0 ? posts.map((post) => (
                     <li key={post._id} className={'flex--col gap-5 p-3'}>
-                        <PostCard post={post}/>
+                        <PostCard post={post} type={'post'}/>
                     </li>
                 )) :
                 <p>No posts found</p>

@@ -1,4 +1,4 @@
-import {Post as PostType} from '@/types/forum.ts'
+import {Post as PostType, Reply} from '@/types/forum.ts'
 import Tag from '@/components/forum/Tag.tsx'
 import Metric from '@/components/shared/ui/Metric.tsx'
 import {toRelative, toShortNumber} from '@/lib/utils.ts'
@@ -6,6 +6,7 @@ import {Button} from '@/components/ui/button.tsx'
 import Icon from '@/components/shared/ui/Icon.tsx'
 import {Link} from '@tanstack/react-router'
 import UserLabel from '@/components/shared/ui/UserLabel.tsx'
+import Replies from '@/components/forum/Replies.tsx'
 
 type Props = {
     post: PostType
@@ -16,7 +17,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
 
     return (
         <div className={'flex--col gap-5 p-3'}>
-            <div className={'flex--row justify-between gap-2.5'}>
+            <section className={'flex--row justify-between gap-2.5'}>
                 <Link to={'/forum'}>
                     <Button className={'rounded-full bg-slate-500 p-2 rtl:rotate-180'}>
                         <Icon name={'arrow-left'} size={25}/>
@@ -29,7 +30,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
                 >
                     <UserLabel user={author} withName/>
                 </Link>
-            </div>
+            </section>
             <h3 className={'inline-flex items-center gap-2 text-xl font-bold'}>
                 {title}
                 {isAuthor &&
@@ -41,7 +42,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
                 }
             </h3>
             <p>{body}</p>
-            <div className={'flex--row justify-between'}>
+            <section className={'flex--row justify-between'}>
                 <div className={'metrics'}>
                     <Metric
                         image={'clock'}
@@ -97,12 +98,14 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
                         <Icon name={'star-red'} size={16}/>
                     </button>
                 </div>
-            </div>
-            <div className={'flex flex-row gap-3'}>
+            </section>
+            <section className={'flex flex-row gap-3'}>
                 {tags.map(tag => (
                     <Tag key={tag._id} tag={tag}/>
                 ))}
-            </div>
+            </section>
+            {/* todo populate replies on loader */}
+            <Replies replies={replies as Reply[]}/>
         </div>
     )
 }
