@@ -2,9 +2,11 @@ import {Button} from '@/components/ui/button.tsx'
 import {useLanguage} from '@/context/langContext.tsx'
 import languages from '@/data/languages.ts'
 import NavLink from '@/components/shared/ui/NavLink.tsx'
+import {useAuth} from '@/hooks/useAuth.ts'
 
 const Header = () => {
     const {lang, changeLang} = useLanguage()
+    const {isLoggedIn, logout} = useAuth()
 
     const toggleLang = () => {
         changeLang(lang.code === 'en' ? languages.he : languages.en)
@@ -15,8 +17,13 @@ const Header = () => {
             <Button onClick={toggleLang}>{lang.name}</Button>
             <nav className={'flex--row gap-4'}>
                 <NavLink label={'Home'} to={'/'} activeOptions={{exact: true}}/>
-                <NavLink label={'Login'} to={'/login'}/>
+                {!isLoggedIn &&
+                    <NavLink label={'Login'} to={'/login'}/>
+                }
                 <NavLink label={'Forum'} to={'/forum'}/>
+                {isLoggedIn &&
+                    <NavLink label={'Logout'} logout onClick={logout} to={'/'}/>
+                }
             </nav>
         </header>
     )
