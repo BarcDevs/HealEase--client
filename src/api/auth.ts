@@ -7,9 +7,7 @@ import {LoginSchema} from '@/validations/forms/loginSchema.ts'
 
 export const login = async (credentials: LoginSchema) => {
     const {data} =
-        await api.get<Response<LoginResponse>>('/auth/login', {
-            data: credentials
-        })
+        await api.post<Response<LoginResponse>>('/auth/login', credentials)
 
     return data
 }
