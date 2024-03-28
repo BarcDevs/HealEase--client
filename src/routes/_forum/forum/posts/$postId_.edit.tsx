@@ -1,6 +1,6 @@
 import {createFileRoute} from '@tanstack/react-router'
 import PostFormPage from '@/pages/forum/PostFormPage.tsx'
-import {postLoader} from '@/loaders/forum.ts'
+import {postLoader} from '@/handlers/loaders/forum.ts'
 
 export const Route = createFileRoute('/_forum/forum/posts/$postId/edit')({
     loader: async ({params}) => {
