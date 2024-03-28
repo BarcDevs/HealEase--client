@@ -7,6 +7,7 @@ import TagInput from '@/components/shared/form/TagInput.tsx'
 import schemaConfig from '@/config/schema/postForm.ts'
 import {getRouteApi} from '@tanstack/react-router'
 import {Button} from '@/components/ui/button.tsx'
+import {submitForm} from '@/handlers/actions/forum.ts'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -34,8 +35,9 @@ const PostForm = ({type}: PostFormProps) => {
     })
 
     const onSubmit = (values: PostSchema) => {
-        // TODO: Add logic
-        console.log(values)
+        const res = submitForm(values, oldData?.id)
+
+        console.log(res)
     }
 
     return (
