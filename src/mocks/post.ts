@@ -6,14 +6,14 @@ import {createFakeTag} from '@/mocks/tags.ts'
 
 // export const posts: Post[] = [
 //     {
-//         _id: 'post1',
+//         id: 'post1',
 //         title: 'Is it Normal to Experience Dizziness After Taking Medication?',
 //         body: 'I recently started a new medication, and I\'ve been feeling dizzy ever since. Is this a common side effect, or should I be concerned?',
-//         tags: [{_id: 'tag1', name: 'medication'},
-//             {_id: 'tag2', name: 'side effects'},
-//             {_id: 'tag3', name: 'dizziness'}],
+//         tags: [{id: 'tag1', name: 'medication'},
+//             {id: 'tag2', name: 'side effects'},
+//             {id: 'tag3', name: 'dizziness'}],
 //         author: {
-//             _id: '1',
+//             id: '1',
 //             username: 'Patient123',
 //             firstName: 'John',
 //             lastName: 'Doe',
@@ -32,14 +32,14 @@ import {createFakeTag} from '@/mocks/tags.ts'
 //         category: 'medication'
 //     },
 //     {
-//         _id: 'post2',
+//         id: 'post2',
 //         title: 'Dealing with Anxiety During Medical Tests',
 //         body: 'I have a medical test scheduled next week, and I\'m feeling extremely anxious about it. Does anyone have tips for managing anxiety during medical procedures?',
-//         tags: [{_id: 'tag4', name: 'anxiety'},
-//             {_id: 'tag5', name: 'medical tests'},
-//             {_id: 'tag6', name: 'stress management'}],
+//         tags: [{id: 'tag4', name: 'anxiety'},
+//             {id: 'tag5', name: 'medical tests'},
+//             {id: 'tag6', name: 'stress management'}],
 //         author: {
-//             _id: '2',
+//             id: '2',
 //             username: 'AnxiousAva',
 //             firstName: 'Ava',
 //             lastName: 'Morgan'
@@ -57,14 +57,14 @@ import {createFakeTag} from '@/mocks/tags.ts'
 //         category: 'stress management'
 //     },
 //     {
-//         _id: 'post3',
+//         id: 'post3',
 //         title: 'Tips for Managing Chronic Pain',
 //         body: 'Living with chronic pain can be challenging. What are some effective strategies for managing pain on a daily basis?',
-//         tags: [{_id: 'tag7', name: 'chronic pain'},
-//             {_id: 'tag8', name: 'pain management'},
-//             {_id: 'tag9', name: 'self-care'}],
+//         tags: [{id: 'tag7', name: 'chronic pain'},
+//             {id: 'tag8', name: 'pain management'},
+//             {id: 'tag9', name: 'self-care'}],
 //         author: {
-//             _id: '3',
+//             id: '3',
 //             username: 'PainWarrior',
 //             firstName: 'Adam',
 //             lastName: 'Sendler'
@@ -87,7 +87,7 @@ function generateRandomPost(): Post {
     const category = categories[Math.floor(Math.random() * categories.length)]
 
     return {
-        _id: faker.string.uuid(),
+        id: faker.string.uuid(),
         title: faker.word.words({count: {min: 5, max: 15}}),
         body: faker.word.words({count: {min: 40, max: 75}}),
         createdAt: faker.date.recent(),

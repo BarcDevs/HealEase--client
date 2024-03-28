@@ -7,10 +7,10 @@ type RenderTagProps = {
     tag: TagType
 }
 
-const Tag = ({tag: {_id, name, posts}, showCount}: RenderTagProps) => (
+const Tag = ({tag: {id, name, posts}, showCount}: RenderTagProps) => (
     <Link
         to={'/forum/'}
-        search={{tag: _id}}
+        search={{tag: id}}
         className={'flex justify-between gap-2'}
         key={name}>
         <Badge

@@ -12,7 +12,7 @@ type Props = {
     post: PostType
 }
 
-const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies, views}}: Props) => {
+const Post = ({post: {id, title, body, author, tags, createdAt, votes, replies, views}}: Props) => {
     const isAuthor = true
 
     return (
@@ -25,7 +25,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
                 </Link>
 
                 <Link to={'/forum/profile/$authorId'}
-                      params={{authorId: author._id}}
+                      params={{authorId: author.id}}
                       className={'ml-14'}
                 >
                     <UserLabel user={author} withName/>
@@ -35,7 +35,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
                 {title}
                 {isAuthor &&
                     <span>
-                        <Link to={'/forum/posts/$postId/edit'} params={{postId: _id}}>
+                        <Link to={'/forum/posts/$postId/edit'} params={{postId: id}}>
                            <Icon name={'edit'} size={16}/>
                         </Link>
                     </span>
@@ -101,7 +101,7 @@ const Post = ({post: {_id, title, body, author, tags, createdAt, votes, replies,
             </section>
             <section className={'flex flex-row gap-3'}>
                 {tags.map(tag => (
-                    <Tag key={tag._id} tag={tag}/>
+                    <Tag key={tag.id} tag={tag}/>
                 ))}
             </section>
             {/* todo populate replies on loader */}

@@ -29,7 +29,7 @@ const PostCard = (props: Props) => {
             <CardHeader className={'mb-3.5 flex items-start justify-between gap-5 p-0 max-sm:flex-col-reverse'}>
                 {type === 'post' && <Link
                     to={'/forum/posts/$postId'}
-                    params={{postId: data._id}}
+                    params={{postId: data.id}}
                 >
                     <h3 className={'line-clamp-1 flex-1 font-bold'}>
                         {(data as Post).title}
@@ -45,7 +45,7 @@ const PostCard = (props: Props) => {
 
             <CardContent className={'flex flex-wrap gap-2 p-0'}>
                 {type === 'post' && (data as Post).tags.map(tag => (
-                    <Tag key={tag._id} tag={tag}/>
+                    <Tag key={tag.id} tag={tag}/>
                 ))}
                 {type === 'reply' && <p>{data.body}</p>}
             </CardContent>
@@ -54,7 +54,7 @@ const PostCard = (props: Props) => {
                 <div className={'flex--row flex-center gap-1'}>
                     <Link className={'flex items-center gap-1'}
                           to={'/forum/profile/$authorId'}
-                          params={{authorId: data.author._id}}
+                          params={{authorId: data.author.id}}
                     >
                         <UserLabel
                             user={data.author}

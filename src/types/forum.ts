@@ -1,7 +1,7 @@
 import {Prettify, User} from '@/types/index.ts'
 
 type Post_Base = {
-    _id: string
+    id: string
     body: string
     createdAt: Date
     votes: {
@@ -22,7 +22,7 @@ export type Post = Prettify<{
 export type Reply = Prettify<Post_Base>
 
 export type Tag = {
-    _id: string
+    id: string
     name: string
     description: string
     posts: Post[] | string

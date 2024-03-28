@@ -18,7 +18,7 @@ const Replies = ({replies}: RepliesProps) => {
 
             <ol>
                 {replies.map(reply => (
-                    <li key={reply._id}>
+                    <li key={reply.id}>
                         <PostCard
                             type={'reply'}
                             reply={reply}

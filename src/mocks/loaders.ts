@@ -11,7 +11,7 @@ export const fetchPosts = async ({filter = Filter.newest, category}: ForumSearch
     return sortBy(posts, filter)
 }
 
-export const fetchPost = async (postId: string) => posts.find(post => post._id === postId)
+export const fetchPost = async (postId: string) => posts.find(post => post.id === postId)
 
 const sortBy = (posts : Post[], sort: Filter) => {
     switch (sort) {
