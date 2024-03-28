@@ -14,7 +14,7 @@ export const handleLogin = async (credentials: LoginSchema) => {
 
     store.dispatch(setTokenAction(data.token))
     getMe().then(userData =>
-        store.dispatch(loginAction(userData)))
+        store.dispatch(loginAction(userData.data)))
     return true
 }
 

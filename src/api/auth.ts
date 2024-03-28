@@ -23,5 +23,5 @@ export const logout = async () => {
 }
 
 export const getMe = async () =>
-    await api.get<User, User>('/auth/me')
+    await api.get<Response<User>, Response<User>>('/auth/me')
 
