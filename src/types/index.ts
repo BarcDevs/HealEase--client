@@ -17,3 +17,11 @@ export type User = {
     image?: string
     email: string
 }
+
+export type PartialUser = {
+    id: string
+    firstName?: string
+    lastName?: string
+    username: string
+    image?: string
+}
