@@ -1,4 +1,4 @@
-import {User} from '@/types/index.ts'
+import {Prettify, User} from '@/types/index.ts'
 
 type Post_Base = {
     _id: string
@@ -11,15 +11,15 @@ type Post_Base = {
     author: User
 }
 
-export type Post = {
+export type Post = Prettify<{
     title: string
     replies: Reply[] | string[]
     views: number
     tags: Tag[]
     category: string
-} & Post_Base
+} & Post_Base>
 
-export type Reply = Post_Base
+export type Reply = Prettify<Post_Base>
 
 export type Tag = {
     _id: string
