@@ -20,8 +20,8 @@ export type User = {
 
 export type PartialUser = {
     id: string
-    firstName?: string
-    lastName?: string
+    firstName: string
+    lastName: string
     username: string
     image?: string
 }
