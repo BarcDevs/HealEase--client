@@ -1,8 +1,8 @@
 import {createFileRoute} from '@tanstack/react-router'
 import ForumHomePage from '@/pages/forum/ForumHomePage.tsx'
-import {fetchPosts} from '@/mocks/loaders.ts'
 import {ForumSearchParams} from '@/types/router.ts'
 import {Filter} from '@/data/forum/filters.ts'
+import {postsLoader} from '@/loaders/forum.ts'
 
 export const Route = createFileRoute('/_forum/forum/')({
     validateSearch: (params: ForumSearchParams) => {
@@ -14,7 +14,7 @@ export const Route = createFileRoute('/_forum/forum/')({
     },
     // beforeLoad: ({search}) => ({search}),
     loaderDeps: ({search}) => ({search}),
-    loader: async ({deps: {search}}) => await fetchPosts(search),
+    loader: async ({deps: {search}}) => await postsLoader(search),
     pendingComponent: () => <ForumHomePage isLoading/>,
     component: ForumHomePage
 })

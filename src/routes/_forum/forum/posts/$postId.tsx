@@ -1,10 +1,10 @@
 import {createFileRoute} from '@tanstack/react-router'
-import {fetchPost} from '@/mocks/loaders.ts'
 import PostPage from '@/pages/forum/PostPage.tsx'
+import {postLoader} from '@/loaders/forum.ts'
 
 export const Route = createFileRoute('/_forum/forum/posts/$postId')({
     loader: async ({params}) => {
-        return fetchPost(params.postId)
+        return postLoader(params.postId)
     },
     component: PostPage
 })

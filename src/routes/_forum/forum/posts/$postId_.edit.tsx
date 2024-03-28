@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
+import {createFileRoute} from '@tanstack/react-router'
 import PostFormPage from '@/pages/forum/PostFormPage.tsx'
-import {fetchPost} from '@/mocks/loaders.ts'
+import {postLoader} from '@/loaders/forum.ts'
 
 export const Route = createFileRoute('/_forum/forum/posts/$postId/edit')({
-  loader: async ({params}) => {
-    return fetchPost(params.postId)
-  },
-  component: () => <PostFormPage type={'edit'}/>,
+    loader: async ({params}) => {
+        return postLoader(params.postId) // todo pass post data through route context
+    },
+    component: () => <PostFormPage type={'edit'}/>
 })
