@@ -70,7 +70,7 @@ const PostCard = (props: Props) => {
                     <Metric
                         image={'like'}
                         title={'Votes'}
-                        value={toShortNumber(data.votes.positive - data.votes.negative)}
+                        value={toShortNumber(data.votes.upvotes - data.votes.downvotes)}
                         textStyles={''}
                     />
 
@@ -78,7 +78,7 @@ const PostCard = (props: Props) => {
                         <Metric
                             image={'message'}
                             title={'Replies'}
-                            value={toShortNumber((data as Post).replies.length)}
+                            value={toShortNumber((data as Post)._count?.replies || 0)}
                             textStyles={''}
                         />
 

@@ -85,6 +85,7 @@ import {createFakeTag} from '@/mocks/tags.ts'
 
 function generateRandomPost(): Post {
     const category = categories[Math.floor(Math.random() * categories.length)]
+    const user = createFakeUser()
 
     return {
         id: faker.string.uuid(),
@@ -92,14 +93,18 @@ function generateRandomPost(): Post {
         body: faker.word.words({count: {min: 40, max: 75}}),
         createdAt: faker.date.recent(),
         votes: {
-            positive: faker.number.int({max: 10000}),
-            negative: faker.number.int({max: 1000})
+            upvotes: faker.number.int({max: 10000}),
+            downvotes: faker.number.int({max: 1000}),
+            upvotedBy: [],
+            downvotedBy: []
         },
-        author: createFakeUser(),
+        author: user,
         replies: [],
         views: faker.number.int({max: 1000000}),
         tags: [...Array.from({length: faker.number.int({min: 1, max: 3})}, () => createFakeTag())],
-        category: category.key
+        category: category.key,
+        updatedAt: null,
+        authorId: user.id,
     }
 }
 

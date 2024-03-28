@@ -83,14 +83,14 @@ const Post = ({post: {id, title, body, author, tags, createdAt, votes, replies, 
                     <Metric
                         image={'upvote'}
                         title={''}
-                        value={votes.positive}
+                        value={votes.upvotes}
                         textStyles={''}
                     />
 
                     <Metric
                         image={'downvote'}
                         title={''}
-                        value={votes.negative}
+                        value={votes.downvotes}
                         textStyles={''}
                     />
 

@@ -18,7 +18,7 @@ const sortBy = (posts : Post[], sort: Filter) => {
         case Filter.newest:
             return posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
         case Filter.popular:
-            return posts.sort((a, b) => b.votes.positive - b.votes.negative - (a.votes.positive - a.votes.negative))
+            return posts.sort((a, b) => b.votes.upvotes - b.votes.downvotes - (a.votes.upvotes - a.votes.downvotes))
         case Filter.hot:
             return posts.sort((a, b) => b.replies.length - a.replies.length)
         case Filter.unanswered:
