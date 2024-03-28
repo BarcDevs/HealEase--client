@@ -24,12 +24,12 @@ const Post = ({post: {id, title, body, author, tags, createdAt, votes, replies, 
                     </Button>
                 </Link>
 
-                <Link to={'/forum/profile/$authorId'}
-                      params={{authorId: author.id}}
-                      className={'ml-14'}
+                {author && <Link to={'/forum/profile/$authorId'}
+                       params={{authorId: author.id}}
+                       className={'ml-14'}
                 >
                     <UserLabel user={author} withName/>
-                </Link>
+                </Link>}
             </section>
             <h3 className={'inline-flex items-center gap-2 text-xl font-bold'}>
                 {title}
@@ -54,14 +54,14 @@ const Post = ({post: {id, title, body, author, tags, createdAt, votes, replies, 
                     <Metric
                         image={'like'}
                         title={''}
-                        value={toShortNumber(votes.positive)}
+                        value={toShortNumber(votes.upvotes)}
                         textStyles={''}
                     />
 
                     <Metric
                         image={'dislike'}
                         title={''}
-                        value={toShortNumber(votes.negative)}
+                        value={toShortNumber(votes.downvotes)}
                         textStyles={''}
                     />
 

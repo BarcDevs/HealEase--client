@@ -1,10 +1,10 @@
 import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar.tsx'
-import {User} from '@/types'
+import {PartialUser} from '@/types'
 import {getUserFallback} from '@/lib/utils'
 import {twMerge} from 'tailwind-merge'
 
 type Props = {
-    user: User
+    user: PartialUser
     withName?: boolean
     textStyles?: string
 }

@@ -54,11 +54,11 @@ const PostCard = (props: Props) => {
                 <div className={'flex--row flex-center gap-1'}>
                     <Link className={'flex items-center gap-1'}
                           to={'/forum/profile/$authorId'}
-                          params={{authorId: data.author.id}}
+                          params={{authorId: data.author?.id || ''}}
                     >
-                        <UserLabel
+                        {data.author && <UserLabel
                             user={data.author}
-                        />
+                        />}
 
                         <span className={'line-clamp-1 text-sm opacity-80'}>
                             {`• posted ${toRelative(data.createdAt)}`}
@@ -94,6 +94,5 @@ const PostCard = (props: Props) => {
         </Card>
     )
 }
-
 
 export default PostCard

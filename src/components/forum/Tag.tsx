@@ -1,13 +1,13 @@
 import {Link} from '@tanstack/react-router'
 import {Badge} from '@/components/ui/badge.tsx'
-import {Tag as TagType} from '@/types/forum.ts'
+import {PartialTag} from '@/types/forum.ts'
 
 type RenderTagProps = {
     showCount?: boolean
-    tag: TagType
+    tag: PartialTag
 }
 
-const Tag = ({tag: {id, name, posts}, showCount}: RenderTagProps) => (
+const Tag = ({tag: {id, name, _count}, showCount}: RenderTagProps) => (
     <Link
         to={'/forum/'}
         search={{tag: id}}
@@ -20,7 +20,7 @@ const Tag = ({tag: {id, name, posts}, showCount}: RenderTagProps) => (
 
         {showCount && (
             <p className={''}>
-                {posts.length}
+                {_count?.posts || 0}
             </p>
         )}
     </Link>
