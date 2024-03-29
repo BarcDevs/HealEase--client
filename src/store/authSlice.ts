@@ -12,7 +12,7 @@ const authSlice = createSlice({
         isAuthenticated: false,
         user: undefined
     } as AuthState,
-    
+
     reducers: {
         login: (_, {payload: user}: { payload: User }) => ({
             isAuthenticated: true,
@@ -24,7 +24,10 @@ const authSlice = createSlice({
             user: undefined
         }),
 
-        loadAuthState: (_, {payload}: { payload: AuthState }) => payload
+        loadAuthState: (state, {payload}: { payload: boolean }) => ({
+            ...state,
+            isAuthenticated: payload,
+        })
     }
 })
 
