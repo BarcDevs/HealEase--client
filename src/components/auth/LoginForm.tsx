@@ -1,6 +1,6 @@
 import {Form, FormField, FormItem, FormLabel} from '@/components/ui/form.tsx'
 import {Button} from '@/components/ui/button.tsx'
-import {Link, useRouter} from '@tanstack/react-router'
+import {getRouteApi, Link, useNavigate} from '@tanstack/react-router'
 import {Checkbox} from '@/components/ui/checkbox.tsx'
 import {useForm} from 'react-hook-form'
 import {loginSchema, LoginSchema} from '@/validations/forms/loginSchema.ts'
@@ -8,9 +8,12 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import FormInput from '@/components/shared/form/FormInput.tsx'
 import {useAuth} from '@/hooks/useAuth.ts'
 
+const route = getRouteApi('/login')
+
 const LoginForm = ({}) => {
     const {login} = useAuth()
-    const router = useRouter()
+    const navigate = useNavigate()
+    const redirect = route.useSearch().redirect || '/'
 
     const form = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema),
@@ -23,7 +26,10 @@ const LoginForm = ({}) => {
 
     const onSubmit = (values: LoginSchema) => {
         login(values)
-            .then(() => router.history.push('/'))
+            .then(() => navigate({
+                to: redirect,
+                replace: true
+            }))
             .catch((err) => console.log(err.response.data))
     }
 

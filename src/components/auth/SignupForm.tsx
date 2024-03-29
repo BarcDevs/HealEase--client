@@ -2,14 +2,14 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {Form} from '@/components/ui/form.tsx'
 import FormInput from '@/components/shared/form/FormInput.tsx'
-import {Link, useRouter} from '@tanstack/react-router'
+import {Link, useNavigate} from '@tanstack/react-router'
 import {Button} from '@/components/ui/button.tsx'
 import {SignupSchema, signupSchema} from '@/validations/forms/signupSchema.ts'
 import {useAuth} from '@/hooks/useAuth.ts'
 
 const SignupForm = ({}) => {
     const {register} = useAuth()
-    const router = useRouter()
+    const navigate = useNavigate()
 
     const form = useForm<SignupSchema>({
         resolver: zodResolver(signupSchema),
@@ -24,7 +24,10 @@ const SignupForm = ({}) => {
 
     const onSubmit = (values: SignupSchema) => {
         register(values)
-            .then(() => router.history.push('/login'))
+            .then(() => navigate({
+                to: '/login',
+                replace: true
+            }))
             .catch((err) => console.log(err.response.data))
     }
 
