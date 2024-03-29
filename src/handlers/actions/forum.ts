@@ -8,5 +8,7 @@ import {createPost, updatePost} from '@/api/forum.ts'
  * @returns axios response
  */
 export const submitForm = async (post: PostSchema, postId?: string) =>
-    postId ? await updatePost(postId, post) : await createPost(post)
+    postId ?
+        (await updatePost(postId, post)).data :
+        (await createPost(post)).data
 
