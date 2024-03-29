@@ -26,18 +26,19 @@ const PostForm = ({type}: PostFormProps) => {
         defaultValues: {
             category: '',
             title: '',
-            content: '',
+            body: '',
             tags: []
         },
         values: oldData ? {
             category: oldData.category,
             title: oldData.title,
-            content: oldData.body,
+            body: oldData.body,
             tags: [...oldData.tags.map(tag => tag.name)]
         } : undefined
     })
 
     const onSubmit = (values: PostSchema) => {
+        console.log(values)
             submitForm(values, oldData?.id)
                 .then(({data}) => navigate({
                     to: '/forum/posts/$postId',
@@ -75,7 +76,7 @@ const PostForm = ({type}: PostFormProps) => {
                         placeholder={'Add a title'}
                     />
                     <FormInput
-                        name={'content'}
+                        name={'body'}
                         formControl={form.control}
                         label={'Text'}
                         type={'editor'}

@@ -9,11 +9,11 @@ export const postSchema = z.object({
         .min(1, 'Title is required')
         .min(config.title.minLength, 'Title is too short')
         .max(config.title.maxLength, 'Title is too long'),
-    content: z.string()
+    body: z.string()
         .min(1, 'Content is required')
-        .min(config.content.minLength, 'Content is too short')
-        .max(config.content.maxLength,
-            `Content must be less than ${config.content.maxLength} characters`),
+        .min(config.body.minLength, 'Content is too short')
+        .max(config.body.maxLength,
+            `Content must be less than ${config.body.maxLength} characters`),
     tags: z.array(
         z.string()
             .min(config.tags.minLength, 'Tag is too short')

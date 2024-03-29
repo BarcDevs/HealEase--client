@@ -3,7 +3,7 @@ export default {
         minLength: 5,
         maxLength: 100
     },
-    content: {
+    body: {
         minLength: 20,
         maxLength: 300
     },
