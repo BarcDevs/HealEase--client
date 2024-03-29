@@ -7,13 +7,15 @@ import Icon from '@/components/shared/ui/Icon.tsx'
 import {Link} from '@tanstack/react-router'
 import UserLabel from '@/components/shared/ui/UserLabel.tsx'
 import Replies from '@/components/forum/Replies.tsx'
+import {useAuth} from '@/hooks/useAuth.ts'
 
 type Props = {
     post: PostType
 }
 
 const Post = ({post: {id, title, body, author, tags, createdAt, votes, replies, views}}: Props) => {
-    const isAuthor = true
+    const {user} = useAuth()
+    const isAuthor = user?.id === author?.id
 
     return (
         <div className={'flex--col gap-5 p-3'}>
