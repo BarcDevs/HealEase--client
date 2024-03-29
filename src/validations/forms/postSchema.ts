@@ -3,7 +3,8 @@ import categories from '@/data/forum/categories.ts'
 import config from '@/config/schema/postForm.ts'
 
 export const postSchema = z.object({
-    category: z.string(),
+    category: z.string()
+        .min(1, 'Category is required'),
     title: z.string()
         .min(1, 'Title is required')
         .min(config.title.minLength, 'Title is too short')

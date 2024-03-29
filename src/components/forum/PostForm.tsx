@@ -8,6 +8,8 @@ import schemaConfig from '@/config/schema/postForm.ts'
 import {getRouteApi} from '@tanstack/react-router'
 import {Button} from '@/components/ui/button.tsx'
 import {submitForm} from '@/handlers/actions/forum.ts'
+import SelectInput from '@/components/shared/form/SelectInput.tsx'
+import categories from '@/data/forum/categories.ts'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -35,6 +37,7 @@ const PostForm = ({type}: PostFormProps) => {
     })
 
     const onSubmit = (values: PostSchema) => {
+        console.log(values)
         const res = submitForm(values, oldData?.id)
 
         console.log(res)
@@ -49,6 +52,19 @@ const PostForm = ({type}: PostFormProps) => {
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}
                       className={'flex--col gap-4'}>
+                    <SelectInput
+                        name={'category'}
+                        label={'Category'}
+                        placeholder={'Select a category'}
+                        formControl={form.control}
+                        className={'w-1/4'}
+                        values={Object.values(categories)
+                            .reduce((acc, category) => {
+                                acc[category.key] = category.name
+                                return acc
+                            }, {} as Record<string, string>)
+                        }
+                    />
                     <FormInput
                         name={'title'}
                         formControl={form.control}
