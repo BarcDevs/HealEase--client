@@ -1,5 +1,7 @@
 import {PostSchema} from '@/validations/forms/postSchema.ts'
 import {createPost, updatePost} from '@/api/forum.ts'
+import {Response} from '@/types/responses'
+import {Post} from '@/types/forum.ts'
 
 /**
  * Will handle submission of a form
@@ -7,7 +9,8 @@ import {createPost, updatePost} from '@/api/forum.ts'
  * @param postId - optional. Pass it if you want to update an existing post
  * @returns axios response
  */
-export const submitForm = async (post: PostSchema, postId?: string) =>
+export const submitForm = async (post: PostSchema, postId?: string)
+    : Promise<Response<{ post: Post }>> =>
     postId ?
         (await updatePost(postId, post)).data :
         (await createPost(post)).data

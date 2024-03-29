@@ -38,13 +38,12 @@ const PostForm = ({type}: PostFormProps) => {
     })
 
     const onSubmit = (values: PostSchema) => {
-        console.log(values)
-            submitForm(values, oldData?.id)
-                .then(({data}) => navigate({
-                    to: '/forum/posts/$postId',
-                    params: {postId: data.id},
-                }))
-                .catch(err => console.log(err.response.data))
+        submitForm(values, oldData?.id)
+            .then(({data}) => navigate({
+                to: '/forum/posts/$postId',
+                params: {postId: data.post.id}
+            }))
+            .catch(err => console.log(err.response.data))
     }
 
     return (
