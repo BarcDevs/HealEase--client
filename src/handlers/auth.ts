@@ -9,19 +9,19 @@ export const getCsrfTokenFromStore = () =>
     store.getState().token.token
 
 export const handleLogin = async (credentials: LoginSchema) => {
-    const {data} = await login(credentials)
+    const {data} = (await login(credentials)).data
     if (!data) return false
 
     store.dispatch(setTokenAction(data._csrf))
-    getMe().then(userData =>
-        store.dispatch(loginAction(userData.data)))
+    getMe().then(({data: response}) =>
+        store.dispatch(loginAction(response.data.user)))
     return true
 }
 
 export const handleSignup = async (
     userData: Omit<SignupSchema, 'confirmPassword'> & { confirmPassword?: string }) => {
     delete userData.confirmPassword
-    const {data} = await signup(userData)
+    const {data} = (await signup(userData)).data
 
     return !!data
 }
@@ -31,8 +31,9 @@ export const refreshAuthData = async () => {
     if (!data) return false
 
     store.dispatch(setTokenAction(data._csrf))
-    getMe().then(userData =>
-        store.dispatch(loginAction(userData.data)))
+    getMe().then(({data: response}) =>
+        // console.log('data', userData))
+        store.dispatch(loginAction(response.data.user)))
     return true
 }
 
