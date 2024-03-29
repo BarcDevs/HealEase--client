@@ -9,6 +9,8 @@ export type Language = {
     dir: 'ltr' | 'rtl'
 }
 
+export type Role = 'USER' | 'ADMIN'
+
 export type User = {
     id: string
     firstName: string
@@ -16,6 +18,7 @@ export type User = {
     username: string
     image?: string
     email: string
+    role: Role
 }
 
 export type PartialUser = {

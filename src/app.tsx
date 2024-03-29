@@ -1,13 +1,11 @@
 import {StrictMode} from 'react'
 import ReactDOM from 'react-dom/client'
-import {createRouter, RouterProvider} from '@tanstack/react-router'
+import {RouterProvider} from '@tanstack/react-router'
 import './styles/index.css'
-import {routeTree} from './routeTree.gen'
 import ContextProvider from '@/context'
-import {sentryInit} from '@/utils/sentry.ts'
-
-// Create a new router instance
-const router = createRouter({routeTree})
+import {sentryInit} from '@/utils/sentry'
+import {router} from '@/utils/router'
+import {useAuth} from '@/hooks/useAuth.ts'
 
 // Register the router instance for type safety
 declare module '@tanstack/react-router' {
@@ -19,14 +17,23 @@ declare module '@tanstack/react-router' {
 // Sentry Configuration
 sentryInit()
 
-// Render the app
+// eslint-disable-next-line react-refresh/only-export-components
+const App = () => {
+    const {isLoggedIn} = useAuth()
+    return (
+        <RouterProvider router={router} context={{
+            auth: {isLoggedIn}
+        }}/>
+    )
+}
+
 const rootElement = document.getElementById('app')!
 if (!rootElement.innerHTML) {
     const root = ReactDOM.createRoot(rootElement)
     root.render(
         <StrictMode>
             <ContextProvider>
-                <RouterProvider router={router}/>
+                <App/>
             </ContextProvider>
         </StrictMode>
     )
