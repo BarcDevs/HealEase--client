@@ -1,5 +1,4 @@
 import {HTMLProps} from 'react'
 
-
-type SetState<T> = React.Dispatch<React.SetStateAction<T>>
-type ClassName = HTMLProps<HTMLElement>['className']
+export type SetState<T> = React.Dispatch<React.SetStateAction<T>>
+export type ClassName = HTMLProps<HTMLElement>['className']
