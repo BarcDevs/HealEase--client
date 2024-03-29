@@ -26,6 +26,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.4.0",
+    "html-react-parser": "^5.1.10",
     "input-otp": "^1.2.2",
     "lucide-react": "^0.350.0",
     "million": "^3.0.6",

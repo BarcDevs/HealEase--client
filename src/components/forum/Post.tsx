@@ -1,3 +1,4 @@
+import parse from 'html-react-parser'
 import {Post as PostType, Reply} from '@/types/forum.ts'
 import Tag from '@/components/forum/Tag.tsx'
 import Metric from '@/components/shared/ui/Metric.tsx'
@@ -43,7 +44,7 @@ const Post = ({post: {id, title, body, author, tags, createdAt, votes, replies, 
                     </span>
                 }
             </h3>
-            <p>{body}</p>
+            <section>{parse(body)}</section>
             <section className={'flex--row justify-between'}>
                 <div className={'metrics'}>
                     <Metric
