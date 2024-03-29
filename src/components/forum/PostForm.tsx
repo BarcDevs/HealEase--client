@@ -5,7 +5,7 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import FormInput from '@/components/shared/form/FormInput.tsx'
 import TagInput from '@/components/shared/form/TagInput.tsx'
 import schemaConfig from '@/config/schema/postForm.ts'
-import {getRouteApi} from '@tanstack/react-router'
+import {getRouteApi, useNavigate} from '@tanstack/react-router'
 import {Button} from '@/components/ui/button.tsx'
 import {submitForm} from '@/handlers/actions/forum.ts'
 import SelectInput from '@/components/shared/form/SelectInput.tsx'
@@ -18,6 +18,7 @@ type PostFormProps = {
 const route = getRouteApi('/_forum/forum/posts/$postId/edit')
 
 const PostForm = ({type}: PostFormProps) => {
+    const navigate = useNavigate()
     const oldData = type === 'edit' ? route.useLoaderData() : undefined
 
     const form = useForm<PostSchema>({
@@ -37,10 +38,12 @@ const PostForm = ({type}: PostFormProps) => {
     })
 
     const onSubmit = (values: PostSchema) => {
-        console.log(values)
-        const res = submitForm(values, oldData?.id)
-
-        console.log(res)
+            submitForm(values, oldData?.id)
+                .then(({data}) => navigate({
+                    to: '/forum/posts/$postId',
+                    params: {postId: data.id},
+                }))
+                .catch(err => console.log(err.response.data))
     }
 
     return (
