@@ -1,6 +1,6 @@
 import {api} from '@/api/index.ts'
 import {User} from '@/types'
-import {Response} from '@/types/responses'
+import {ApiResponse, Response} from '@/types/responses'
 import {LoginResponse} from '@/types/responses/auth.ts'
 import {SignupSchema} from '@/validations/forms/signupSchema.ts'
 import {LoginSchema} from '@/validations/forms/loginSchema.ts'
@@ -22,6 +22,8 @@ export const logout = async () => {
     await api.get('/auth/logout')
 }
 
+export const getCsrfToken = async () : ApiResponse<{_csrf: string}> =>
+    api.get<Response<{_csrf: string}>>('/auth/csrf')
+
 export const getMe = async () =>
     await api.get<Response<User>, Response<User>>('/auth/me')
-

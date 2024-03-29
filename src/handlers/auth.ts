@@ -1,18 +1,18 @@
 import store from '@/store'
 import {removeTokenAction, setTokenAction} from '@/store/tokenSlice.ts'
-import {getMe, login, logout, signup} from '@/api/auth.ts'
+import {getCsrfToken, getMe, login, logout, signup} from '@/api/auth.ts'
 import {loginAction, logoutAction} from '@/store/authSlice.ts'
 import {LoginSchema} from '@/validations/forms/loginSchema.ts'
 import {SignupSchema} from '@/validations/forms/signupSchema.ts'
 
-export const getCsrfToken = () =>
+export const getCsrfTokenFromStore = () =>
     store.getState().token.token
 
 export const handleLogin = async (credentials: LoginSchema) => {
     const {data} = await login(credentials)
     if (!data) return false
 
-    store.dispatch(setTokenAction(data.token))
+    store.dispatch(setTokenAction(data._csrf))
     getMe().then(userData =>
         store.dispatch(loginAction(userData.data)))
     return true
