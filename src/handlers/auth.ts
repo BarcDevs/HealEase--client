@@ -26,6 +26,16 @@ export const handleSignup = async (
     return !!data
 }
 
+export const refreshAuthData = async () => {
+    const {data} = (await getCsrfToken()).data
+    if (!data) return false
+
+    store.dispatch(setTokenAction(data._csrf))
+    getMe().then(userData =>
+        store.dispatch(loginAction(userData.data)))
+    return true
+}
+
 export const handleLogout = async () => {
     await logout()
 
