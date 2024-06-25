@@ -5,10 +5,10 @@ import {getCsrfTokenFromStore} from '@/handlers/auth.ts'
 import {ApiResponse, Response} from '@/types/responses'
 
 export const fetchPosts = async (query: any) =>
-    await api.get<Response<{ posts: Post[] }>>('/forum/posts', {params: query})
+    await api.get<Response<Post[]>>('/forum/posts', {params: query})
 
 export const fetchPost = async (postId: string) =>
-    api.get<Response<{ post: Post }>>(`/forum/posts/${postId}`)
+    api.get<Response<Post>>(`/forum/posts/${postId}`)
 
 export const createPost = async (post: PostSchema) =>
     api.post<Response<{ post: Post }>>('/forum/posts', {
