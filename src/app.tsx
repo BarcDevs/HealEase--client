@@ -1,4 +1,4 @@
-import {StrictMode} from 'react'
+import {Fragment, StrictMode} from 'react'
 import ReactDOM from 'react-dom/client'
 import {RouterProvider} from '@tanstack/react-router'
 import './styles/index.css'
@@ -36,11 +36,12 @@ const App = () => {
 const rootElement = document.getElementById('app')!
 if (!rootElement.innerHTML) {
     const root = ReactDOM.createRoot(rootElement)
+    const ReactStrictMode = env.DEV ? StrictMode : Fragment
     root.render(
-        <StrictMode>
+        <ReactStrictMode>
             <ContextProvider>
                 <App/>
             </ContextProvider>
-        </StrictMode>
+        </ReactStrictMode>
     )
 }
