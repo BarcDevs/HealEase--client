@@ -1,4 +1,3 @@
-import {Suspense} from 'react'
 import Page from '@/components/shared/ui/Page.tsx'
 import PostList from '@/components/forum/PostList.tsx'
 import {getRouteApi} from '@tanstack/react-router'
@@ -20,9 +19,7 @@ const ForumHomePage = ({isLoading}: { isLoading?: boolean }) => {
             <FilterButtons/>
             {isLoading ?
                 <p>Loading...</p> :
-                <Suspense fallback={<p>Loading...</p>}>
-                    <PostList posts={posts}/>
-                </Suspense>
+                <PostList posts={posts}/>
             }
         </Page>
     )
