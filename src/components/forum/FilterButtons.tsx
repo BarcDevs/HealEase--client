@@ -1,6 +1,6 @@
-import {Filter} from '@/data/forum/filters.ts'
 import {Link} from '@tanstack/react-router'
 import {Badge} from '@/components/ui/badge.tsx'
+import {Filter} from '@/constants/filter.ts'
 
 const FilterButtons = ({}) => (
     <section className={'flex-row-start gap-3 p-3'}>

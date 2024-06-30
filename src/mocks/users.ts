@@ -6,5 +6,7 @@ export const createFakeUser = () : User => ({
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     username: faker.internet.userName(),
-    email: faker.internet.email()
+    email: faker.internet.email(),
+    role: 'USER',
+    image: faker.image.avatar()
 })

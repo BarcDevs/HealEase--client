@@ -1,8 +1,8 @@
-import {Filter} from '@/data/forum/filters.ts'
 import {Role} from '@/types/index.ts'
+import {FilterType} from '@/constants/filter.ts'
 
 export type ForumSearchParams = {
-    filter?: Filter | undefined
+    filter?: FilterType | undefined
     tag?: string
     category?: string
     search?: string

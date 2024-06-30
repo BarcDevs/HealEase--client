@@ -1,8 +1,8 @@
 import {createFileRoute} from '@tanstack/react-router'
 import ForumHomePage from '@/pages/forum/ForumHomePage.tsx'
 import {ForumSearchParams} from '@/types/router.ts'
-import {Filter} from '@/data/forum/filters.ts'
 import {postsLoader} from '@/handlers/loaders/forum.ts'
+import {Filter} from '@/constants/filter.ts'
 
 export const Route = createFileRoute('/_forum/forum/')({
     validateSearch: (params: ForumSearchParams) => {

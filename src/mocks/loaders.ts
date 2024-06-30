@@ -1,7 +1,7 @@
 import {posts} from '@/mocks/post.ts'
 import {ForumSearchParams} from '@/types/router.ts'
 import {Post} from '@/types/forum.ts'
-import {Filter} from '@/data/forum/filters.ts'
+import {Filter, FilterType} from '@/constants/filter.ts'
 
 export const fetchPosts = async ({filter = Filter.newest, category}: ForumSearchParams): Promise<Post[]> => {
     if (category) {
@@ -13,7 +13,7 @@ export const fetchPosts = async ({filter = Filter.newest, category}: ForumSearch
 
 export const fetchPost = async (postId: string) => posts.find(post => post.id === postId)
 
-const sortBy = (posts : Post[], sort: Filter) => {
+const sortBy = (posts : Post[], sort?: FilterType) => {
     switch (sort) {
         case Filter.newest:
             return posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
@@ -23,5 +23,7 @@ const sortBy = (posts : Post[], sort: Filter) => {
             return posts.sort((a, b) => b.replies.length - a.replies.length)
         case Filter.unanswered:
             return posts.filter(post => post.replies.length === 0)
+        default:
+            return posts
     }
 }
