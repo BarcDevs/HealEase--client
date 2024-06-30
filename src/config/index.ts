@@ -8,7 +8,7 @@ type Config = {
     tinyMceApiKey: string
 }
 
-const env = import.meta.env
+export const env = import.meta.env
 
 const config: Config = {
     serverUrl: env.VITE_SERVER_URL,
