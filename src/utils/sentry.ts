@@ -4,7 +4,7 @@ import config from '@/config'
 
 export const sentryInit = () => {
     Sentry.init({
-        dsn: 'https://94ccf213e00340996348fa63f2605456@o4506954726703104.ingest.us.sentry.io/4506954741055488',
+        dsn: config.sentryDsn,
         integrations: [
             Sentry.browserTracingIntegration(),
             Sentry.metrics.metricsAggregatorIntegration(),

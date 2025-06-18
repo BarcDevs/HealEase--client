@@ -6,6 +6,8 @@ type Config = {
 
     replaysSessionSampleRate: number
     tinyMceApiKey: string
+
+    sentryDsn: string
 }
 
 export const env = import.meta.env
@@ -38,6 +40,8 @@ const config: Config = {
     })(),
 
     tinyMceApiKey: getEnv('VITE_TINY_MCE_API_KEY'),
+
+    sentryDsn: getEnv('VITE_SENTRY_DSN')
 }
 
 export default config
