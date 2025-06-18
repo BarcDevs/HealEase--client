@@ -8,7 +8,7 @@ type HeadlineProps = {
 }
 
 const Headline = ({title, createPost}: HeadlineProps) => (
-    <section className={'w-full p-3 sm:p-5 flex-row-between'}>
+    <section className={'flex-row-between w-full p-3 sm:p-5'}>
         <h3 className={'text-3xl font-bold'}>{title}</h3>
         {createPost && <Link to={'/forum/posts/create'}>
             <Badge className={'rounded-md border-none px-4 py-2'}>

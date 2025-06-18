@@ -82,7 +82,7 @@ const TagInput = <T extends FieldValues>({
                             {field.value.map((tag: string) => (
                                 <Badge
                                     key={tag}
-                                    className={'rounded-md border-none px-4 py-2 uppercase cursor-pointer'}
+                                    className={'cursor-pointer rounded-md border-none px-4 py-2 uppercase'}
                                     onClick={() => handleTagClick(tag, field)}>
                                     {tag}
                                 </Badge>
