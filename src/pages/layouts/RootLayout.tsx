@@ -8,13 +8,15 @@ import {env} from '@/config'
 const RootLayout = Sentry.withProfiler(
     ({}) => {
         useLocalStorage()
+
         return (
             <>
                 <Header/>
-                <div className={'relative flex'}>
-                    <Outlet/>
-                </div>
+
+                <Outlet/>
+
                 {/*<Footer/>*/}
+
                 {env.DEV && <TanStackRouterDevtools/>}
             </>
         )
