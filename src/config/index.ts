@@ -23,8 +23,8 @@ const getEnv = (key: keyof typeof env): string => {
 }
 
 const config: Config = {
-    serverUrl: env.VITE_SERVER_URL || 'localhost:4000',
-    hostname: env.VITE_HOSTNAME || 'localhost:5173',
+    serverUrl: env.VITE_SERVER_URL || 'http://localhost:4000',
+    hostname: env.VITE_HOSTNAME || 'http://localhost:5173',
     serverApiVersion: env.VITE_SERVER_API_VERSION || 'v1',
     loginDuration: 7 * 24 * 60 * 60 * 1000, // 7 days
 
