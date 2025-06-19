@@ -1,6 +1,7 @@
 import Page from '@/components/shared/ui/Page.tsx'
 import {getRouteApi} from '@tanstack/react-router'
 import Post from '@/components/forum/Post.tsx'
+import {Post as PostType} from '@/types/forum.ts'
 
 const route = getRouteApi('/_forum/forum/posts/$postId')
 
@@ -9,7 +10,7 @@ const PostPage = ({}) => {
 
     return (
         <Page>
-            {post && <Post post={post}/>}
+            {post && <Post post={post as PostType}/>}
         </Page>
     )
 }

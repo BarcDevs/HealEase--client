@@ -4,6 +4,7 @@ import {getRouteApi} from '@tanstack/react-router'
 import FilterButtons from '@/components/forum/FilterButtons.tsx'
 import Headline from '@/components/forum/Headline.tsx'
 import {getCategory} from '@/data/forum/categories.ts'
+import {Post} from '@/types/forum.ts'
 
 const route = getRouteApi('/_forum/forum/')
 
@@ -20,7 +21,7 @@ const ForumHomePage = ({isLoading}: { isLoading?: boolean }) => {
             <FilterButtons/>
             {isLoading ?
                 <p>Loading...</p> :
-                <PostList posts={posts}/>
+                <PostList posts={posts as Post[]}/>
             }
         </Page>
     )
