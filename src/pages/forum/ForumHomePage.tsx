@@ -9,7 +9,8 @@ const route = getRouteApi('/_forum/forum/')
 
 const ForumHomePage = ({isLoading}: { isLoading?: boolean }) => {
     const posts = route.useLoaderData()
-    const {category} = route.useSearch()
+    const search = route.useSearch()
+    const category = 'category' in search ? search.category : undefined
 
     return (
         <Page>
@@ -24,6 +25,5 @@ const ForumHomePage = ({isLoading}: { isLoading?: boolean }) => {
         </Page>
     )
 }
-
 
 export default ForumHomePage
