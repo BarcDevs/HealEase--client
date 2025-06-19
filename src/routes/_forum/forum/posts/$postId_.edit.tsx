@@ -6,7 +6,7 @@ import {validateUser} from '@/handlers/loaders/auth.ts'
 export const Route = createFileRoute('/_forum/forum/posts/$postId/edit')({
     beforeLoad: validateUser,
     loader: async ({params}) => {
-        return postLoader(params.postId) // todo pass post data through route context
+        return postLoader((params as {postId: string}).postId) // todo pass post data through route context
     },
     component: () => <PostFormPage type={'edit'}/>
 })
