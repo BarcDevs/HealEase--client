@@ -7,5 +7,4 @@ const PostFormPage = ({type}: { type: 'create' | 'edit' }) => (
     </Page>
 )
 
-
 export default PostFormPage

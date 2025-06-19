@@ -8,10 +8,8 @@ import {LoginSchema} from '@/validations/forms/loginSchema.ts'
 export const login = async (credentials: LoginSchema) =>
     api.post<Response<LoginResponse>>('/auth/login', credentials)
 
-
 export const signup = async (userData: Omit<SignupSchema, 'confirmPassword'>) =>
     api.post<Response<{ user: User }>>('/auth/signup', userData)
-
 
 export const logout = async () => {
     await api.get('/auth/logout')

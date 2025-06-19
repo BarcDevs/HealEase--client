@@ -8,7 +8,3 @@ export const Route = createFileRoute('/_forum/forum/posts/$postId')({
     },
     component: PostPage
 })
-
-
-
-

@@ -26,5 +26,4 @@ const Tag = ({tag: {id, name, _count}, showCount}: RenderTagProps) => (
     </Link>
 )
 
-
 export default Tag

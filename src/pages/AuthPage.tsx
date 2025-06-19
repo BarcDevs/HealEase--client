@@ -4,7 +4,6 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/compo
 import {AuthType, forms} from '@/components/auth/authFormsIndex.tsx'
 import GoogleLoginButton from '@/components/auth/GoogleLoginButton.tsx'
 
-
 const AuthPage = ({type}: { type: AuthType }) => (
     <Page>
         <Card className="mx-auto max-w-sm">

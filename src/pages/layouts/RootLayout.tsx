@@ -22,5 +22,4 @@ const RootLayout = Sentry.withProfiler(
         )
     })
 
-
 export default RootLayout

@@ -28,5 +28,4 @@ const UserLabel = ({user: {image, firstName, lastName, username}, withName, text
     </div>
 )
 
-
 export default UserLabel

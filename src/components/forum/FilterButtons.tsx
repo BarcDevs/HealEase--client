@@ -16,5 +16,4 @@ const FilterButtons = ({}) => (
     </section>
 )
 
-
 export default FilterButtons

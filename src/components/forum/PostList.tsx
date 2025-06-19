@@ -15,5 +15,4 @@ const PostList = ({posts}: { posts: Post[] }) => (
     </section>
 )
 
-
 export default PostList

@@ -11,5 +11,4 @@ const ContextProvider = ({children}: { children: ReactNode }) => (
     </Provider>
 )
 
-
 export default ContextProvider

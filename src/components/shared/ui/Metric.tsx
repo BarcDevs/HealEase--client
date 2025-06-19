@@ -1,7 +1,6 @@
 import Icon from '@/components/shared/ui/Icon.tsx'
 import {ClassName} from '@/types/react.ts'
 
-
 type MetricProps = {
     image: string
     value: string | number

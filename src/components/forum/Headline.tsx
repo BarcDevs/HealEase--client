@@ -1,7 +1,6 @@
 import {Link} from '@tanstack/react-router'
 import {Badge} from '@/components/ui/badge.tsx'
 
-
 type HeadlineProps = {
     title: string
     createPost?: boolean

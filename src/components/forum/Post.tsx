@@ -113,5 +113,4 @@ const Post = ({post: {id, title, body, author, tags, createdAt, votes, replies, 
     )
 }
 
-
 export default Post

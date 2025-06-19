@@ -10,5 +10,4 @@ const GoogleLoginButton = ({type} : {type: 'login' | 'signup'}) => (
     </Button>
 )
 
-
 export default GoogleLoginButton

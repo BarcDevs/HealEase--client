@@ -10,5 +10,4 @@ const ForumLayout = ({}) => (
     </>
 )
 
-
 export default ForumLayout

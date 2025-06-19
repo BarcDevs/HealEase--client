@@ -21,5 +21,4 @@ const NavLink = ({to, label, logout, ...props}: LinkProps) => (
     </Link>
 )
 
-
 export default NavLink
