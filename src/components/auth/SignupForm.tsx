@@ -28,7 +28,7 @@ const SignupForm = ({}) => {
                 to: '/login',
                 replace: true
             }))
-            .catch((err) => console.log(err.response.data))
+            .catch((err) => console.error(err.message || err.response.data))
     }
 
     return (

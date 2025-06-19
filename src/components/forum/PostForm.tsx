@@ -43,7 +43,7 @@ const PostForm = ({type}: PostFormProps) => {
                 to: '/forum/posts/$postId',
                 params: {postId: data.post.id}
             }))
-            .catch(err => console.log(err.response.data))
+            .catch(err => console.error(err.message || err.response.data))
     }
 
     return (
