@@ -2,7 +2,7 @@ import {Post, Reply} from '@/types/forum.ts'
 import {Card, CardContent, CardFooter, CardHeader} from '@/components/ui/card.tsx'
 import {Link} from '@tanstack/react-router'
 import Metric from '@/components/shared/ui/Metric.tsx'
-import {toRelative, toShortNumber} from '@/lib/utils.ts'
+import {toRelative, toShortNumber} from '@/lib/time.ts'
 import Tag from '@/components/forum/Tag.tsx'
 import UserLabel from '@/components/shared/ui/UserLabel.tsx'
 
