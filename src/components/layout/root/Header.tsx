@@ -4,7 +4,7 @@ import {Button} from '@/components/ui/button.tsx'
 import {useAuth} from '@/hooks/useAuth.ts'
 import Logo from '@/components/shared/Logo.tsx'
 import {BRAND_NAME, BUTTONS} from '@/constants/plainTexts.ts'
-import Nav from '@/components/home/Nav.tsx'
+import Nav from '@/components/layout/root/Nav.tsx'
 
 const Header = () => {
     // const {lang, changeLang} = useLanguage()

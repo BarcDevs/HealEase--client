@@ -1,7 +1,7 @@
 import {BRAND_NAME, FOOTER} from '@/constants/plainTexts.ts'
-import FooterLinks from '@/components/home/FooterLinks.tsx'
+import FooterLinks from '@/components/layout/root/FooterLinks.tsx'
 import Logo from '@/components/shared/Logo.tsx'
-import SocialLinks from '@/components/home/SocialLinks.tsx'
+import SocialLinks from '@/components/layout/root/SocialLinks.tsx'
 
 const Footer = () => {
     return (
