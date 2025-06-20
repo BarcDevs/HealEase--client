@@ -24,5 +24,9 @@ export default defineConfig({
 
     build: {
         sourcemap: true
+    },
+
+    optimizeDeps: {
+        include: ['@tanstack/react-router']
     }
 })

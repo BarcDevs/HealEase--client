@@ -1,30 +1,66 @@
 import {Button} from '@/components/ui/button.tsx'
-import {useLanguage} from '@/context/langContext.tsx'
-import languages from '@/data/languages.ts'
-import NavLink from '@/components/shared/ui/NavLink.tsx'
+// import {useLanguage} from '@/context/langContext.tsx'
+// import languages from '@/data/languages.ts'
 import {useAuth} from '@/hooks/useAuth.ts'
+import Logo from '@/components/shared/Logo.tsx'
+import {BRAND_NAME, BUTTONS} from '@/constants/plainTexts.ts'
+import Nav from '@/components/home/Nav.tsx'
 
 const Header = () => {
-    const {lang, changeLang} = useLanguage()
+    // const {lang, changeLang} = useLanguage()
     const {isLoggedIn, logout} = useAuth()
 
-    const toggleLang = () => {
-        changeLang(lang.code === 'en' ? languages.he : languages.en)
-    }
+    // const toggleLang = () => {
+    //     changeLang(lang.code === 'en' ? languages.he : languages.en)
+    // }
 
     return (
-        <header className={'flex h-20 w-screen items-center justify-between border-b border-gray-200 p-4'}>
-            <Button onClick={toggleLang}>{lang.name}</Button>
-            <nav className={'flex--row gap-4'}>
-                <NavLink label={'Home'} to={'/'} activeOptions={{exact: true}}/>
-                {!isLoggedIn &&
-                    <NavLink label={'Login'} to={'/login'}/>
-                }
-                <NavLink label={'Forum'} to={'/forum'}/>
-                {isLoggedIn &&
-                    <NavLink label={'Logout'} logout onClick={logout} to={'/'}/>
-                }
-            </nav>
+        <header className={'sticky top-0 z-50 border-b border-blue-100 bg-white/80 backdrop-blur-sm'}>
+            <div className={'container mx-auto p-4'}>
+                <div className={'flex items-center justify-between'}>
+                    <div className={'flex items-center space-x-2'}>
+                        <div
+                            className={'flex size-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-green-500'}>
+                            {/*TODO: Add logo*/}
+                            <Logo/>
+                        </div>
+                        <span className={'text-xl font-bold text-gray-800'}>
+                            {BRAND_NAME}
+                        </span>
+                    </div>
+
+                    <Nav/>
+
+                    <div className={'flex space-x-2'}>
+                        {!isLoggedIn &&
+                            <section className={'flex space-x-2'}>
+                                <Button
+                                    variant={'outline'}
+                                    className={'hidden border-blue-200 text-blue-600 hover:bg-blue-50 sm:inline-flex'}>
+                                    {BUTTONS.signIn}
+                                </Button>
+
+                                <Button
+                                    className={'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}>
+                                    {BUTTONS.joinNow}
+                                </Button>
+                            </section>}
+
+                        {isLoggedIn &&
+                            <Button
+                                className={'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'}
+                                onClick={logout}>
+                                {BUTTONS.logout}
+                            </Button>
+                        }
+                    </div>
+
+                    {/*TODO: Add language picker*/}
+                    {/*<Button onClick={toggleLang}>*/}
+                    {/*    {lang.name}*/}
+                    {/*</Button>*/}
+                </div>
+            </div>
         </header>
     )
 }

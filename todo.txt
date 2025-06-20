@@ -1,3 +1,4 @@
+Header.tsx                    TODO: Add logo
 $postId_.edit                 TODO: pass post data through route context
 PostCard.tsx                  TODO: find out the best way to handle conditional types on react component
 GoogleLoginButton.tsx         TODO: add google login
