@@ -3,6 +3,7 @@ import {env} from '@/config'
 import {useRouter} from '@tanstack/react-router'
 import {IRootState} from '@/store'
 import {useSelector} from 'react-redux'
+import {AxiosError} from 'axios'
 
 type ErrorPageProps = {
     error: Error
@@ -15,7 +16,10 @@ const ErrorPage: FC<ErrorPageProps> = ({error, reset}) => {
 
     const isAdmin = user?.role === 'ADMIN'
     const isDevMode = env.DEV
-    const isServerError = router.state.statusCode === 500
+    const status =
+        error instanceof AxiosError &&
+        error.response?.status
+    const isServerError = status === 500
 
     const handleGoHome = () =>
         router.navigate({to: '/'})
@@ -59,7 +63,9 @@ const ErrorPage: FC<ErrorPageProps> = ({error, reset}) => {
                 {showErrorDetails && error?.message && (
                     <div className="mb-4 rounded-md bg-red-50 p-3">
                         <p className="text-sm text-red-700">
-                            {error.message}
+                            {error instanceof AxiosError ?
+                                error.response?.data.message :
+                                error.message}
                         </p>
                     </div>
                 )}
