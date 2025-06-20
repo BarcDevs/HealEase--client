@@ -1,2 +1,10 @@
-($postId_.edit) todo: pass post data through route context
-
+$postId_.edit                 TODO: pass post data through route context
+PostCard.tsx                  TODO: find out the best way to handle conditional types on react component
+GoogleLoginButton.tsx         TODO: add google login
+useLocalStorage.ts            TODO: remember me
+OtpForm.tsx                   TODO: implement 2fa for login
+Post.tsx                      TODO: populate replies on loader
+routes/_forum/forum/index.tsx TODO: Add validation
+ForgotPasswordForm.tsx        TODO: Add forgot password logic
+app.tsx                       TODO: fix sentry and re-enable
+Replies.tsx                   TODO: sort button
