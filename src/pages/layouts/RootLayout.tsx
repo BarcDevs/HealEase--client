@@ -1,9 +1,10 @@
 import * as Sentry from '@sentry/react'
+import {env} from '@/config'
 import {Outlet} from '@tanstack/react-router'
 import {TanStackRouterDevtools} from '@tanstack/router-devtools'
-import Header from '@/components/layout/root/Header.tsx'
 import {useLocalStorage} from '@/hooks/useLocalStorage.ts'
-import {env} from '@/config'
+import Header from '@/components/layout/root/Header.tsx'
+import Footer from '@/components/layout/root/Footer.tsx'
 
 const RootLayout = Sentry.withProfiler(
     ({}) => {
@@ -17,7 +18,7 @@ const RootLayout = Sentry.withProfiler(
                     <Outlet/>
                 </div>
 
-                {/*<Footer/>*/}
+                <Footer/>
 
                 {env.DEV && <TanStackRouterDevtools/>}
             </>
