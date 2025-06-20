@@ -10,6 +10,7 @@ import {Button} from '@/components/ui/button.tsx'
 import {submitForm} from '@/handlers/actions/forum.ts'
 import SelectInput from '@/components/shared/form/SelectInput.tsx'
 import categories from '@/data/forum/categories.ts'
+import {isPostData} from '@/lib/isPostData.ts'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -29,7 +30,7 @@ const PostForm = ({type}: PostFormProps) => {
             body: '',
             tags: []
         },
-        values: oldData ? {
+        values: oldData && isPostData(oldData) ? {
             category: oldData.category,
             title: oldData.title,
             body: oldData.body,
@@ -38,7 +39,7 @@ const PostForm = ({type}: PostFormProps) => {
     })
 
     const onSubmit = (values: PostSchema) => {
-        submitForm(values, oldData?.id)
+        submitForm(values, (oldData as any)?.id)
             .then(({data}) => navigate({
                 to: '/forum/posts/$postId',
                 params: {postId: data.post.id}

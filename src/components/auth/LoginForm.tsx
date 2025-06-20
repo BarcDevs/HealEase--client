@@ -13,7 +13,8 @@ const route = getRouteApi('/login')
 const LoginForm = ({}) => {
     const {login} = useAuth()
     const navigate = useNavigate()
-    const redirect = route.useSearch().redirect || '/'
+    const search = route.useSearch()
+    const redirect = (search as any).redirect || '/'
 
     const form = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema),
