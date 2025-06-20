@@ -64,7 +64,8 @@ const ErrorPage: FC<ErrorPageProps> = ({error, reset}) => {
                     <div className="mb-4 rounded-md bg-red-50 p-3">
                         <p className="text-sm text-red-700">
                             {error instanceof AxiosError ?
-                                error.response?.data.message :
+                                error.response?.data.message ||
+                                error.response?.statusText :
                                 error.message}
                         </p>
                     </div>
