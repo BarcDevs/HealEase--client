@@ -1,6 +1,7 @@
 import {NAV_LINKS} from '@/constants/componentData.ts'
-import {Link, useLocation} from '@tanstack/react-router'
+import {useLocation} from '@tanstack/react-router'
 import {useEffect, useState} from 'react'
+import NavLink from '@/components/layout/root/NavLink.tsx'
 
 const Nav = ({}) => {
     const location = useLocation()
@@ -9,7 +10,6 @@ const Nav = ({}) => {
 
     useEffect(() => {
         setIsHomePage(location.pathname === '/')
-        console.log(location.pathname)
     }, [location.pathname])
 
     return (
@@ -17,13 +17,12 @@ const Nav = ({}) => {
               NAV_LINKS.map(link => {
                       return link.homepageLink && !isHomePage ?
                           null :
-                          <Link
+                          <NavLink
                               key={link.title}
+                              label={link.title}
                               to={link.href}
                               className={'text-gray-600 transition-colors hover:text-blue-600'}
-                          >
-                              {link.title}
-                          </Link>
+                          />
                   }
               )
           }</section>
