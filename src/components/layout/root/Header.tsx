@@ -20,8 +20,7 @@ const Header = () => {
                 <div className={'flex items-center justify-between'}>
                     <div className={'flex items-center space-x-2'}>
                         <div
-                            className={'flex size-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-green-500'}>
-                            {/*TODO: Add logo*/}
+                            className={'flex size-8 items-center justify-center'}>
                             <Logo/>
                         </div>
                         <span className={'text-xl font-bold text-gray-800'}>

@@ -11,7 +11,7 @@ const Footer = () => {
                     <div className={'md:col-span-2'}>
                         <div className={'mb-4 flex items-center space-x-2'}>
                             <div
-                                className={'flex size-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-green-500'}>
+                                className={'flex size-8 items-center justify-center'}>
                                 <Logo/>
                             </div>
                             <span className={'text-xl font-bold'}>
