@@ -14,16 +14,15 @@ const Nav = ({}) => {
 
     return (
         <section className={'flex-center w-full gap-10 px-8'}>{
-              NAV_LINKS.map(link => {
-                      return link.homepageLink && !isHomePage ?
-                          null :
-                          <NavLink
-                              key={link.title}
-                              label={link.title}
-                              to={link.href}
-                              className={'text-gray-600 transition-colors hover:text-blue-600'}
-                          />
-                  }
+              NAV_LINKS.map(link =>
+                  link.homepageLink && !isHomePage ?
+                      null :
+                      <NavLink
+                          key={link.title}
+                          label={link.title}
+                          to={link.href}
+                          className={'text-gray-600 transition-colors hover:text-blue-600'}
+                      />
               )
           }</section>
     )
