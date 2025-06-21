@@ -24,7 +24,8 @@ const BUTTONS = {
     joinNow: 'Join Now',
     signIn: 'Sign In',
     logout: 'Logout',
-    exploreForum: 'Explore Forum'
+    exploreForum: 'Explore Forum',
+    createPost: 'Create Post'
 }
 
 export {
