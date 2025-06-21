@@ -25,16 +25,17 @@ const PostCard = (props: Props) => {
 
     return (
         <Card
-            className={'w-full rounded-[10px] border-none bg-slate-100 p-9 shadow shadow-slate-700 sm:px-11 sm:pt-[30px]'}>
+            className={'w-full rounded-[10px] border-none bg-slate-100 p-9 shadow-md shadow-slate-200 transition-shadow hover:shadow-lg sm:px-11 sm:pt-[30px]'}>
             <CardHeader className={'mb-3.5 flex items-start justify-between gap-5 p-0 max-sm:flex-col-reverse'}>
-                {type === 'post' && <Link
-                    to={'/forum/posts/$postId'}
-                    params={{postId: data.id}}
-                >
-                    <h3 className={'line-clamp-1 flex-1 font-bold'}>
-                        {(data as Post).title}
-                    </h3>
-                </Link>}
+                {type === 'post' &&
+                    <Link
+                        to={'/forum/posts/$postId'}
+                        params={{postId: data.id}}
+                    >
+                        <h3 className={'line-clamp-1 flex-1 font-bold'}>
+                            {(data as Post).title}
+                        </h3>
+                    </Link>}
                 <span className={'line-clamp-1 flex sm:hidden'}>
                     {toRelative(data.createdAt)}
                 </span>
