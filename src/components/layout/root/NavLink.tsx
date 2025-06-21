@@ -20,7 +20,7 @@ const NavLink: FC<LinkProps> = ({
             <span
                 className={twMerge(
                     'group relative px-3 py-2 text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-slate-900',
-                    isActive && 'font-bold'
+                    isActive && 'font-bold text-blue-600'
                 )}
             >
         {label}
