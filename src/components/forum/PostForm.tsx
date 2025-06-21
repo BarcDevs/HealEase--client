@@ -61,7 +61,7 @@ const PostForm = ({type}: PostFormProps) => {
                         label={'Category'}
                         placeholder={'Select a category'}
                         formControl={form.control}
-                        className={'w-1/4'}
+                        className={'w-1/4 border-blue-200'}
                         values={Object.values(categories)
                             .reduce((acc, category) => {
                                 acc[category.key] = category.name
@@ -74,6 +74,7 @@ const PostForm = ({type}: PostFormProps) => {
                         formControl={form.control}
                         label={'Title'}
                         placeholder={'Add a title'}
+                        className={'border-blue-200'}
                     />
                     <FormInput
                         name={'body'}
@@ -88,6 +89,7 @@ const PostForm = ({type}: PostFormProps) => {
                         label={'Tags'}
                         placeholder={'Add tags'}
                         max={schemaConfig.tags.max}
+                        className={'border-blue-200'}
                     />
                     <div className={'flex--row mt-6 justify-end gap-4'}>
                         <Button type={'submit'}>

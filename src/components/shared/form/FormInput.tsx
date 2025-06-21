@@ -61,7 +61,10 @@ const FormInput = <T extends FieldValues>({
                                        {...field}
                                 />}
                         </FormControl>
-                        {description && <FormDescription>{description}</FormDescription>}
+                        {description &&
+                            <FormDescription>
+                                {description}
+                            </FormDescription>}
                         <FormMessage/>
                     </FormItem>
                 )}
