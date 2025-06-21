@@ -21,6 +21,7 @@ const FilterButtons = ({}) => {
                         filter?.includes(selectedFilter) ?
                             STYLES.badge :
                             STYLES.badgeHover,
+                        'from-blue-500 to-blue-600',
                         'capitalize',
                         filter?.includes(selectedFilter) && 'from-blue-800 to-blue-900'
                     )}>
