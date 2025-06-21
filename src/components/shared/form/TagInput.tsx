@@ -5,6 +5,7 @@ import {twMerge} from 'tailwind-merge'
 import {ClassName} from '@/types/react.ts'
 import {Fragment, useState} from 'react'
 import {Badge} from '@/components/ui/badge.tsx'
+import STYLES from '@/lib/styles.ts'
 
 type TagInputProps<T extends FieldValues> = {
     name: Path<T>
@@ -82,13 +83,16 @@ const TagInput = <T extends FieldValues>({
                             {field.value.map((tag: string) => (
                                 <Badge
                                     key={tag}
-                                    className={'cursor-pointer rounded-md border-none px-4 py-2 uppercase'}
+                                    className={`${STYLES.badgeHover} cursor-pointer uppercase`}
                                     onClick={() => handleTagClick(tag, field)}>
-                                    {tag}
+                                        {tag}
                                 </Badge>
                             ))}
                         </ul>
-                        {description && <FormDescription>{description}</FormDescription>}
+                        {description &&
+                            <FormDescription>
+                                {description}
+                            </FormDescription>}
                         <FormMessage/>
                     </FormItem>
                 )

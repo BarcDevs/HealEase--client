@@ -1,6 +1,7 @@
 import {Link} from '@tanstack/react-router'
 import {Badge} from '@/components/ui/badge.tsx'
 import {PartialTag} from '@/types/forum.ts'
+import STYLES from '@/lib/styles.ts'
 
 type RenderTagProps = {
     showCount?: boolean
@@ -14,7 +15,7 @@ const Tag = ({tag: {id, name, _count}, showCount}: RenderTagProps) => (
         className={'flex justify-between gap-2'}
         key={name}>
         <Badge
-            className={'rounded-md border-none px-4 py-2 uppercase'}>
+            className={`${STYLES.badge} uppercase`}>
             {name}
         </Badge>
 
