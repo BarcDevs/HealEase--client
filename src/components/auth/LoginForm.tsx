@@ -7,6 +7,8 @@ import {loginSchema, LoginSchema} from '@/validations/forms/loginSchema.ts'
 import {zodResolver} from '@hookform/resolvers/zod'
 import FormInput from '@/components/shared/form/FormInput.tsx'
 import {useAuth} from '@/hooks/useAuth.ts'
+import {BUTTONS, FIELDS} from '@/constants/plainTexts.ts'
+import STYLES from '@/lib/styles.ts'
 
 const route = getRouteApi('/login')
 
@@ -31,12 +33,17 @@ const LoginForm = ({}) => {
                 to: redirect,
                 replace: true
             }))
-            .catch((err) => console.error(err.message || err.response.data))
+            .catch((err) =>
+                console.error(err.message || err.response.data
+                ))
     }
 
     return (
         <Form {...form}>
-            <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+            <form
+                className={'space-y-4'}
+                onSubmit={form.handleSubmit(onSubmit)}
+            >
                 <FormInput
                     formControl={form.control}
                     type={'text'}
@@ -44,33 +51,42 @@ const LoginForm = ({}) => {
                     label={'Email'}
                     placeholder={'m@example.com'}
                 />
+
                 <FormInput
                     formControl={form.control}
                     type={'password'}
                     name={'password'}
                     label={'Password'}
                     secondaryLabel={
-                        <Link className="ml-auto inline-block text-sm underline"
+                        <Link className={'ml-auto inline-block text-sm font-semibold text-blue-600 underline hover:text-blue-700'}
                               to={'/forgot-password'}>
-                            Forgot your password?
+                            {FIELDS.forgotPassword}
                         </Link>}
                 />
+
                 <FormField
                     control={form.control}
                     name={'remember'}
                     render={({field}) => (
-                        <FormItem className="flex items-center space-x-2">
-                            <Checkbox id="remember"
+                        <FormItem className={'flex items-center space-x-2'}>
+                            <Checkbox id={'remember'}
                                       className={'mt-1.5'}
                                       checked={field.value}
                                       onCheckedChange={field.onChange}
                             />
-                            <FormLabel htmlFor="remember">Remember me</FormLabel>
+                            <FormLabel
+                                htmlFor={'remember'}>
+                                {FIELDS.remember}
+                            </FormLabel>
                         </FormItem>
                     )}
                 />
-                <Button className="w-full" type="submit">
-                    Login
+
+                <Button
+                    className={STYLES.button}
+                    type={'submit'}
+                >
+                    {BUTTONS.login}
                 </Button>
             </form>
         </Form>

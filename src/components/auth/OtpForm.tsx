@@ -5,15 +5,18 @@ import {ControllerRenderProps, useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {otpSchema, OtpSchema} from '@/validations/forms/otpSchema.ts'
 import {Form, FormField, FormItem, FormMessage} from '@/components/ui/form.tsx'
+import {BUTTONS} from '@/constants/plainTexts.ts'
+import STYLES from '@/lib/styles.ts'
 
 const OtpForm = () => {
     // todo implement 2fa for login
-    const form = useForm<OtpSchema>({
-        resolver: zodResolver(otpSchema),
-        defaultValues: {
-            otp: ''
-        }
-    })
+    const form =
+        useForm<OtpSchema>({
+            resolver: zodResolver(otpSchema),
+            defaultValues: {
+                otp: ''
+            }
+        })
 
     const onChange = (value: string, field: ControllerRenderProps<any, any>) => {
         field.onChange(value.toUpperCase())
@@ -29,10 +32,13 @@ const OtpForm = () => {
 
     return (
         <Form {...form}>
-            <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+            <form
+                className={'space-y-4'}
+                onSubmit={form.handleSubmit(onSubmit)}
+            >
                 <FormField
                     control={form.control}
-                    name="otp"
+                    name={'otp'}
                     render={({field}) => (
                         <FormItem className={'flex--col items-center'}>
                             <InputOTP
@@ -58,8 +64,11 @@ const OtpForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button className="w-full" type={'submit'}>
-                    Verify Code
+                <Button
+                    className={STYLES.button}
+                    type={'submit'}
+                >
+                    {BUTTONS.verifyCode}
                 </Button>
             </form>
         </Form>

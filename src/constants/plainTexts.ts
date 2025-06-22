@@ -20,10 +20,20 @@ const FOOTER = {
     legalLinks: 'Legal'
 }
 
+const FIELDS = {
+    forgotPassword: 'Forgot your password?',
+    remember: 'Remember Me',
+}
+
 const BUTTONS = {
     joinNow: 'Join Now',
     signIn: 'Sign In',
+    signUp: 'Sign Up',
+    login: 'Login',
     logout: 'Logout',
+    verifyCode: 'Verify Code',
+    resetPassword: 'Reset Password',
+    backToLogin: 'Back to Login',
     exploreForum: 'Explore Forum',
     createPost: 'Create Post'
 }
@@ -32,5 +42,6 @@ export {
     BRAND_NAME,
     DESCRIPTIONS,
     FOOTER,
+    FIELDS,
     BUTTONS
 }

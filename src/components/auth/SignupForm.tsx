@@ -6,6 +6,8 @@ import {Link, useNavigate} from '@tanstack/react-router'
 import {Button} from '@/components/ui/button.tsx'
 import {SignupSchema, signupSchema} from '@/validations/forms/signupSchema.ts'
 import {useAuth} from '@/hooks/useAuth.ts'
+import {BUTTONS, FIELDS} from '@/constants/plainTexts.ts'
+import STYLES from '@/lib/styles.ts'
 
 const SignupForm = ({}) => {
     const {register} = useAuth()
@@ -28,13 +30,18 @@ const SignupForm = ({}) => {
                 to: '/login',
                 replace: true
             }))
-            .catch((err) => console.error(err.message || err.response.data))
+            .catch((err) =>
+                console.error(err.message || err.response.data
+                ))
     }
 
     return (
         <Form {...form}>
-            <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-                <div className="grid grid-cols-2 gap-4">
+            <form
+                className={'space-y-4'}
+                onSubmit={form.handleSubmit(onSubmit)}
+            >
+                <div className={'grid grid-cols-2 gap-4'}>
                     <FormInput
                         formControl={form.control}
                         type={'text'}
@@ -63,9 +70,10 @@ const SignupForm = ({}) => {
                     name={'password'}
                     label={'Password'}
                     secondaryLabel={
-                        <Link className="ml-auto inline-block text-sm underline"
-                              to={'/forgot-password'}>
-                            Forgot your password?
+                        <Link
+                            className={'ml-auto inline-block text-sm font-semibold text-blue-600 underline hover:text-blue-700'}
+                            to={'/forgot-password'}>
+                            {FIELDS.forgotPassword}
                         </Link>}
                 />
                 <FormInput
@@ -74,8 +82,11 @@ const SignupForm = ({}) => {
                     name={'confirmPassword'}
                     label={'Confirm Password'}
                 />
-                <Button className="w-full" type="submit">
-                    Sign Up
+                <Button
+                    className={STYLES.button}
+                    type={'submit'}
+                >
+                    {BUTTONS.signUp}
                 </Button>
             </form>
         </Form>
