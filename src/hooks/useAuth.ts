@@ -18,6 +18,9 @@ export const useAuth = () => {
         useSelector<IRootState>(state =>
             state.auth.expiresAt) as number | null
 
+    /**
+     * checks if the JWT token has expired
+     */
     const checkAuth = async () => {
         expiresAt && Date.now() > expiresAt &&
         await handleLogout()

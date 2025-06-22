@@ -14,7 +14,10 @@ export const handleLogin = async (credentials: LoginSchema) => {
 
     store.dispatch(setTokenAction(data._csrf))
     getMe().then(({data: response}) =>
-        store.dispatch(loginAction(response.data.user)))
+        store.dispatch(loginAction({
+            user: response.data.user,
+            remember: credentials.remember
+        })))
     return true
 }
 
@@ -32,8 +35,9 @@ export const refreshAuthData = async () => {
 
     store.dispatch(setTokenAction(data._csrf))
     getMe().then(({data: response}) =>
-        // console.log('data', userData))
-        store.dispatch(loginAction(response.data.user)))
+        store.dispatch(loginAction({
+            user: response.data.user
+        })))
     return true
 }
 

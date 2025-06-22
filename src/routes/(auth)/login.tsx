@@ -5,8 +5,8 @@ export const Route = createFileRoute('/(auth)/login')({
     validateSearch: (params: Record<string, string>) => {
         // TODO: Add validation
         return {
-            redirect: params?.redirect
-        } as { redirect?: string }
+            redirect: params.redirect
+        } as { redirect: string }
     },
     component: () => <AuthPage type={'login'}/>
 })
