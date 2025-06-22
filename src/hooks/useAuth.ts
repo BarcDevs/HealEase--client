@@ -14,6 +14,15 @@ export const useAuth = () => {
         useSelector<IRootState>(state =>
             state.auth.user) as User | null
 
+    const expiresAt =
+        useSelector<IRootState>(state =>
+            state.auth.expiresAt) as number | null
+
+    const checkAuth = async () => {
+        expiresAt && Date.now() > expiresAt &&
+        await handleLogout()
+    }
+
     const login = async (credentials: LoginSchema) =>
         await handleLogin(credentials)
 
@@ -26,6 +35,7 @@ export const useAuth = () => {
     return {
         user,
         isLoggedIn,
+        checkAuth,
         login,
         logout,
         register
