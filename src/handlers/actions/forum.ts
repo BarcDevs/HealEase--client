@@ -10,7 +10,7 @@ import {Post} from '@/types/forum.ts'
  * @returns axios response
  */
 export const submitForm = async (post: PostSchema, postId?: string)
-    : Promise<Response<{ post: Post }>> =>
+    : Promise<Response<Post>> =>
     postId ?
         (await updatePost(postId, post)).data :
         (await createPost(post)).data

@@ -10,12 +10,12 @@ export const fetchPost = async (postId: string) =>
     api.get<Response<Post>>(`/forum/posts/${postId}`)
 
 export const createPost = async (post: PostSchema) =>
-    api.post<Response<{ post: Post }>>('/forum/posts', {
+    api.post<Response<Post>>('/forum/posts', {
         ...post
     })
 
 export const updatePost = async (postId: string, post: PostSchema) =>
-    api.put<Response<{ post: Post }>>(`/forum/posts/${postId}`, {
+    api.put<Response<Post>>(`/forum/posts/${postId}`, {
         ...post
     })
 
