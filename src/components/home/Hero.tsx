@@ -23,7 +23,9 @@ const Hero = () => {
                         size={'lg'}
                         className={'bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-3 text-lg hover:from-blue-700 hover:to-blue-800'}
                     >
-                        {BUTTONS.joinNow}
+                        <Link to={'/signup'}>
+                            {BUTTONS.joinNow}
+                        </Link>
                     </Button>
 
                     <Button

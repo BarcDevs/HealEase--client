@@ -5,6 +5,7 @@ import {useAuth} from '@/hooks/useAuth.ts'
 import Logo from '@/components/shared/Logo.tsx'
 import {BRAND_NAME, BUTTONS} from '@/constants/plainTexts.ts'
 import Nav from '@/components/layout/root/Nav.tsx'
+import {Link} from '@tanstack/react-router'
 
 const Header = () => {
     // const {lang, changeLang} = useLanguage()
@@ -36,12 +37,16 @@ const Header = () => {
                                 <Button
                                     variant={'outline'}
                                     className={'hidden border-blue-200 text-blue-600 hover:bg-blue-50 sm:inline-flex'}>
-                                    {BUTTONS.signIn}
+                                    <Link to={'/login'}>
+                                        {BUTTONS.signIn}
+                                    </Link>
                                 </Button>
 
                                 <Button
                                     className={'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}>
-                                    {BUTTONS.joinNow}
+                                    <Link to={'/signup'}>
+                                        {BUTTONS.joinNow}
+                                    </Link>
                                 </Button>
                             </section>}
 
