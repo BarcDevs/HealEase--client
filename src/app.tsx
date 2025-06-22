@@ -4,7 +4,6 @@ import {RouterProvider} from '@tanstack/react-router'
 import './styles/index.css'
 import ContextProvider from '@/context'
 import {router} from '@/utils/router'
-import {useAuth} from '@/hooks/useAuth.ts'
 import {env} from '@/config'
 
 // Register the router instance for type safety
@@ -24,16 +23,14 @@ declare module '@tanstack/react-router' {
 // env.PROD && sentryInit()
 
 // eslint-disable-next-line react-refresh/only-export-components
-const App = () => {
-    const {isLoggedIn} = useAuth()
-    return (
+const App = () =>
+    (
         <RouterProvider
             router={router}
             context={{
-                auth: {isLoggedIn}
+                auth: {isLoggedIn: false}
             }}/>
     )
-}
 
 const rootElement = document.getElementById('app')!
 if (!rootElement.innerHTML) {

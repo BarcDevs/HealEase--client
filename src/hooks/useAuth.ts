@@ -1,11 +1,26 @@
-import {useSelector} from 'react-redux'
-import {IRootState} from '@/store'
-import {User} from '@/types'
-import {handleLogin, handleLogout, handleSignup} from '@/handlers/auth.ts'
-import {LoginSchema} from '@/validations/forms/loginSchema.ts'
-import {SignupSchema} from '@/validations/forms/signupSchema.ts'
+import { useSelector } from 'react-redux'
+import { useRouterState } from '@tanstack/react-router'
+
+import { IRootState } from '@/store'
+import { User } from '@/types'
+import {
+    handleLogin,
+    handleLogout,
+    handleSignup
+} from '@/handlers/auth.ts'
+import {
+    LoginSchema
+} from '@/validations/forms/loginSchema.ts'
+import {
+    SignupSchema
+} from '@/validations/forms/signupSchema.ts'
+import protectedRoutes from '@/config/protectedRoutes.ts'
 
 export const useAuth = () => {
+    const location = useRouterState({
+        select: state => state.location.pathname
+    })
+
     const isLoggedIn =
         useSelector<IRootState>(state =>
             state.auth.isAuthenticated) as boolean
@@ -23,7 +38,7 @@ export const useAuth = () => {
      */
     const checkAuth = async () => {
         expiresAt && Date.now() > expiresAt &&
-        await handleLogout()
+        await logout()
     }
 
     const login = async (credentials: LoginSchema) =>
@@ -32,8 +47,18 @@ export const useAuth = () => {
     const register = async (data: SignupSchema) =>
         await handleSignup(data)
 
-    const logout = async () =>
+    const logout = async () => {
         await handleLogout()
+
+        const shouldRefresh =
+            protectedRoutes.some(route =>
+                location.startsWith(route)
+            )
+
+        if (shouldRefresh) {
+            window.location.href = '/'
+        }
+    }
 
     return {
         user,

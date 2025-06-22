@@ -1,11 +1,12 @@
+import { store } from '@/store'
 import {ParsedLocation, redirect} from '@tanstack/react-router'
-import {RouterContext} from '@/types/router.ts'
 
-export const validateUser = ({context, location}:{
-    context: RouterContext,
+export const validateUser = ({ location }: {
     location: ParsedLocation
 }) => {
-    if (!context.auth.isLoggedIn) {
+    const state = store.getState()
+
+    if (!state.auth.isAuthenticated) {
         throw redirect({
             to: '/login',
             search: {
