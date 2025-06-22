@@ -1,4 +1,4 @@
-import store from '@/store'
+import {store} from '@/store'
 import {removeTokenAction, setTokenAction} from '@/store/tokenSlice.ts'
 import {getCsrfToken, getMe, login, logout, signup} from '@/api/auth.ts'
 import {loginAction, logoutAction} from '@/store/authSlice.ts'

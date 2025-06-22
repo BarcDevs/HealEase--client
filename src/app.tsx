@@ -27,9 +27,11 @@ declare module '@tanstack/react-router' {
 const App = () => {
     const {isLoggedIn} = useAuth()
     return (
-        <RouterProvider router={router} context={{
-            auth: {isLoggedIn}
-        }}/>
+        <RouterProvider
+            router={router}
+            context={{
+                auth: {isLoggedIn}
+            }}/>
     )
 }
 
