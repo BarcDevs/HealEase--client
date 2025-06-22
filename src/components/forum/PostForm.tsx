@@ -11,6 +11,9 @@ import {submitForm} from '@/handlers/actions/forum.ts'
 import SelectInput from '@/components/shared/form/SelectInput.tsx'
 import categories from '@/data/forum/categories.ts'
 import {isPostData} from '@/lib/isPostData.ts'
+import {BUTTONS} from '@/constants/plainTexts.ts'
+import {useState} from 'react'
+import {AxiosError} from 'axios'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -21,6 +24,7 @@ const route = getRouteApi('/_forum/forum/posts/$postId/edit')
 const PostForm = ({type}: PostFormProps) => {
     const navigate = useNavigate()
     const oldData = type === 'edit' ? route.useLoaderData() : undefined
+    const [error, setError] = useState('')
 
     const form = useForm<PostSchema>({
         resolver: zodResolver(postSchema),
@@ -38,13 +42,23 @@ const PostForm = ({type}: PostFormProps) => {
         } : undefined
     })
 
-    const onSubmit = (values: PostSchema) => {
-        submitForm(values, (oldData as any)?.id)
-            .then(({data}) => navigate({
+    const onSubmit = async (values: PostSchema) => {
+        setError('')
+
+        try {
+            const res = await submitForm(values, (oldData as any)?.id)
+
+            if (res.data) navigate({
                 to: '/forum/posts/$postId',
-                params: {postId: data.post.id}
-            }))
-            .catch(err => console.error(err.message || err.response.data))
+                params: {postId: res.data.id}
+            })
+        } catch (err) {
+            (err as AxiosError).status === 401 ?
+                setError('You are not authorized to perform this action') :
+                setError(
+                    (err as any).response?.data?.message ||
+                    (err as Error).message)
+        }
     }
 
     return (
@@ -69,6 +83,7 @@ const PostForm = ({type}: PostFormProps) => {
                             }, {} as Record<string, string>)
                         }
                     />
+
                     <FormInput
                         name={'title'}
                         formControl={form.control}
@@ -76,6 +91,7 @@ const PostForm = ({type}: PostFormProps) => {
                         placeholder={'Add a title'}
                         className={'border-blue-200'}
                     />
+
                     <FormInput
                         name={'body'}
                         formControl={form.control}
@@ -83,6 +99,7 @@ const PostForm = ({type}: PostFormProps) => {
                         type={'editor'}
                         placeholder={'Add your content here'}
                     />
+
                     <TagInput
                         name={'tags'}
                         formControl={form.control}
@@ -91,13 +108,22 @@ const PostForm = ({type}: PostFormProps) => {
                         max={schemaConfig.tags.max}
                         className={'border-blue-200'}
                     />
+
+                    {error &&
+                        <p className={'mt-2 text-sm font-semibold text-red-500'}>
+                            {error}
+                        </p>}
+
                     <div className={'flex--row mt-6 justify-end gap-4'}>
                         <Button type={'submit'}>
                             {type === 'create' ? 'Create Post' : 'Update Post'}
                         </Button>
                         {type === 'edit' &&
-                            <Button type={'button'} className={'bg-red-500 text-white'}>
-                                Delete Post
+                            <Button
+                                type={'button'}
+                                className={'bg-red-500 text-white'}
+                            >
+                                {BUTTONS.deletePost}
                             </Button>}
                     </div>
                 </form>
