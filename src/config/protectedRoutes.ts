@@ -1,4 +1,4 @@
 export default [
-    '/forum/posts/create',
-    '/forum/posts/$postId/edit',
-]
+    /^\/forum\/posts\/create$/,
+    /^\/forum\/posts\/[^/]+\/edit$/
+] as RegExp[]

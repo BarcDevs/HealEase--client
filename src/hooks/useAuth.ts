@@ -47,15 +47,17 @@ export const useAuth = () => {
     const register = async (data: SignupSchema) =>
         await handleSignup(data)
 
+    const isProtectedRoute = (path: string) => {
+        return protectedRoutes.some(
+            pattern => pattern.test(path)
+        )
+    }
+
+
     const logout = async () => {
         await handleLogout()
 
-        const shouldRefresh =
-            protectedRoutes.some(route =>
-                location.startsWith(route)
-            )
-
-        if (shouldRefresh) {
+        if (isProtectedRoute(location)) {
             window.location.href = '/'
         }
     }
