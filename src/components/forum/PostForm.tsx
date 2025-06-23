@@ -14,6 +14,9 @@ import {isPostData} from '@/lib/isPostData.ts'
 import {BUTTONS} from '@/constants/plainTexts.ts'
 import {useState} from 'react'
 import {AxiosError} from 'axios'
+import STYLES from '@/lib/styles.ts'
+import {twMerge} from 'tailwind-merge'
+import {HEADLINES} from '@/constants/headlines.ts'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -64,7 +67,9 @@ const PostForm = ({type}: PostFormProps) => {
     return (
         <div className={'flex--col gap-6'}>
             <h3 className={'text-3xl font-bold'}>
-                {type === 'create' ? 'Create a Post' : 'Edit Post'}
+                {type === 'create' ?
+                    HEADLINES.createPost :
+                    HEADLINES.editPost}
             </h3>
 
             <Form {...form}>
@@ -115,8 +120,13 @@ const PostForm = ({type}: PostFormProps) => {
                         </p>}
 
                     <div className={'flex--row mt-6 justify-end gap-4'}>
-                        <Button type={'submit'}>
-                            {type === 'create' ? 'Create Post' : 'Update Post'}
+                        <Button
+                            type={'submit'}
+                            className={twMerge(STYLES.button, 'w-fit')}
+                        >
+                            {type === 'create' ?
+                                BUTTONS.createPost :
+                                BUTTONS.updatePost}
                         </Button>
                         {type === 'edit' &&
                             <Button

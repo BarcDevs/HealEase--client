@@ -35,7 +35,9 @@ const BUTTONS = {
     resetPassword: 'Reset Password',
     backToLogin: 'Back to Login',
     exploreForum: 'Explore Forum',
-    createPost: 'Create Post'
+    createPost: 'Create Post',
+    updatePost: 'Update Post',
+    deletePost: 'Delete Post',
 }
 
 export {

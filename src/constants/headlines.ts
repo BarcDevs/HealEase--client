@@ -4,4 +4,6 @@ export const HEADLINES = {
     hero: 'Recover stronger',
     heroBolded: 'together',
     features: 'Everything you need for recovery',
+    createPost: 'Create a Post',
+    editPost: 'Edit Post',
 }
