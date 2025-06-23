@@ -21,7 +21,7 @@ const Nav = ({}) => {
                           key={link.title}
                           label={link.title}
                           to={link.href}
-                          className={'text-gray-600 transition-colors hover:text-blue-600'}
+                          className={'inline-flex-center text-gray-600 transition-colors hover:text-blue-600'}
                       />
               )
           }</section>
