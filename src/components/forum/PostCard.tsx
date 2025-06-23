@@ -32,7 +32,7 @@ const PostCard = (props: Props) => {
                         to={'/forum/posts/$postId'}
                         params={{postId: data.id}}
                     >
-                        <h3 className={'line-clamp-1 flex-1 font-bold'}>
+                        <h3 className={'line-clamp-1 flex-1 font-bold capitalize'}>
                             {(data as Post).title}
                         </h3>
                     </Link>}
@@ -45,9 +45,10 @@ const PostCard = (props: Props) => {
             </CardHeader>
 
             <CardContent className={'flex flex-wrap gap-2 p-0'}>
-                {type === 'post' && (data as Post).tags.map(tag => (
-                    <Tag key={tag.id} tag={tag}/>
-                ))}
+                {type === 'post' &&
+                    (data as Post).tags.map(tag => (
+                        <Tag key={tag.id} tag={tag}/>
+                    ))}
                 {type === 'reply' && <p>{data.body}</p>}
             </CardContent>
 
