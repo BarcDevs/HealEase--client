@@ -22,11 +22,13 @@ const FOOTER = {
 
 const FIELDS = {
     forgotPassword: 'Forgot your password?',
-    remember: 'Remember Me',
+    remember: 'Remember Me'
 }
 
 const BUTTONS = {
+    exploreForum: 'Explore Forum',
     joinNow: 'Join Now',
+
     signIn: 'Sign In',
     signUp: 'Sign Up',
     login: 'Login',
@@ -34,10 +36,16 @@ const BUTTONS = {
     verifyCode: 'Verify Code',
     resetPassword: 'Reset Password',
     backToLogin: 'Back to Login',
-    exploreForum: 'Explore Forum',
+
     createPost: 'Create Post',
     updatePost: 'Update Post',
     deletePost: 'Delete Post',
+
+    tryAgain: 'Try Again',
+    showStackTrace: 'Show stack trace',
+    goBack: 'Go Back',
+    goHome: 'Go Home',
+    reloadPage: 'Reload Page'
 }
 
 export {
