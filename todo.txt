@@ -7,4 +7,3 @@ ForgotPasswordForm.tsx        TODO: Add forgot password logic
 Post.tsx                      TODO: populate replies on loader
 routes/_forum/forum/index.tsx TODO: Add validation
 app.tsx                       TODO: fix sentry and re-enable
-Replies.tsx                   TODO: sort button
