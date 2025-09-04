@@ -20,7 +20,7 @@ import { Route as ForumForumIndexRouteImport } from './routes/_forum/forum/index
 import { Route as ForumForumProfileAuthorIdRouteImport } from './routes/_forum/forum/profile/$authorId'
 import { Route as ForumForumPostsCreateRouteImport } from './routes/_forum/forum/posts/create'
 import { Route as ForumForumPostsPostIdRouteImport } from './routes/_forum/forum/posts/$postId'
-import { Route as ForumForumPostsPostIdEditRouteImport } from './routes/_forum/forum/posts/$postId_.edit'
+import { Route as ForumForumPostsPostIdEditRouteImport } from './routes/_forum/forum/posts/$postId.edit'
 
 const IndexLazyRouteImport = createFileRoute('/')()
 
@@ -76,9 +76,9 @@ const ForumForumPostsPostIdRoute = ForumForumPostsPostIdRouteImport.update({
 } as any)
 const ForumForumPostsPostIdEditRoute =
   ForumForumPostsPostIdEditRouteImport.update({
-    id: '/forum/posts/$postId_/edit',
-    path: '/forum/posts/$postId/edit',
-    getParentRoute: () => ForumRoute,
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => ForumForumPostsPostIdRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -88,7 +88,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof authSignupRoute
   '/verify': typeof authVerifyRoute
   '/forum': typeof ForumForumIndexRoute
-  '/forum/posts/$postId': typeof ForumForumPostsPostIdRoute
+  '/forum/posts/$postId': typeof ForumForumPostsPostIdRouteWithChildren
   '/forum/posts/create': typeof ForumForumPostsCreateRoute
   '/forum/profile/$authorId': typeof ForumForumProfileAuthorIdRoute
   '/forum/posts/$postId/edit': typeof ForumForumPostsPostIdEditRoute
@@ -100,7 +100,7 @@ export interface FileRoutesByTo {
   '/signup': typeof authSignupRoute
   '/verify': typeof authVerifyRoute
   '/forum': typeof ForumForumIndexRoute
-  '/forum/posts/$postId': typeof ForumForumPostsPostIdRoute
+  '/forum/posts/$postId': typeof ForumForumPostsPostIdRouteWithChildren
   '/forum/posts/create': typeof ForumForumPostsCreateRoute
   '/forum/profile/$authorId': typeof ForumForumProfileAuthorIdRoute
   '/forum/posts/$postId/edit': typeof ForumForumPostsPostIdEditRoute
@@ -114,10 +114,10 @@ export interface FileRoutesById {
   '/(auth)/signup': typeof authSignupRoute
   '/(auth)/verify': typeof authVerifyRoute
   '/_forum/forum/': typeof ForumForumIndexRoute
-  '/_forum/forum/posts/$postId': typeof ForumForumPostsPostIdRoute
+  '/_forum/forum/posts/$postId': typeof ForumForumPostsPostIdRouteWithChildren
   '/_forum/forum/posts/create': typeof ForumForumPostsCreateRoute
   '/_forum/forum/profile/$authorId': typeof ForumForumProfileAuthorIdRoute
-  '/_forum/forum/posts/$postId_/edit': typeof ForumForumPostsPostIdEditRoute
+  '/_forum/forum/posts/$postId/edit': typeof ForumForumPostsPostIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -156,7 +156,7 @@ export interface FileRouteTypes {
     | '/_forum/forum/posts/$postId'
     | '/_forum/forum/posts/create'
     | '/_forum/forum/profile/$authorId'
-    | '/_forum/forum/posts/$postId_/edit'
+    | '/_forum/forum/posts/$postId/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -240,30 +240,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForumForumPostsPostIdRouteImport
       parentRoute: typeof ForumRoute
     }
-    '/_forum/forum/posts/$postId_/edit': {
-      id: '/_forum/forum/posts/$postId_/edit'
-      path: '/forum/posts/$postId/edit'
+    '/_forum/forum/posts/$postId/edit': {
+      id: '/_forum/forum/posts/$postId/edit'
+      path: '/edit'
       fullPath: '/forum/posts/$postId/edit'
       preLoaderRoute: typeof ForumForumPostsPostIdEditRouteImport
-      parentRoute: typeof ForumRoute
+      parentRoute: typeof ForumForumPostsPostIdRoute
     }
   }
 }
 
+interface ForumForumPostsPostIdRouteChildren {
+  ForumForumPostsPostIdEditRoute: typeof ForumForumPostsPostIdEditRoute
+}
+
+const ForumForumPostsPostIdRouteChildren: ForumForumPostsPostIdRouteChildren = {
+  ForumForumPostsPostIdEditRoute: ForumForumPostsPostIdEditRoute,
+}
+
+const ForumForumPostsPostIdRouteWithChildren =
+  ForumForumPostsPostIdRoute._addFileChildren(
+    ForumForumPostsPostIdRouteChildren,
+  )
+
 interface ForumRouteChildren {
   ForumForumIndexRoute: typeof ForumForumIndexRoute
-  ForumForumPostsPostIdRoute: typeof ForumForumPostsPostIdRoute
+  ForumForumPostsPostIdRoute: typeof ForumForumPostsPostIdRouteWithChildren
   ForumForumPostsCreateRoute: typeof ForumForumPostsCreateRoute
   ForumForumProfileAuthorIdRoute: typeof ForumForumProfileAuthorIdRoute
-  ForumForumPostsPostIdEditRoute: typeof ForumForumPostsPostIdEditRoute
 }
 
 const ForumRouteChildren: ForumRouteChildren = {
   ForumForumIndexRoute: ForumForumIndexRoute,
-  ForumForumPostsPostIdRoute: ForumForumPostsPostIdRoute,
+  ForumForumPostsPostIdRoute: ForumForumPostsPostIdRouteWithChildren,
   ForumForumPostsCreateRoute: ForumForumPostsCreateRoute,
   ForumForumProfileAuthorIdRoute: ForumForumProfileAuthorIdRoute,
-  ForumForumPostsPostIdEditRoute: ForumForumPostsPostIdEditRoute,
 }
 
 const ForumRouteWithChildren = ForumRoute._addFileChildren(ForumRouteChildren)
