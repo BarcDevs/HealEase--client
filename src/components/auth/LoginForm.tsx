@@ -10,7 +10,7 @@ import {useAuth} from '@/hooks/useAuth.ts'
 import {BUTTONS, FIELDS} from '@/constants/plainTexts.ts'
 import STYLES from '@/lib/styles.ts'
 
-const route = getRouteApi('/login')
+const route = getRouteApi('/(auth)/login')
 
 const LoginForm = ({}) => {
     const {login} = useAuth()

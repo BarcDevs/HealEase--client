@@ -10,7 +10,7 @@ type RenderTagProps = {
 
 const Tag = ({tag: {id, name, _count}, showCount}: RenderTagProps) => (
     <Link
-        to={'/forum/'}
+        to={'/forum'}
         search={{tag: id}}
         className={'flex justify-between gap-2'}
         key={name}>

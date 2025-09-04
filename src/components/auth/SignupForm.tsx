@@ -28,7 +28,8 @@ const SignupForm = ({}) => {
         register(values)
             .then(() => navigate({
                 to: '/login',
-                replace: true
+                replace: true,
+                search: { redirect: '/' }
             }))
             .catch((err) =>
                 console.error(err.message || err.response.data
@@ -72,7 +73,8 @@ const SignupForm = ({}) => {
                     secondaryLabel={
                         <Link
                             className={'ml-auto inline-block text-sm font-semibold text-blue-600 underline hover:text-blue-700'}
-                            to={'/forgot-password'}>
+                            to={'/forgot-password'}
+                        >
                             {FIELDS.forgotPassword}
                         </Link>}
                 />

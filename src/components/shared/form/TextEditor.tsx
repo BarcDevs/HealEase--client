@@ -16,10 +16,10 @@ const TextEditor = ({onBlur, onChange, placeholder, initialValue = ''}: EditorPr
     return (
         <Editor
             apiKey={config.tinyMceApiKey}
-            onInit={(_evt, editor) => editorRef.current = editor}
+            onInit={(_evt: any, editor: any) => editorRef.current = editor}
             initialValue={initialValue}
             onBlur={onBlur}
-            onEditorChange={(content) => onChange(content)}
+            onEditorChange={(content: string) => onChange(content)}
             init={{
                 height: 350,
                 menubar: false,

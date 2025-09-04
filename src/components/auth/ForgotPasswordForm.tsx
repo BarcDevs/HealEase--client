@@ -47,7 +47,10 @@ const ForgotPasswordForm = ({}) => {
                     type={'button'}
                     variant={'outline'}
                 >
-                    <Link to={'/login'}>
+                    <Link
+                        to={'/login'}
+                        search={{ redirect: '/' }}
+                    >
                         {BUTTONS.backToLogin}
                     </Link>
                 </Button>

@@ -37,7 +37,10 @@ const Header = () => {
                                 <Button
                                     variant={'outline'}
                                     className={'hidden border-blue-200 text-blue-600 hover:bg-blue-50 sm:inline-flex'}>
-                                    <Link to={'/login'}>
+                                    <Link
+                                        to={'/login'}
+                                        search={{ redirect: '/' }}
+                                    >
                                         {BUTTONS.signIn}
                                     </Link>
                                 </Button>
