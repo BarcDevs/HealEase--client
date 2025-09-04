@@ -1,17 +1,13 @@
+import { router } from '@/utils/router.ts'
 import * as Sentry from '@sentry/react'
-import {useEffect} from 'react'
 import config from '@/config'
 
 export const sentryInit = () => {
     Sentry.init({
         dsn: config.sentryDsn,
         integrations: [
+            Sentry.tanstackRouterBrowserTracingIntegration(router),
             Sentry.browserTracingIntegration(),
-            Sentry.metrics.metricsAggregatorIntegration(),
-            // @ts-expect-error
-            Sentry.reactRouterV6BrowserTracingIntegration({
-                useEffect
-            }),
             Sentry.replayIntegration({
                 maskAllText: false,
                 blockAllMedia: false
