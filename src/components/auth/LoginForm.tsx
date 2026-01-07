@@ -1,22 +1,25 @@
-import {Form, FormField, FormItem, FormLabel} from '@/components/ui/form.tsx'
-import {Button} from '@/components/ui/button.tsx'
-import {getRouteApi, Link, useNavigate} from '@tanstack/react-router'
-import {Checkbox} from '@/components/ui/checkbox.tsx'
-import {useForm} from 'react-hook-form'
-import {loginSchema, LoginSchema} from '@/validations/forms/loginSchema.ts'
-import {zodResolver} from '@hookform/resolvers/zod'
+import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form.tsx'
+import { Button } from '@/components/ui/button.tsx'
+import { getRouteApi, Link, useNavigate } from '@tanstack/react-router'
+import { Checkbox } from '@/components/ui/checkbox.tsx'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { loginSchema, LoginSchema } from '@/validations/forms/loginSchema.ts'
+import { zodResolver } from '@hookform/resolvers/zod'
 import FormInput from '@/components/shared/form/FormInput.tsx'
-import {useAuth} from '@/hooks/useAuth.ts'
-import {BUTTONS, FIELDS} from '@/constants/plainTexts.ts'
+import { useAuth } from '@/hooks/useAuth.ts'
+import { BUTTONS, FIELDS } from '@/constants/plainTexts.ts'
 import STYLES from '@/lib/styles.ts'
+import Error from '@/components/shared/Error.tsx'
 
 const route = getRouteApi('/(auth)/login')
 
 const LoginForm = ({}) => {
-    const {login} = useAuth()
+    const { login } = useAuth()
     const navigate = useNavigate()
     const search = route.useSearch()
-    const redirect = (search as any).redirect || '/'
+    const redirect = ( search as any ).redirect || '/'
+    const [error, setError] = useState('')
 
     const form = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema),
@@ -28,14 +31,21 @@ const LoginForm = ({}) => {
     })
 
     const onSubmit = (values: LoginSchema) => {
+        console.log('login')
         login(values)
             .then(() => navigate({
                 to: redirect,
                 replace: true
             }))
-            .catch((err) =>
-                console.error(err.message || err.response.data
-                ))
+            .catch((err) => {
+                const errorMessage =
+                    err.status === 401 ?
+                        'Invalid credentials' :
+                        err.message ||
+                        err.response.data
+                setError(errorMessage)
+                console.error(errorMessage)
+            })
     }
 
     return (
@@ -67,7 +77,7 @@ const LoginForm = ({}) => {
                 <FormField
                     control={form.control}
                     name={'remember'}
-                    render={({field}) => (
+                    render={({ field }) => (
                         <FormItem className={'flex items-center space-x-2'}>
                             <Checkbox id={'remember'}
                                       className={'mt-1.5'}
@@ -88,6 +98,10 @@ const LoginForm = ({}) => {
                 >
                     {BUTTONS.login}
                 </Button>
+
+                {error &&
+                    <Error error={error}/>
+                }
             </form>
         </Form>
     )
