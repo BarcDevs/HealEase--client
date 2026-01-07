@@ -8,8 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint:check": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
-    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -44,6 +44,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
     "@faker-js/faker": "^8.4.1",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/vite": "^4.1.18",
@@ -57,8 +58,10 @@
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.18",
     "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-tailwindcss": "^4.0.0-beta.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^4.1.18",
