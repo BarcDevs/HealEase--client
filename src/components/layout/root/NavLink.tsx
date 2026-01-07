@@ -28,7 +28,7 @@ const NavLink: FC<LinkProps> = ({
                 <span
                     className={twMerge(
                         'absolute inset-x-0 bottom-0 h-0.5 scale-x-0',
-                        'bg-gradient-to-r from-indigo-500 to-purple-600',
+                        'bg-linear-to-r from-indigo-500 to-purple-600',
                         'transition-transform duration-200 group-hover:scale-x-100'
                     )}
                 />

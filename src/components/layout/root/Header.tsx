@@ -46,7 +46,7 @@ const Header = () => {
                                 </Button>
 
                                 <Button
-                                    className={'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}>
+                                    className={'bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}>
                                     <Link to={'/signup'}>
                                         {BUTTONS.joinNow}
                                     </Link>
@@ -55,7 +55,7 @@ const Header = () => {
 
                         {isLoggedIn &&
                             <Button
-                                className={'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'}
+                                className={'bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'}
                                 onClick={logout}>
                                 {BUTTONS.logout}
                             </Button>

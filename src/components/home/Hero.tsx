@@ -9,7 +9,7 @@ const Hero = () => {
             <div className={'container mx-auto max-w-4xl text-center'}>
                 <h1 className={'mb-6 text-4xl font-bold leading-tight text-gray-800 md:text-6xl'}>
                     {HEADLINES.hero}&nbsp;
-                    <span className={'bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent'}>
+                    <span className={'bg-linear-to-r from-blue-600 to-green-500 bg-clip-text text-transparent'}>
                     {HEADLINES.heroBolded}
                     </span>.
                 </h1>
@@ -21,7 +21,7 @@ const Hero = () => {
                 <div className={'flex flex-col justify-center gap-4 sm:flex-row'}>
                     <Button
                         size={'lg'}
-                        className={'bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-3 text-lg hover:from-blue-700 hover:to-blue-800'}
+                        className={'bg-linear-to-r from-blue-600 to-blue-700 px-8 py-3 text-lg hover:from-blue-700 hover:to-blue-800'}
                     >
                         <Link to={'/signup'}>
                             {BUTTONS.joinNow}

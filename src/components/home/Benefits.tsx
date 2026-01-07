@@ -24,7 +24,7 @@ const Benefits = () =>
                             <CardContent className={'p-8 text-center'}>
                                 <div
                                     className={twMerge(
-                                        'size-16 bg-gradient-to-r mx-auto mb-6 flex items-center justify-center rounded-2xl',
+                                        'size-16 bg-linear-to-r mx-auto mb-6 flex items-center justify-center rounded-2xl',
                                         benefit.gradient)}>
                                     <span className={'text-xl font-bold text-white'}>
                                         {index + 1}

@@ -23,7 +23,7 @@ const Features = () =>
                               className={'border-blue-100 bg-white/80 transition-shadow duration-300 hover:shadow-lg'}>
                             <CardContent className={'p-6 text-center'}>
                                 <div
-                                    className={'mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-green-500'}>
+                                    className={'mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-linear-to-r from-blue-600 to-green-500'}>
                                     <feature.icon className={'size-6 text-white'}/>
                                 </div>
                                 <h3 className={'mb-3 text-xl font-semibold text-gray-800'}>

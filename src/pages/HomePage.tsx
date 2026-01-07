@@ -4,7 +4,7 @@ import Benefits from '@/components/home/Benefits'
 import About from '@/components/home/About'
 
 const HomePage = ({}) => (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
+    <main className="min-h-screen bg-linear-to-br from-blue-50 to-green-50">
         <Hero/>
         <Features/>
         <Benefits/>
