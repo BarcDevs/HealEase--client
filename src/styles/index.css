@@ -3,88 +3,88 @@
 @plugin 'tailwindcss-animate';
 
 @utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (min-width: 640px) {
-    max-width: none;
-  }
-  @media (min-width: 1400px) {
-    max-width: 1400px;
-  }
+    margin-inline: auto;
+    padding-inline: 2rem;
+    @media (min-width: 640px) {
+        max-width: none;
+    }
+    @media (min-width: 1400px) {
+        max-width: 1400px;
+    }
 }
 
 @theme {
-  /* Breakpoints */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
+    /* Breakpoints */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
 
-  /* Colors */
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+    /* Colors */
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
 
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
+    --color-destructive: hsl(var(--destructive));
+    --color-destructive-foreground: hsl(var(--destructive-foreground));
 
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
+    --color-muted: hsl(var(--muted));
+    --color-muted-foreground: hsl(var(--muted-foreground));
 
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
 
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
+    --color-popover: hsl(var(--popover));
+    --color-popover-foreground: hsl(var(--popover-foreground));
 
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
+    --color-card: hsl(var(--card));
+    --color-card-foreground: hsl(var(--card-foreground));
 
-  /* Border radius */
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+    /* Border radius */
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
 
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+    --animate-caret-blink: caret-blink 1.25s ease-out infinite;
 
-  @keyframes accordion-down {
-    from {
-      height: 0;
+    @keyframes accordion-down {
+        from {
+            height: 0;
+        }
+        to {
+            height: var(--radix-accordion-content-height);
+        }
     }
-    to {
-      height: var(--radix-accordion-content-height);
+    @keyframes accordion-up {
+        from {
+            height: var(--radix-accordion-content-height);
+        }
+        to {
+            height: 0;
+        }
     }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
+    @keyframes caret-blink {
+        0%,
+        70%,
+        100% {
+            opacity: 1;
+        }
+        20%,
+        50% {
+            opacity: 0;
+        }
     }
-    to {
-      height: 0;
-    }
-  }
-  @keyframes caret-blink {
-    0%,
-    70%,
-    100% {
-      opacity: 1;
-    }
-    20%,
-    50% {
-      opacity: 0;
-    }
-  }
 }
 
 /*
@@ -96,19 +96,40 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentcolor);
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    figure,
+    blockquote,
+    dl,
+    dd {
+        margin: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
-@utility max-container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
 
 @layer base {
     :root {
@@ -174,18 +195,100 @@
     }
 }
 
-@layer base {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-
-  .hide-arrows::-webkit-inner-spin-button,
-  .hide-arrows::-webkit-outer-spin-button {
+.hide-arrows::-webkit-inner-spin-button,
+.hide-arrows::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
     -moz-appearance: textfield;
-  }
 }
+
+/*region utilities*/
+@utility max-container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+@utility no-focus {
+    @apply focus:ring-0! focus-visible:ring-0! focus-visible:ring-transparent! focus-visible:ring-offset-0! focus:ring-offset-0! focus:outline-hidden!;
+}
+
+@utility metrics {
+    @apply flex--row items-center gap-2.5;
+}
+
+@utility flex--row {
+    @apply flex flex-row;
+}
+
+@utility flex--col {
+    @apply flex flex-col;
+}
+
+@utility flex-center {
+    @apply flex items-center justify-center;
+}
+
+@utility flex-row-center {
+    @apply flex flex-row items-center justify-center;
+}
+
+@utility flex-col-center {
+    @apply flex flex-col items-center justify-center;
+}
+
+@utility flex-center-between {
+    @apply flex items-center justify-between;
+}
+
+@utility flex-col-center-between {
+    @apply flex flex-col items-center justify-between;
+}
+
+@utility flex-start-center {
+    @apply flex justify-start items-center;
+}
+
+@utility flex-start-between {
+    @apply flex justify-between items-start;
+}
+
+@utility flex-start-around {
+    @apply flex justify-around items-start;
+}
+
+@utility flex-row-between {
+    @apply flex flex-row justify-between;
+}
+
+@utility flex-col-start {
+    @apply flex flex-col items-start justify-start;
+}
+
+@utility flex-row-start {
+    @apply flex flex-row items-start justify-start;
+}
+
+@utility flex-responsive {
+    @apply flex flex-row max-sm:flex-col;
+}
+
+@utility flex-center-responsive {
+    @apply flex items-center justify-center max-sm:flex-col;
+}
+
+@utility flex-center-between-responsive {
+    @apply flex items-center justify-between max-sm:flex-col;
+}
+
+@utility flex-sm-col {
+    @apply max-sm:flex-col;
+}
+
+@utility inline-flex-center {
+    @apply inline-flex items-center justify-center;
+}
+
+@utility inline-flex-start {
+    @apply inline-flex items-start justify-start;
+}
+/*endregion*/
