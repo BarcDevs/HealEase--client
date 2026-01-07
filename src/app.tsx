@@ -22,7 +22,6 @@ declare module '@tanstack/react-router' {
 // Note that 'connect-src' was not explicitly set, so 'default-src' is used as a fallback.
 // env.PROD && sentryInit()
 
-// eslint-disable-next-line react-refresh/only-export-components
 const App = () =>
     (
         <RouterProvider

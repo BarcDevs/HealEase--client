@@ -4,18 +4,14 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:react-hooks/recommended',
-        'plugin:tailwindcss/recommended'
+        'plugin:react-hooks/recommended'
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs'],
     parser: '@typescript-eslint/parser',
     plugins: ['react-refresh'],
     rules: {
         'no-empty-pattern': 'off',
-        'react-refresh/only-export-components': [
-            'warn',
-            {allowConstantExport: true}
-        ],
+        'react-refresh/only-export-components': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/ban-ts-comment': 'off'
     }
