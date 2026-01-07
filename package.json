@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "set NODE_ENV=development&& vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "buildAndStart": "npm run build && npm run start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -21,7 +22,6 @@
     "@sentry/react": "^10.10.0",
     "@sentry/vite-plugin": "^4.3.0",
     "@tanstack/react-router": "^1.131.35",
-    "@tinymce/tinymce-react": "^6.3.0",
     "axios": "^1.9.0",
     "caniuse-lite": "^1.0.30001723",
     "class-variance-authority": "^0.7.0",
@@ -34,6 +34,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.70.0",
+    "react-quill-new": "^3.7.0",
     "react-redux": "^9.1.0",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",

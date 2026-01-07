@@ -1,6 +1,6 @@
-import {Editor} from '@tinymce/tinymce-react'
-import config from '@/config'
-import {useRef} from 'react'
+import ReactQuill from 'react-quill-new'
+import 'react-quill-new/dist/quill.snow.css'
+import {useState} from 'react'
 
 type EditorProps = {
     onBlur: () => void,
@@ -11,36 +11,46 @@ type EditorProps = {
 }
 
 const TextEditor = ({onBlur, onChange, placeholder, initialValue = ''}: EditorProps) => {
-    const editorRef = useRef<any>(null)
+    const [value, setValue] = useState(initialValue)
+
+    const handleChange = (content: string) => {
+        setValue(content)
+        onChange(content)
+    }
+
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image'],
+            ['clean']
+        ]
+    }
+
+    const formats = [
+        'header',
+        'bold', 'italic', 'underline', 'strike',
+        'color', 'background',
+        'align',
+        'list', 'bullet',
+        'indent',
+        'link', 'image'
+    ]
 
     return (
-        <Editor
-            apiKey={config.tinyMceApiKey}
-            onInit={(_evt: any, editor: any) => editorRef.current = editor}
-            initialValue={initialValue}
+        <ReactQuill
+            theme="snow"
+            value={value}
+            onChange={handleChange}
             onBlur={onBlur}
-            onEditorChange={(content: string) => onChange(content)}
-            init={{
-                height: 350,
-                menubar: false,
-                plugins: [
-                    'advlist', 'autolink', 'lists', 'link', 'image', 'preview', 'anchor',
-                    'searchreplace', 'visualblocks', 'fullscreen', 'lists',
-                    'insertdatetime', 'media', 'table', 'help', 'wordcount', 'fullscreen'
-                ],
-                toolbar: `undo redo |
-                 blocks |
-                 bold italic backcolor |
-                 alignleft aligncenter alignright alignjustify |
-                 bullist numlist outdent indent |
-                 removeformat |
-                 table insertdatetime |
-                 fullscreen help`,
-                content_style: `body { font-family:Helvetica,Arial,sans-serif; font-size:14px; } 
-                                .mce-content-body[data-mce-placeholder] { opacity: 0.4; }`,
-                skin: 'oxide',
-                placeholder
-            }}
+            modules={modules}
+            formats={formats}
+            placeholder={placeholder}
+            style={{ height: '350px', marginBottom: '50px' }}
         />
     )
 }

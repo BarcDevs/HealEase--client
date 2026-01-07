@@ -5,11 +5,9 @@ type Config = {
     loginDuration: number
 
     replaysSessionSampleRate: number
-    tinyMceApiKey: string
 
     sentryDsn: string
 }
-
 export const env = import.meta.env
 
 const getEnv = (key: keyof typeof env): string => {
@@ -38,8 +36,6 @@ const config: Config = {
 
         return parsed
     })(),
-
-    tinyMceApiKey: getEnv('VITE_TINY_MCE_API_KEY'),
 
     sentryDsn: getEnv('VITE_SENTRY_DSN')
 }
