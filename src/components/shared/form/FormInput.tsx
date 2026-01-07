@@ -1,5 +1,6 @@
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form.tsx'
-import {Input, InputProps} from '@/components/ui/input.tsx'
+import {Input} from '@/components/ui/input.tsx'
+import { InputProps } from '@/types'
 import {Control, FieldValues, Path} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
 import {ClassName} from '@/types/react.ts'

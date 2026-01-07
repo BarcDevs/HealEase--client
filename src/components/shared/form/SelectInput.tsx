@@ -1,6 +1,6 @@
 import {FormControl, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form.tsx'
+import { InputProps } from '@/types'
 import {Control, FieldValues, Path} from 'react-hook-form'
-import {InputProps} from '@/components/ui/input.tsx'
 import {ClassName} from '@/types/react.ts'
 import {ReactNode} from 'react'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select.tsx'

@@ -1,3 +1,5 @@
+import { ComponentProps } from 'react'
+
 export type Prettify<T> = {
     [K in keyof T]: T[K];
 } & unknown
@@ -28,3 +30,5 @@ export type PartialUser = {
     username: string
     image?: string
 }
+
+export type InputProps = ComponentProps<'input'>
