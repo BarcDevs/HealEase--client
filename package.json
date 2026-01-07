@@ -7,7 +7,6 @@
     "dev": "set NODE_ENV=development&& vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "buildAndStart": "npm run build && npm run start",
     "typecheck": "tsc --noEmit",
     "lint:check": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
@@ -60,10 +59,10 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "eslint-plugin-tailwindcss": "^3.18.2",
+    "eslint-plugin-tailwindcss": "^4.0.0-beta.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.2.2",
-    "vite": "6.3.4"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
   }
 }
