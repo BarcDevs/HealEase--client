@@ -36,7 +36,7 @@ const TextEditor = ({onBlur, onChange, placeholder, initialValue = ''}: EditorPr
         'bold', 'italic', 'underline', 'strike',
         'color', 'background',
         'align',
-        'list', 'bullet',
+        'list',
         'indent',
         'link', 'image'
     ]
