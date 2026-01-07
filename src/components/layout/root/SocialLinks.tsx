@@ -9,6 +9,7 @@ const SocialLinks = ({}) => (
         {
             SOCIAL_LINKS.map(link => (
                 <Link
+                    key={link.href}
                     to={link.href}
                     className={style}>
                     <Icon name={link.title.toLowerCase()}
