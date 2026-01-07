@@ -1,6 +1,9 @@
 import {Link} from '@tanstack/react-router'
-import {Badge} from '@/components/ui/badge.tsx'
+
 import {PartialTag} from '@/types/forum.ts'
+
+import {Badge} from '@/components/ui/badge.tsx'
+
 import STYLES from '@/lib/styles.ts'
 
 type RenderTagProps = {

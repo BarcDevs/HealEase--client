@@ -1,9 +1,11 @@
-import LoginForm from '@/components/auth/LoginForm.tsx'
-import SignupForm from '@/components/auth/SignupForm.tsx'
-import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm.tsx'
 import {Fragment, ReactNode} from 'react'
+
 import {Link} from '@tanstack/react-router'
+
+import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm.tsx'
+import LoginForm from '@/components/auth/LoginForm.tsx'
 import OtpForm from '@/components/auth/OtpForm.tsx'
+import SignupForm from '@/components/auth/SignupForm.tsx'
 
 export type AuthType = 'login' | 'signup' | 'forgot-password' | 'update-password' | 'verify'
 

@@ -1,7 +1,7 @@
-import {store} from '@/store'
-import {removeTokenAction, setTokenAction} from '@/store/tokenSlice.ts'
 import {getCsrfToken, getMe, login, logout, signup} from '@/api/auth.ts'
+import {store} from '@/store'
 import {loginAction, logoutAction} from '@/store/authSlice.ts'
+import {removeTokenAction, setTokenAction} from '@/store/tokenSlice.ts'
 import {LoginSchema} from '@/validations/forms/loginSchema.ts'
 import {SignupSchema} from '@/validations/forms/signupSchema.ts'
 

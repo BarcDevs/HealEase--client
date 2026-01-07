@@ -1,12 +1,17 @@
-import {Form} from '@/components/ui/form.tsx'
-import {Button} from '@/components/ui/button.tsx'
 import {useForm} from 'react-hook-form'
+
 import {zodResolver} from '@hookform/resolvers/zod'
-import FormInput from '@/components/shared/form/FormInput.tsx'
-import {EmailInputSchema, emailInputSchema} from '@/validations/forms/emailInputSchema.ts'
 import {Link} from '@tanstack/react-router'
-import {BUTTONS} from '@/constants/plainTexts.ts'
+
+import FormInput from '@/components/shared/form/FormInput.tsx'
+import {Button} from '@/components/ui/button.tsx'
+import {Form} from '@/components/ui/form.tsx'
+
 import STYLES from '@/lib/styles'
+
+import {BUTTONS} from '@/constants/plainTexts.ts'
+
+import {EmailInputSchema, emailInputSchema} from '@/validations/forms/emailInputSchema.ts'
 
 const ForgotPasswordForm = ({}) => {
     const form = useForm<EmailInputSchema>({

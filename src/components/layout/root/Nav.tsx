@@ -1,7 +1,10 @@
-import {NAV_LINKS} from '@/constants/componentData.ts'
-import {useLocation} from '@tanstack/react-router'
 import {useEffect, useState} from 'react'
+
+import {useLocation} from '@tanstack/react-router'
+
 import NavLink from '@/components/layout/root/NavLink.tsx'
+
+import {NAV_LINKS} from '@/constants/componentData.ts'
 
 const Nav = ({}) => {
     const location = useLocation()

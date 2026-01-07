@@ -1,8 +1,10 @@
 import {twMerge} from 'tailwind-merge'
+
 import {Card, CardContent} from '@/components/ui/card'
-import {DESCRIPTIONS} from '@/constants/plainTexts.ts'
-import {HEADLINES} from '@/constants/headlines.ts'
+
 import {BENEFITS} from '@/constants/componentData.ts'
+import {HEADLINES} from '@/constants/headlines.ts'
+import {DESCRIPTIONS} from '@/constants/plainTexts.ts'
 
 const Benefits = () =>
     (

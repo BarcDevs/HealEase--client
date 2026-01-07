@@ -1,22 +1,30 @@
-import {Form} from '@/components/ui/form.tsx'
-import {useForm} from 'react-hook-form'
-import {postSchema, PostSchema} from '@/validations/forms/postSchema.ts'
-import {zodResolver} from '@hookform/resolvers/zod'
-import FormInput from '@/components/shared/form/FormInput.tsx'
-import TagInput from '@/components/shared/form/TagInput.tsx'
-import schemaConfig from '@/config/schema/postForm.ts'
-import {getRouteApi, useNavigate} from '@tanstack/react-router'
-import {Button} from '@/components/ui/button.tsx'
-import {submitForm} from '@/handlers/actions/forum.ts'
-import SelectInput from '@/components/shared/form/SelectInput.tsx'
-import categories from '@/data/forum/categories.ts'
-import {isPostData} from '@/lib/isPostData.ts'
-import {BUTTONS} from '@/constants/plainTexts.ts'
 import {useState} from 'react'
+
 import {AxiosError} from 'axios'
-import STYLES from '@/lib/styles.ts'
+import {useForm} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
+
+import {zodResolver} from '@hookform/resolvers/zod'
+import {getRouteApi, useNavigate} from '@tanstack/react-router'
+
+import FormInput from '@/components/shared/form/FormInput.tsx'
+import SelectInput from '@/components/shared/form/SelectInput.tsx'
+import TagInput from '@/components/shared/form/TagInput.tsx'
+import {Button} from '@/components/ui/button.tsx'
+import {Form} from '@/components/ui/form.tsx'
+
+import {isPostData} from '@/lib/isPostData.ts'
+import STYLES from '@/lib/styles.ts'
+
 import {HEADLINES} from '@/constants/headlines.ts'
+import {BUTTONS} from '@/constants/plainTexts.ts'
+
+import schemaConfig from '@/config/schema/postForm.ts'
+
+import {submitForm} from '@/handlers/actions/forum.ts'
+
+import categories from '@/data/forum/categories.ts'
+import {PostSchema,postSchema} from '@/validations/forms/postSchema.ts'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -56,11 +64,13 @@ const PostForm = ({type}: PostFormProps) => {
                 params: {postId: res.data.id}
             })
         } catch (err) {
-            (err as AxiosError).status === 401 ?
-                setError('You are not authorized to perform this action') :
+            if ((err as AxiosError).status === 401) {
+                setError('You are not authorized to perform this action')
+            } else {
                 setError(
                     (err as any).response?.data?.message ||
                     (err as Error).message)
+            }
         }
     }
 

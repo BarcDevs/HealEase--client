@@ -1,5 +1,5 @@
-import Page from '@/components/shared/ui/Page.tsx'
 import PostForm from '@/components/forum/PostForm.tsx'
+import Page from '@/components/shared/ui/Page.tsx'
 
 const PostFormPage = ({type}: { type: 'create' | 'edit' }) => (
     <Page>

@@ -1,7 +1,9 @@
-import Page from '@/components/shared/ui/Page.tsx'
 import {getRouteApi} from '@tanstack/react-router'
-import Post from '@/components/forum/Post.tsx'
+
 import {Post as PostType} from '@/types/forum.ts'
+
+import Post from '@/components/forum/Post.tsx'
+import Page from '@/components/shared/ui/Page.tsx'
 
 const route = getRouteApi('/_forum/forum/posts/$postId')
 

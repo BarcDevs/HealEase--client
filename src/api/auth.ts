@@ -1,9 +1,10 @@
-import {api} from '@/api/index.ts'
 import {User} from '@/types'
 import {ApiResponse, Response} from '@/types/responses'
 import {LoginResponse} from '@/types/responses/auth.ts'
-import {SignupSchema} from '@/validations/forms/signupSchema.ts'
+
+import {api} from '@/api/index.ts'
 import {LoginSchema} from '@/validations/forms/loginSchema.ts'
+import {SignupSchema} from '@/validations/forms/signupSchema.ts'
 
 export const login = async (credentials: LoginSchema) =>
     api.post<Response<LoginResponse>>('/auth/login', credentials)

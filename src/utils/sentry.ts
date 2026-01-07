@@ -1,5 +1,7 @@
-import { router } from '@/utils/router.ts'
 import * as Sentry from '@sentry/react'
+
+import { router } from '@/utils/router.ts'
+
 import config from '@/config'
 
 export const sentryInit = () => {

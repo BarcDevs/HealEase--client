@@ -1,5 +1,5 @@
-import {DESCRIPTIONS} from '@/constants/plainTexts.ts'
 import {HEADLINES} from '@/constants/headlines.ts'
+import {DESCRIPTIONS} from '@/constants/plainTexts.ts'
 
 const About = () =>
     (

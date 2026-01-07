@@ -1,10 +1,16 @@
 import {Fragment, StrictMode} from 'react'
+
 import ReactDOM from 'react-dom/client'
+
 import {RouterProvider} from '@tanstack/react-router'
-import '@/styles/index.css'
-import ContextProvider from '@/context'
+
 import {router} from '@/utils/router'
+
 import {env} from '@/config'
+
+import ContextProvider from '@/context'
+
+import '@/styles/index.css'
 
 // Register the router instance for type safety
 declare module '@tanstack/react-router' {

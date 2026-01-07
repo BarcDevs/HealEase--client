@@ -1,5 +1,7 @@
 import axios from 'axios'
+
 import config from '@/config'
+
 import {getCsrfTokenFromStore, refreshAuthData} from '@/handlers/auth'
 
 export const api = axios.create({

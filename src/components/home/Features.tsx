@@ -1,4 +1,5 @@
 import {Card, CardContent} from '@/components/ui/card'
+
 import {FEATURES} from '@/constants/componentData.ts'
 import {HEADLINES} from '@/constants/headlines.ts'
 import {DESCRIPTIONS} from '@/constants/plainTexts.ts'

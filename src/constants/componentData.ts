@@ -114,9 +114,9 @@ const SOCIAL_LINKS = [
 ]
 
 export {
-    FEATURES,
     BENEFITS,
-    NAV_LINKS,
+    FEATURES,
     FOOTER_LINKS,
+    NAV_LINKS,
     SOCIAL_LINKS
 }

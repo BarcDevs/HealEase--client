@@ -1,6 +1,8 @@
 import * as z from 'zod'
-import categories from '@/data/forum/categories.ts'
+
 import config from '@/config/schema/postForm.ts'
+
+import categories from '@/data/forum/categories.ts'
 
 export const postSchema = z.object({
     category: z.string()

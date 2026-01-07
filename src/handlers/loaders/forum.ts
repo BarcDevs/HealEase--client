@@ -1,6 +1,7 @@
-import {ForumSearchParams} from '@/types/router.ts'
-import {fetchPost, fetchPosts} from '@/api/forum.ts'
 import {Post} from '@/types/forum.ts'
+import {ForumSearchParams} from '@/types/router.ts'
+
+import {fetchPost, fetchPosts} from '@/api/forum.ts'
 
 export const postsLoader = async (search: ForumSearchParams): Promise<Post[]> =>
     (await fetchPosts(search)).data.data

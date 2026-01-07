@@ -1,7 +1,8 @@
-import {PostSchema} from '@/validations/forms/postSchema.ts'
-import {createPost, updatePost} from '@/api/forum.ts'
-import {Response} from '@/types/responses'
 import {Post} from '@/types/forum.ts'
+import {Response} from '@/types/responses'
+
+import {createPost, updatePost} from '@/api/forum.ts'
+import {PostSchema} from '@/validations/forms/postSchema.ts'
 
 /**
  * Will handle submission of a form

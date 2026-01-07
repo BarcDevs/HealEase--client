@@ -1,4 +1,5 @@
 import {Post} from '@/types/forum.ts'
+
 import PostCard from '@/components/forum/PostCard.tsx'
 
 const PostList = ({posts}: { posts: Post[] }) => (

@@ -1,11 +1,14 @@
-import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form.tsx'
-import {Input} from '@/components/ui/input.tsx'
-import { InputProps } from '@/types'
+import {ReactNode} from 'react'
+
 import {Control, FieldValues, Path} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
+
+import { InputProps } from '@/types'
 import {ClassName} from '@/types/react.ts'
+
 import TextEditor from '@/components/shared/form/TextEditor.tsx'
-import {ReactNode} from 'react'
+import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@/components/ui/form.tsx'
+import {Input} from '@/components/ui/input.tsx'
 
 type FormInputProps<T extends FieldValues> = {
     name: Path<T>

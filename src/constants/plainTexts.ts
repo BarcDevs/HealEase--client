@@ -50,8 +50,8 @@ const BUTTONS = {
 
 export {
     BRAND_NAME,
+    BUTTONS,
     DESCRIPTIONS,
-    FOOTER,
     FIELDS,
-    BUTTONS
+    FOOTER
 }

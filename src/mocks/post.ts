@@ -1,8 +1,10 @@
 import {faker} from '@faker-js/faker'
-import categories from '@/data/forum/categories'
+
 import {Post} from '@/types/forum.ts'
-import {createFakeUser} from '@/mocks/users.ts'
+
+import categories from '@/data/forum/categories'
 import {createFakeTag} from '@/mocks/tags.ts'
+import {createFakeUser} from '@/mocks/users.ts'
 
 // export const posts: Post[] = [
 //     {

@@ -1,7 +1,8 @@
-import { BRAND_NAME, FOOTER } from '@/constants/plainTexts.ts'
 import FooterLinks from '@/components/layout/root/FooterLinks.tsx'
-import Logo from '@/components/shared/Logo.tsx'
 import SocialLinks from '@/components/layout/root/SocialLinks.tsx'
+import Logo from '@/components/shared/Logo.tsx'
+
+import { BRAND_NAME, FOOTER } from '@/constants/plainTexts.ts'
 
 const Footer = () => (
     <footer className={'bg-gray-800 px-4 py-16 text-white'}>

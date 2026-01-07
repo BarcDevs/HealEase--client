@@ -1,14 +1,19 @@
 import parse from 'html-react-parser'
-import {Post as PostType, Reply} from '@/types/forum.ts'
-import Tag from '@/components/forum/Tag.tsx'
-import Metric from '@/components/shared/ui/Metric.tsx'
-import {toRelative, toShortNumber} from '@/lib/time.ts'
-import {Button} from '@/components/ui/button.tsx'
-import Icon from '@/components/shared/ui/Icon.tsx'
+
 import {Link} from '@tanstack/react-router'
-import UserLabel from '@/components/shared/ui/UserLabel.tsx'
+
+import {Post as PostType, Reply} from '@/types/forum.ts'
+
 import Replies from '@/components/forum/Replies.tsx'
+import Tag from '@/components/forum/Tag.tsx'
+import Icon from '@/components/shared/ui/Icon.tsx'
+import Metric from '@/components/shared/ui/Metric.tsx'
+import UserLabel from '@/components/shared/ui/UserLabel.tsx'
+import {Button} from '@/components/ui/button.tsx'
+
 import {useAuth} from '@/hooks/useAuth.ts'
+
+import {toRelative, toShortNumber} from '@/lib/time.ts'
 
 type Props = {
     post: PostType

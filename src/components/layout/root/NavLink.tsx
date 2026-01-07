@@ -1,6 +1,8 @@
-import { Link } from '@tanstack/react-router'
 import { ComponentProps, FC } from 'react'
+
 import { twMerge } from 'tailwind-merge'
+
+import { Link } from '@tanstack/react-router'
 
 type LinkProps = ComponentProps<typeof Link> & {
     label: string

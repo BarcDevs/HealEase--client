@@ -1,20 +1,24 @@
 import { useSelector } from 'react-redux'
+
 import { useRouterState } from '@tanstack/react-router'
 
-import { IRootState } from '@/store'
 import { User } from '@/types'
+
+import protectedRoutes from '@/config/protectedRoutes.ts'
+
 import {
     handleLogin,
     handleLogout,
     handleSignup
 } from '@/handlers/auth.ts'
+
+import { IRootState } from '@/store'
 import {
     LoginSchema
 } from '@/validations/forms/loginSchema.ts'
 import {
     SignupSchema
 } from '@/validations/forms/signupSchema.ts'
-import protectedRoutes from '@/config/protectedRoutes.ts'
 
 export const useAuth = () => {
     const location = useRouterState({
@@ -37,8 +41,9 @@ export const useAuth = () => {
      * checks if the JWT token has expired
      */
     const checkAuth = async () => {
-        expiresAt && Date.now() > expiresAt &&
-        await logout()
+        if (expiresAt && Date.now() > expiresAt) {
+            await logout()
+        }
     }
 
     const login = async (credentials: LoginSchema) =>

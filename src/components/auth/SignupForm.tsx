@@ -1,15 +1,22 @@
 import { useState } from 'react'
+
 import { useForm } from 'react-hook-form'
+
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Form } from '@/components/ui/form.tsx'
-import FormInput from '@/components/shared/form/FormInput.tsx'
 import { Link, useNavigate } from '@tanstack/react-router'
-import { Button } from '@/components/ui/button.tsx'
-import { SignupSchema, signupSchema } from '@/validations/forms/signupSchema.ts'
-import { useAuth } from '@/hooks/useAuth.ts'
-import { BUTTONS, FIELDS } from '@/constants/plainTexts.ts'
-import STYLES from '@/lib/styles.ts'
+
 import Error from '@/components/shared/Error.tsx'
+import FormInput from '@/components/shared/form/FormInput.tsx'
+import { Button } from '@/components/ui/button.tsx'
+import { Form } from '@/components/ui/form.tsx'
+
+import { useAuth } from '@/hooks/useAuth.ts'
+
+import STYLES from '@/lib/styles.ts'
+
+import { BUTTONS, FIELDS } from '@/constants/plainTexts.ts'
+
+import { SignupSchema, signupSchema } from '@/validations/forms/signupSchema.ts'
 
 const SignupForm = ({}) => {
     const { register } = useAuth()

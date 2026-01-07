@@ -1,10 +1,13 @@
-import {Post, Reply} from '@/types/forum.ts'
-import {Card, CardContent, CardFooter, CardHeader} from '@/components/ui/card.tsx'
 import {Link} from '@tanstack/react-router'
-import Metric from '@/components/shared/ui/Metric.tsx'
-import {toRelative, toShortNumber} from '@/lib/time.ts'
+
+import {Post, Reply} from '@/types/forum.ts'
+
 import Tag from '@/components/forum/Tag.tsx'
+import Metric from '@/components/shared/ui/Metric.tsx'
 import UserLabel from '@/components/shared/ui/UserLabel.tsx'
+import {Card, CardContent, CardFooter, CardHeader} from '@/components/ui/card.tsx'
+
+import {toRelative, toShortNumber} from '@/lib/time.ts'
 
 type PostProps = {
     type: 'post'

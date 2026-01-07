@@ -1,9 +1,11 @@
 import {ReactNode} from 'react'
-import {LangProvider} from '@/context/langContext'
+
 import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/integration/react'
 
-import {store, persistor} from '@/store'
+import {LangProvider} from '@/context/langContext'
+
+import {persistor, store} from '@/store'
 
 const ContextProvider = ({children}: { children: ReactNode }) => (
     <Provider store={store}>

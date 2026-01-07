@@ -1,16 +1,23 @@
-import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { getRouteApi, Link, useNavigate } from '@tanstack/react-router'
-import { Checkbox } from '@/components/ui/checkbox.tsx'
 import { useState } from 'react'
+
 import { useForm } from 'react-hook-form'
-import { loginSchema, LoginSchema } from '@/validations/forms/loginSchema.ts'
+
 import { zodResolver } from '@hookform/resolvers/zod'
-import FormInput from '@/components/shared/form/FormInput.tsx'
-import { useAuth } from '@/hooks/useAuth.ts'
-import { BUTTONS, FIELDS } from '@/constants/plainTexts.ts'
-import STYLES from '@/lib/styles.ts'
+import { getRouteApi, Link, useNavigate } from '@tanstack/react-router'
+
 import Error from '@/components/shared/Error.tsx'
+import FormInput from '@/components/shared/form/FormInput.tsx'
+import { Button } from '@/components/ui/button.tsx'
+import { Checkbox } from '@/components/ui/checkbox.tsx'
+import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form.tsx'
+
+import { useAuth } from '@/hooks/useAuth.ts'
+
+import STYLES from '@/lib/styles.ts'
+
+import { BUTTONS, FIELDS } from '@/constants/plainTexts.ts'
+
+import { LoginSchema, loginSchema } from '@/validations/forms/loginSchema.ts'
 
 const route = getRouteApi('/(auth)/login')
 

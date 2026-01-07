@@ -1,7 +1,9 @@
+import {Link} from '@tanstack/react-router'
+
 import {Button} from '@/components/ui/button'
+
 import {HEADLINES} from '@/constants/headlines.ts'
 import {BUTTONS, DESCRIPTIONS} from '@/constants/plainTexts.ts'
-import {Link} from '@tanstack/react-router'
 
 const Hero = () => {
     return (

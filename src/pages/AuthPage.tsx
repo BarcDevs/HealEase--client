@@ -1,8 +1,9 @@
 import {Link} from '@tanstack/react-router'
-import Page from '@/components/shared/ui/Page.tsx'
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card.tsx'
+
 import {AuthType, forms} from '@/components/auth/authFormsIndex.tsx'
 import GoogleLoginButton from '@/components/auth/GoogleLoginButton.tsx'
+import Page from '@/components/shared/ui/Page.tsx'
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card.tsx'
 
 const AuthPage = ({type}: { type: AuthType }) => (
     <Page>

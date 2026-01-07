@@ -1,6 +1,7 @@
-import {FOOTER} from '@/constants/plainTexts.ts'
-import {FOOTER_LINKS} from '@/constants/componentData.ts'
 import {Link} from '@tanstack/react-router'
+
+import {FOOTER_LINKS} from '@/constants/componentData.ts'
+import {FOOTER} from '@/constants/plainTexts.ts'
 
 const linkStyle = 'block text-gray-400 transition-colors hover:text-white'
 

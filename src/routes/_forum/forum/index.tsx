@@ -1,9 +1,14 @@
 import {createFileRoute} from '@tanstack/react-router'
-import ForumHomePage from '@/pages/forum/ForumHomePage.tsx'
+
 import {ForumSearchParams} from '@/types/router.ts'
-import {postsLoader} from '@/handlers/loaders/forum.ts'
-import {Filter} from '@/constants/filter.ts'
+
 import {routeError} from '@/lib/routeError.ts'
+
+import {Filter} from '@/constants/filter.ts'
+
+import {postsLoader} from '@/handlers/loaders/forum.ts'
+
+import ForumHomePage from '@/pages/forum/ForumHomePage.tsx'
 
 export const Route = createFileRoute('/_forum/forum/')({
     validateSearch: (params: ForumSearchParams) => {

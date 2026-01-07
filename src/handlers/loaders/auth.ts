@@ -1,5 +1,6 @@
-import { store } from '@/store'
 import {ParsedLocation, redirect} from '@tanstack/react-router'
+
+import { store } from '@/store'
 
 export const validateUser = ({ location }: {
     location: ParsedLocation

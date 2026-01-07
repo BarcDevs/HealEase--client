@@ -1,10 +1,11 @@
-import {configureStore} from '@reduxjs/toolkit'
-import {persistStore, persistReducer} from 'redux-persist'
+import {combineReducers} from 'redux'
+import {persistReducer, persistStore} from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+import {configureStore} from '@reduxjs/toolkit'
 
 import authSlice from '@/store/authSlice'
 import tokenSlice from '@/store/tokenSlice'
-import {combineReducers} from 'redux'
 
 const rootReducer = combineReducers({
     token: tokenSlice,

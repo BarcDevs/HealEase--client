@@ -1,7 +1,10 @@
 import { useState } from 'react'
+
 import ReactQuill from 'react-quill-new'
-import 'react-quill-new/dist/quill.snow.css'
+
 import { REACT_QUILL_SETUP } from '@/constants/reactQuillSetup.ts'
+
+import 'react-quill-new/dist/quill.snow.css'
 
 type EditorProps = {
     onBlur: () => void,

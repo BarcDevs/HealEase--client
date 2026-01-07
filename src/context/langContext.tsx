@@ -1,5 +1,7 @@
 import {createContext, ReactNode, useContext, useState} from 'react'
+
 import {Language} from '@/types'
+
 import languages from '@/data/languages.ts'
 
 //region Types

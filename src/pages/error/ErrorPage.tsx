@@ -1,11 +1,17 @@
 import {FC} from 'react'
-import {env} from '@/config'
-import {useRouter} from '@tanstack/react-router'
-import {IRootState} from '@/store'
-import {useSelector} from 'react-redux'
+
 import {AxiosError} from 'axios'
+import {useSelector} from 'react-redux'
+
+import {useRouter} from '@tanstack/react-router'
+
 import STYLES from '@/lib/styles.ts'
+
 import {BUTTONS} from '@/constants/plainTexts.ts'
+
+import {env} from '@/config'
+
+import {IRootState} from '@/store'
 
 type ErrorPageProps = {
     error: Error

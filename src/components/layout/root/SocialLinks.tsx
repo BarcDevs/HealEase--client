@@ -1,6 +1,8 @@
-import Icon from '@/components/shared/ui/Icon.tsx'
-import {SOCIAL_LINKS} from '@/constants/componentData.ts'
 import {Link} from '@tanstack/react-router'
+
+import Icon from '@/components/shared/ui/Icon.tsx'
+
+import {SOCIAL_LINKS} from '@/constants/componentData.ts'
 
 const style = 'flex size-8 cursor-pointer items-center justify-center rounded-full bg-gray-700 transition-colors hover:bg-gray-600'
 

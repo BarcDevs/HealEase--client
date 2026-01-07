@@ -1,8 +1,12 @@
-import {getRouteApi, Link} from '@tanstack/react-router'
-import {Badge} from '@/components/ui/badge.tsx'
-import {Filter} from '@/constants/filter.ts'
-import STYLES from '@/lib/styles.ts'
 import {twMerge} from 'tailwind-merge'
+
+import {getRouteApi, Link} from '@tanstack/react-router'
+
+import {Badge} from '@/components/ui/badge.tsx'
+
+import STYLES from '@/lib/styles.ts'
+
+import {Filter} from '@/constants/filter.ts'
 
 const route = getRouteApi('/_forum/forum/')
 

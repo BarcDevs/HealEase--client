@@ -1,12 +1,19 @@
-import {Button} from '@/components/ui/button.tsx'
-import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from '../ui/input-otp'
-import config from '@/config/schema/authForm.ts'
 import {ControllerRenderProps, useForm} from 'react-hook-form'
+
 import {zodResolver} from '@hookform/resolvers/zod'
-import {otpSchema, OtpSchema} from '@/validations/forms/otpSchema.ts'
+
+import {Button} from '@/components/ui/button.tsx'
 import {Form, FormField, FormItem, FormMessage} from '@/components/ui/form.tsx'
-import {BUTTONS} from '@/constants/plainTexts.ts'
+
 import STYLES from '@/lib/styles.ts'
+
+import {BUTTONS} from '@/constants/plainTexts.ts'
+
+import config from '@/config/schema/authForm.ts'
+
+import {OtpSchema, otpSchema} from '@/validations/forms/otpSchema.ts'
+
+import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from '../ui/input-otp'
 
 const OtpForm = () => {
     // todo implement 2fa for login

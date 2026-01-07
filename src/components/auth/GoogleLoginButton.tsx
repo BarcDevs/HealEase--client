@@ -1,5 +1,7 @@
-import {Button} from '@/components/ui/button.tsx'
 import {Link} from '@tanstack/react-router'
+
+import {Button} from '@/components/ui/button.tsx'
+
 import STYLES from '@/lib/styles.ts'
 
 const GoogleLoginButton = ({type}: { type: 'login' | 'signup' }) => (

@@ -1,10 +1,13 @@
-import Page from '@/components/shared/ui/Page.tsx'
-import PostList from '@/components/forum/PostList.tsx'
 import {getRouteApi} from '@tanstack/react-router'
+
+import {Post} from '@/types/forum.ts'
+
 import FilterButtons from '@/components/forum/FilterButtons.tsx'
 import Headline from '@/components/forum/Headline.tsx'
+import PostList from '@/components/forum/PostList.tsx'
+import Page from '@/components/shared/ui/Page.tsx'
+
 import {getCategory} from '@/data/forum/categories.ts'
-import {Post} from '@/types/forum.ts'
 
 const route = getRouteApi('/_forum/forum/')
 

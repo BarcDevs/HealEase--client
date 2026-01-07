@@ -1,4 +1,5 @@
 import {Role} from '@/types/index.ts'
+
 import {FilterType} from '@/constants/filter.ts'
 
 export type ForumSearchParams = {
