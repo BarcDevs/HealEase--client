@@ -85,7 +85,8 @@ This project follows industry-standard practices and clean architecture:
 
 ## 📸 Screenshots
 
-![HealEase Dashboard](./docs/screenshot.png)
+![HealEase Forum - Post Detail View](./docs/screenshot.png)
+*Forum post with nested replies, vote system, and category filtering*
 
 ## 🚀 Local Development
 
