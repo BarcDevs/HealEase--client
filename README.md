@@ -16,8 +16,6 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=white)
 
-[Architecture Diagram - Coming Soon]
-
 </div>
 
 ---
@@ -182,6 +180,10 @@ Visit `http://localhost:5173` to see the app in action.
 - **Developer Experience**: Hot reload, ESLint, comprehensive type checking
 - **Scalable Architecture**: Designed for microservices migration
 - **Production Ready**: Error monitoring, performance tracking, CSRF protection
+- 
+## 📊 Architecture Diagram
+
+![Architecture](./docs/architecture.png)
 
 ## 🤝 Contributing
 
