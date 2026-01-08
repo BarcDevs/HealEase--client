@@ -2,7 +2,7 @@ import {useEffect} from 'react'
 
 import * as Sentry from '@sentry/react'
 import {Outlet} from '@tanstack/react-router'
-import {TanStackRouterDevtools} from '@tanstack/router-devtools'
+import {TanStackRouterDevtools} from '@tanstack/react-router-devtools'
 
 import Footer from '@/components/layout/root/Footer.tsx'
 import Header from '@/components/layout/root/Header.tsx'
