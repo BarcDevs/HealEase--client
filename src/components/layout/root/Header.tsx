@@ -1,18 +1,18 @@
-import {Link} from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 
 import Nav from '@/components/layout/root/Nav.tsx'
 import Logo from '@/components/shared/Logo.tsx'
-import {Button} from '@/components/ui/button.tsx'
+import { Button } from '@/components/ui/button.tsx'
 
 // import {useLanguage} from '@/context/langContext.tsx'
 // import languages from '@/data/languages.ts'
-import {useAuth} from '@/hooks/useAuth.ts'
+import { useAuth } from '@/hooks/useAuth.ts'
 
-import {BRAND_NAME, BUTTONS} from '@/constants/plainTexts.ts'
+import { BRAND_NAME, BUTTONS } from '@/constants/plainTexts.ts'
 
 const Header = () => {
     // const {lang, changeLang} = useLanguage()
-    const {isLoggedIn, logout} = useAuth()
+    const { isLoggedIn, logout } = useAuth()
 
     // const toggleLang = () => {
     //     changeLang(lang.code === 'en' ? languages.he : languages.en)
@@ -22,15 +22,17 @@ const Header = () => {
         <header className={'sticky top-0 z-50 border-b border-blue-100 bg-white/80 backdrop-blur-sm'}>
             <div className={'container mx-auto p-4'}>
                 <div className={'flex items-center justify-between'}>
-                    <div className={'flex items-center space-x-2'}>
-                        <div
-                            className={'flex size-8 items-center justify-center'}>
-                            <Logo/>
+                    <Link to={'/'}>
+                        <div className={'flex items-center space-x-2'}>
+                            <div
+                                className={'flex size-8 items-center justify-center'}>
+                                <Logo/>
+                            </div>
+                            <span className={'text-xl font-bold text-gray-800'}>
+                                {BRAND_NAME}
+                            </span>
                         </div>
-                        <span className={'text-xl font-bold text-gray-800'}>
-                            {BRAND_NAME}
-                        </span>
-                    </div>
+                    </Link>
 
                     <Nav/>
 
