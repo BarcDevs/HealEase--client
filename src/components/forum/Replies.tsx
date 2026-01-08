@@ -17,7 +17,7 @@ const Replies = ({replies}: RepliesProps) => {
                 {/* todo sort button */}
             </div>
 
-            <ol>
+            <ol className={'flex--col gap-4'}>
                 {replies.map(reply => (
                     <li key={reply.id}>
                         <PostCard
