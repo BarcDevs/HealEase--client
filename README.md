@@ -20,25 +20,38 @@
 
 ---
 
+## 📚 Documentation
+
+- **[📖 Technical PRD](./docs/TECHNICAL_PRD.md)** - Complete product roadmap, architecture, and feature specs
+- **[🗺️ Development Roadmap](./docs/TECHNICAL_PRD.md#development-roadmap)** - Versioned sprint planning
+- **[🔗 Backend Repository](https://github.com/BarcDevs/HealEase--server)**
+
+---
+
 ## 📋 Overview
 
-HealEase is a full-stack healthcare community platform built with modern web technologies and cloud-native principles. Currently a working POC being modernized for production deployment with enterprise-grade architecture and DevOps practices.
+HealEase is a full-stack healthcare community platform built with modern web technologies and cloud-native principles.
+Currently a working POC being modernized for production deployment with enterprise-grade architecture and DevOps
+practices.
 
-**Status:** 🚧 Active Development | Production-Ready POC
+**Status:** 🚧 v0.9.0 - POC Completion → MVP Transition
 
 ## ✨ Key Features
 
-- 🔐 **Secure Authentication** - JWT-based auth with Google OAuth integration and CSRF protection
-- 💬 **Community Forum** - Rich text posts, nested comments, and upvote/downvote system
-- 🏷️ **Content Organization** - Category-based filtering and tag management
-- 👤 **User Profiles** - Personalized profiles with activity tracking
-- 📱 **Responsive Design** - Mobile-first UI built with TailwindCSS and shadcn/ui
-- ⚡ **Real-time Updates** - Optimized performance with Million.js compiler
-- 🛡️ **Type Safety** - End-to-end TypeScript with Zod validation
+## ✨ Key Features
+
+- 🔐 **Secure Authentication** - JWT with HTTP-only cookies
+- 💬 **Community Forum** - Reddit-style posts, replies, voting
+- 🏷️ **Tag System** - Follow topics and filter content
+- 👤 **User Profiles** - Basic profiles with activity tracking
+- 📱 **Responsive Design** - Tailwind CSS v4 + shadcn/ui
+- 🛡️ **Type Safety** - End-to-end TypeScript with Zod
+
 
 ## 🛠️ Tech Stack
 
 ### **Frontend**
+
 ```
 React 19              → UI Library
 TypeScript 5          → Type Safety
@@ -55,6 +68,7 @@ Sentry                → Error Tracking & Monitoring
 ```
 
 ### **Backend**
+
 ```
 Express               → Web Framework
 TypeScript            → Type Safety
@@ -65,6 +79,7 @@ Bcrypt                → Password Hashing
 ```
 
 ### **DevOps & Infrastructure**
+
 ```
 Render                → Cloud Hosting (Frontend + Backend)
 GitHub                → Version Control & CI/CD
@@ -91,6 +106,7 @@ This project follows industry-standard practices and clean architecture:
 ## 🚀 Local Development
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - PostgreSQL database
@@ -147,18 +163,21 @@ Visit `http://localhost:5173` to see the app in action.
 ## 🔄 Roadmap
 
 ### **Phase 1: Production Hardening** (In Progress)
+
 - [ ] Comprehensive unit and integration tests
 - [ ] Performance optimization and lazy loading
 - [ ] Enhanced error boundaries and fallback UI
 - [ ] Accessibility improvements (WCAG 2.1 AA)
 
 ### **Phase 2: Architecture Modernization** (Q2 2025)
+
 - [ ] Migrate backend to **NestJS** for better scalability
 - [ ] Implement GraphQL API alongside REST
 - [ ] Add real-time features with WebSockets
 - [ ] Redis caching layer for performance
 
 ### **Phase 3: DevOps & Cloud-Native** (Q3 2025)
+
 - [ ] **Kubernetes** deployment with Helm charts
 - [ ] CI/CD pipeline with GitHub Actions
 - [ ] Terraform for infrastructure as code
@@ -167,6 +186,7 @@ Visit `http://localhost:5173` to see the app in action.
 - [ ] Log aggregation with ELK stack
 
 ### **Phase 4: Feature Expansion**
+
 - [ ] Appointment booking system
 - [ ] Role-based access control (RBAC)
 - [ ] Direct messaging between users
@@ -181,7 +201,8 @@ Visit `http://localhost:5173` to see the app in action.
 - **Developer Experience**: Hot reload, ESLint, comprehensive type checking
 - **Scalable Architecture**: Designed for microservices migration
 - **Production Ready**: Error monitoring, performance tracking, CSRF protection
-- 
+-
+
 ## 📊 Architecture Diagram
 
 ![Architecture](./docs/architecture.png)
