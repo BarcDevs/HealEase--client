@@ -23,21 +23,17 @@
 
 ### Vision Statement
 
-HealEase is a comprehensive healthcare platform designed to support patients during recovery from injuries or serious
-illnesses. It addresses the critical gap in post-discharge care by centralizing recovery information, facilitating peer
-support, and providing AI-powered assistance.
+HealEase is a comprehensive healthcare platform designed to support patients during recovery from injuries or serious illnesses. It addresses the critical gap in post-discharge care by centralizing recovery information, facilitating peer support, and providing AI-powered assistance.
 
 ### Core Problem
 
 **Problem:** Lack of centralized platform for recovery information and peer support leads to:
-
 - Prolonged recovery times
 - Patient isolation and emotional distress
 - Unnecessary hospital readmissions
 - Overburdened medical staff with repetitive questions
 
 **Solution:** A Reddit-style community platform with:
-
 - Peer-to-peer support forum
 - Real-time chat capabilities
 - AI-powered recovery assistant
@@ -52,14 +48,12 @@ support, and providing AI-powered assistance.
 ### Success Metrics
 
 **POC Success Criteria:**
-
 - ✅ Authentication system functional
 - ✅ Forum with CRUD operations working
 - ✅ Basic UI/UX implemented
 - ✅ Deployed to production (Render)
 
 **MVP Success Criteria:**
-
 - 100+ registered users
 - 50+ daily active users
 - 200+ forum posts
@@ -68,7 +62,6 @@ support, and providing AI-powered assistance.
 - 99% uptime
 
 **Business Success Criteria:**
-
 - Partnership with 1+ healthcare organization
 - Positive user feedback (4+/5 rating)
 - Portfolio piece drives 5+ employer interviews
@@ -77,54 +70,28 @@ support, and providing AI-powered assistance.
 
 ## 🏗️ Technical Architecture
 
-> **Note:** A visual architecture diagram is available in the repository. The Mermaid diagrams below provide text-based
-> alternatives that render automatically in GitHub.
+> **Note:** See the visual architecture diagram in `/docs/architecture.png` for a complete system overview.
 
-### High-Level System Architecture
+### System Components Overview
 
-```mermaid
-graph TB
-    subgraph "Client Layer"
-        WebApp[Web Application<br/>React + TypeScript + TanStack Router]
-    end
+**Client Layer:**
+- React + TypeScript + TanStack Router
+- Deployed on Render
 
-    subgraph "API Layer"
-        API[REST API<br/>Express + TypeScript]
-        WS[WebSocket Server<br/>Socket.io]
-    end
+**API Layer:**
+- Express + TypeScript REST API
+- Socket.io WebSocket Server (Planned v1.2.0)
+- Deployed on Render
 
-    subgraph "Data Layer"
-        DB[(PostgreSQL<br/>Neon)]
-        Cache[Redis<br/>Future]
-    end
+**Data Layer:**
+- Neon PostgreSQL (Serverless)
+- Prisma ORM
+- Redis Cache (Planned post-MVP)
 
-    subgraph "External Services"
-        Gemini[Gemini AI API<br/>Chat Assistant]
-        GCal[Google Calendar API<br/>Appointments]
-        Email[Email Service<br/>SendGrid/Resend]
-    end
-
-    subgraph "Infrastructure"
-        R1[Render<br/>Frontend]
-        R2[Render<br/>Backend]
-    end
-
-    WebApp -->|HTTPS| API
-    WebApp -->|WSS| WS
-    API -->|Prisma| DB
-    WS -->|Prisma| DB
-    API --> Gemini
-    API --> GCal
-    API --> Email
-    WebApp -.->|Deployed| R1
-    API -.->|Deployed| R2
-    WS -.->|Deployed| R2
-
-    style WebApp fill:#61dafb
-    style API fill:#68a063
-    style DB fill:#336791
-    style Gemini fill:#4285f4
-```
+**External Services:**
+- Gemini AI API (Planned v1.3.0)
+- Google Calendar API (Planned v1.6.0)
+- Email Service (Planned v1.4.0)
 
 ### Current Database Schema (v0.9.0)
 
@@ -417,7 +384,6 @@ graph TB
 ## 💻 Current Tech Stack
 
 ### Frontend
-
 - **Framework:** React 18+ with TypeScript
 - **Routing:** TanStack Router (Type-safe routing)
 - **Styling:** Tailwind CSS v4 + Shadcn UI components
@@ -428,7 +394,6 @@ graph TB
 - **Deployment:** Render
 
 ### Backend
-
 - **Runtime:** Node.js 20+
 - **Framework:** Express.js with TypeScript
 - **ORM:** Prisma
@@ -440,13 +405,11 @@ graph TB
 - **Deployment:** Render
 
 ### External Services
-
 - **AI:** Gemini API (Free tier)
 - **Calendar:** Google Calendar API (Planned)
 - **Email:** SendGrid/Resend (Planned)
 
 ### Development Tools
-
 - **IDE:** WebStorm
 - **Version Control:** Git + GitHub (Separate repos)
 - **Code Quality:** ESLint + Prettier
@@ -454,7 +417,6 @@ graph TB
 - **Containerization:** Docker (Planned)
 
 ### Infrastructure
-
 - **Hosting:** Render (Free tier)
 - **Database:** Neon PostgreSQL (Serverless)
 - **CI/CD:** GitHub Actions (Planned)
@@ -465,31 +427,26 @@ graph TB
 ## 🗺️ Development Roadmap
 
 ### Phase 0: POC Completion (v0.9.0 → v1.0.0)
-
 **Timeline:** Current - 2 weeks  
 **Focus:** Polish existing features, prepare for MVP launch
 
 #### 🔄 Critical for v1.0.0 Launch (In Progress)
-
 - [ ] **`Post.tsx`** - Populate replies on loader (currently not loading properly)
 - [ ] **`routes/_forum/forum/index.tsx`** - Add validation (Zod schema for form inputs)
 - [ ] **`app.tsx`** - Fix Sentry integration and re-enable error tracking
 
 #### 📋 Important Polish (Todo)
-
 - [ ] **`Replies.tsx`** - Add sort button (by date, votes, etc.)
 - [ ] **`$postId_.edit`** - Pass post data through route context (better architecture)
 - [ ] **`PostCard.tsx`** - Resolve conditional types on React component (TypeScript best practice)
 
 #### 🚀 Nice-to-Have (Post-v1.0.0)
-
 - [ ] **`GoogleLoginButton.tsx`** - Add Google OAuth login → **Planned for v1.2.0**
 - [ ] **`OtpForm.tsx`** - Implement 2FA for login → **Planned for v2.0.0**
 - [ ] **`ForgotPasswordForm.tsx`** - Add forgot password logic → **Planned for v1.1.0**
 - [ ] **`server`** - Add Docker for easier development setup → **Planned for v1.4.0**
 
 #### ✅ Completed (POC)
-
 - [x] User authentication (register, login, logout)
 - [x] JWT-based auth with HTTP-only cookies
 - [x] Forum post creation with title, body, category
@@ -507,546 +464,501 @@ graph TB
 ---
 
 ### Phase 1: MVP Core Features (v1.0.0 → v1.3.0)
-
 **Timeline:** Month 1-3 (12 weeks, ~4 hrs/day)  
 **Focus:** Deliver core value proposition - community support + AI assistance
 
 #### Sprint 1-2: Enhanced Forum (v1.1.0) - 3 weeks
-
 **Goal:** Make the forum production-ready and feature-rich
 
 ##### 📋 Todo
-
 - [ ] **Search Functionality**
-    - Full-text search across posts and replies
-    - Filter by category, tags, author
-    - Sort by: relevance, date, votes, views
-    - Search history for logged-in users
-
+  - Full-text search across posts and replies
+  - Filter by category, tags, author
+  - Sort by: relevance, date, votes, views
+  - Search history for logged-in users
+  
 - [ ] **User Profiles Enhancement**
-    - Profile page with post history
-    - User statistics (posts, replies, karma)
-    - Avatar upload (Cloudinary/S3)
-    - Bio and recovery story section
-    - Follow/unfollow users (future)
+  - Profile page with post history
+  - User statistics (posts, replies, karma)
+  - Avatar upload (Cloudinary/S3)
+  - Bio and recovery story section
+  - Follow/unfollow users (future)
 
 - [ ] **Forum UX Improvements**
-    - Infinite scroll pagination
-    - Post preview on hover
-    - Rich text editor (TipTap/Lexical)
-    - Image upload in posts
-    - Draft saving (localStorage)
-    - Share post functionality
+  - Infinite scroll pagination
+  - Post preview on hover
+  - Rich text editor (TipTap/Lexical)
+  - Image upload in posts
+  - Draft saving (localStorage)
+  - Share post functionality
 
 - [ ] **Notification System (Basic)**
-    - Reply notifications
-    - Mention notifications (@username)
-    - Email notifications toggle
+  - Reply notifications
+  - Mention notifications (@username)
+  - Email notifications toggle
 
 - [ ] **Moderation Tools**
-    - Report post/reply
-    - Admin dashboard for content moderation
-    - User ban system (soft delete)
+  - Report post/reply
+  - Admin dashboard for content moderation
+  - User ban system (soft delete)
 
 ##### 🔄 In Progress
-
 - [ ] Currently in POC completion phase
 
 ##### ✅ Done
-
 - None yet (starting after POC)
 
 ---
 
 #### Sprint 3-4: Real-Time Chat (v1.2.0) - 3 weeks
-
 **Goal:** Enable private, real-time communication between users
 
 ##### 📋 Todo
-
 - [ ] **Socket.io Integration**
-    - WebSocket server setup
-    - Connection handling and reconnection logic
-    - Room management (private chats)
-
+  - WebSocket server setup
+  - Connection handling and reconnection logic
+  - Room management (private chats)
+  
 - [ ] **Chat Backend**
-    - Message model in Prisma schema
-    - Conversation model (many-to-many users)
-    - Message persistence in PostgreSQL
-    - Message pagination (load history)
-    - Typing indicators
-    - Online/offline status
+  - Message model in Prisma schema
+  - Conversation model (many-to-many users)
+  - Message persistence in PostgreSQL
+  - Message pagination (load history)
+  - Typing indicators
+  - Online/offline status
 
 - [ ] **Chat Frontend**
-    - Chat list view (conversations)
-    - Chat window component
-    - Message bubbles with timestamps
-    - Real-time message updates
-    - Typing indicators UI
-    - Unread message badges
-    - Emoji picker integration
+  - Chat list view (conversations)
+  - Chat window component
+  - Message bubbles with timestamps
+  - Real-time message updates
+  - Typing indicators UI
+  - Unread message badges
+  - Emoji picker integration
 
 - [ ] **Chat Features**
-    - Start conversation from user profile
-    - Message reactions (future)
-    - File sharing (future)
-    - Search within conversation
+  - Start conversation from user profile
+  - Message reactions (future)
+  - File sharing (future)
+  - Search within conversation
 
 ##### 🔄 In Progress
-
 - [ ] Not started
 
 ##### ✅ Done
-
 - None yet
 
 ---
 
 #### Sprint 5-6: AI Assistant (v1.3.0) - 3 weeks
-
 **Goal:** Integrate Gemini AI for recovery support and Q&A
 
 ##### 📋 Todo
-
 - [ ] **Gemini API Integration**
-    - API key configuration
-    - Rate limiting (free tier constraints)
-    - Error handling for API failures
-    - Retry logic with exponential backoff
+  - API key configuration
+  - Rate limiting (free tier constraints)
+  - Error handling for API failures
+  - Retry logic with exponential backoff
 
 - [ ] **Chat Backend**
-    - AI chat message storage
-    - Conversation context management
-    - System prompt engineering
-    - User context injection (profile data)
+  - AI chat message storage
+  - Conversation context management
+  - System prompt engineering
+  - User context injection (profile data)
 
 - [ ] **AI Features - Phase 1 (Stateless)**
-    - General injury/recovery Q&A
-    - Emotional support responses
-    - Exercise suggestions
-    - Pain management tips
-    - Safety disclaimers in responses
+  - General injury/recovery Q&A
+  - Emotional support responses
+  - Exercise suggestions
+  - Pain management tips
+  - Safety disclaimers in responses
 
 - [ ] **Chat Frontend**
-    - AI chat interface (separate from user chat)
-    - Streaming responses (SSE or WebSocket)
-    - "AI is typing" indicator
-    - Conversation history
-    - Clear conversation button
-    - Example prompts/suggestions
+  - AI chat interface (separate from user chat)
+  - Streaming responses (SSE or WebSocket)
+  - "AI is typing" indicator
+  - Conversation history
+  - Clear conversation button
+  - Example prompts/suggestions
 
 - [ ] **Prompt Engineering**
-    - System prompt for medical context
-    - Tone and empathy guidelines
-    - Response length optimization
-    - Disclaimer templates
-    - Conversation history summarization
+  - System prompt for medical context
+  - Tone and empathy guidelines
+  - Response length optimization
+  - Disclaimer templates
+  - Conversation history summarization
 
 - [ ] **Safety & Compliance**
-    - Medical disclaimer on first interaction
-    - "Consult a doctor" triggers
-    - Content filtering (no dangerous advice)
-    - User consent for AI usage
+  - Medical disclaimer on first interaction
+  - "Consult a doctor" triggers
+  - Content filtering (no dangerous advice)
+  - User consent for AI usage
 
 ##### 🔄 In Progress
-
 - [ ] Not started
 
 ##### ✅ Done
-
 - None yet
 
 ---
 
 #### Sprint 7-8: Production Readiness (v1.3.0 → v1.4.0) - 2 weeks
-
 **Goal:** Security, documentation, and deployment improvements
 
 ##### 📋 Todo
-
 - [ ] **Security Hardening**
-    - Rate limiting (express-rate-limit)
-    - Input validation on all endpoints
-    - SQL injection prevention (Prisma handles)
-    - XSS protection (sanitize user input)
-    - CSRF protection
-    - Helmet.js middleware
-    - Security headers configuration
+  - Rate limiting (express-rate-limit)
+  - Input validation on all endpoints
+  - SQL injection prevention (Prisma handles)
+  - XSS protection (sanitize user input)
+  - CSRF protection
+  - Helmet.js middleware
+  - Security headers configuration
 
 - [ ] **Error Handling**
-    - Global error handler
-    - Structured error responses
-    - Error logging (future: Sentry)
-    - User-friendly error messages
+  - Global error handler
+  - Structured error responses
+  - Error logging (future: Sentry)
+  - User-friendly error messages
 
 - [ ] **API Documentation**
-    - Swagger/OpenAPI spec
-    - TSOA integration
-    - Endpoint descriptions
-    - Request/response examples
-    - Authentication documentation
+  - Swagger/OpenAPI spec
+  - TSOA integration
+  - Endpoint descriptions
+  - Request/response examples
+  - Authentication documentation
 
 - [ ] **Internationalization (i18n)**
-    - i18next setup
-    - English translations
-    - Hebrew translations
-    - RTL support (Tailwind config)
-    - Language switcher UI
-    - Date/time localization
+  - i18next setup
+  - English translations
+  - Hebrew translations
+  - RTL support (Tailwind config)
+  - Language switcher UI
+  - Date/time localization
 
 - [ ] **Docker Setup**
-    - Dockerfile for backend
-    - Dockerfile for frontend
-    - docker-compose.yml for local dev
-    - Multi-stage builds
-    - .dockerignore configuration
+  - Dockerfile for backend
+  - Dockerfile for frontend
+  - docker-compose.yml for local dev
+  - Multi-stage builds
+  - .dockerignore configuration
 
 - [ ] **Testing Foundation**
-    - Jest configuration
-    - Unit tests for utilities
-    - API endpoint tests (Supertest)
-    - React component tests (RTL)
-    - Test coverage reporting
+  - Jest configuration
+  - Unit tests for utilities
+  - API endpoint tests (Supertest)
+  - React component tests (RTL)
+  - Test coverage reporting
 
 - [ ] **Code Quality**
-    - ESLint rules enforcement
-    - Prettier configuration
-    - Pre-commit hooks (Husky)
-    - CI/CD pipeline (GitHub Actions)
+  - ESLint rules enforcement
+  - Prettier configuration
+  - Pre-commit hooks (Husky)
+  - CI/CD pipeline (GitHub Actions)
 
 ##### 🔄 In Progress
-
 - [ ] Not started
 
 ##### ✅ Done
-
 - None yet
 
 ---
 
 ### Phase 2: MVP Extended Features (v1.4.0 → v1.8.0)
-
 **Timeline:** Month 4-6 (12 weeks, ~4 hrs/day)  
 **Focus:** Progress tracking, appointments, content library
 
 #### Sprint 9-10: Basic Progress Tracking (v1.5.0) - 3 weeks
-
 **Goal:** Enable users to track recovery metrics
 
 ##### 📋 Todo
-
 - [ ] **Database Schema**
-    - ProgressEntry model (pain, mood, notes)
-    - MedicationReminder model
-    - ProgressGoal model
+  - ProgressEntry model (pain, mood, notes)
+  - MedicationReminder model
+  - ProgressGoal model
 
 - [ ] **Pain Tracking**
-    - Daily pain level (1-10 scale)
-    - Pain location (body map)
-    - Pain type (sharp, dull, burning, etc.)
-    - Pain triggers (optional notes)
+  - Daily pain level (1-10 scale)
+  - Pain location (body map)
+  - Pain type (sharp, dull, burning, etc.)
+  - Pain triggers (optional notes)
 
 - [ ] **Medication Management**
-    - Medication list (name, dosage, frequency)
-    - Medication schedule
-    - Reminder notifications
-    - Medication history log
-    - Missed dose tracking
+  - Medication list (name, dosage, frequency)
+  - Medication schedule
+  - Reminder notifications
+  - Medication history log
+  - Missed dose tracking
 
 - [ ] **Progress Dashboard**
-    - Weekly/monthly view
-    - Pain trend chart (Chart.js/Recharts)
-    - Medication adherence chart
-    - Export data as CSV/PDF
+  - Weekly/monthly view
+  - Pain trend chart (Chart.js/Recharts)
+  - Medication adherence chart
+  - Export data as CSV/PDF
 
 - [ ] **Goals & Milestones**
-    - Set recovery goals
-    - Track goal progress
-    - Celebrate achievements (gamification prep)
+  - Set recovery goals
+  - Track goal progress
+  - Celebrate achievements (gamification prep)
 
 ##### 🔄 In Progress
-
 - [ ] Not started
 
 ##### ✅ Done
-
 - None yet
 
 ---
 
 #### Sprint 11-12: Appointment Scheduling (v1.6.0) - 3 weeks
-
 **Goal:** Enable consultation booking with experts
 
 ##### 📋 Todo
-
 - [ ] **Database Schema**
-    - Expert model (profile, specializations)
-    - Appointment model (date, type, status, price)
-    - ExpertAvailability model (time slots)
+  - Expert model (profile, specializations)
+  - Appointment model (date, type, status, price)
+  - ExpertAvailability model (time slots)
 
 - [ ] **Expert Onboarding**
-    - Expert registration flow
-    - Profile setup (credentials, bio, specializations)
-    - Availability management
-    - Pricing configuration (free vs. paid)
+  - Expert registration flow
+  - Profile setup (credentials, bio, specializations)
+  - Availability management
+  - Pricing configuration (free vs. paid)
 
 - [ ] **Appointment Booking - Core**
-    - View expert list with filters
-    - Expert profile page
-    - Calendar view of availability
-    - Book appointment flow
-    - Appointment confirmation (email)
-    - Calendar integration prep (Google Calendar API)
+  - View expert list with filters
+  - Expert profile page
+  - Calendar view of availability
+  - Book appointment flow
+  - Appointment confirmation (email)
+  - Calendar integration prep (Google Calendar API)
 
 - [ ] **Appointment Management**
-    - User's upcoming appointments
-    - Expert's appointment dashboard
-    - Reschedule functionality
-    - Cancel appointment
-    - Appointment status tracking
+  - User's upcoming appointments
+  - Expert's appointment dashboard
+  - Reschedule functionality
+  - Cancel appointment
+  - Appointment status tracking
 
 - [ ] **Payment System (Optional - Feature Flag)**
-    - Stripe Checkout integration
-    - Payment intent creation
-    - Webhook handling
-    - Transaction history
-    - Refund logic (cancellations)
-    - Expert payout tracking
+  - Stripe Checkout integration
+  - Payment intent creation
+  - Webhook handling
+  - Transaction history
+  - Refund logic (cancellations)
+  - Expert payout tracking
 
 - [ ] **Notifications**
-    - Appointment confirmation email
-    - Reminder emails (24h, 1h before)
-    - Cancellation notifications
+  - Appointment confirmation email
+  - Reminder emails (24h, 1h before)
+  - Cancellation notifications
 
 ##### 🔄 In Progress
-
 - [ ] Not started
 
 ##### ✅ Done
-
 - None yet
 
 ---
 
 #### Sprint 13-14: Content Library (v1.7.0) - 2 weeks
-
 **Goal:** Provide educational resources and recovery guides
 
 ##### 📋 Todo
-
 - [ ] **Database Schema**
-    - Article model (title, body, category, author)
-    - ContentTag model
-    - UserBookmark model
+  - Article model (title, body, category, author)
+  - ContentTag model
+  - UserBookmark model
 
 - [ ] **Content Management**
-    - Admin CMS for articles
-    - Rich text editor for content
-    - Image upload for articles
-    - Video embed support (YouTube/Vimeo)
+  - Admin CMS for articles
+  - Rich text editor for content
+  - Image upload for articles
+  - Video embed support (YouTube/Vimeo)
 
 - [ ] **Content Library Features**
-    - Article listing with filters
-    - Article detail page
-    - Search articles
-    - Bookmark articles
-    - Reading progress tracking
-    - Related articles suggestion
+  - Article listing with filters
+  - Article detail page
+  - Search articles
+  - Bookmark articles
+  - Reading progress tracking
+  - Related articles suggestion
 
 - [ ] **Content Categories**
-    - Injury types and treatment
-    - Physical therapy exercises
-    - Mental health resources
-    - Nutrition and recovery
-    - Equipment usage guides
-    - Success stories
+  - Injury types and treatment
+  - Physical therapy exercises
+  - Mental health resources
+  - Nutrition and recovery
+  - Equipment usage guides
+  - Success stories
 
 - [ ] **Curated External Resources**
-    - Link aggregation (high-quality sources)
-    - Resource rating system
-    - User-submitted resources (moderated)
+  - Link aggregation (high-quality sources)
+  - Resource rating system
+  - User-submitted resources (moderated)
 
 ##### 🔄 In Progress
-
 - [ ] Not started
 
 ##### ✅ Done
-
 - None yet
 
 ---
 
 #### Sprint 15-16: Polish & Optimization (v1.8.0) - 2 weeks
-
 **Goal:** Performance optimization and bug fixes
 
 ##### 📋 Todo
-
 - [ ] **Performance Optimization**
-    - Image lazy loading
-    - Code splitting
-    - Bundle size optimization
-    - API response caching
-    - Database query optimization
-    - CDN setup for static assets
+  - Image lazy loading
+  - Code splitting
+  - Bundle size optimization
+  - API response caching
+  - Database query optimization
+  - CDN setup for static assets
 
 - [ ] **SEO Optimization**
-    - Meta tags for all pages
-    - Open Graph tags
-    - Sitemap generation
-    - robots.txt
-    - Schema.org markup
+  - Meta tags for all pages
+  - Open Graph tags
+  - Sitemap generation
+  - robots.txt
+  - Schema.org markup
 
 - [ ] **Analytics Setup**
-    - Google Analytics / Plausible
-    - Event tracking (user actions)
-    - Conversion funnel analysis
-    - User behavior insights
+  - Google Analytics / Plausible
+  - Event tracking (user actions)
+  - Conversion funnel analysis
+  - User behavior insights
 
 - [ ] **Bug Fixes & Refinement**
-    - User-reported issues
-    - Edge case handling
-    - Cross-browser testing
-    - Mobile responsiveness fixes
-    - Accessibility improvements (WCAG)
+  - User-reported issues
+  - Edge case handling
+  - Cross-browser testing
+  - Mobile responsiveness fixes
+  - Accessibility improvements (WCAG)
 
 ##### 🔄 In Progress
-
 - [ ] Not started
 
 ##### ✅ Done
-
 - None yet
 
 ---
 
 ### Phase 3: Post-MVP & Scaling (v2.0.0+)
-
 **Timeline:** Month 7+ (Ongoing)  
 **Focus:** Advanced features, scaling, and migration to NestJS
 
 #### v2.0.0: NestJS Migration
-
 **Goal:** Refactor backend for better scalability and maintainability
 
 ##### 📋 Backlog
-
 - [ ] **Migration Strategy**
-    - Feature-by-feature migration plan
-    - Run Express and NestJS side-by-side
-    - Gradual traffic shifting
-    - Rollback strategy
+  - Feature-by-feature migration plan
+  - Run Express and NestJS side-by-side
+  - Gradual traffic shifting
+  - Rollback strategy
 
 - [ ] **NestJS Setup**
-    - Project scaffolding
-    - Module structure design
-    - Dependency injection setup
-    - Microservices preparation
+  - Project scaffolding
+  - Module structure design
+  - Dependency injection setup
+  - Microservices preparation
 
 - [ ] **Code Migration**
-    - Auth module
-    - Forum module
-    - Chat module
-    - AI module
-    - Appointment module
+  - Auth module
+  - Forum module
+  - Chat module
+  - AI module
+  - Appointment module
 
 - [ ] **Testing & Validation**
-    - Integration tests
-    - Performance comparison
-    - Load testing
-    - Production deployment
+  - Integration tests
+  - Performance comparison
+  - Load testing
+  - Production deployment
 
 ---
 
 #### v2.1.0: Advanced AI Features
-
 **Goal:** Context-aware AI with personalization
 
 ##### 📋 Backlog
-
 - [ ] **Vector Database Integration**
-    - Pinecone/Supabase Vector setup
-    - Embedding generation pipeline
-    - Semantic search implementation
+  - Pinecone/Supabase Vector setup
+  - Embedding generation pipeline
+  - Semantic search implementation
 
 - [ ] **AI Phase 2: Personalized Assistant**
-    - User context integration
-    - Conversation history analysis
-    - Forum post reference
-    - Progress data integration
+  - User context integration
+  - Conversation history analysis
+  - Forum post reference
+  - Progress data integration
 
 - [ ] **AI Phase 3: Recovery Coach**
-    - Proactive suggestions
-    - Pattern recognition
-    - Recovery plan generation
-    - Goal tracking integration
+  - Proactive suggestions
+  - Pattern recognition
+  - Recovery plan generation
+  - Goal tracking integration
 
 - [ ] **Medical Knowledge Base**
-    - Curated medical content ingestion
-    - RAG (Retrieval-Augmented Generation)
-    - Citation and source linking
-    - Expert review system
+  - Curated medical content ingestion
+  - RAG (Retrieval-Augmented Generation)
+  - Citation and source linking
+  - Expert review system
 
 ---
 
 #### v2.2.0: Family/Caregiver Access
-
 **Goal:** Enable family members to support patient recovery
 
 ##### 📋 Backlog
-
 - [ ] **Permission System**
-    - Granular access control
-    - Patient approval workflow
-    - Access level management (view, edit)
+  - Granular access control
+  - Patient approval workflow
+  - Access level management (view, edit)
 
 - [ ] **Caregiver Features**
-    - View patient progress
-    - Medication reminder visibility
-    - Appointment notifications
-    - Emergency contact system
+  - View patient progress
+  - Medication reminder visibility
+  - Appointment notifications
+  - Emergency contact system
 
 - [ ] **Privacy & Security**
-    - HIPAA compliance considerations
-    - Audit logging
-    - Access revocation
-    - Data encryption at rest
+  - HIPAA compliance considerations
+  - Audit logging
+  - Access revocation
+  - Data encryption at rest
 
 ---
 
 #### v2.3.0: Gamification System
-
 **Goal:** Increase engagement through achievements and rewards
 
 ##### 📋 Backlog
-
 - [ ] **Achievement System**
-    - Badge types (recovery milestones, community engagement)
-    - Achievement triggers
-    - Notification system
-    - Badge display on profile
+  - Badge types (recovery milestones, community engagement)
+  - Achievement triggers
+  - Notification system
+  - Badge display on profile
 
 - [ ] **Reputation System**
-    - Karma points for helpful posts
-    - User levels/ranks
-    - Top contributors leaderboard
-    - Expert badges for verified professionals
+  - Karma points for helpful posts
+  - User levels/ranks
+  - Top contributors leaderboard
+  - Expert badges for verified professionals
 
 - [ ] **Engagement Mechanics**
-    - Daily login streaks
-    - Milestone celebrations
-    - Community challenges
-    - Recovery story sharing rewards
+  - Daily login streaks
+  - Milestone celebrations
+  - Community challenges
+  - Recovery story sharing rewards
 
 ---
 
 #### v2.4.0: Mobile Application
-
 **Goal:** Native mobile experience (React Native)
 
 ##### 📋 Backlog
-
 - [ ] React Native setup
 - [ ] Mobile UI/UX redesign
 - [ ] Push notifications
@@ -1056,37 +968,35 @@ graph TB
 ---
 
 #### v2.5.0: AWS Migration & Kubernetes
-
 **Goal:** Production-grade infrastructure
 
 ##### 📋 Backlog
-
 - [ ] **AWS Infrastructure**
-    - VPC and networking setup
-    - RDS PostgreSQL (Multi-AZ)
-    - ElastiCache Redis
-    - S3 for file storage
-    - CloudFront CDN
-    - Route 53 DNS
+  - VPC and networking setup
+  - RDS PostgreSQL (Multi-AZ)
+  - ElastiCache Redis
+  - S3 for file storage
+  - CloudFront CDN
+  - Route 53 DNS
 
 - [ ] **Containerization**
-    - Docker optimization
-    - Kubernetes manifests
-    - Helm charts
-    - CI/CD pipeline updates
+  - Docker optimization
+  - Kubernetes manifests
+  - Helm charts
+  - CI/CD pipeline updates
 
 - [ ] **Monitoring & Observability**
-    - CloudWatch metrics
-    - Application logging (ELK stack)
-    - APM (Application Performance Monitoring)
-    - Error tracking (Sentry)
-    - Uptime monitoring
+  - CloudWatch metrics
+  - Application logging (ELK stack)
+  - APM (Application Performance Monitoring)
+  - Error tracking (Sentry)
+  - Uptime monitoring
 
 - [ ] **Scaling Strategy**
-    - Horizontal pod autoscaling
-    - Database read replicas
-    - Load balancer optimization
-    - Caching strategy (Redis)
+  - Horizontal pod autoscaling
+  - Database read replicas
+  - Load balancer optimization
+  - Caching strategy (Redis)
 
 ---
 
@@ -1095,7 +1005,6 @@ graph TB
 ### Forum System (Current + Planned)
 
 **Current Features (v0.9.0):**
-
 - Create, read, update, delete posts
 - Category filtering
 - Tag system
@@ -1104,7 +1013,6 @@ graph TB
 - View counter
 
 **Planned Enhancements (v1.1.0):**
-
 - Full-text search
 - Advanced filtering (by author, date, popularity)
 - Rich text editor with image upload
@@ -1115,29 +1023,28 @@ graph TB
 - Infinite scroll pagination
 
 **Database Schema Updates:**
-
 ```prisma
 model Post {
   // ... existing fields
-
+  
   // New fields for v1.1.0
-  bookmarkedBy   User[]    @relation("BookmarkedPosts")
-  mentionedUsers User[]    @relation("PostMentions")
-  images         String[]  // Array of image URLs
-  isDraft        Boolean   @default(false)
-  publishedAt    DateTime? 
-  editHistory    Json?     // Track edits for transparency
+  bookmarkedBy  User[]  @relation("BookmarkedPosts")
+  mentionedUsers User[] @relation("PostMentions")
+  images        String[] // Array of image URLs
+  isDraft       Boolean @default(false)
+  publishedAt   DateTime?
+  editHistory   Json? // Track edits for transparency
 }
 
 model User {
   // ... existing fields
-
+  
   // New fields for v1.1.0
-  bookmarkedPosts Post[]  @relation("BookmarkedPosts")
-  mentionedIn     Post[]  @relation("PostMentions")
-  karma           Int     @default(0) // Reputation score
-  bio             String? 
-  avatar          String? 
+  bookmarkedPosts Post[] @relation("BookmarkedPosts")
+  mentionedIn     Post[] @relation("PostMentions")
+  karma           Int    @default(0) // Reputation score
+  bio             String?
+  avatar          String?
 }
 ```
 
@@ -1146,7 +1053,6 @@ model User {
 ### Real-Time Chat System (v1.2.0)
 
 **Features:**
-
 - Private 1-on-1 conversations
 - Real-time message delivery (Socket.io)
 - Message persistence
@@ -1157,47 +1063,45 @@ model User {
 - Start chat from user profile
 
 **Technical Implementation:**
-
 ```typescript
 // Socket.io Events
 socket.on('send_message', (data) => {
-    // Store message in DB
-    // Emit to recipient if online
-    // Update unread count
+  // Store message in DB
+  // Emit to recipient if online
+  // Update unread count
 })
 
 socket.on('typing_start', (data) => {
-    // Broadcast typing indicator
+  // Broadcast typing indicator
 })
 
 socket.on('typing_stop', (data) => {
-    // Remove typing indicator
+  // Remove typing indicator
 })
 
 socket.on('user_online', (userId) => {
-    // Update user status
-    // Broadcast to friends/contacts
+  // Update user status
+  // Broadcast to friends/contacts
 })
 ```
 
 **Database Schema:**
-
 ```prisma
 model Conversation {
   id           String    @id @default(uuid())
-  participants User[]    
-  messages     Message[] 
+  participants User[]
+  messages     Message[]
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 }
 
 model Message {
   id             String       @id @default(uuid())
-  content        String       
+  content        String
   sender         User         @relation(fields: [senderId], references: [id])
-  senderId       String       
+  senderId       String
   conversation   Conversation @relation(fields: [conversationId], references: [id])
-  conversationId String       
+  conversationId String
   readBy         User[]       @relation("ReadMessages")
   createdAt      DateTime     @default(now())
   deleted        Boolean      @default(false)
@@ -1209,7 +1113,6 @@ model Message {
 ### AI Assistant (v1.3.0)
 
 **Phase 1 Features (Stateless Q&A):**
-
 - General injury/recovery information
 - Emotional support responses
 - Exercise suggestions
@@ -1218,7 +1121,6 @@ model Message {
 - Safety disclaimers
 
 **System Prompt Strategy:**
-
 ```typescript
 const SYSTEM_PROMPT = `
 You are HealEase AI, a compassionate recovery assistant designed to support patients during their healing journey.
@@ -1240,35 +1142,33 @@ Context:
 ```
 
 **API Integration:**
-
 ```typescript
 // Gemini API Call
 const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'x-goog-api-key': GEMINI_API_KEY
-    },
-    body: JSON.stringify({
-        contents: [{
-            parts: [{ text: userMessage }]
-        }],
-        systemInstruction: SYSTEM_PROMPT,
-        safetySettings: [
-            { category: 'HARM_CATEGORY_MEDICAL', threshold: 'BLOCK_MEDIUM_AND_ABOVE' }
-        ]
-    })
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-goog-api-key': GEMINI_API_KEY
+  },
+  body: JSON.stringify({
+    contents: [{
+      parts: [{ text: userMessage }]
+    }],
+    systemInstruction: SYSTEM_PROMPT,
+    safetySettings: [
+      { category: 'HARM_CATEGORY_MEDICAL', threshold: 'BLOCK_MEDIUM_AND_ABOVE' }
+    ]
+  })
 })
 ```
 
 **Database Schema:**
-
 ```prisma
 model AIConversation {
   id        String      @id @default(uuid())
   user      User        @relation(fields: [userId], references: [id])
-  userId    String      
-  messages  AIMessage[] 
+  userId    String
+  messages  AIMessage[]
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
 }
@@ -1276,10 +1176,10 @@ model AIConversation {
 model AIMessage {
   id             String         @id @default(uuid())
   conversation   AIConversation @relation(fields: [conversationId], references: [id])
-  conversationId String         
-  role           String         // 'user' | 'assistant'
-  content        String         
-  tokens         Int?           // Track usage for free tier limits
+  conversationId String
+  role           String // 'user' | 'assistant'
+  content        String
+  tokens         Int? // Track usage for free tier limits
   createdAt      DateTime       @default(now())
 }
 ```
@@ -1289,7 +1189,6 @@ model AIMessage {
 ### Progress Tracking (v1.5.0)
 
 **Features:**
-
 - Daily pain level tracking
 - Medication schedule and reminders
 - Mood tracking
@@ -1298,54 +1197,53 @@ model AIMessage {
 - Export data (CSV/PDF)
 
 **Database Schema:**
-
 ```prisma
 model ProgressEntry {
-  id           String   @id @default(uuid())
-  user         User     @relation(fields: [userId], references: [id])
-  userId       String   
-  date         DateTime @default(now())
-  painLevel    Int      // 1-10 scale
-  painType     String?  // sharp, dull, burning, etc.
-  painLocation String?  // body part
-  mood         Int?     // 1-10 scale
-  notes        String?  
-  createdAt    DateTime @default(now())
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  date        DateTime @default(now())
+  painLevel   Int // 1-10 scale
+  painType    String? // sharp, dull, burning, etc.
+  painLocation String? // body part
+  mood        Int? // 1-10 scale
+  notes       String?
+  createdAt   DateTime @default(now())
 }
 
 model Medication {
-  id        String               @id @default(uuid())
-  user      User                 @relation(fields: [userId], references: [id])
-  userId    String               
-  name      String               
-  dosage    String               
-  frequency String               // "daily", "twice_daily", "as_needed"
-  reminders MedicationReminder[] 
-  active    Boolean              @default(true)
-  createdAt DateTime             @default(now())
+  id        String              @id @default(uuid())
+  user      User                @relation(fields: [userId], references: [id])
+  userId    String
+  name      String
+  dosage    String
+  frequency String // "daily", "twice_daily", "as_needed"
+  reminders MedicationReminder[]
+  active    Boolean             @default(true)
+  createdAt DateTime            @default(now())
 }
 
 model MedicationReminder {
   id           String     @id @default(uuid())
   medication   Medication @relation(fields: [medicationId], references: [id])
-  medicationId String     
-  time         DateTime   
+  medicationId String
+  time         DateTime
   taken        Boolean    @default(false)
-  takenAt      DateTime?  
+  takenAt      DateTime?
   skipped      Boolean    @default(false)
   createdAt    DateTime   @default(now())
 }
 
 model RecoveryGoal {
-  id          String    @id @default(uuid())
-  user        User      @relation(fields: [userId], references: [id])
-  userId      String    
-  title       String    
-  description String?   
-  targetDate  DateTime? 
-  completed   Boolean   @default(false)
-  completedAt DateTime? 
-  createdAt   DateTime  @default(now())
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  title       String
+  description String?
+  targetDate  DateTime?
+  completed   Boolean  @default(false)
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
 }
 ```
 
@@ -1354,7 +1252,6 @@ model RecoveryGoal {
 ### Appointment Scheduling (v1.6.0)
 
 **Features:**
-
 - Expert profiles (credentials, specializations)
 - Availability calendar
 - Appointment booking flow
@@ -1365,7 +1262,6 @@ model RecoveryGoal {
 - Stripe payment integration (feature flag)
 
 **Database Schema:**
-
 ```prisma
 enum AppointmentType {
   FREE
@@ -1381,55 +1277,54 @@ enum AppointmentStatus {
 }
 
 model Expert {
-  id              String               @id @default(uuid())
-  user            User                 @relation(fields: [userId], references: [id])
-  userId          String               @unique
-  specializations String[]             
-  credentials     String               
-  bio             String?              
-  hourlyRate      Float?               
-  availability    ExpertAvailability[] 
-  appointments    Appointment[]        
-  verified        Boolean              @default(false)
-  createdAt       DateTime             @default(now())
+  id              String       @id @default(uuid())
+  user            User         @relation(fields: [userId], references: [id])
+  userId          String       @unique
+  specializations String[]
+  credentials     String
+  bio             String?
+  hourlyRate      Float?
+  availability    ExpertAvailability[]
+  appointments    Appointment[]
+  verified        Boolean      @default(false)
+  createdAt       DateTime     @default(now())
 }
 
 model ExpertAvailability {
-  id        String  @id @default(uuid())
-  expert    Expert  @relation(fields: [expertId], references: [id])
-  expertId  String  
-  dayOfWeek Int     // 0-6 (Sunday-Saturday)
-  startTime String  // "09:00"
-  endTime   String  // "17:00"
-  active    Boolean @default(true)
+  id        String   @id @default(uuid())
+  expert    Expert   @relation(fields: [expertId], references: [id])
+  expertId  String
+  dayOfWeek Int // 0-6 (Sunday-Saturday)
+  startTime String // "09:00"
+  endTime   String // "17:00"
+  active    Boolean  @default(true)
 }
 
 model Appointment {
-  id          String            @id @default(uuid())
-  patient     User              @relation("PatientAppointments", fields: [patientId], references: [id])
-  patientId   String            
-  expert      Expert            @relation(fields: [expertId], references: [id])
-  expertId    String            
-  type        AppointmentType   
-  status      AppointmentStatus @default(PENDING)
-  scheduledAt DateTime          
-  duration    Int               @default(30) // minutes
-  price       Float?            
-  notes       String?           
-
+  id             String            @id @default(uuid())
+  patient        User              @relation("PatientAppointments", fields: [patientId], references: [id])
+  patientId      String
+  expert         Expert            @relation(fields: [expertId], references: [id])
+  expertId       String
+  type           AppointmentType
+  status         AppointmentStatus @default(PENDING)
+  scheduledAt    DateTime
+  duration       Int               @default(30) // minutes
+  price          Float?
+  notes          String?
+  
   // Payment fields (optional)
   stripePaymentId String?
   paymentStatus   String? // 'pending' | 'completed' | 'refunded'
-
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  cancelledAt DateTime? 
-  completedAt DateTime? 
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  cancelledAt    DateTime?
+  completedAt    DateTime?
 }
 ```
 
 **Booking Flow:**
-
 1. User browses expert list
 2. Selects expert and views availability
 3. Chooses time slot
@@ -1445,7 +1340,6 @@ model Appointment {
 ## 🎯 Success Metrics
 
 ### Technical Metrics
-
 - **Performance:** <2s page load time (p95)
 - **Availability:** 99% uptime
 - **Security:** Zero data breaches, all endpoints authenticated
@@ -1453,7 +1347,6 @@ model Appointment {
 - **API Response Time:** <500ms (p95)
 
 ### User Engagement Metrics
-
 - **Registration:** 100+ users in first 3 months
 - **Daily Active Users (DAU):** 50+ users
 - **Forum Activity:** 200+ posts, 500+ replies
@@ -1461,7 +1354,6 @@ model Appointment {
 - **Retention:** 40% Week-1 retention
 
 ### Business Metrics
-
 - **Partnerships:** 1+ healthcare organization
 - **Expert Onboarding:** 10+ verified experts
 - **Paid Consultations:** 20+ bookings (if enabled)
@@ -1475,7 +1367,6 @@ model Appointment {
 ### Ongoing (Continuous)
 
 #### 📋 Todo
-
 - [ ] Implement comprehensive error logging
 - [ ] Add database connection pooling optimization
 - [ ] Set up automated backup system
@@ -1488,12 +1379,10 @@ model Appointment {
 - [ ] Set up staging environment
 
 #### 🔄 In Progress
-
 - [ ] Security hardening (ongoing)
 - [ ] Code refactoring (ongoing)
 
 #### ✅ Done
-
 - [x] Migrate to Tailwind CSS v4
 - [x] Configure cross-origin cookies
 - [x] Set up environment-specific configurations
@@ -1504,7 +1393,6 @@ model Appointment {
 ### Known Issues (To Fix)
 
 #### 📋 Todo
-
 - [ ] Handle file upload size limits (large images)
 - [ ] Fix timezone handling for appointments
 - [ ] Improve mobile responsiveness (some pages)
@@ -1519,26 +1407,25 @@ model Appointment {
 
 ## 📝 Version History
 
-| Version | Release Date | Status     | Key Features                      |
-|---------|--------------|------------|-----------------------------------|
-| v0.9.0  | Jan 2026     | 🔄 Current | POC completion, basic forum, auth |
-| v1.0.0  | Feb 2026     | 📋 Planned | Production-ready MVP launch       |
-| v1.1.0  | Feb 2026     | 📋 Planned | Enhanced forum (search, profiles) |
-| v1.2.0  | Mar 2026     | 📋 Planned | Real-time chat                    |
-| v1.3.0  | Mar 2026     | 📋 Planned | AI assistant                      |
-| v1.4.0  | Apr 2026     | 📋 Planned | Production hardening              |
-| v1.5.0  | May 2026     | 📋 Planned | Progress tracking                 |
-| v1.6.0  | May 2026     | 📋 Planned | Appointment scheduling            |
-| v1.7.0  | Jun 2026     | 📋 Planned | Content library                   |
-| v1.8.0  | Jun 2026     | 📋 Planned | Polish & optimization             |
-| v2.0.0  | Jul 2026+    | 📋 Planned | NestJS migration                  |
+| Version | Release Date | Status | Key Features |
+|---------|--------------|--------|--------------|
+| v0.9.0 | Jan 2026 | 🔄 Current | POC completion, basic forum, auth |
+| v1.0.0 | Feb 2026 | 📋 Planned | Production-ready MVP launch |
+| v1.1.0 | Feb 2026 | 📋 Planned | Enhanced forum (search, profiles) |
+| v1.2.0 | Mar 2026 | 📋 Planned | Real-time chat |
+| v1.3.0 | Mar 2026 | 📋 Planned | AI assistant |
+| v1.4.0 | Apr 2026 | 📋 Planned | Production hardening |
+| v1.5.0 | May 2026 | 📋 Planned | Progress tracking |
+| v1.6.0 | May 2026 | 📋 Planned | Appointment scheduling |
+| v1.7.0 | Jun 2026 | 📋 Planned | Content library |
+| v1.8.0 | Jun 2026 | 📋 Planned | Polish & optimization |
+| v2.0.0 | Jul 2026+ | 📋 Planned | NestJS migration |
 
 ---
 
 ## 🚀 Getting Started (For Developers)
 
 ### Prerequisites
-
 - Node.js 20+
 - PostgreSQL (or Neon account)
 - Git
@@ -1546,7 +1433,6 @@ model Appointment {
 ### Environment Variables
 
 **Backend (.env):**
-
 ```bash
 DATABASE_URL="postgresql://..."
 JWT_SECRET="your-secret-key"
@@ -1556,7 +1442,6 @@ NODE_ENV="development"
 ```
 
 **Frontend (.env):**
-
 ```bash
 VITE_API_URL="http://localhost:3000"
 VITE_WS_URL="ws://localhost:3000"
@@ -1587,17 +1472,14 @@ npm run dev
 ## 📞 Contact & Resources
 
 **GitHub Repositories:**
-
 - Frontend: [healease-client](https://github.com/yourusername/healease-client)
 - Backend: [healease-server](https://github.com/yourusername/healease-server)
 
 **Live URLs:**
-
 - Frontend: https://healease-client.onrender.com
 - Backend: https://healease-server.onrender.com
 
 **Documentation:**
-
 - API Docs: [Coming in v1.4.0]
 - User Guide: [Coming soon]
 - Contributing Guide: [Coming soon]
