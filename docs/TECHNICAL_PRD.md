@@ -9,13 +9,13 @@
 
 ## 📋 Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [Technical Architecture](#technical-architecture)
-3. [Current Tech Stack](#current-tech-stack)
-4. [Development Roadmap](#development-roadmap)
-5. [Feature Specifications](#feature-specifications)
-6. [Success Metrics](#success-metrics)
-7. [Technical Debt & Improvements](#technical-debt--improvements)
+1. [Project Overview](#-project-overview)
+2. [Technical Architecture](#-technical-architecture)
+3. [Current Tech Stack](#-current-tech-stack)
+4. [Development Roadmap](#-development-roadmap)
+5. [Feature Specifications](#-feature-specifications)
+6. [Success Metrics](#-success-metrics)
+7. [Technical Debt & Improvements](#-technical-debt--improvements)
 
 ---
 
