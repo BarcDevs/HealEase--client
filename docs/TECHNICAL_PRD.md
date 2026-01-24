@@ -167,7 +167,7 @@ sequenceDiagram
     API->>JWT: Generate access token
     API-->>Client: Set HTTP-only cookie + user data
 
-    Note over Client,JWT: Login Flow
+    Note over Client, JWT: Login Flow
 
     Client->>API: POST /auth/login
     API->>DB: Find user by email
@@ -426,11 +426,11 @@ graph TB
 
 ## 🗺️ Development Roadmap
 
-### Phase 0: POC Completion (v0.9.0 → v1.0.0)
-**Timeline:** Current - 2 weeks  
-**Focus:** Polish existing features, prepare for MVP launch
+### Phase 0: POC Completion (v0.9.0 → v0.10.0)
+**Timeline:** Current - ongoing  
+**Focus:** Polish existing features, prepare for production
 
-#### 🔄 Critical for v1.0.0 Launch (In Progress)
+#### 🔄 Critical for v0.10.0 Launch (In Progress)
 - [ ] **`Post.tsx`** - Populate replies on loader (currently not loading properly)
 - [ ] **`routes/_forum/forum/index.tsx`** - Add validation (Zod schema for form inputs)
 - [ ] **`app.tsx`** - Fix Sentry integration and re-enable error tracking
@@ -463,147 +463,12 @@ graph TB
 
 ---
 
-### Phase 1: MVP Core Features (v1.0.0 → v1.3.0)
-**Timeline:** Month 1-3 (12 weeks, ~4 hrs/day)  
-**Focus:** Deliver core value proposition - community support + AI assistance
+### Phase 1: Production Polish (v0.10.0)
+**Timeline:** TBD (~2-3 weeks)  
+**Focus:** Security, documentation, and deployment improvements
 
-#### Sprint 1-2: Enhanced Forum (v1.1.0) - 3 weeks
-**Goal:** Make the forum production-ready and feature-rich
-
-##### 📋 Todo
-- [ ] **Search Functionality**
-  - Full-text search across posts and replies
-  - Filter by category, tags, author
-  - Sort by: relevance, date, votes, views
-  - Search history for logged-in users
-  
-- [ ] **User Profiles Enhancement**
-  - Profile page with post history
-  - User statistics (posts, replies, karma)
-  - Avatar upload (Cloudinary/S3)
-  - Bio and recovery story section
-  - Follow/unfollow users (future)
-
-- [ ] **Forum UX Improvements**
-  - Infinite scroll pagination
-  - Post preview on hover
-  - Rich text editor (TipTap/Lexical)
-  - Image upload in posts
-  - Draft saving (localStorage)
-  - Share post functionality
-
-- [ ] **Notification System (Basic)**
-  - Reply notifications
-  - Mention notifications (@username)
-  - Email notifications toggle
-
-- [ ] **Moderation Tools**
-  - Report post/reply
-  - Admin dashboard for content moderation
-  - User ban system (soft delete)
-
-##### 🔄 In Progress
-- [ ] Currently in POC completion phase
-
-##### ✅ Done
-- None yet (starting after POC)
-
----
-
-#### Sprint 3-4: Real-Time Chat (v1.2.0) - 3 weeks
-**Goal:** Enable private, real-time communication between users
-
-##### 📋 Todo
-- [ ] **Socket.io Integration**
-  - WebSocket server setup
-  - Connection handling and reconnection logic
-  - Room management (private chats)
-  
-- [ ] **Chat Backend**
-  - Message model in Prisma schema
-  - Conversation model (many-to-many users)
-  - Message persistence in PostgreSQL
-  - Message pagination (load history)
-  - Typing indicators
-  - Online/offline status
-
-- [ ] **Chat Frontend**
-  - Chat list view (conversations)
-  - Chat window component
-  - Message bubbles with timestamps
-  - Real-time message updates
-  - Typing indicators UI
-  - Unread message badges
-  - Emoji picker integration
-
-- [ ] **Chat Features**
-  - Start conversation from user profile
-  - Message reactions (future)
-  - File sharing (future)
-  - Search within conversation
-
-##### 🔄 In Progress
-- [ ] Not started
-
-##### ✅ Done
-- None yet
-
----
-
-#### Sprint 5-6: AI Assistant (v1.3.0) - 3 weeks
-**Goal:** Integrate Gemini AI for recovery support and Q&A
-
-##### 📋 Todo
-- [ ] **Gemini API Integration**
-  - API key configuration
-  - Rate limiting (free tier constraints)
-  - Error handling for API failures
-  - Retry logic with exponential backoff
-
-- [ ] **Chat Backend**
-  - AI chat message storage
-  - Conversation context management
-  - System prompt engineering
-  - User context injection (profile data)
-
-- [ ] **AI Features - Phase 1 (Stateless)**
-  - General injury/recovery Q&A
-  - Emotional support responses
-  - Exercise suggestions
-  - Pain management tips
-  - Safety disclaimers in responses
-
-- [ ] **Chat Frontend**
-  - AI chat interface (separate from user chat)
-  - Streaming responses (SSE or WebSocket)
-  - "AI is typing" indicator
-  - Conversation history
-  - Clear conversation button
-  - Example prompts/suggestions
-
-- [ ] **Prompt Engineering**
-  - System prompt for medical context
-  - Tone and empathy guidelines
-  - Response length optimization
-  - Disclaimer templates
-  - Conversation history summarization
-
-- [ ] **Safety & Compliance**
-  - Medical disclaimer on first interaction
-  - "Consult a doctor" triggers
-  - Content filtering (no dangerous advice)
-  - User consent for AI usage
-
-##### 🔄 In Progress
-- [ ] Not started
-
-##### ✅ Done
-- None yet
-
----
-
-#### Sprint 7-8: Production Readiness (v1.3.0 → v1.4.0) - 2 weeks
-**Goal:** Security, documentation, and deployment improvements
+#### Sprint 1-2: Production Hardening (v0.10.0) - 2-3 weeks
+**Goal:** Make the platform production-ready with security and i18n
 
 ##### 📋 Todo
 - [ ] **Security Hardening**
@@ -664,14 +529,238 @@ graph TB
 
 ---
 
-### Phase 2: MVP Extended Features (v1.4.0 → v1.8.0)
-**Timeline:** Month 4-6 (12 weeks, ~4 hrs/day)  
-**Focus:** Progress tracking, appointments, content library
+### Phase 2: Enhanced Forum (v0.11.0)
+**Timeline:** TBD (~3-4 weeks)  
+**Focus:** Make forum feature-rich and user-friendly
 
-#### Sprint 9-10: Basic Progress Tracking (v1.5.0) - 3 weeks
-**Goal:** Enable users to track recovery metrics
+#### Sprint 3-4: Enhanced Forum Features (v0.11.0) - 3-4 weeks
+**Goal:** Search, rich text, profiles, notifications
 
 ##### 📋 Todo
+  - Full-text search across posts and replies
+  - Filter by category, tags, author
+  - Sort by: relevance, date, votes, views
+  - Search history for logged-in users
+  
+- [ ] **User Profiles Enhancement**
+  - Profile page with post history
+  - User statistics (posts, replies, karma)
+  - Avatar upload (Cloudinary/S3)
+  - Bio and recovery story section
+  - Follow/unfollow users (future)
+
+- [ ] **Forum UX Improvements**
+  - Infinite scroll pagination
+  - Post preview on hover
+  - Rich text editor (TipTap/Lexical)
+  - Image upload in posts
+  - Draft saving (localStorage)
+  - Share post functionality
+
+- [ ] **Notification System (Basic)**
+  - Reply notifications
+  - Mention notifications (@username)
+  - Email notifications toggle
+
+- [ ] **Moderation Tools**
+  - Report post/reply
+  - Admin dashboard for content moderation
+  - User ban system (soft delete)
+
+##### 🔄 In Progress
+- [ ] Not started
+
+##### ✅ Done
+- None yet
+
+---
+
+### Phase 3: Real-Time Chat (v0.12.0)
+**Timeline:** TBD (~3-4 weeks)  
+**Focus:** Enable private, real-time communication
+
+#### Sprint 5-6: Chat Implementation (v0.12.0) - 3-4 weeks
+**Goal:** Socket.io-powered private messaging
+
+##### 📋 Todo
+- [ ] **Socket.io Integration**
+  - WebSocket server setup
+  - Connection handling and reconnection logic
+  - Room management (private chats)
+  
+- [ ] **Chat Backend**
+  - Message model in Prisma schema
+  - Conversation model (many-to-many users)
+  - Message persistence in PostgreSQL
+  - Message pagination (load history)
+  - Typing indicators
+  - Online/offline status
+
+- [ ] **Chat Frontend**
+  - Chat list view (conversations)
+  - Chat window component
+  - Message bubbles with timestamps
+  - Real-time message updates
+  - Typing indicators UI
+  - Unread message badges
+  - Emoji picker integration
+
+- [ ] **Chat Features**
+  - Start conversation from user profile
+  - Message reactions (future)
+  - File sharing (future)
+  - Search within conversation
+
+##### 🔄 In Progress
+- [ ] Not started
+
+##### ✅ Done
+- None yet
+
+---
+
+### Phase 4: AI Assistant (v0.13.0)
+**Timeline:** TBD (~3-4 weeks)  
+**Focus:** Gemini-powered recovery support chatbot
+
+#### Sprint 7-8: AI Implementation (v0.13.0) - 3-4 weeks
+**Goal:** AI assistant for Q&A and emotional support
+
+##### 📋 Todo
+- [ ] **Gemini API Integration**
+  - API key configuration
+  - Rate limiting (free tier constraints)
+  - Error handling for API failures
+  - Retry logic with exponential backoff
+
+- [ ] **Chat Backend**
+  - AI chat message storage
+  - Conversation context management
+  - System prompt engineering
+  - User context injection (profile data)
+
+- [ ] **AI Features - Phase 1 (Stateless)**
+  - General injury/recovery Q&A
+  - Emotional support responses
+  - Exercise suggestions
+  - Pain management tips
+  - Safety disclaimers in responses
+
+- [ ] **Chat Frontend**
+  - AI chat interface (separate from user chat)
+  - Streaming responses (SSE or WebSocket)
+  - "AI is typing" indicator
+  - Conversation history
+  - Clear conversation button
+  - Example prompts/suggestions
+
+- [ ] **Prompt Engineering**
+  - System prompt for medical context
+  - Tone and empathy guidelines
+  - Response length optimization
+  - Disclaimer templates
+  - Conversation history summarization
+
+- [ ] **Safety & Compliance**
+  - Medical disclaimer on first interaction
+  - "Consult a doctor" triggers
+  - Content filtering (no dangerous advice)
+  - User consent for AI usage
+
+##### 🔄 In Progress
+- [ ] Not started
+
+##### ✅ Done
+- None yet
+
+---
+
+### Phase 5: MVP LAUNCH (v1.0.0)
+**Timeline:** TBD  
+**Status:** 🎯 **Complete MVP - Forum + Chat + AI**
+
+Once v0.13.0 (AI Assistant) is complete, we launch v1.0.0 as the official MVP!
+
+**v1.0.0 includes:**
+- ✅ Complete forum system with search, rich text, profiles
+- ✅ Real-time private chat
+- ✅ AI recovery assistant
+- ✅ Production security and i18n
+- ✅ Full documentation
+
+---
+
+### Phase 6: Post-MVP Features (v1.1.0+)
+**Timeline:** TBD (After MVP launch)  
+**Focus:** Additional value-add features
+
+#### Progress Tracking (v1.1.0)
+- [ ] **Security Hardening**
+  - Rate limiting (express-rate-limit)
+  - Input validation on all endpoints
+  - SQL injection prevention (Prisma handles)
+  - XSS protection (sanitize user input)
+  - CSRF protection
+  - Helmet.js middleware
+  - Security headers configuration
+
+- [ ] **Error Handling**
+  - Global error handler
+  - Structured error responses
+  - Error logging (future: Sentry)
+  - User-friendly error messages
+
+- [ ] **API Documentation**
+  - Swagger/OpenAPI spec
+  - TSOA integration
+  - Endpoint descriptions
+  - Request/response examples
+  - Authentication documentation
+
+- [ ] **Internationalization (i18n)**
+  - i18next setup
+  - English translations
+  - Hebrew translations
+  - RTL support (Tailwind config)
+  - Language switcher UI
+  - Date/time localization
+
+- [ ] **Docker Setup**
+  - Dockerfile for backend
+  - Dockerfile for frontend
+  - docker-compose.yml for local dev
+  - Multi-stage builds
+  - .dockerignore configuration
+
+- [ ] **Testing Foundation**
+  - Jest configuration
+  - Unit tests for utilities
+  - API endpoint tests (Supertest)
+  - React component tests (RTL)
+  - Test coverage reporting
+
+- [ ] **Code Quality**
+  - ESLint rules enforcement
+  - Prettier configuration
+  - Pre-commit hooks (Husky)
+  - CI/CD pipeline (GitHub Actions)
+
+##### 🔄 In Progress
+- [ ] Not started
+
+##### ✅ Done
+- None yet
+
+---
+
+### Phase 6: Post-MVP Features (v1.1.0+)
+**Timeline:** TBD (After MVP v1.0.0 launch)  
+**Focus:** Additional value-add features
+
+#### Sprint 9-10: Basic Progress Tracking (v1.1.0) - TBD
+**Goal:** Enable users to track recovery metrics
+
+##### 📋 Backlog
 - [ ] **Database Schema**
   - ProgressEntry model (pain, mood, notes)
   - MedicationReminder model
@@ -709,10 +798,10 @@ graph TB
 
 ---
 
-#### Sprint 11-12: Appointment Scheduling (v1.6.0) - 3 weeks
+#### Sprint 11-12: Appointment Scheduling (v1.2.0) - TBD
 **Goal:** Enable consultation booking with experts
 
-##### 📋 Todo
+##### 📋 Backlog
 - [ ] **Database Schema**
   - Expert model (profile, specializations)
   - Appointment model (date, type, status, price)
@@ -760,10 +849,10 @@ graph TB
 
 ---
 
-#### Sprint 13-14: Content Library (v1.7.0) - 2 weeks
+#### Sprint 13-14: Content Library (v1.3.0) - TBD
 **Goal:** Provide educational resources and recovery guides
 
-##### 📋 Todo
+##### 📋 Backlog
 - [ ] **Database Schema**
   - Article model (title, body, category, author)
   - ContentTag model
@@ -804,10 +893,10 @@ graph TB
 
 ---
 
-#### Sprint 15-16: Polish & Optimization (v1.8.0) - 2 weeks
+#### Sprint 15-16: Polish & Optimization (v1.4.0) - TBD
 **Goal:** Performance optimization and bug fixes
 
-##### 📋 Todo
+##### 📋 Backlog
 - [ ] **Performance Optimization**
   - Image lazy loading
   - Code splitting
@@ -844,8 +933,8 @@ graph TB
 
 ---
 
-### Phase 3: Post-MVP & Scaling (v2.0.0+)
-**Timeline:** Month 7+ (Ongoing)  
+### Phase 7: Scaling & Migration (v2.0.0+)
+**Timeline:** TBD (Long-term)  
 **Focus:** Advanced features, scaling, and migration to NestJS
 
 #### v2.0.0: NestJS Migration
@@ -1410,16 +1499,13 @@ model Appointment {
 | Version | Release Date | Status | Key Features |
 |---------|--------------|--------|--------------|
 | v0.9.0 | Jan 2026 | 🔄 Current | POC completion, basic forum, auth |
-| v1.0.0 | Feb 2026 | 📋 Planned | Production-ready MVP launch |
-| v1.1.0 | Feb 2026 | 📋 Planned | Enhanced forum (search, profiles) |
-| v1.2.0 | Mar 2026 | 📋 Planned | Real-time chat |
-| v1.3.0 | Mar 2026 | 📋 Planned | AI assistant |
-| v1.4.0 | Apr 2026 | 📋 Planned | Production hardening |
-| v1.5.0 | May 2026 | 📋 Planned | Progress tracking |
-| v1.6.0 | May 2026 | 📋 Planned | Appointment scheduling |
-| v1.7.0 | Jun 2026 | 📋 Planned | Content library |
-| v1.8.0 | Jun 2026 | 📋 Planned | Polish & optimization |
-| v2.0.0 | Jul 2026+ | 📋 Planned | NestJS migration |
+| v0.10.0 | TBD | 📋 Planned | Production polish (security, i18n, docs) |
+| v0.11.0 | TBD | 📋 Planned | Enhanced forum (search, rich text, profiles) |
+| v0.12.0 | TBD | 📋 Planned | Real-time chat |
+| v0.13.0 | TBD | 📋 Planned | AI assistant (Gemini integration) |
+| v1.0.0 | TBD | 📋 Planned | **MVP LAUNCH** - Forum + Chat + AI complete |
+| v1.1.0+ | TBD | 📋 Planned | Post-MVP: Progress tracking, appointments, content library |
+| v2.0.0+ | TBD | 📋 Planned | NestJS migration, scaling features |
 
 ---
 
