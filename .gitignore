@@ -31,3 +31,4 @@ dist-ssr
 .env.sentry-build-plugin
 
 qodana.yaml
+nul
