@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "set NODE_ENV=development&& vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint:check": "eslint .",
