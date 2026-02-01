@@ -6,7 +6,7 @@ import {formatDistance} from 'date-fns'
  * @param {Date} date - The date to convert to relative time format
  * @return {string} The date in relative time format
  */
-export const toRelative = (date: Date) => {
+export const toRelative = (date: Date): string => {
     return formatDistance(date, new Date(), {
         addSuffix: true
     })
