@@ -49,13 +49,15 @@ HealEase - A Vite-powered React health and wellness forum application with user 
   ```typescript
   // ✅ Good
   const SimpleComponent = () => (
-      <div>Content</div>
+      <div>
+        Content
+      </div>
   )
   ```
 - **No braces for single statement returns**: Omit braces when possible
 - **All components are client-side**: This is a Vite SPA
 - **shadcn/ui**: Always use components from shadcn/ui when available
-- **Avoid prop drilling**: Use context, Redux, hooks or composition instead
+- **Avoid prop drilling**: Use context, Redux, hooks, or composition instead
 - **Reusable components**: Use reusable components and functions as much as possible
 - **One component per file**: Separate components into individual files
 - **File structure**:
@@ -177,6 +179,43 @@ HealEase - A Vite-powered React health and wellness forum application with user 
           Content
       </Component>
   </div>
+  ```
+
+### Spacing Conventions
+- **Object literals in function arguments**: Add space after opening parenthesis and before closing
+  ```typescript
+  // ❌ Wrong
+  mockFunction.mockReturnValue({
+      data: value
+  })
+
+  // ✅ Correct
+  mockFunction.mockReturnValue( {
+      data: value
+  } )
+
+  // ✅ Correct - nested closings
+  vi.mock('module', () => ( {
+      fn: () => value
+  } ))
+  ```
+- **Array index access**: Add spaces inside brackets
+  ```typescript
+  // ❌ Wrong
+  result.error.issues[0].message
+  mockFn.mock.calls[0][0]
+
+  // ✅ Correct
+  result.error.issues[ 0 ].message
+  mockFn.mock.calls[ 0 ][ 0 ]
+  ```
+- **Conditionals with single expression**: Add spaces inside parentheses
+  ```typescript
+  // ❌ Wrong
+  if (!result.success) {
+
+  // ✅ Correct
+  if ( !result.success ) {
   ```
 
 ### Import Organization
@@ -434,7 +473,17 @@ navigate({ to: '/login', search: { redirect: '/' } })
 - ✅ Use arrow functions ALWAYS
 - ✅ No semicolons (unless necessary)
 - ✅ Single quotes for all strings
-- ✅ Props on new lines (if 2+)
+- ✅ Props, function params, or object fields on new lines (if 2+)
+- ✅ Nested objects on a new line. example:
+```typescript
+  // ❌ Wrong
+    tags: [{ name: 'tag1' }]
+
+  // ✅ Correct
+    tags: [{
+        name: 'tag1' 
+    }]
+```
 - ✅ JSX props: `prop={'value'}`
 - ✅ Export at bottom of file
 - ✅ Components under ~40 lines
