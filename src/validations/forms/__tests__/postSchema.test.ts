@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { postSchema } from '@/validations/forms/postSchema'
 
+// ==================== postSchema ====================
 describe(
     'postSchema',
     () => {

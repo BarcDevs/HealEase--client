@@ -9,6 +9,7 @@ import {
 
 import { toRelative, toShortNumber } from '@/lib/time'
 
+// ==================== toRelative ====================
 describe(
     'toRelative',
     () => {
@@ -72,6 +73,7 @@ describe(
             })
     })
 
+// ==================== toShortNumber ====================
 describe(
     'toShortNumber',
     () => {

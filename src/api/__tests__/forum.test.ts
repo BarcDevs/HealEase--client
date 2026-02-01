@@ -29,6 +29,7 @@ import {
 } from '@/api/forum'
 import { api } from '@/api/index.ts'
 
+// ==================== forum API ====================
 describe(
     'forum API',
     () => {
@@ -36,6 +37,7 @@ describe(
             vi.clearAllMocks()
         })
 
+        // ==================== fetchPosts ====================
         describe(
             'fetchPosts',
             () => {
@@ -80,6 +82,7 @@ describe(
                     })
             })
 
+        // ==================== fetchPost ====================
         describe(
             'fetchPost',
             () => {
@@ -101,6 +104,7 @@ describe(
                     })
             })
 
+        // ==================== createPost ====================
         describe(
             'createPost',
             () => {
@@ -129,6 +133,7 @@ describe(
                     })
             })
 
+        // ==================== updatePost ====================
         describe(
             'updatePost',
             () => {
@@ -160,6 +165,7 @@ describe(
                     })
             })
 
+        // ==================== deletePost ====================
         describe(
             'deletePost',
             () => {
@@ -179,6 +185,7 @@ describe(
                     })
             })
 
+        // ==================== fetchReplies ====================
         describe(
             'fetchReplies',
             () => {
@@ -200,6 +207,7 @@ describe(
                     })
             })
 
+        // ==================== createReply ====================
         describe(
             'createReply',
             () => {
@@ -238,6 +246,7 @@ describe(
                     })
             })
 
+        // ==================== updateReply ====================
         describe(
             'updateReply',
             () => {

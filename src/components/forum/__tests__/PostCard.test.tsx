@@ -108,6 +108,7 @@ vi.mock(
 
 import PostCard from '@/components/forum/PostCard'
 
+// ==================== PostCard ====================
 describe(
     'PostCard',
     () => {
@@ -170,6 +171,7 @@ describe(
             vi.clearAllMocks()
         })
 
+        // ==================== when rendering a post ====================
         describe('when rendering a post',
             () => {
                 it(
@@ -308,6 +310,7 @@ describe(
                     })
             })
 
+        // ==================== when rendering a reply ====================
         describe('when rendering a reply',
             () => {
                 it(
@@ -417,6 +420,7 @@ describe(
                     })
             })
 
+        // ==================== edge cases ====================
         describe('edge cases',
             () => {
                 it(

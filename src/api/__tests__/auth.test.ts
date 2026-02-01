@@ -24,6 +24,7 @@ import {
 } from '@/api/auth'
 import { api } from '@/api/index.ts'
 
+// ==================== auth API ====================
 describe(
     'auth API',
     () => {
@@ -31,6 +32,7 @@ describe(
             vi.clearAllMocks()
         })
 
+        // ==================== login ====================
         describe(
             'login',
             () => {
@@ -85,6 +87,7 @@ describe(
                     })
             })
 
+        // ==================== signup ====================
         describe(
             'signup',
             () => {
@@ -114,6 +117,7 @@ describe(
                     })
             })
 
+        // ==================== logout ====================
         describe(
             'logout',
             () => {
@@ -129,6 +133,7 @@ describe(
                     })
             })
 
+        // ==================== getCsrfToken ====================
         describe(
             'getCsrfToken',
             () => {
@@ -149,6 +154,7 @@ describe(
                     })
             })
 
+        // ==================== getMe ====================
         describe(
             'getMe',
             () => {

@@ -18,6 +18,7 @@ vi.mock(
 
 import { submitForm } from '@/handlers/actions/forum'
 
+// ==================== forum actions ====================
 describe(
     'forum actions',
     () => {
@@ -46,8 +47,10 @@ describe(
             vi.clearAllMocks()
         })
 
+        // ==================== submitForm ====================
         describe('submitForm',
             () => {
+                // -------------------- creating a new post --------------------
                 describe('creating a new post',
                     () => {
                         it(
@@ -110,6 +113,7 @@ describe(
                             })
                     })
 
+                // -------------------- updating an existing post --------------------
                 describe('updating an existing post',
                     () => {
                         it(
@@ -192,6 +196,7 @@ describe(
                             })
                     })
 
+                // -------------------- error handling --------------------
                 describe('error handling',
                     () => {
                         it(

@@ -18,6 +18,7 @@ import authSlice, {
     logoutAction
 } from '@/store/authSlice'
 
+// ==================== authSlice ====================
 describe('authSlice',
     () => {
         const mockUser = {

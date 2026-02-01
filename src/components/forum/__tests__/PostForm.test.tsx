@@ -221,6 +221,7 @@ vi.mock(
 
 import PostForm from '@/components/forum/PostForm'
 
+// ==================== PostForm ====================
 describe('PostForm',
     () => {
         beforeEach(() => {
@@ -228,6 +229,7 @@ describe('PostForm',
             mockUseLoaderData.mockReturnValue(undefined)
         })
 
+        // ==================== create mode ====================
         describe('create mode',
             () => {
                 it(
@@ -321,6 +323,7 @@ describe('PostForm',
                     })
             })
 
+        // ==================== edit mode ====================
         describe('edit mode',
             () => {
                 const existingPost = {
@@ -389,6 +392,7 @@ describe('PostForm',
                     })
             })
 
+        // ==================== form structure ====================
         describe('form structure',
             () => {
                 it(

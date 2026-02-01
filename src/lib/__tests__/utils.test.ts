@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { getUserFallback } from '@/lib/utils'
 
+// ==================== getUserFallback ====================
 describe(
     'getUserFallback',
     () => {

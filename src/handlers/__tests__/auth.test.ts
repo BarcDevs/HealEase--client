@@ -71,12 +71,14 @@ import {
 
 import * as authApi from '@/api/auth.ts'
 
+// ==================== auth handlers ====================
 describe('auth handlers',
     () => {
         beforeEach(() => {
             vi.clearAllMocks()
         })
 
+        // ==================== getCsrfTokenFromStore ====================
         describe('getCsrfTokenFromStore',
             () => {
                 it(
@@ -104,6 +106,7 @@ describe('auth handlers',
                     })
             })
 
+        // ==================== handleLogin ====================
         describe('handleLogin',
             () => {
                 const credentials = {
@@ -203,6 +206,7 @@ describe('auth handlers',
                     })
             })
 
+        // ==================== handleSignup ====================
         describe('handleSignup',
             () => {
                 const userData = {
@@ -272,6 +276,7 @@ describe('auth handlers',
                     })
             })
 
+        // ==================== handleLogout ====================
         describe('handleLogout',
             () => {
                 it(
@@ -317,6 +322,7 @@ describe('auth handlers',
                     })
             })
 
+        // ==================== refreshAuthData ====================
         describe('refreshAuthData',
             () => {
                 it(

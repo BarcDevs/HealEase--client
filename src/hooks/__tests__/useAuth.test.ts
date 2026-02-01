@@ -48,6 +48,7 @@ vi.mock(
 
 import { useAuth } from '@/hooks/useAuth'
 
+// ==================== useAuth ====================
 describe('useAuth',
     () => {
         const mockUser = {
@@ -77,6 +78,7 @@ describe('useAuth',
                 })
         })
 
+        // ==================== user state ====================
         describe('user state',
             () => {
                 it(
@@ -112,6 +114,7 @@ describe('useAuth',
                     })
             })
 
+        // ==================== isLoggedIn ====================
         describe('isLoggedIn',
             () => {
                 it(
@@ -147,6 +150,7 @@ describe('useAuth',
                     })
             })
 
+        // ==================== login ====================
         describe('login',
             () => {
                 it(
@@ -190,6 +194,7 @@ describe('useAuth',
                     })
             })
 
+        // ==================== register ====================
         describe('register',
             () => {
                 it(
@@ -238,6 +243,7 @@ describe('useAuth',
                     })
             })
 
+        // ==================== logout ====================
         describe('logout',
             () => {
                 it(
@@ -306,6 +312,7 @@ describe('useAuth',
                     })
             })
 
+        // ==================== checkAuth ====================
         describe('checkAuth',
             () => {
                 it(

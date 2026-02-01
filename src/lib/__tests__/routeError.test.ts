@@ -22,6 +22,7 @@ import * as Sentry from '@sentry/react'
 
 import { routeError } from '@/lib/routeError'
 
+// ==================== routeError ====================
 describe(
     'routeError',
     () => {
@@ -32,6 +33,7 @@ describe(
                 })
         })
 
+        // -------------------- errorComponent --------------------
         describe(
             'errorComponent',
             () => {
@@ -43,6 +45,7 @@ describe(
                     })
             })
 
+        // -------------------- onError --------------------
         describe(
             'onError',
             () => {

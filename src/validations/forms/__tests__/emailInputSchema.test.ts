@@ -6,6 +6,7 @@ import {
 
 import { emailInputSchema } from '@/validations/forms/emailInputSchema'
 
+// ==================== emailInputSchema ====================
 describe(
     'emailInputSchema',
     () => {

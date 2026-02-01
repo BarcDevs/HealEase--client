@@ -125,6 +125,7 @@ vi.mock(
 
 import SignupForm from '@/components/auth/SignupForm'
 
+// ==================== SignupForm ====================
 describe('SignupForm',
     () => {
         beforeEach(() => {
