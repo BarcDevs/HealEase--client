@@ -1,230 +1,311 @@
-<div align="center">
+# HealEase Frontend
 
-# 🏥 HealEase
+Recovery tracking and community platform with AI-powered health insights.
 
-### A Modern Healthcare Community Platform
+[![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite_7-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-**Empowering patients and healthcare providers through seamless communication and knowledge sharing**
-
-[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://healease-client.onrender.com)
-[![Frontend](https://img.shields.io/badge/frontend-repo-blue?style=for-the-badge&logo=github)](https://github.com/BarcDevs/HealEase--client)
-[![Backend](https://img.shields.io/badge/backend-repo-blue?style=for-the-badge&logo=github)](https://github.com/BarcDevs/HealEase--server)
-
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
-![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=white)
-
-</div>
+[🌐 Live App](https://healease-client.onrender.com) · [🔧 Backend Repo](https://github.com/BarcDevs/HealEase--server)
 
 ---
 
-## 📚 Documentation
+## Table of Contents
 
-- **[📖 Technical PRD](./docs/TECHNICAL_PRD.md)** - Complete product roadmap, architecture, and feature specs
-- **[🗺️ Development Roadmap](./docs/TECHNICAL_PRD.md#development-roadmap)** - Versioned sprint planning
-- **[🔗 Backend Repository](https://github.com/BarcDevs/HealEase--server)**
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Setup](#setup)
+- [Development](#development)
+- [Testing](#testing)
+- [Building](#building)
 
 ---
 
-## 📋 Overview
+## Tech Stack
 
-HealEase is a full-stack healthcare community platform built with modern web technologies and cloud-native principles.
-Currently a working POC being modernized for production deployment with enterprise-grade architecture and DevOps
-practices.
+| Layer | Technology |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build Tool | Vite 7 |
+| Routing | TanStack Router v1 |
+| Styling | TailwindCSS 4 |
+| UI Components | shadcn/ui + Radix UI |
+| Forms | react-hook-form + Zod |
+| State | Redux Toolkit + Redux Persist |
+| Data Fetching | Axios + TanStack Query |
+| Notifications | Sonner |
+| Charts | Recharts |
+| HTTP Client | Axios (with CSRF interceptors) |
 
-**Status:** 🚧 v0.9.0 - POC Completion → MVP Transition
+---
 
-## ✨ Key Features
+## Features
 
-## ✨ Key Features
+### ✅ Core
+- 🔐 **Secure Authentication** - JWT cookies + CSRF protection
+- 📝 **Daily Check-ins** - Mood/pain tracking with 1-10 scales
+- 📊 **Health Insights** - AI-powered analysis of check-in trends
+- 💬 **Community Forum** - Posts, replies, voting, tags
+- 👤 **User Profiles** - Bio, location, timezone, health interests
 
-- 🔐 **Secure Authentication** - JWT with HTTP-only cookies
-- 💬 **Community Forum** - Reddit-style posts, replies, voting
-- 🏷️ **Tag System** - Follow topics and filter content
-- 👤 **User Profiles** - Basic profiles with activity tracking
-- 📱 **Responsive Design** - Tailwind CSS v4 + shadcn/ui
-- 🛡️ **Type Safety** - End-to-end TypeScript with Zod
+### ✅ Check-in System (Recovered)
+- ✏️ **Form** - Mood/pain sliders, activities, notes
+- 📈 **Chart** - Mood & pain over time (Recharts)
+- 💡 **AI Insights Panel** - Tips, warnings, positive feedback
+- 📋 **History** - Timeline of all check-ins
+- ⚡ **Smart Save** - Auto-detects existing check-in for PATCH
+- 🔄 **Optimistic Updates** - Instant UI feedback before server confirmation
 
+### ✅ UI
+- 🎨 **Responsive Design** - Mobile-first, Tailwind + shadcn/ui
+- ♿ **Accessible** - WCAG compliant components
+- 🌓 **Dark Mode Support** - Via TailwindCSS
+- 📱 **Mobile Optimized** - Touch-friendly interactions
 
-## 🛠️ Tech Stack
+---
 
-### **Frontend**
-
-```
-React 19              → UI Library
-TypeScript 5          → Type Safety
-Vite 7                → Build Tool & Dev Server
-TanStack Router       → File-based Routing
-Redux Toolkit         → State Management
-Axios                 → HTTP Client with Interceptors
-shadcn/ui             → Component Library (Radix UI)
-TailwindCSS 4         → Styling Framework
-React Hook Form       → Form Management
-Zod                   → Schema Validation
-Million.js            → React Performance Optimization
-Sentry                → Error Tracking & Monitoring
-```
-
-### **Backend**
-
-```
-Express               → Web Framework
-TypeScript            → Type Safety
-Prisma 7              → ORM with Type Generation
-PostgreSQL (Neon)     → Serverless Database
-JWT                   → Authentication
-Bcrypt                → Password Hashing
-```
-
-### **DevOps & Infrastructure**
+## Project Structure
 
 ```
-Render                → Cloud Hosting (Frontend + Backend)
-GitHub                → Version Control & CI/CD
-ESLint + Prettier     → Code Quality & Formatting
+src/
+├── api/                    # API clients (Axios instances)
+│   ├── index.ts           # Centralized Axios config with CSRF
+│   ├── auth.ts            # Auth endpoints
+│   ├── forum.ts           # Forum endpoints
+│   ├── profile.ts         # Profile endpoints
+│   └── checkIn.ts         # Check-in endpoints (recovered)
+│
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   ├── shared/           # Reusable components
+│   ├── auth/             # Auth flows
+│   ├── forum/            # Forum UI
+│   ├── layout/           # Layout shells
+│   └── check-in/         # Check-in system (recovered)
+│
+├── pages/                # Page components
+│   ├── check-in/         # Check-in pages (recovered)
+│   ├── forum/            # Forum pages
+│   └── layouts/          # Layout components
+│
+├── routes/               # TanStack Router routes
+│   ├── __root.tsx       # Root route
+│   ├── _forum.tsx       # Forum layout
+│   └── _checkin.tsx     # Check-in layout (recovered)
+│
+├── hooks/               # Custom React hooks
+│   └── useCheckInForm.ts # Check-in form logic (recovered)
+│
+├── store/              # Redux Toolkit slices
+│   ├── authSlice.ts    # Auth state
+│   └── tokenSlice.ts   # CSRF token state
+│
+├── types/              # TypeScript types
+│   ├── forum.ts
+│   ├── profile.ts
+│   └── checkIn.ts     # Check-in types (recovered)
+│
+├── validations/        # Zod schemas
+│   └── forms/         # Form validation
+│
+├── services/          # Business logic
+│   └── checkIn/       # Check-in services (recovered)
+│
+├── utils/             # Utility functions
+│   ├── checkIn.ts    # Check-in utils (recovered)
+│   └── redirect.ts   # Redirect validation
+│
+├── lib/               # Library utilities
+│   ├── checkIn/      # Chart builders (recovered)
+│   └── styles.ts     # CSS utility classes
+│
+├── constants/         # App constants
+│   ├── endpoints.ts  # API endpoints
+│   ├── defaults.ts   # Default values
+│   └── plainTexts.ts # UI copy
+│
+├── config/           # Configuration
+│   ├── index.ts     # Environment variables
+│   └── schema/      # Form constraints
+│
+├── context/          # React Context
+├── handlers/         # Route loaders & actions
+│   ├── loaders/     # Route data loaders
+│   └── actions/     # Route mutations
+│
+├── styles/          # Global styles
+│   └── index.css   # Tailwind + custom styles
+│
+├── app.tsx          # App entry point
+└── main.tsx         # React DOM root
 ```
 
-## 🏗️ Architecture & Design Principles
+---
 
-This project follows industry-standard practices and clean architecture:
-
-- **RESTful API Design** - Predictable, resource-based endpoints
-- **SOLID Principles** - Single responsibility, dependency inversion throughout codebase
-- **Separation of Concerns** - Clear boundaries between routing, business logic, and data layers
-- **Type Safety First** - Full TypeScript coverage with strict mode enabled
-- **Configuration Management** - Environment-based config with validation
-- **Error Handling** - Centralized error handling with Sentry integration
-- **Security Best Practices** - CSRF protection, secure HTTP-only cookies, parameterized queries
-
-## 📸 Screenshots
-
-![HealEase Forum - Post Detail View](./docs/screenshot.png)
-*Forum post with nested replies, vote system, and category filtering*
-
-## 🚀 Local Development
+## Setup
 
 ### Prerequisites
 
 - Node.js 18+
 - npm or yarn
-- PostgreSQL database
+- Backend running on `http://localhost:3000`
 
-### Frontend Setup
+### Installation
 
 ```bash
-# Clone the repository
+# Clone and install
 git clone https://github.com/BarcDevs/HealEase--client.git
 cd HealEase--client
-
-# Install dependencies
 npm install
 
-# Create environment file
+# Create .env.local (copy from .env.example)
 cp .env.example .env.local
 
-# Required environment variables:
-# VITE_SERVER_URL=http://localhost:4000
-# VITE_HOSTNAME=http://localhost:5173
-# VITE_SERVER_API_VERSION=v1
-# VITE_SENTRY_DSN=your_sentry_dsn
-# VITE_SENTRY_REPLAYS_SESSION_SAMPLE_RATE=0.1
-
-# Start development server
+# Start dev server
 npm run dev
 ```
 
-### Backend Setup
+### Environment Variables
 
-```bash
-# Clone the backend repository
-git clone https://github.com/BarcDevs/HealEase--server.git
-cd HealEase--server
-
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env
-
-# Run database migrations
-npx prisma migrate dev
-
-# Seed the database (optional)
-npm run seed
-
-# Start the server
-npm run dev
+```env
+VITE_SERVER_URL=http://localhost:3000
+VITE_SENTRY_DSN=your-sentry-dsn
 ```
-
-Visit `http://localhost:5173` to see the app in action.
-
-## 🔄 Roadmap
-
-### **Phase 1: Production Hardening** (In Progress)
-
-- [ ] Comprehensive unit and integration tests
-- [ ] Performance optimization and lazy loading
-- [ ] Enhanced error boundaries and fallback UI
-- [ ] Accessibility improvements (WCAG 2.1 AA)
-
-### **Phase 2: Architecture Modernization** (Q2 2025)
-
-- [ ] Migrate backend to **NestJS** for better scalability
-- [ ] Implement GraphQL API alongside REST
-- [ ] Add real-time features with WebSockets
-- [ ] Redis caching layer for performance
-
-### **Phase 3: DevOps & Cloud-Native** (Q3 2025)
-
-- [ ] **Kubernetes** deployment with Helm charts
-- [ ] CI/CD pipeline with GitHub Actions
-- [ ] Terraform for infrastructure as code
-- [ ] Docker containerization with multi-stage builds
-- [ ] Monitoring with Prometheus + Grafana
-- [ ] Log aggregation with ELK stack
-
-### **Phase 4: Feature Expansion**
-
-- [ ] Appointment booking system
-- [ ] Role-based access control (RBAC)
-- [ ] Direct messaging between users
-- [ ] Email notifications system
-- [ ] Advanced search with Elasticsearch
-- [ ] Mobile app with React Native
-
-## 📊 Project Highlights
-
-- **Type-Safe Codebase**: 100% TypeScript coverage with strict mode
-- **Modern Stack**: Latest stable versions of React, Node.js, and tooling
-- **Developer Experience**: Hot reload, ESLint, comprehensive type checking
-- **Scalable Architecture**: Designed for microservices migration
-- **Production Ready**: Error monitoring, performance tracking, CSRF protection
--
-
-## 📊 Architecture Diagram
-
-![Architecture](./docs/architecture.png)
-
-## 🤝 Contributing
-
-This is a portfolio project, but feedback and suggestions are welcome! Feel free to open an issue or reach out.
-
-## 📝 License
-
-This project is private and intended for portfolio demonstration.
 
 ---
 
-<div align="center">
+## Development
 
-**Built by Bar | Full-Stack Developer | Open to Opportunities**
+### Commands
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/barcohendev)
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=flat-square&logo=google-chrome&logoColor=white)](https://bardevs.com)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:barcprodevelopments@gmail.com)
+```bash
+npm run dev       # Start Vite dev server
+npm run build     # Build for production
+npm run preview   # Preview production build
+npm run typecheck # TypeScript type checking
+npm run lint:check # ESLint validation
+npm run lint:fix   # Auto-fix linting issues
+npm test          # Run Vitest tests
+```
 
-*Passionate about building scalable, user-centric applications with modern cloud-native technologies.*
+### Code Style
 
-</div>
+- **Quotes**: Single quotes (`'`)
+- **Semicolons**: None (except where required)
+- **Indentation**: 4 spaces
+- **Components**: PascalCase files, functional components with hooks
+- **Non-components**: camelCase files
+- **JSX Props**: Always `prop={'value'}` with quotes
+- **Imports**: Organized via `eslint-plugin-simple-import-sort`
+
+See [CLAUDE.md](./CLAUDE.md) for full conventions.
+
+---
+
+## Testing
+
+```bash
+# Run all tests
+npm test
+
+# Run with coverage
+npm test -- --coverage
+
+# Watch mode
+npm test -- --watch
+```
+
+---
+
+## Building
+
+```bash
+# Production build
+npm run build
+
+# Output: dist/ directory
+# Size: ~1.3 MB (gzipped)
+
+# Preview build locally
+npm run preview
+```
+
+---
+
+## Check-in System (Recovered Features)
+
+The check-in system was recovered from conversation history after a PC reset. It includes:
+
+### Pages
+- **CheckInPage** (`/check-in`) - Main hub showing stats, insights, history
+- **NewCheckInPage** (`/check-in/new`) - Create/update daily check-in
+
+### Components
+- **MoodPainChart** - Recharts visualization of mood/pain over time
+- **AIInsightPanel** - Tips, warnings, positive feedback from AI
+- **CheckInForm** - Sliders for mood/pain, activity picker, notes
+- **CheckInHistoryList** - Timeline of previous check-ins
+- **CheckInStats** - Animated stat cards
+
+### Hooks & Services
+- **useCheckInForm** - Form state and validation
+- **saveCheckIn** - Smart POST/PATCH logic with conflict handling
+
+### Validation & Types
+- Full TypeScript types in `src/types/checkIn.ts`
+- Zod validation schema in `src/validations/forms/checkInSchema.ts`
+- Form config constraints in `src/config/schema/checkInForm.ts`
+
+---
+
+## Architecture
+
+See [TECHNICAL_PRD.md](./docs/TECHNICAL_PRD.md) for:
+- System architecture diagram
+- Data flow diagrams
+- Component hierarchy
+- API integration points
+- Performance considerations
+
+---
+
+## Security
+
+- ✅ CSRF protection via Axios interceptors
+- ✅ XSS prevention via sanitized HTML parsing
+- ✅ Open redirect validation
+- ✅ HTTP-only cookie handling
+- ✅ Type-safe forms with Zod validation
+- ✅ Content Security Policy ready
+
+---
+
+## Performance
+
+- 🚀 Lazy route loading with TanStack Router
+- 📦 Code splitting with Vite
+- 🖼️ Image optimization
+- 📊 Bundle analysis: `npm run build -- --visualize`
+- 🔄 Caching via TanStack Query with 5-60 min staleTime
+
+---
+
+## Deployment
+
+Deployed on **Render**:
+
+```bash
+Build: npm install && npm run build
+Start: npm run preview
+```
+
+---
+
+## Support
+
+For issues or questions:
+- 📖 [API Documentation](../HealEase--server#api-endpoints)
+- 🐛 [GitHub Issues](https://github.com/BarcDevs/HealEase--client/issues)
+- 💬 [Community Forum](https://healease-client.onrender.com/forum)
