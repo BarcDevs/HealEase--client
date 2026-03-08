@@ -1,0 +1,74 @@
+HealEase Check-in System - RECOVERED FILES INVENTORY
+================================================================================
+Date: March 8, 2026
+Total Files: 32 production files
+Status: All files successfully restored from conversation history
+
+PAGES (2 files)
+- src/pages/check-in/CheckInPage.tsx (Main check-in hub page)
+- src/pages/check-in/NewCheckInPage.tsx (New check-in form page)
+
+LAYOUTS (1 file)
+- src/pages/layouts/CheckInLayout.tsx (Shared layout wrapper)
+
+ROUTES (3 files)
+- src/routes/_checkin.tsx (Layout route with auth)
+- src/routes/_checkin/check-in/index.tsx (Hub route)
+- src/routes/_checkin/check-in/new.tsx (New check-in route)
+
+COMPONENTS (17 files)
+Insights:
+  - src/components/check-in/insights/AIInsightPanel.tsx
+  - src/components/check-in/insights/CheckInInsight.tsx
+  - src/components/check-in/insights/skeletons/AIInsightPanelSkeleton.tsx
+
+Stats & Visualization:
+  - src/components/check-in/stats/MoodPainChart.tsx
+  - src/components/check-in/stats/chart/MoodPainChartTooltip.tsx
+  - src/components/check-in/CheckInStats.tsx
+  - src/components/check-in/StatCard.tsx
+  - src/components/check-in/checkInStatItems.tsx
+
+History:
+  - src/components/check-in/history/CheckInHistoryItem.tsx
+
+Form Components:
+  - src/components/check-in/ScoreSlider.tsx (1-10 slider)
+  - src/components/check-in/NotesField.tsx (Rich text notes)
+  - src/components/check-in/form/ActivitiesPicker.tsx
+  - src/components/check-in/form/ActivitiesPickerField.tsx
+
+API CLIENT (1 file)
+- src/api/checkIn.ts (Axios client with CRUD operations)
+
+TYPES (1 file)
+- src/types/checkIn.ts (TypeScript definitions)
+
+VALIDATION & CONFIG (2 files)
+- src/validations/forms/checkInSchema.ts (Zod validation schema)
+- src/config/schema/checkInForm.ts (Form constraints)
+
+HANDLERS (2 files)
+- src/handlers/loaders/checkIn.ts (Route data loaders)
+- src/handlers/actions/checkIn.ts (Form submission handlers)
+
+HOOKS (1 file)
+- src/hooks/useCheckInForm.ts (Custom form hook)
+
+UTILITIES & SERVICES (4 files)
+- src/utils/checkIn.ts (Helper utilities)
+- src/lib/checkIn/buildMoodPainSeries.ts (Chart data builder)
+- src/lib/checkIn/loaderHelpers.ts (Loader utilities)
+- src/services/checkIn/saveCheckIn.ts (Smart save logic)
+
+CONVERSATION HISTORY SOURCES:
+- 1e81ef44-aa76-443f-a81a-b5cdcb7f7241.jsonl (Days 7-9: Initial UI)
+- 32e2dfc9-f85d-4c2d-8516-c61a54e409f5.jsonl (Day 9: AI Insights)
+- 493c4d25-e4af-4a74-b5f5-e49668d6a761.jsonl (Days 10-11: Optimistic updates)
+
+NEXT STEPS:
+1. npx @tanstack/router-cli generate
+2. npm run typecheck
+3. npm run lint:fix
+4. npm test
+5. git commit with all restored files

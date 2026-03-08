@@ -41,6 +41,10 @@ const BUTTONS = {
     updatePost: 'Update Post',
     deletePost: 'Delete Post',
 
+    newCheckIn: 'New Check-in',
+    updateCheckIn: 'Update Check-in',
+    saveCheckIn: 'Save Check-in',
+
     tryAgain: 'Try Again',
     showStackTrace: 'Show stack trace',
     goBack: 'Go Back',
@@ -48,10 +52,18 @@ const BUTTONS = {
     reloadPage: 'Reload Page'
 }
 
+const TOASTS = {
+    checkInSaved: 'Check-in saved successfully!',
+    checkInUpdated: 'Check-in updated successfully!',
+    checkInError: 'Failed to save check-in. Please try again.',
+    checkInDeleted: 'Check-in deleted successfully!'
+}
+
 export {
     BRAND_NAME,
     BUTTONS,
     DESCRIPTIONS,
     FIELDS,
-    FOOTER
+    FOOTER,
+    TOASTS
 }
