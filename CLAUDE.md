@@ -8,9 +8,12 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - ALWAYS FOLLOW INDUSTRY STANDARDS & SOLID PRINCIPLES (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
 - Write clean, maintainable, readable code
 - One concern per file
-- Never use array index as key — use the current element as an index
+- Provide a full file edit instead of one edit at a time
+
+### Code Style
+- Never use array index as key - use the current element as an index
 - Text blocks: Don't break unless really long (120–150 chars OK)
-- Text: never use — character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
+- Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 
 ### Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props
