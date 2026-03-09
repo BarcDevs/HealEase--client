@@ -3,14 +3,14 @@
 Keep components small (~40 lines), one per file. Use shadcn/ui components when available.
 
 ## Files & Naming
-- PascalCase filenames (Button.tsx, PostCard.tsx)
+- PascalCase filenames and components
 - One component per file
 - Export at bottom, never inline
 
 ## JSX Style
-- Nested content ALWAYS on new line:
+- Nested content or content wrapped with a jsx/html, ALWAYS on new line
 - Props (2+): Each on new line
-- Single quotes for all props: `prop={'value'}`
+- Single quotes wrapped with curly braces for all props: `prop={'value'}`
 - Fragment children don't work with Recharts — keep component logic separate
 
 ## Imports

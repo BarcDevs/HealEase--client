@@ -16,7 +16,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Quotes: Single quotes (') for all strings, imports, JSX props
 - Semicolons: None (except where required)
 - Indentation: 4 spaces
-- Naming: PascalCase (components), camelCase (non-components), camelCase (folders)
+- Naming: camelCase (non-components), camelCase (folders)
 - Functions: Arrow functions ALWAYS, never regular declarations
 - Types: Prefer `type` over `interface` unless declaration merging needed
 - React Types: Import directly from `react`, not `React.*`
