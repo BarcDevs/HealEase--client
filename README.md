@@ -1,76 +1,63 @@
-# HealEase Frontend
+# HealEase — Recovery Support Platform
 
-Recovery tracking and community platform with AI-powered health insights.
-
-[![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind_4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite_7-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
-
-[🌐 Live App](https://healease-client.onrender.com) · [🔧 Backend Repo](https://github.com/BarcDevs/HealEase--server)
+Recovery is difficult to manage without structure. HealEase provides patients transitioning from hospital or clinical care with daily check-in rituals, progress visibility, and community support.
 
 ---
 
-## Table of Contents
+## Problem Statement
 
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-- [Setup](#setup)
-- [Development](#development)
-- [Testing](#testing)
-- [Building](#building)
+Patients leaving hospital or clinical care face a critical gap: the loss of daily medical oversight and structured routine. Between appointments, motivation declines, progress becomes invisible, and recovery drifts without reinforcement. The result is disengagement and setbacks.
+
+HealEase addresses this by creating a structured daily check-in ritual, making recovery progress visible through charts, and providing community connection with others in similar circumstances.
 
 ---
 
-## Tech Stack
+## Product Philosophy
 
-| Layer | Technology |
-|---|---|
-| Framework | React 19 + TypeScript |
-| Build Tool | Vite 7 |
-| Routing | TanStack Router v1 |
-| Styling | TailwindCSS 4 |
-| UI Components | shadcn/ui + Radix UI |
-| Forms | react-hook-form + Zod |
-| State | Redux Toolkit + Redux Persist |
-| Data Fetching | Axios + TanStack Query |
-| Notifications | Sonner |
-| Charts | Recharts |
-| HTTP Client | Axios (with CSRF interceptors) |
+**Structure**: Recovery benefits from daily routine. A single check-in per day creates the behavioral anchor needed for consistency.
+
+**Visibility**: Progress is often hard to feel day by day. Charts and trends make recovery visible over time, revealing patterns individual days cannot show.
+
+**Early Detection**: Pattern analysis can identify when engagement or mood is declining, helping catch setbacks early.
+
+**Community**: Connection with others going through recovery reduces isolation during a vulnerable time.
 
 ---
 
-## Features
+## Key Features
 
-### ✅ Core
-- 🔐 **Secure Authentication** - JWT cookies + CSRF protection
-- 📝 **Daily Check-ins** - Mood/pain tracking with 1-10 scales
-- 📊 **Health Insights** - AI-powered analysis of check-in trends
-- 💬 **Community Forum** - Posts, replies, voting, tags
-- 👤 **User Profiles** - Bio, location, timezone, health interests
+**Daily Check-Ins**
+Users log mood (1-10), pain level (1-10), activities, and notes in a single daily ritual. The system enforces one check-in per calendar day; subsequent submissions update the existing entry.
 
-### ✅ Check-in System (Recovered)
-- ✏️ **Form** - Mood/pain sliders, activities, notes
-- 📈 **Chart** - Mood & pain over time (Recharts)
-- 💡 **AI Insights Panel** - Tips, warnings, positive feedback
-- 📋 **History** - Timeline of all check-ins
-- ⚡ **Smart Save** - Auto-detects existing check-in for PATCH
-- 🔄 **Optimistic Updates** - Instant UI feedback before server confirmation
+**Progress Visualization**
+Mood and pain charts display trends over time, making recovery visible and tangible.
 
-### ✅ UI
-- 🎨 **Responsive Design** - Mobile-first, Tailwind + shadcn/ui
-- ♿ **Accessible** - WCAG compliant components
-- 🌓 **Dark Mode Support** - Via TailwindCSS
-- 📱 **Mobile Optimized** - Touch-friendly interactions
+**Community Forum**
+A space for patients to share experiences, ask questions, and connect with others in recovery. Includes posts, replies, voting, and tag-based filtering.
 
-See [docs/structure.md](./docs/structure.md) for detailed project structure.
+**User Profiles**
+Profiles capture bio, location, timezone, and emerging personalization through health interests and activity preferences. These support improved recommendations and community connection.
+
+**Insights**
+Lightweight, supportive insights generated from check-in patterns help detect trends and maintain motivation. Insights are explicitly labeled as AI-assisted suggestions, not medical advice.
 
 ---
 
-## Setup
+## Technology Stack
+
+| Layer | Technology                                            |
+|---|-------------------------------------------------------|
+| **Frontend** | React 19, TypeScript, TanStack Router, TanStack Query |
+| **Styling** | TailwindCSS 4, shadcn/ui                              |
+| **Backend** | Node.js, Express, PostgreSQL, Prisma ORM              |
+| **AI** | Google AI API for lightweight insights                |
+| **Deployment** | Render (current), AWS (future production)             |
+
+---
+
+## Local Setup
 
 ### Prerequisites
-
 - Node.js 18+
 - npm or yarn
 - Backend running on `http://localhost:3000`
@@ -83,7 +70,7 @@ git clone https://github.com/BarcDevs/HealEase--client.git
 cd HealEase--client
 npm install
 
-# Create .env.local (copy from .env.example)
+# Create environment file
 cp .env.example .env.local
 
 # Start dev server
@@ -97,140 +84,78 @@ VITE_SERVER_URL=http://localhost:3000
 VITE_SENTRY_DSN=your-sentry-dsn
 ```
 
----
-
-## Development
-
 ### Commands
 
 ```bash
 npm run dev       # Start Vite dev server
-npm run build     # Build for production
+npm run build     # Production build
 npm run preview   # Preview production build
-npm run typecheck # TypeScript type checking
-npm run lint:check # ESLint validation
-npm run lint:fix   # Auto-fix linting issues
-npm test          # Run Vitest tests
-```
-
-### Code Style
-
-- **Quotes**: Single quotes (`'`)
-- **Semicolons**: None (except where required)
-- **Indentation**: 4 spaces
-- **Components**: PascalCase files, functional components with hooks
-- **Non-components**: camelCase files
-- **JSX Props**: Always `prop={'value'}` with quotes
-- **Imports**: Organized via `eslint-plugin-simple-import-sort`
-
-See [CLAUDE.md](./CLAUDE.md) for full conventions.
-
----
-
-## Testing
-
-```bash
-# Run all tests
-npm test
-
-# Run with coverage
-npm test -- --coverage
-
-# Watch mode
-npm test -- --watch
+npm run typecheck # TypeScript checking
+npm run lint:fix  # Format & lint
+npm test          # Run tests
 ```
 
 ---
 
-## Building
+## Folder Structure
 
-```bash
-# Production build
-npm run build
+See [docs/structure.md](./docs/structure.md) for complete structure.
 
-# Output: dist/ directory
-# Size: ~1.3 MB (gzipped)
-
-# Preview build locally
-npm run preview
-```
-
----
-
-## Check-in System (Recovered Features)
-
-The check-in system was recovered from conversation history after a PC reset. It includes:
-
-### Pages
-- **CheckInPage** (`/check-in`) - Main hub showing stats, insights, history
-- **NewCheckInPage** (`/check-in/new`) - Create/update daily check-in
-
-### Components
-- **MoodPainChart** - Recharts visualization of mood/pain over time
-- **AIInsightPanel** - Tips, warnings, positive feedback from AI
-- **CheckInForm** - Sliders for mood/pain, activity picker, notes
-- **CheckInHistoryList** - Timeline of previous check-ins
-- **CheckInStats** - Animated stat cards
-
-### Hooks & Services
-- **useCheckInForm** - Form state and validation
-- **saveCheckIn** - Smart POST/PATCH logic with conflict handling
-
-### Validation & Types
-- Full TypeScript types in `src/types/checkIn.ts`
-- Zod validation schema in `src/validations/forms/checkInSchema.ts`
-- Form config constraints in `src/config/schema/checkInForm.ts`
+Key directories:
+- **src/api/** — API client modules by domain
+- **src/components/** — React components
+- **src/routes/** — TanStack Router file-based routes
+- **src/store/** — Redux state management
+- **src/handlers/** — Route loaders and actions
+- **src/validations/** — Zod validation schemas
+- **src/types/** — TypeScript type definitions
 
 ---
 
-## Architecture
+## Architecture & Documentation
 
-[Structure diagram](https://www.notion.so/HealEase-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
+[Architecture Diagram](https://www.notion.so/HealEase-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
 
-See [TECHNICAL_PRD.md](./docs/TECHNICAL_PRD.md) for:
-- System architecture diagram
-- Data flow diagrams
-- Component hierarchy
-- API integration points
-- Performance considerations
+See [docs/TECHNICAL_PRD.md](./docs/TECHNICAL_PRD.md) for:
+- System architecture
+- Data models
+- API specification
+- Check-in model and constraints
+- User flows
+
+---
+
+## Code Standards
+
+Code follows [CLAUDE.md](./CLAUDE.md) conventions:
+- TypeScript with strict typing
+- React 19 functional components
+- Single quotes, no semicolons, 4-space indentation
+- shadcn/ui for UI components
+- Centralized API client with CSRF protection
+- Redux for global state
 
 ---
 
 ## Security
 
-- ✅ CSRF protection via Axios interceptors
-- ✅ XSS prevention via sanitized HTML parsing
-- ✅ Open redirect validation
-- ✅ HTTP-only cookie handling
-- ✅ Type-safe forms with Zod validation
-- ✅ Content Security Policy ready
-
----
-
-## Performance
-
-- 🚀 Lazy route loading with TanStack Router
-- 📦 Code splitting with Vite
-- 🖼️ Image optimization
-- 📊 Bundle analysis: `npm run build -- --visualize`
-- 🔄 Caching via TanStack Query with 5-60 min staleTime
+- CSRF protection via Axios interceptors
+- XSS prevention via HTML sanitization (DOMPurify)
+- Open redirect validation
+- HTTP-only JWT cookies
+- Type-safe forms with Zod validation
 
 ---
 
 ## Deployment
 
-Deployed on **Render**:
-
-```bash
-Build: npm install && npm run build
-Start: npm run preview
-```
+Currently deployed on **Render** with automatic builds from main branch. Future production infrastructure planned on **AWS**.
 
 ---
 
-## Support
+## Support & Contribution
 
-For issues or questions:
-- 📖 [API Documentation](../HealEase--server#api-endpoints)
-- 🐛 [GitHub Issues](https://github.com/BarcDevs/HealEase--client/issues)
+- 📖 [Backend Repository](https://github.com/BarcDevs/HealEase--server)
+- 📋 [Technical PRD](./docs/TECHNICAL_PRD.md)
+- 🐛 [Issues](https://github.com/BarcDevs/HealEase--client/issues)
 - 💬 [Community Forum](https://healease-client.onrender.com/forum)
