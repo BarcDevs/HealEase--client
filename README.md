@@ -15,7 +15,6 @@ Recovery tracking and community platform with AI-powered health insights.
 
 - [Tech Stack](#tech-stack)
 - [Features](#features)
-- [Project Structure](#project-structure)
 - [Setup](#setup)
 - [Development](#development)
 - [Testing](#testing)
@@ -261,6 +260,8 @@ The check-in system was recovered from conversation history after a PC reset. It
 ---
 
 ## Architecture
+
+[Structure diagram](https://www.notion.so/HealEase-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
 
 See [TECHNICAL_PRD.md](./docs/TECHNICAL_PRD.md) for:
 - System architecture diagram
