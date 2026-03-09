@@ -10,9 +10,15 @@ type Props = {
     user: PartialUser
     withName?: boolean
     textStyles?: string
+    image?: string
 }
 
-const UserLabel = ({user: {image, firstName, lastName, username}, withName, textStyles}: Props) => (
+const UserLabel = ({
+    user: {firstName, lastName, username},
+    withName,
+    textStyles,
+    image
+}: Props) => (
     <div className={'flex-center flex-row flex-wrap gap-1'}>
         <Avatar>
             <AvatarImage src={image}/>

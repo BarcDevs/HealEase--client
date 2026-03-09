@@ -22,7 +22,6 @@ export type User = {
     firstName: string
     lastName: string
     username: string
-    image?: string
     email: string
     role: Role
 }
@@ -32,7 +31,6 @@ export type PartialUser = {
     firstName: string
     lastName: string
     username: string
-    image?: string
 }
 
 export type InputProps = ComponentProps<'input'>
