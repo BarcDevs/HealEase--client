@@ -67,6 +67,6 @@ Never: Multiple components per file | Code snippets | NEXT_PUBLIC_ prefix | Serv
 ## Git
 - Write clear commit messages (imperative, present tense)
 - Use branches for features/fixes
-- Use conventional commit format (feat, fix, docs, style, refactor, test, chore)
+- Use conventional commit format (feat, fix, docs, style, rfc, test, chore)
 - Avoid large commits; keep them focused and atomic (every commit should have one change or fix)
 - Claude plans should instructions never be committed
