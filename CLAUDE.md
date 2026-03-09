@@ -1,6 +1,6 @@
 # Claude Code Preferences — HealEase
 
-HealEase — Vite 7 + React 19 health & wellness forum with user auth, check-ins, and community features.
+HealEase — Recovery support platform for patients transitioning from hospital/clinical care. Daily check-ins + AI insights + community forum, built with React 19, TypeScript, TanStack Router/Query.
 
 ## Core Rules (Apply Everywhere)
 
@@ -39,7 +39,6 @@ Groups (auto-fixed by `npm run lint:fix`):
 5. Styles (last)
 
 ## Tech Stack
-
 Core: Vite 7, React 19, TypeScript 5, TailwindCSS 4, TanStack Router v1
 State: Redux Toolkit 2, redux-persist, TanStack Query
 Forms: react-hook-form 7, Zod, shadcn/ui
@@ -48,7 +47,6 @@ UI: shadcn/ui, Radix UI, lucide-react
 Tools: Sentry, Million.js, date-fns, DOMPurify
 
 ## Quick Checklist
-
 Arrow functions | Single quotes | No semicolons | 4-space indent | Nested content on new lines
 JSX props: prop={'value'} | Export at bottom | Keep components ~40 lines
 Use api from @/api | Access env via config | Use shadcn/ui components
