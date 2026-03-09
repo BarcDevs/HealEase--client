@@ -1,3 +1,5 @@
+import {dayInMs} from '@/constants/time.ts'
+
 type Config = {
     serverUrl: string
     hostname: string
@@ -24,7 +26,7 @@ const config: Config = {
     serverUrl: env.VITE_SERVER_URL || 'http://localhost:4000',
     hostname: env.VITE_HOSTNAME || 'http://localhost:5173',
     serverApiVersion: env.VITE_SERVER_API_VERSION || 'v1',
-    loginDuration: 7 * 24 * 60 * 60 * 1000, // 7 days
+    loginDuration: 7 * dayInMs,
 
     replaysSessionSampleRate: (() => {
         const raw = env.VITE_SENTRY_REPLAYS_SESSION_SAMPLE_RATE

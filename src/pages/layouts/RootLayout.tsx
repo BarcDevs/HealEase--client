@@ -9,6 +9,8 @@ import Header from '@/components/layout/root/Header.tsx'
 
 import {useAuth} from '@/hooks/useAuth.ts'
 
+import {minuteInMs} from '@/constants/time'
+
 import {env} from '@/config'
 
 import {refreshAuthData} from '@/handlers/auth.ts'
@@ -22,7 +24,7 @@ const RootLayout = Sentry.withProfiler(
 
             const interval = setInterval(() => {
                 refreshAuthData()
-            }, 1000 * 60 * 50) // refresh every 50 min
+            }, minuteInMs * 50)
 
             return () => clearInterval(interval)
         }, [checkAuth])
