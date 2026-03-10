@@ -59,11 +59,19 @@ const Header = () => {
                             </section>}
 
                         {isLoggedIn &&
-                            <Button
-                                className={'bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'}
-                                onClick={logout}>
-                                {BUTTONS.logout}
-                            </Button>
+                            <section className={'flex space-x-2'}>
+                                <Button
+                                    variant={'outline'}>
+                                    <Link to={'/profile/settings'}>
+                                        Settings
+                                    </Link>
+                                </Button>
+                                <Button
+                                    className={'bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'}
+                                    onClick={logout}>
+                                    {BUTTONS.logout}
+                                </Button>
+                            </section>
                         }
                     </div>
 
