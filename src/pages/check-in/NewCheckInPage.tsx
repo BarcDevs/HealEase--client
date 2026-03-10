@@ -8,7 +8,7 @@ import {useNavigate} from '@tanstack/react-router'
 
 import NotesField from '@/components/check-in/NotesField.tsx'
 import ScoreSlider from '@/components/check-in/ScoreSlider.tsx'
-import Error from '@/components/shared/Error.tsx'
+import {Error} from '@/components/shared/Error.tsx'
 import TagInput from '@/components/shared/form/TagInput.tsx'
 import Page from '@/components/shared/ui/Page.tsx'
 import {Button} from '@/components/ui/button.tsx'

@@ -1,5 +1,3 @@
-import {FC} from 'react'
-
 import {AxiosError} from 'axios'
 import {useSelector} from 'react-redux'
 
@@ -18,9 +16,14 @@ type ErrorPageProps = {
     reset: () => void
 }
 
-const ErrorPage: FC<ErrorPageProps> = ({error, reset}) => {
+export const ErrorPage = ({
+    error,
+    reset
+}: ErrorPageProps) => {
     const router = useRouter()
-    const user = useSelector((state: IRootState) => state.auth.user)
+    const user = useSelector(
+        (state: IRootState) => state.auth.user
+    )
 
     const isAdmin = user?.role === 'ADMIN'
     const isDevMode = env.DEV
@@ -136,5 +139,3 @@ const ErrorPage: FC<ErrorPageProps> = ({error, reset}) => {
         </div>
     )
 }
-
-export default ErrorPage

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { getRouteApi, Link, useNavigate } from '@tanstack/react-router'
 
-import Error from '@/components/shared/Error.tsx'
+import {Error} from '@/components/shared/Error.tsx'
 import FormInput from '@/components/shared/form/FormInput.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Checkbox } from '@/components/ui/checkbox.tsx'

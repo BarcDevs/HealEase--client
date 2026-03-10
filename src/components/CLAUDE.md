@@ -10,7 +10,7 @@ Keep components small (~40 lines), one per file. Use shadcn/ui components when a
 ## JSX Style
 - Nested content or content wrapped with a jsx/html, ALWAYS on new line
 - Props (2+): Each on new line
-- Single quotes wrapped with curly braces for all props: `prop={'value'}`
+- Single quotes wrapped with curly braces for all props and string values: `prop={'value'}`
 - Fragment children don't work with Recharts — keep component logic separate
 
 ## Imports
