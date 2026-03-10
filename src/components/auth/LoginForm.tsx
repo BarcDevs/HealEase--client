@@ -1,31 +1,43 @@
-import { useState } from 'react'
+import {useState} from 'react'
 
-import { useForm } from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { getRouteApi, Link, useNavigate } from '@tanstack/react-router'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {
+    getRouteApi,
+    Link,
+    useNavigate
+} from '@tanstack/react-router'
 
 import {Error} from '@/components/shared/Error.tsx'
 import FormInput from '@/components/shared/form/FormInput.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { Checkbox } from '@/components/ui/checkbox.tsx'
-import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form.tsx'
+import {Button} from '@/components/ui/button.tsx'
+import {Checkbox} from '@/components/ui/checkbox.tsx'
+import {
+    Form,
+    FormField,
+    FormItem,
+    FormLabel
+} from '@/components/ui/form.tsx'
 
-import { useAuth } from '@/hooks/useAuth.ts'
+import {useAuth} from '@/hooks/useAuth.ts'
 
 import STYLES from '@/lib/styles.ts'
 
-import { BUTTONS, FIELDS } from '@/constants/plainTexts.ts'
+import {BUTTONS, FIELDS} from '@/constants/plainTexts.ts'
 
-import { LoginSchema, loginSchema } from '@/validations/forms/loginSchema.ts'
+import {
+    LoginSchema,
+    loginSchema
+} from '@/validations/forms/loginSchema.ts'
 
 const route = getRouteApi('/(auth)/login')
 
 const LoginForm = ({}) => {
-    const { login } = useAuth()
+    const {login} = useAuth()
     const navigate = useNavigate()
     const search = route.useSearch()
-    const redirect = ( search as any ).redirect || '/'
+    const redirect = (search as any).redirect || '/'
     const [error, setError] = useState('')
 
     const form = useForm<LoginSchema>({
@@ -38,7 +50,6 @@ const LoginForm = ({}) => {
     })
 
     const onSubmit = (values: LoginSchema) => {
-        console.log('login')
         login(values)
             .then(() => navigate({
                 to: redirect,
@@ -84,12 +95,13 @@ const LoginForm = ({}) => {
                 <FormField
                     control={form.control}
                     name={'remember'}
-                    render={({ field }) => (
+                    render={({field}) => (
                         <FormItem className={'flex items-center space-x-2'}>
-                            <Checkbox id={'remember'}
-                                      className={'mt-1.5'}
-                                      checked={field.value}
-                                      onCheckedChange={field.onChange}
+                            <Checkbox
+                                id={'remember'}
+                                className={'mt-1.5'}
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
                             />
                             <FormLabel
                                 htmlFor={'remember'}>
