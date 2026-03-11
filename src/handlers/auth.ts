@@ -1,3 +1,5 @@
+import {queryClient} from '@/lib/queryClient'
+
 import {getCsrfToken, getMe, login, logout, signup} from '@/api/auth.ts'
 import {store} from '@/store'
 import {loginAction, logoutAction} from '@/store/authSlice.ts'
@@ -8,7 +10,9 @@ import {SignupSchema} from '@/validations/forms/signupSchema.ts'
 export const getCsrfTokenFromStore = () =>
     store.getState().token.token
 
-export const handleLogin = async (credentials: LoginSchema) => {
+export const handleLogin = async (
+    credentials: LoginSchema
+) => {
     const {data} = (await login(credentials)).data
     if (!data) return false
 
@@ -22,7 +26,10 @@ export const handleLogin = async (credentials: LoginSchema) => {
 }
 
 export const handleSignup = async (
-    userData: Omit<SignupSchema, 'confirmPassword'> & { confirmPassword?: string }) => {
+    userData: Omit<SignupSchema, 'confirmPassword'> & {
+        confirmPassword?: string
+    }
+) => {
     delete userData.confirmPassword
     const {data} = (await signup(userData)).data
 
@@ -46,4 +53,5 @@ export const handleLogout = async () => {
 
     store.dispatch(removeTokenAction())
     store.dispatch(logoutAction())
+    queryClient.clear()
 }
