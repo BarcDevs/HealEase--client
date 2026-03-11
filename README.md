@@ -137,6 +137,29 @@ Code follows [CLAUDE.md](./CLAUDE.md) conventions:
 
 ---
 
+## Authentication
+
+HealEase supports two authentication methods:
+
+**Email & Password**
+- Traditional email/password signup and login
+- Password reset via email
+- Form validation with Zod schemas
+
+**Google OAuth**
+- Sign in with Google button on login and signup pages
+- Automatic account linking for existing emails
+- New account creation if no existing email match
+- Seamless session management via HTTP-only cookies
+
+Both methods use the same session system:
+- JWT stored in HTTP-only `accessToken` cookie (auto-sent on requests)
+- CSRF token in `_csrf` cookie (read and sent as `x-csrf-token` header for mutations)
+- Redux state tracks authenticated user
+- Auto-refresh of auth state on app mount and periodic validation
+
+---
+
 ## Security
 
 - CSRF protection via Axios interceptors
@@ -144,6 +167,7 @@ Code follows [CLAUDE.md](./CLAUDE.md) conventions:
 - Open redirect validation
 - HTTP-only JWT cookies
 - Type-safe forms with Zod validation
+- OAuth state validation to prevent CSRF attacks
 
 ---
 
