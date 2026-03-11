@@ -38,13 +38,6 @@ vi.mock('@/handlers/auth.ts', () => ({
     refreshAuthData: vi.fn()
 }))
 
-vi.mock('@/config/protectedRoutes.ts', () => ({
-    default: [
-        /^\/forum\/posts\/create$/,
-        /^\/forum\/posts\/[^/]+\/edit$/
-    ]
-}))
-
 import {useAuth} from '@/hooks/useAuth'
 
 // ==================== useAuth ====================
@@ -61,6 +54,11 @@ describe('useAuth',
 
         beforeEach(() => {
             vi.clearAllMocks()
+
+            vi.stubGlobal(
+                'location',
+                {reload: vi.fn()}
+            )
 
             mockUseRouterState.mockReturnValue('/home')
 
@@ -261,19 +259,8 @@ describe('useAuth',
                     })
 
                 it(
-                    'should redirect to home if on protected route',
+                    'should reload page on logout',
                     async () => {
-                        const mockLocation = {href: ''}
-                        Object.defineProperty(
-                            window,
-                            'location',
-                            {
-                                value: mockLocation,
-                                writable: true
-                            })
-
-                        mockUseRouterState
-                            .mockReturnValue('/forum/posts/create')
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
@@ -282,32 +269,8 @@ describe('useAuth',
                         )
                         await result.current.logout()
 
-                        expect(mockLocation.href).toBe('/')
-                    })
-
-                it(
-                    'should not redirect if on non-protected route',
-                    async () => {
-                        const mockLocation = {href: ''}
-                        Object.defineProperty(
-                            window,
-                            'location',
-                            {
-                                value: mockLocation,
-                                writable: true
-                            })
-
-                        mockUseRouterState
-                            .mockReturnValue('/forum/posts')
-                        mockHandleLogout
-                            .mockResolvedValueOnce(undefined)
-
-                        const {result} = renderHook(
-                            () => useAuth()
-                        )
-                        await result.current.logout()
-
-                        expect(mockLocation.href).toBe('')
+                        expect(window.location.reload)
+                            .toHaveBeenCalled()
                     })
             })
 
