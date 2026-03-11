@@ -11,7 +11,7 @@ export const validateUser = ({ location }: {
         throw redirect({
             to: '/login',
             search: {
-                redirect: location.href
+                redirect: location.pathname
             }
         })
     }

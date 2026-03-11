@@ -17,11 +17,13 @@ export const handleLogin = async (
     if (!data) return false
 
     store.dispatch(setTokenAction(data._csrf))
-    getMe().then(({data: response}) =>
-        store.dispatch(loginAction({
-            user: response.data.user,
-            remember: credentials.remember
-        })))
+
+    const {data: meResponse} = await getMe()
+    store.dispatch(loginAction({
+        user: meResponse.data.user,
+        remember: credentials.remember
+    }))
+
     return true
 }
 
@@ -49,9 +51,15 @@ export const refreshAuthData = async () => {
 }
 
 export const handleLogout = async () => {
-    await logout()
+    try {
+        await logout()
+    } catch {
+        // Continue with logout even if API call fails
+    }
 
     store.dispatch(removeTokenAction())
     store.dispatch(logoutAction())
+
+    await queryClient.invalidateQueries()
     queryClient.clear()
 }
