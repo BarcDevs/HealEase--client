@@ -1,14 +1,14 @@
 import {UseFormReturn} from 'react-hook-form'
 
-import SuggestedActivities from '@/components/check-in/form/SuggestedActivities.tsx'
-import NotesField from '@/components/check-in/NotesField.tsx'
-import ScoreSlider from '@/components/check-in/ScoreSlider.tsx'
-import {Error} from '@/components/shared/Error.tsx'
-import TagInput from '@/components/shared/form/TagInput.tsx'
-import {Button} from '@/components/ui/button.tsx'
-import {Form} from '@/components/ui/form.tsx'
+import SuggestedActivities from '@/components/check-in/form/SuggestedActivities'
+import NotesField from '@/components/check-in/NotesField'
+import ScoreSlider from '@/components/check-in/ScoreSlider'
+import {Error} from '@/components/shared/Error'
+import TagInput from '@/components/shared/form/TagInput'
+import {Button} from '@/components/ui/button'
+import {Form} from '@/components/ui/form'
 
-import {CheckInSchema} from '@/validations/forms/checkInSchema.ts'
+import {CheckInSchema} from '@/validations/forms/checkInSchema'
 
 type CheckInFormProps = {
     form: UseFormReturn<CheckInSchema>
@@ -77,3 +77,4 @@ const CheckInForm = ({
 )
 
 export default CheckInForm
+

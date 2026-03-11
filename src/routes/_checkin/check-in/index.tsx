@@ -1,13 +1,13 @@
 import {createFileRoute} from '@tanstack/react-router'
 
-import {routeError} from '@/lib/routeError.ts'
+import {routeError} from '@/lib/routeError'
 
 import {hourInMs} from '@/constants/time'
 
 import {validateUser} from '@/handlers/loaders/auth'
-import {checkInLoader} from '@/handlers/loaders/checkIn.ts'
+import {checkInLoader} from '@/handlers/loaders/checkIn'
 
-import CheckInPage from '@/pages/check-in/CheckInPage.tsx'
+import CheckInPage from '@/pages/check-in/CheckInPage'
 
 export const Route = createFileRoute(
     '/_checkin/check-in/'
