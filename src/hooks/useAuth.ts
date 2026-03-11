@@ -1,10 +1,6 @@
-import { useSelector } from 'react-redux'
+import {useSelector} from 'react-redux'
 
-import { useRouterState } from '@tanstack/react-router'
-
-import { User } from '@/types'
-
-import protectedRoutes from '@/config/protectedRoutes.ts'
+import {User} from '@/types'
 
 import {
     handleLogin,
@@ -12,7 +8,7 @@ import {
     handleSignup
 } from '@/handlers/auth.ts'
 
-import { IRootState } from '@/store'
+import {IRootState} from '@/store'
 import {
     LoginSchema
 } from '@/validations/forms/loginSchema.ts'
@@ -21,10 +17,6 @@ import {
 } from '@/validations/forms/signupSchema.ts'
 
 export const useAuth = () => {
-    const location = useRouterState({
-        select: state => state.location.pathname
-    })
-
     const isLoggedIn =
         useSelector<IRootState>(state =>
             state.auth.isAuthenticated) as boolean
@@ -46,25 +38,16 @@ export const useAuth = () => {
         }
     }
 
-    const login = async (credentials: LoginSchema) =>
-        await handleLogin(credentials)
+    const login = async (
+        credentials: LoginSchema
+    ) => await handleLogin(credentials)
 
-    const register = async (data: SignupSchema) =>
-        await handleSignup(data)
-
-    const isProtectedRoute = (path: string) => {
-        return protectedRoutes.some(
-            pattern => pattern.test(path)
-        )
-    }
-
+    const register = async (
+        data: SignupSchema
+    ) => await handleSignup(data)
 
     const logout = async () => {
         await handleLogout()
-
-        if (isProtectedRoute(location)) {
-            window.location.href = '/'
-        }
     }
 
     return {
