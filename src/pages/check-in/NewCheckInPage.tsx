@@ -13,6 +13,8 @@ import Page from '@/components/shared/ui/Page.tsx'
 
 import {useCheckInForm} from '@/hooks/useCheckInForm.ts'
 
+import {getErrorMessage} from '@/lib/errors.ts'
+
 import {DEFAULTS} from '@/constants/defaults.ts'
 import {BUTTONS} from '@/constants/plainTexts'
 
@@ -57,8 +59,7 @@ const NewCheckInPage = () => {
             router.invalidate()
             navigate({to: '/check-in'})
         } catch (err) {
-            const message = (err as any).response?.data?.message
-            setError(message || (err as Error).message)
+            setError(getErrorMessage(err))
         }
     }
 

@@ -1,6 +1,5 @@
 import {useState} from 'react'
 
-import {AxiosError} from 'axios'
 import {useForm} from 'react-hook-form'
 import {twMerge} from 'tailwind-merge'
 
@@ -13,6 +12,7 @@ import TagInput from '@/components/shared/form/TagInput.tsx'
 import {Button} from '@/components/ui/button.tsx'
 import {Form} from '@/components/ui/form.tsx'
 
+import {getErrorMessage} from '@/lib/errors.ts'
 import {isPostData} from '@/lib/isPostData.ts'
 import STYLES from '@/lib/styles.ts'
 
@@ -24,7 +24,10 @@ import schemaConfig from '@/config/schema/postForm.ts'
 import {submitForm} from '@/handlers/actions/forum.ts'
 
 import categories from '@/data/forum/categories.ts'
-import {PostSchema,postSchema} from '@/validations/forms/postSchema.ts'
+import {
+    PostSchema,
+    postSchema
+} from '@/validations/forms/postSchema.ts'
 
 type PostFormProps = {
     type: 'create' | 'edit'
@@ -34,7 +37,9 @@ const route = getRouteApi('/_forum/forum/posts/$postId/edit')
 
 const PostForm = ({type}: PostFormProps) => {
     const navigate = useNavigate()
-    const oldData = type === 'edit' ? route.useLoaderData() : undefined
+    const oldData = type === 'edit' ?
+        route.useLoaderData() :
+        undefined
     const [error, setError] = useState('')
 
     const form = useForm<PostSchema>({
@@ -49,7 +54,9 @@ const PostForm = ({type}: PostFormProps) => {
             category: oldData.category,
             title: oldData.title,
             body: oldData.body,
-            tags: [...oldData.tags.map(tag => tag.name)]
+            tags: [
+                ...oldData.tags.map(tag => tag.name)
+            ]
         } : undefined
     })
 
@@ -57,20 +64,18 @@ const PostForm = ({type}: PostFormProps) => {
         setError('')
 
         try {
-            const res = await submitForm(values, (oldData as any)?.id)
+            const res = await submitForm(
+                values,
+                (oldData as any)?.id
+            )
 
-            if (res.data) navigate({
-                to: '/forum/posts/$postId',
-                params: {postId: res.data.id}
-            })
+            if (res.data)
+                navigate({
+                    to: '/forum/posts/$postId',
+                    params: {postId: res.data.id}
+                })
         } catch (err) {
-            if ((err as AxiosError).status === 401) {
-                setError('You are not authorized to perform this action')
-            } else {
-                setError(
-                    (err as any).response?.data?.message ||
-                    (err as Error).message)
-            }
+            setError(getErrorMessage(err))
         }
     }
 
@@ -83,8 +88,10 @@ const PostForm = ({type}: PostFormProps) => {
             </h3>
 
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}
-                      className={'flex--col gap-4'}>
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className={'flex--col gap-4'}
+                >
                     <SelectInput
                         name={'category'}
                         label={'Category'}
@@ -93,7 +100,8 @@ const PostForm = ({type}: PostFormProps) => {
                         className={'w-1/4 border-blue-200'}
                         values={Object.values(categories)
                             .reduce((acc, category) => {
-                                acc[category.key] = category.name
+                                acc[category.key] =
+                                    category.name
                                 return acc
                             }, {} as Record<string, string>)
                         }
@@ -132,7 +140,10 @@ const PostForm = ({type}: PostFormProps) => {
                     <div className={'flex--row mt-6 justify-end gap-4'}>
                         <Button
                             type={'submit'}
-                            className={twMerge(STYLES.button, 'w-fit')}
+                            className={twMerge(
+                                STYLES.button,
+                                'w-fit'
+                            )}
                         >
                             {type === 'create' ?
                                 BUTTONS.createPost :
