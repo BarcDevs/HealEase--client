@@ -1,17 +1,15 @@
-import {FC, useMemo} from 'react'
-
 import {getRouteApi, Link} from '@tanstack/react-router'
 
 import CheckInHistoryList from '@/components/check-in/history/CheckInHistoryList.tsx'
 import CheckInHistorySkeleton from '@/components/check-in/history/skeletons/CheckInHistorySkeleton.tsx'
+import AIInsightPanel from '@/components/check-in/insights/AIInsightPanel.tsx'
 import CheckInStats from '@/components/check-in/stats/CheckInStats'
 import MoodPainChart from '@/components/check-in/stats/MoodPainChart.tsx'
-import CheckInsChartSkeleton from '@/components/check-in/stats/skeletons/CheckInsChartSkeleton.tsx'
 import CheckInStatsSkeleton from '@/components/check-in/stats/skeletons/CheckInStatsSkeleton.tsx'
 import Page from '@/components/shared/ui/Page.tsx'
 import {Button} from '@/components/ui/button.tsx'
 
-import {buildMoodPainSeries} from '@/lib/checkIn/buildMoodPainSeries.ts'
+import {isTodayCheckIn} from '@/lib/checkIn/loaderHelpers.ts'
 
 import {BUTTONS} from '@/constants/plainTexts'
 
@@ -21,47 +19,83 @@ type CheckInPageProps = {
 
 const route = getRouteApi('/_checkin/check-in/')
 
-const CheckInPage: FC<CheckInPageProps> = ({
+const CheckInPage = ({
     isLoading
-}) => {
+}: CheckInPageProps) => {
     const {
         history,
         stats
-    } = route.useLoaderData() ?? { history: [], stats: {} as any }
+    } = route.useLoaderData() ?? {
+        history: [],
+        stats: {} as any
+    }
 
-    const moodPainSeries = useMemo(
-        () => history ? buildMoodPainSeries(history) : [],
-        [history]
+    const todayCheckIn = history.find(
+        checkIn => isTodayCheckIn(checkIn)
     )
+    const buttonText = todayCheckIn
+        ? BUTTONS.updateCheckIn
+        : BUTTONS.newCheckIn
+
+    const chartData = history.map(checkIn => ({
+        date: checkIn.checkInDate,
+        mood: checkIn.moodScore,
+        pain: checkIn.painLevel,
+        energy: checkIn.energy
+    }))
 
     return (
         <Page>
-            <div className={'mb-6 flex items-center justify-between'}>
+            <div className={'mb-8 flex items-center justify-between'}>
                 <h1 className={'text-2xl font-bold'}>
                     Check-in
                 </h1>
-                <Button
-                    asChild
-                    disabled={isLoading}
-                    className={`${isLoading ? 'pointer-events-none cursor-not-allowed opacity-50' : ''}`}
-                >
+                <Button asChild disabled={isLoading}>
                     <Link to={'/check-in/new'}>
-                        {BUTTONS.newCheckIn}
+                        {buttonText}
                     </Link>
                 </Button>
             </div>
 
-            {isLoading ? <>
-                    <CheckInStatsSkeleton/>
-                    <CheckInsChartSkeleton/>
-                    <CheckInHistorySkeleton/>
-                </> :
+            {isLoading ? (
                 <>
-                    <CheckInStats stats={stats}/>
-                    <MoodPainChart data={moodPainSeries}/>
-                    <CheckInHistoryList checkIns={history}/>
+                    <CheckInStatsSkeleton/>
+                    <div className={'mt-8'}/>
+                    <CheckInHistorySkeleton/>
                 </>
-            }
+            ) : (
+                <>
+                    <div className={'mb-8'}>
+                        <h2 className={'mb-4 text-lg font-semibold'}>
+                            Your Stats
+                        </h2>
+                        <CheckInStats stats={stats}/>
+                    </div>
+
+                    {chartData.length > 0 && (
+                        <div className={'mb-8'}>
+                            <h2 className={'mb-4 text-lg font-semibold'}>
+                                Mood & Pain Trend
+                            </h2>
+                            <MoodPainChart data={chartData}/>
+                        </div>
+                    )}
+
+                    <div className={'mb-8'}>
+                        <h2 className={'mb-4 text-lg font-semibold'}>
+                            AI Insights
+                        </h2>
+                        <AIInsightPanel insights={todayCheckIn?.insights}/>
+                    </div>
+
+                    <div>
+                        <h2 className={'mb-4 text-lg font-semibold'}>
+                            History
+                        </h2>
+                        <CheckInHistoryList checkIns={history}/>
+                    </div>
+                </>
+            )}
         </Page>
     )
 }

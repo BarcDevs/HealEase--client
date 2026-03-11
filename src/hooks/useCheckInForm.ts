@@ -1,48 +1,49 @@
-import {useState} from 'react'
+import {useMemo} from 'react'
 
-import {useForm} from 'react-hook-form'
-import {toast} from 'sonner'
+import {useForm, useWatch} from 'react-hook-form'
 
 import {zodResolver} from '@hookform/resolvers/zod'
-import {useNavigate, useRouter} from '@tanstack/react-router'
 
-import {CheckIn} from '@/types/checkIn'
+import {CheckIn, CheckInStats} from '@/types/checkIn.ts'
 
-import {extractErrorMsg} from '@/utils/error'
+import {isTodayCheckIn} from '@/lib/checkIn/loaderHelpers.ts'
 
-import {TOASTS} from '@/constants/plainTexts'
-
-import checkInFormConfig from '@/config/schema/checkInForm'
-
-import {handleCheckInSave} from '@/handlers/actions/checkIn'
+import checkInFormConfig from '@/config/schema/checkInForm.ts'
 
 import {
     CheckInSchema,
     checkInSchema
-} from '@/validations/forms/checkInSchema'
+} from '@/validations/forms/checkInSchema.ts'
 
 const {
     moodScore: moodConfig,
     painLevel: painConfig
 } = checkInFormConfig
 
-export const useCheckInForm = (
-    existingCheckIn?: CheckIn | null
-) => {
-    const navigate = useNavigate()
-    const router = useRouter()
-    const [error, setError] = useState('')
-    const [isPending, setIsPending] = useState(false)
+type UseCheckInFormProps = {
+    latestCheckIn: CheckIn | null
+    stats: CheckInStats | null
+}
 
-    const isUpdate = existingCheckIn != null
+export const useCheckInForm = ({
+    latestCheckIn,
+    stats
+}: UseCheckInFormProps) => {
+    const isTodayCheckInExists =
+        latestCheckIn ? isTodayCheckIn(latestCheckIn) : false
+
+    const topActivities = useMemo(
+        () => stats?.topActivities ?? [],
+        [stats]
+    )
 
     const form = useForm<CheckInSchema>({
         resolver: zodResolver(checkInSchema),
-        defaultValues: isUpdate ? {
-            moodScore: existingCheckIn.moodScore,
-            painLevel: existingCheckIn.painLevel,
-            activities: existingCheckIn.activities,
-            notes: existingCheckIn.notes ?? ''
+        defaultValues: isTodayCheckInExists && latestCheckIn ? {
+            moodScore: latestCheckIn.moodScore,
+            painLevel: latestCheckIn.painLevel,
+            activities: latestCheckIn.activities,
+            notes: latestCheckIn.notes ?? ''
         } : {
             moodScore: moodConfig.min,
             painLevel: painConfig.min,
@@ -51,40 +52,34 @@ export const useCheckInForm = (
         }
     })
 
-    const onSubmit = async (values: CheckInSchema) => {
-        setError('')
-        setIsPending(true)
-        try {
-            const result = await handleCheckInSave(
-                values,
-                existingCheckIn ?? undefined
+    const selectedActivities = useWatch({
+        control: form.control,
+        name: 'activities'
+    })
+
+    const suggestedActivities = useMemo(
+        () => topActivities.filter(
+            activity =>
+                !selectedActivities?.includes(activity)
+        ),
+        [topActivities, selectedActivities]
+    )
+
+    const handleAddActivity = (activity: string) => {
+        const currentActivities =
+            form.getValues('activities')
+        if (!currentActivities.includes(activity)) {
+            form.setValue(
+                'activities',
+                [...currentActivities, activity]
             )
-
-            await router.invalidate()
-            await navigate({
-                to: '/check-in',
-                replace: true
-            })
-
-            const message = result.created
-                ? TOASTS.checkInSaved
-                : TOASTS.checkInUpdated
-
-            toast.success(message)
-        } catch (err) {
-            const errorMsg = extractErrorMsg(err)
-            setError(errorMsg)
-            toast.error(errorMsg)
-        } finally {
-            setIsPending(false)
         }
     }
 
     return {
         form,
-        onSubmit,
-        error,
-        isPending,
-        isUpdate
+        isTodayCheckInExists,
+        suggestedActivities,
+        handleAddActivity
     }
 }

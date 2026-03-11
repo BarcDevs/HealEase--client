@@ -6,12 +6,10 @@ import {
     YAxis
 } from 'recharts'
 
-import {MoodPainSeriesPoint} from '@/types/checkIn.ts'
+import type {MoodPainSeriesPoint} from '@/types/checkIn'
 
 import {
-    moodPainChartConfig
-} from '@/components/check-in/stats/chart/chartConfig'
-import {
+    type ChartConfig,
     ChartContainer,
     ChartLegend,
     ChartLegendContent,
@@ -19,11 +17,22 @@ import {
     ChartTooltipContent
 } from '@/components/ui/chart'
 
-type MoodAndPainChartProps = {
+type MoodPainChartProps = {
     data: MoodPainSeriesPoint[]
 }
 
-const dateFormatter = (value: string) =>
+const chartConfig = {
+    mood: {
+        label: 'Mood',
+        color: '#2FAF9E'
+    },
+    pain: {
+        label: 'Pain',
+        color: '#F26D6D'
+    }
+} satisfies ChartConfig
+
+const formatChartDate = (value: string) =>
     new Date(value)
         .toLocaleDateString('en-US', {
             month: 'short',
@@ -32,22 +41,22 @@ const dateFormatter = (value: string) =>
 
 const MoodPainChart = ({
     data
-}: MoodAndPainChartProps) => (
+}: MoodPainChartProps) => (
     <section className={'w-full'}>
         <ChartContainer
-            config={moodPainChartConfig}
+            config={chartConfig}
             className={'h-70 w-full'}
         >
             <LineChart data={data}>
                 <CartesianGrid vertical={false}/>
 
                 <XAxis
-                    dataKey={'date'}
+                    dataKey="date"
                     tickLine={false}
                     axisLine={false}
                     tickMargin={8}
                     minTickGap={32}
-                    tickFormatter={dateFormatter}
+                    tickFormatter={formatChartDate}
                 />
 
                 <YAxis
@@ -58,29 +67,33 @@ const MoodPainChart = ({
                     width={32}
                 />
 
-                <ChartTooltip
-                    content={<ChartTooltipContent/>}
-                />
-
-                <ChartLegend content={<ChartLegendContent/>}/>
+                <ChartTooltip content={<ChartTooltipContent/>}/>
 
                 <Line
                     type={'linear'}
                     dataKey={'mood'}
-                    stroke={moodPainChartConfig.mood.color}
+                    stroke={chartConfig.mood.color}
                     strokeWidth={3}
                     dot={false}
-                    activeDot={{r: 5}}
+                    activeDot={{
+                        r: 5
+                    }}
+                    connectNulls={false}
                 />
 
                 <Line
                     type={'linear'}
                     dataKey={'pain'}
-                    stroke={moodPainChartConfig.pain.color}
+                    stroke={chartConfig.pain.color}
                     strokeWidth={3}
                     dot={false}
-                    activeDot={{r: 5}}
+                    activeDot={{
+                        r: 5
+                    }}
+                    connectNulls={false}
                 />
+
+                <ChartLegend content={<ChartLegendContent/>}/>
             </LineChart>
         </ChartContainer>
     </section>
