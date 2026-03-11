@@ -1,86 +1,85 @@
-import { Link } from '@tanstack/react-router'
+import {useState} from 'react'
 
+import {Link, useLocation} from '@tanstack/react-router'
+
+import MobileMenu from '@/components/layout/root/MobileMenu.tsx'
+import MobileMenuButton from '@/components/layout/root/MobileMenuButton.tsx'
 import Nav from '@/components/layout/root/Nav.tsx'
 import Logo from '@/components/shared/Logo.tsx'
-import { Button } from '@/components/ui/button.tsx'
 
-// import {useLanguage} from '@/context/langContext.tsx'
-// import languages from '@/data/languages.ts'
-import { useAuth } from '@/hooks/useAuth.ts'
+import {useAuth} from '@/hooks/useAuth.ts'
 
-import { BRAND_NAME, BUTTONS } from '@/constants/plainTexts.ts'
+import {BRAND_NAME} from '@/constants/plainTexts.ts'
 
 const Header = () => {
-    // const {lang, changeLang} = useLanguage()
-    const { isLoggedIn, logout } = useAuth()
+    const {isLoggedIn, logout} = useAuth()
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const location = useLocation()
 
-    // const toggleLang = () => {
-    //     changeLang(lang.code === 'en' ? languages.he : languages.en)
-    // }
+    const closeMobileMenu = () => setMobileMenuOpen(false)
 
     return (
         <header className={'sticky top-0 z-50 border-b border-blue-100 bg-white/80 backdrop-blur-sm'}>
-            <div className={'container mx-auto p-4'}>
-                <div className={'flex items-center justify-between'}>
-                    <Link to={'/'}>
-                        <div className={'flex items-center space-x-2'}>
-                            <div
-                                className={'flex size-8 items-center justify-center'}>
-                                <Logo/>
-                            </div>
-                            <span className={'text-xl font-bold text-gray-800'}>
-                                {BRAND_NAME}
-                            </span>
-                        </div>
-                    </Link>
-
-                    <Nav/>
-
-                    <div className={'flex space-x-2'}>
-                        {!isLoggedIn &&
-                            <section className={'flex space-x-2'}>
-                                <Button
-                                    variant={'outline'}
-                                    className={'hidden border-blue-200 text-blue-600 hover:bg-blue-50 sm:inline-flex'}>
-                                    <Link
-                                        to={'/login'}
-                                        search={{ redirect: '/' }}
-                                    >
-                                        {BUTTONS.signIn}
-                                    </Link>
-                                </Button>
-
-                                <Button
-                                    className={'bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'}>
-                                    <Link to={'/signup'}>
-                                        {BUTTONS.joinNow}
-                                    </Link>
-                                </Button>
-                            </section>}
-
-                        {isLoggedIn &&
-                            <section className={'flex space-x-2'}>
-                                <Button
-                                    variant={'outline'}>
-                                    <Link to={'/profile/settings'}>
-                                        Settings
-                                    </Link>
-                                </Button>
-                                <Button
-                                    className={'bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'}
-                                    onClick={logout}>
-                                    {BUTTONS.logout}
-                                </Button>
-                            </section>
-                        }
+            <div className={'flex items-center justify-between px-4 py-3'}>
+                <Link to={'/'} className={'ml-4 flex items-center gap-2'}>
+                    <div className={'flex size-8 items-center justify-center'}>
+                        <Logo/>
                     </div>
+                    <span className={'text-lg font-bold text-gray-800'}>
+                        {BRAND_NAME}
+                    </span>
+                </Link>
 
-                    {/*TODO: Add language picker*/}
-                    {/*<Button onClick={toggleLang}>*/}
-                    {/*    {lang.name}*/}
-                    {/*</Button>*/}
+                <Nav/>
+
+                <div className={'hidden items-center gap-2 sm:flex'}>
+                    {isLoggedIn ? (
+                        <>
+                            <Link
+                                to={'/check-in/new'}
+                                className={'rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700'}
+                            >
+                                Check-in
+                            </Link>
+                            <button
+                                onClick={logout}
+                                className={'rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700'}
+                            >
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link
+                                to={'/login'}
+                                search={{redirect: location.pathname}}
+                                className={'rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900'}
+                            >
+                                Sign In
+                            </Link>
+                            <Link
+                                to={'/signup'}
+                                className={'rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700'}
+                            >
+                                Sign Up
+                            </Link>
+                        </>
+                    )}
                 </div>
+
+                <MobileMenuButton
+                    isOpen={mobileMenuOpen}
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                />
             </div>
+
+            {mobileMenuOpen && (
+                <MobileMenu
+                    isLoggedIn={isLoggedIn}
+                    logout={logout}
+                    onNavigate={closeMobileMenu}
+                />
+            )}
         </header>
     )
 }
