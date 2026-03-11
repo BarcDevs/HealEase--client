@@ -15,7 +15,8 @@ vi.mock(
 vi.mock(
     '@/pages/error/ErrorPage.tsx',
     () => ( {
-        default: () => null
+        default: () => null,
+        ErrorPage: () => null
     } ))
 
 import * as Sentry from '@sentry/react'

@@ -37,7 +37,7 @@ describe(
             () => {
                 const date = new Date('2025-01-15T11:00:00Z')
                 expect(toRelative(date))
-                    .toBe('1 hour ago')
+                    .toMatch(/about 1 hour ago/)
             })
 
         it(

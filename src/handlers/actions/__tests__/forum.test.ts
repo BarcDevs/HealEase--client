@@ -6,15 +6,28 @@ import {
     vi
 } from 'vitest'
 
-const mockCreatePost = vi.fn()
-const mockUpdatePost = vi.fn()
+const { mockCreatePost, mockUpdatePost } = vi.hoisted(() => ({
+    mockCreatePost: vi.fn(),
+    mockUpdatePost: vi.fn()
+}))
 
-vi.mock(
-    '@/api/forum.ts',
-    () => ( {
-        createPost: mockCreatePost,
-        updatePost: mockUpdatePost
-    } ))
+vi.mock('@/api/forum.ts', () => ({
+    createPost: mockCreatePost,
+    updatePost: mockUpdatePost,
+    getPost: vi.fn(),
+    getPosts: vi.fn(),
+    createReply: vi.fn(),
+    updateReply: vi.fn(),
+    deleteReply: vi.fn(),
+    getPostReplies: vi.fn(),
+    deletePost: vi.fn(),
+    upvotePost: vi.fn(),
+    downvotePost: vi.fn(),
+    removeVote: vi.fn(),
+    upvoteReply: vi.fn(),
+    downvoteReply: vi.fn(),
+    removeReplyVote: vi.fn()
+}))
 
 import { submitForm } from '@/handlers/actions/forum'
 

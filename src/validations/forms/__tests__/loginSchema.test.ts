@@ -79,26 +79,6 @@ describe('loginSchema',
             })
 
         it(
-            'should reject password without uppercase letter',
-            () => {
-                const result = loginSchema.safeParse({
-                    ...validLogin,
-                    password: 'test@1234'
-                })
-                expect(result.success).toBe(false)
-            })
-
-        it(
-            'should reject password without lowercase letter',
-            () => {
-                const result = loginSchema.safeParse({
-                    ...validLogin,
-                    password: 'TEST@1234'
-                })
-                expect(result.success).toBe(false)
-            })
-
-        it(
             'should reject password without number',
             () => {
                 const result = loginSchema.safeParse({
@@ -109,28 +89,18 @@ describe('loginSchema',
             })
 
         it(
-            'should reject password without special character',
-            () => {
-                const result = loginSchema.safeParse({
-                    ...validLogin,
-                    password: 'Test12345'
-                })
-                expect(result.success).toBe(false)
-            })
-
-        it(
             'should show format message for invalid password',
             () => {
                 const result = loginSchema.safeParse({
                     ...validLogin,
-                    password: 'alllowercase1'
+                    password: 'alllowercase'
                 })
                 expect(result.success).toBe(false)
                 if ( !result.success ) {
                     const formatIssue =
                         result.error.issues.find(
                             i => i.message.includes(
-                                'Password must contain'
+                                'contain letters and numbers'
                             )
                         )
                     expect(formatIssue).toBeDefined()

@@ -6,47 +6,46 @@ import {
     vi
 } from 'vitest'
 
-import { renderHook } from '@testing-library/react'
+import {renderHook} from '@testing-library/react'
 
-const mockUseSelector = vi.fn()
-const mockUseRouterState = vi.fn()
-const mockHandleLogin = vi.fn()
-const mockHandleLogout = vi.fn()
-const mockHandleSignup = vi.fn()
+const {
+    mockUseSelector,
+    mockUseRouterState,
+    mockHandleLogin,
+    mockHandleLogout,
+    mockHandleSignup
+} = vi.hoisted(() => ({
+    mockUseSelector: vi.fn(),
+    mockUseRouterState: vi.fn(),
+    mockHandleLogin: vi.fn(),
+    mockHandleLogout: vi.fn(),
+    mockHandleSignup: vi.fn()
+}))
 
-vi.mock(
-    'react-redux',
-    () => ( {
-        useSelector: mockUseSelector
-    } ))
+vi.mock('react-redux', () => ({
+    useSelector: mockUseSelector
+}))
 
-vi.mock(
-    '@tanstack/react-router',
-    () => ( {
-        useRouterState: mockUseRouterState
-    } ))
+vi.mock('@tanstack/react-router', () => ({
+    useRouterState: mockUseRouterState
+}))
 
-vi.mock(
-    '@/handlers/auth.ts',
-    () => ( {
-        handleLogin: (...args: any[]) =>
-            mockHandleLogin(...args),
-        handleLogout: () =>
-            mockHandleLogout(),
-        handleSignup: (...args: any[]) =>
-            mockHandleSignup(...args)
-    } ))
+vi.mock('@/handlers/auth.ts', () => ({
+    handleLogin: mockHandleLogin,
+    handleLogout: mockHandleLogout,
+    handleSignup: mockHandleSignup,
+    getCsrfTokenFromStore: vi.fn(),
+    refreshAuthData: vi.fn()
+}))
 
-vi.mock(
-    '@/config/protectedRoutes.ts',
-    () => ( {
-        default: [
-            /^\/forum\/posts\/create$/,
-            /^\/forum\/posts\/[^/]+\/edit$/
-        ]
-    } ))
+vi.mock('@/config/protectedRoutes.ts', () => ({
+    default: [
+        /^\/forum\/posts\/create$/,
+        /^\/forum\/posts\/[^/]+\/edit$/
+    ]
+}))
 
-import { useAuth } from '@/hooks/useAuth'
+import {useAuth} from '@/hooks/useAuth'
 
 // ==================== useAuth ====================
 describe('useAuth',
@@ -84,7 +83,7 @@ describe('useAuth',
                 it(
                     'should return null user when not authenticated',
                     () => {
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         expect(result.current.user).toBeNull()
@@ -106,7 +105,7 @@ describe('useAuth',
                                 return selector(state)
                             })
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         expect(result.current.user)
@@ -120,7 +119,7 @@ describe('useAuth',
                 it(
                     'should return false when not authenticated',
                     () => {
-                        const { result } = renderHook(() =>
+                        const {result} = renderHook(() =>
                             useAuth())
                         expect(result.current.isLoggedIn)
                             .toBe(false)
@@ -142,7 +141,7 @@ describe('useAuth',
                                 return selector(state)
                             })
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         expect(result.current.isLoggedIn)
@@ -165,7 +164,7 @@ describe('useAuth',
                         mockHandleLogin
                             .mockResolvedValueOnce(true)
 
-                        const { result } = renderHook(() =>
+                        const {result} = renderHook(() =>
                             useAuth()
                         )
                         await result.current.login(credentials)
@@ -180,7 +179,7 @@ describe('useAuth',
                         mockHandleLogin
                             .mockResolvedValueOnce(true)
 
-                        const { result } = renderHook(() =>
+                        const {result} = renderHook(() =>
                             useAuth()
                         )
                         const loginResult =
@@ -212,7 +211,7 @@ describe('useAuth',
                         mockHandleSignup
                             .mockResolvedValueOnce(true)
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         await result.current.register(signupData)
@@ -227,7 +226,7 @@ describe('useAuth',
                         mockHandleSignup
                             .mockResolvedValueOnce(true)
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         const registerResult =
@@ -252,7 +251,7 @@ describe('useAuth',
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
-                        const { result } = renderHook(() =>
+                        const {result} = renderHook(() =>
                             useAuth()
                         )
                         await result.current.logout()
@@ -264,7 +263,7 @@ describe('useAuth',
                 it(
                     'should redirect to home if on protected route',
                     async () => {
-                        const mockLocation = { href: '' }
+                        const mockLocation = {href: ''}
                         Object.defineProperty(
                             window,
                             'location',
@@ -278,7 +277,7 @@ describe('useAuth',
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         await result.current.logout()
@@ -289,7 +288,7 @@ describe('useAuth',
                 it(
                     'should not redirect if on non-protected route',
                     async () => {
-                        const mockLocation = { href: '' }
+                        const mockLocation = {href: ''}
                         Object.defineProperty(
                             window,
                             'location',
@@ -303,7 +302,7 @@ describe('useAuth',
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         await result.current.logout()
@@ -334,7 +333,7 @@ describe('useAuth',
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         await result.current.checkAuth()
@@ -359,7 +358,7 @@ describe('useAuth',
                                 return selector(state)
                             })
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         await result.current.checkAuth()
@@ -383,7 +382,7 @@ describe('useAuth',
                                 return selector(state)
                             })
 
-                        const { result } = renderHook(
+                        const {result} = renderHook(
                             () => useAuth()
                         )
                         await result.current.checkAuth()

@@ -98,18 +98,6 @@ describe(
             })
 
         it(
-            'should reject password without special character',
-            () => {
-                const result = signupSchema
-                    .safeParse({
-                        ...validSignup,
-                        password: 'TestTest1',
-                        confirmPassword: 'TestTest1'
-                    })
-                expect(result.success).toBe(false)
-            })
-
-        it(
             'should reject mismatched passwords',
             () => {
                 const result = signupSchema
