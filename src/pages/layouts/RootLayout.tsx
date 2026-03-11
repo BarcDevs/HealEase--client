@@ -33,7 +33,7 @@ const RootLayout = Sentry.withProfiler(
             <>
                 <Header/>
 
-                <div className={'relative flex'}>
+                <div className={'relative flex w-full flex-col'}>
                     <Outlet/>
                 </div>
 
