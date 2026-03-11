@@ -2,6 +2,8 @@ import {createFileRoute} from '@tanstack/react-router'
 
 import {routeError} from '@/lib/routeError.ts'
 
+import {hourInMs} from '@/constants/time'
+
 import {validateUser} from '@/handlers/loaders/auth'
 import {checkInLoader} from '@/handlers/loaders/checkIn.ts'
 
@@ -16,5 +18,6 @@ export const Route = createFileRoute(
         <CheckInPage isLoading />
     ),
     component: CheckInPage,
+    gcTime: 2 * hourInMs,
     ...routeError
 })
