@@ -1,12 +1,14 @@
 import {useQuery} from '@tanstack/react-query'
 
-import {fetchCheckInStats} from '@/api/checkIn.ts'
+import {minuteInMs} from '@/constants/time'
+
+import {fetchCheckInStats} from '@/api/checkIn'
 
 const ProductPreview = () => {
     const {data: response, isLoading} = useQuery({
         queryKey: ['checkInStats'],
         queryFn: () => fetchCheckInStats(),
-        staleTime: 5 * 60 * 1000
+        staleTime: 5 * minuteInMs
     })
 
     const stats = response?.data?.data

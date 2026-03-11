@@ -8,7 +8,7 @@ const Features = () =>
     (
         <section id={'features'}
                  className={'bg-white/50 px-4 py-20'}>
-            <div className={'container mx-auto'}>
+            <div className={'mx-auto max-w-7xl'}>
                 <div className={'mb-16 text-center'}>
                     <h2 className={'mb-4 text-3xl font-bold text-gray-800 md:text-4xl'}>
                         {HEADLINES.features}
@@ -19,12 +19,11 @@ const Features = () =>
                 </div>
 
                 <div className={'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'}>
-                    {FEATURES.map((feature, index) => (
-                        <Card key={index}
+                    {FEATURES.map(feature => (
+                        <Card key={feature.title}
                               className={'border-blue-100 bg-white/80 transition-shadow duration-300 hover:shadow-lg'}>
                             <CardContent className={'p-6 text-center'}>
-                                <div
-                                    className={'mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-linear-to-r from-blue-600 to-green-500'}>
+                                <div className={'mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-linear-to-r from-blue-600 to-green-500'}>
                                     <feature.icon className={'size-6 text-white'}/>
                                 </div>
                                 <h3 className={'mb-3 text-xl font-semibold text-gray-800'}>
