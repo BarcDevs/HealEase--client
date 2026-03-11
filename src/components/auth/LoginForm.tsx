@@ -22,7 +22,10 @@ import {
 
 import {useAuth} from '@/hooks/useAuth.ts'
 
+import {getErrorMessage} from '@/lib/errors.ts'
 import STYLES from '@/lib/styles.ts'
+
+import {getSafeRedirectUrl} from '@/utils/redirect.ts'
 
 import {BUTTONS, FIELDS} from '@/constants/plainTexts.ts'
 
@@ -37,7 +40,9 @@ const LoginForm = ({}) => {
     const {login} = useAuth()
     const navigate = useNavigate()
     const search = route.useSearch()
-    const redirect = (search as any).redirect || '/'
+    const redirectUrl = getSafeRedirectUrl(
+        (search as any).redirect
+    )
     const [error, setError] = useState('')
 
     const form = useForm<LoginSchema>({
@@ -49,21 +54,17 @@ const LoginForm = ({}) => {
         }
     })
 
-    const onSubmit = (values: LoginSchema) => {
-        login(values)
-            .then(() => navigate({
-                to: redirect,
-                replace: true
-            }))
-            .catch((err) => {
-                const errorMessage =
-                    err.status === 401 ?
-                        'Invalid credentials' :
-                        err.message ||
-                        err.response.data
-                setError(errorMessage)
-                console.error(errorMessage)
+    const onSubmit = async (
+        values: LoginSchema
+    ) => {
+        try {
+            await login(values)
+            navigate({
+                to: redirectUrl
             })
+        } catch (err) {
+            setError(getErrorMessage(err))
+        }
     }
 
     return (

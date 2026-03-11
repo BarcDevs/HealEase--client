@@ -1,25 +1,29 @@
-import { useState } from 'react'
+import {useState} from 'react'
 
-import { useForm } from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Link, useNavigate } from '@tanstack/react-router'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {Link, useNavigate} from '@tanstack/react-router'
 
 import {Error} from '@/components/shared/Error.tsx'
 import FormInput from '@/components/shared/form/FormInput.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { Form } from '@/components/ui/form.tsx'
+import {Button} from '@/components/ui/button.tsx'
+import {Form} from '@/components/ui/form.tsx'
 
-import { useAuth } from '@/hooks/useAuth.ts'
+import {useAuth} from '@/hooks/useAuth.ts'
 
+import {getErrorMessage} from '@/lib/errors.ts'
 import STYLES from '@/lib/styles.ts'
 
-import { BUTTONS, FIELDS } from '@/constants/plainTexts.ts'
+import {BUTTONS, FIELDS} from '@/constants/plainTexts.ts'
 
-import { SignupSchema, signupSchema } from '@/validations/forms/signupSchema.ts'
+import {
+    SignupSchema,
+    signupSchema
+} from '@/validations/forms/signupSchema.ts'
 
 const SignupForm = ({}) => {
-    const { register } = useAuth()
+    const {register} = useAuth()
     const navigate = useNavigate()
     const [error, setError] = useState('')
 
@@ -34,20 +38,19 @@ const SignupForm = ({}) => {
         }
     })
 
-    const onSubmit = (values: SignupSchema) => {
-        register(values)
-            .then(() => navigate({
+    const onSubmit = async (
+        values: SignupSchema
+    ) => {
+        try {
+            await register(values)
+            navigate({
                 to: '/login',
                 replace: true,
-                search: { redirect: '/' }
-            }))
-            .catch((err) => {
-                const errorMessage =
-                    err.message ||
-                    err.response.data
-                setError(errorMessage)
-                console.error(errorMessage)
+                search: {redirect: '/'}
             })
+        } catch (err) {
+            setError(getErrorMessage(err))
+        }
     }
 
     return (
