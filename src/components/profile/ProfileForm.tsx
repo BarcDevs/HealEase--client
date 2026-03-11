@@ -24,6 +24,8 @@ import {
     useUpdateProfileMutation
 } from '@/hooks/useProfileMutations'
 
+import {getErrorMessage} from '@/lib/errors.ts'
+
 import {
     ProfileUpdateSchema,
     profileUpdateSchema
@@ -57,9 +59,7 @@ export const ProfileForm = ({
             await mutation.mutateAsync(data)
             toast.success('Profile updated successfully')
         } catch (err: unknown) {
-            const message = (err as Error).message
-                ?? 'Failed to update profile'
-            setError(message)
+            setError(getErrorMessage(err))
         }
     }
 

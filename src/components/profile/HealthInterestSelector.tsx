@@ -19,6 +19,8 @@ import {
 import {useProfileOptionsQuery} from '@/hooks/useProfileOptionsQuery'
 import {useProfileQuery} from '@/hooks/useProfileQuery'
 
+import {getErrorMessage} from '@/lib/errors.ts'
+
 export const HealthInterestSelector = () => {
     const {data: profile} = useProfileQuery()
     const {data: options} = useProfileOptionsQuery()
@@ -57,10 +59,7 @@ export const HealthInterestSelector = () => {
                 toast.success('Interest removed')
             }
         } catch (err) {
-            const message = err instanceof Error
-                ? err.message
-                : 'Failed to update interests'
-            toast.error(message)
+            toast.error(getErrorMessage(err))
         }
     }
 

@@ -21,6 +21,8 @@ import {
 import {useProfileOptionsQuery} from '@/hooks/useProfileOptionsQuery'
 import {useProfileQuery} from '@/hooks/useProfileQuery'
 
+import {getErrorMessage} from '@/lib/errors.ts'
+
 export const ActivityPreferenceSelector = () => {
     const {data: profile} = useProfileQuery()
     const {data: options} = useProfileOptionsQuery()
@@ -61,10 +63,7 @@ export const ActivityPreferenceSelector = () => {
                 toast.success('Activity removed')
             }
         } catch (err) {
-            const message = err instanceof Error
-                ? err.message
-                : 'Failed to update activities'
-            toast.error(message)
+            toast.error(getErrorMessage(err))
         }
     }
 
