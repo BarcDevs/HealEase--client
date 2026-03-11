@@ -2,7 +2,9 @@ import {useEffect} from 'react'
 
 import * as Sentry from '@sentry/react'
 import {Outlet} from '@tanstack/react-router'
-import {TanStackRouterDevtools} from '@tanstack/react-router-devtools'
+import {
+  TanStackRouterDevtools,
+} from '@tanstack/react-router-devtools'
 
 import Footer from '@/components/layout/root/Footer.tsx'
 import Header from '@/components/layout/root/Header.tsx'
@@ -20,7 +22,12 @@ const RootLayout = Sentry.withProfiler(
         const {checkAuth} = useAuth()
 
         useEffect(() => {
-            checkAuth()
+            const initAuth = async () => {
+                await checkAuth()
+                await refreshAuthData()
+            }
+
+            initAuth()
 
             const interval = setInterval(() => {
                 refreshAuthData()
