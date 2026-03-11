@@ -1,21 +1,19 @@
 const BRAND_NAME = 'HealEase'
 
 const ABOUT_DESC =
-    `HealEase was born from the understanding that recovery is not just a physical journey, but an emotional and social one too.
-We believe that when people facing similar challenges come together, they create a powerful force for healing.
-Our platform combines cutting-edge technology with the timeless power of human connection to provide comprehensive support for anyone on their recovery journey. Whether you're dealing with a sports injury, surgery recovery, or chronic condition, HealEase is here to ensure you never face it alone.`
+    `HealEase helps patients transitioning from hospital and clinical care get structured support for their recovery. Daily check-ins help you track progress, AI-powered insights provide guidance, and the community forum connects you with others who understand the journey. Recovery is simpler, and lonelier, when you're doing it alone. HealEase makes it practical.`
 
 const DESCRIPTIONS = {
     about: ABOUT_DESC,
-    benefits: 'Recovery support designed for real people, real challenges',
-    hero: 'Join a supportive recovery community, track your progress, and find strength in shared experiences.',
-    features: 'Comprehensive tools and community support to guide your healing journey'
+    benefits: 'Structured support for every stage of your recovery',
+    hero: 'Track your recovery with daily check-ins, get AI guidance, and connect with people who understand.',
+    features: 'Simple tools designed for recovery support'
 }
 
 const FOOTER = {
     h3: 'Recovery, Together.',
     desc: 'Supporting your healing journey with community, technology, and care.',
-    rights: '© 2024 HealEase. All rights reserved.',
+    rights: '© 2026 HealEase. All rights reserved.',
     quickLinks: 'Quick Links',
     legalLinks: 'Legal'
 }

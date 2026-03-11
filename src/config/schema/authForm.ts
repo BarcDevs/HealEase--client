@@ -1,13 +1,16 @@
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
+import {
+    OTP_PATTERN,
+    PASSWORD_PATTERN
+} from '@/config/regex'
 
 export default {
     password: {
         minLength: 8,
-        format: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        formatMessage: 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.'
+        format: PASSWORD_PATTERN,
+        formatMessage: 'Password must be at least 8 characters and contain letters and numbers.'
     },
     otp: {
         length: 6,
-        pattern: REGEXP_ONLY_DIGITS_AND_CHARS
+        pattern: OTP_PATTERN
     }
 }

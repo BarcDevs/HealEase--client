@@ -1,42 +1,42 @@
-import {Activity, BarChart2, MessageSquare, Users} from 'lucide-react'
+import {Activity, BarChart2, Lightbulb,MessageSquare} from 'lucide-react'
 
 const FEATURES = [
     {
-        icon: MessageSquare,
-        title: 'Forum',
-        description: 'Share, learn, and connect with others in similar recovery journeys.'
-    },
-    {
         icon: Activity,
-        title: 'AI Recovery Support',
-        description: 'Receive smart, structured plans tailored to your injury.'
+        title: 'Daily Check-ins',
+        description: 'Track your recovery progress with structured daily check-ins designed for clarity and insight.'
     },
     {
-        icon: Users,
-        title: 'Live Chat',
-        description: 'Talk directly with peers or personal supporters in real-time.'
+        icon: Lightbulb,
+        title: 'AI Insights',
+        description: 'Get personalized behavioral insights to support your recovery journey.'
     },
     {
         icon: BarChart2,
-        title: 'Progress Tracking',
-        description: 'Monitor your healing and celebrate milestones.'
+        title: 'Progress Visibility',
+        description: 'See your recovery arc with clear tracking and milestone celebration.'
+    },
+    {
+        icon: MessageSquare,
+        title: 'Community Forum',
+        description: 'Connect with others on similar recovery paths. Share experiences and find support.'
     }
 ]
 
 const BENEFITS = [
     {
-        title: 'For Patients',
-        description: 'Faster, more supported recovery with real guidance.',
+        title: 'Track Daily Progress',
+        description: 'Mood and pain scores with activity logs help you see the real arc of your recovery over time.',
         gradient: 'from-blue-500 to-blue-600'
     },
     {
-        title: 'For Community',
-        description: 'Find people who truly understand your experience.',
+        title: 'Get AI Guidance',
+        description: 'Personalized insights after each check-in help you understand patterns and make better choices.',
         gradient: 'from-green-500 to-green-600'
     },
     {
-        title: 'For Simplicity',
-        description: 'No complexity, just real help – anytime, anywhere.',
+        title: 'Connect with Others',
+        description: 'Talk with people going through similar recoveries. Shared experience reduces isolation and builds confidence.',
         gradient: 'from-purple-500 to-purple-600'
     }
 ]
@@ -45,6 +45,11 @@ const NAV_LINKS = [
     {
         title: 'Home',
         href: '/'
+    },
+    {
+        authenticatedOnly: true,
+        title: 'Check-ins',
+        href: '/check-in'
     },
     {
         title: 'Forum',
