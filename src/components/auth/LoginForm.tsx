@@ -86,8 +86,10 @@ const LoginForm = ({}) => {
                     name={'password'}
                     label={'Password'}
                     secondaryLabel={
-                        <Link className={'ml-auto inline-block text-sm font-semibold text-blue-600 underline hover:text-blue-700'}
-                              to={'/forgot-password'}>
+                        <Link
+                            className={'ml-auto inline-block text-sm font-semibold text-blue-600 underline hover:text-blue-700'}
+                            to={'/forgot-password'}
+                        >
                             {FIELDS.forgotPassword}
                         </Link>}
                 />
@@ -103,8 +105,7 @@ const LoginForm = ({}) => {
                                 checked={field.value}
                                 onCheckedChange={field.onChange}
                             />
-                            <FormLabel
-                                htmlFor={'remember'}>
+                            <FormLabel htmlFor={'remember'}>
                                 {FIELDS.remember}
                             </FormLabel>
                         </FormItem>

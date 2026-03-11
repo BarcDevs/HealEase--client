@@ -1,9 +1,18 @@
-import {ControllerRenderProps, useForm} from 'react-hook-form'
+import {REGEXP_ONLY_DIGITS} from 'input-otp'
+import {
+    ControllerRenderProps,
+    useForm
+} from 'react-hook-form'
 
 import {zodResolver} from '@hookform/resolvers/zod'
 
 import {Button} from '@/components/ui/button.tsx'
-import {Form, FormField, FormItem, FormMessage} from '@/components/ui/form.tsx'
+import {
+    Form,
+    FormField,
+    FormItem,
+    FormMessage
+} from '@/components/ui/form.tsx'
 
 import STYLES from '@/lib/styles.ts'
 
@@ -11,9 +20,17 @@ import {BUTTONS} from '@/constants/plainTexts.ts'
 
 import config from '@/config/schema/authForm.ts'
 
-import {OtpSchema, otpSchema} from '@/validations/forms/otpSchema.ts'
+import {
+    OtpSchema,
+    otpSchema
+} from '@/validations/forms/otpSchema.ts'
 
-import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from '../ui/input-otp'
+import {
+    InputOTP,
+    InputOTPGroup,
+    InputOTPSeparator,
+    InputOTPSlot
+} from '../ui/input-otp'
 
 const OtpForm = () => {
     // todo implement 2fa for login
@@ -50,7 +67,7 @@ const OtpForm = () => {
                         <FormItem className={'flex--col items-center'}>
                             <InputOTP
                                 maxLength={config.otp.length}
-                                pattern={config.otp.pattern}
+                                pattern={REGEXP_ONLY_DIGITS}
                                 value={field.value}
                                 onChange={value => onChange(value, field)}
                             >
