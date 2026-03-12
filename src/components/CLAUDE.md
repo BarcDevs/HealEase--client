@@ -21,6 +21,7 @@ Keep components small (~40 lines), one per file. Use shadcn/ui components when a
 - Avoid prop drilling — use context, Redux, or composition
 - Use hooks at top of component
 - Extract reusable logic and helper functions to separate files
+- AVOID BREAK LINES IN CLASSNAMES - NOT THE STRING ITSELF AND NOT AROUND IT
 
 ## shadcn/ui
 - Always use shadcn/ui components when available

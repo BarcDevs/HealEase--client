@@ -12,6 +12,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 
 ### Code Style
 - Never use array index as key - use the current element as an index
+- Braces around values inside: Object literal braces, component props and import/export braces
 - Text blocks: Don't break unless really long (120–150 chars OK)
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 
