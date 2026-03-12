@@ -4,20 +4,22 @@ import { defineConfig } from 'vite'
 
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import tailwindcss from '@tailwindcss/vite'
-import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
     plugins: [
         react(),
         tailwindcss(),
-        TanStackRouterVite(),
+        tanstackRouter(),
         million.vite({ auto: true }),
+        process.env.NODE_ENV === 'production' &&
         sentryVitePlugin({
             org: 'barcdevs',
-            project: 'javascript-react'
+            project: 'javascript-react',
+            telemetry: false
         })
-    ],
+    ].filter(Boolean),
 
     resolve: {
         alias: {
