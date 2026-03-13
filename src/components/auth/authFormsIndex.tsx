@@ -9,7 +9,7 @@ import SignupForm from '@/components/auth/SignupForm.tsx'
 
 export const authForms: AuthFormConfig = {
     login: {
-        component: <LoginForm/>,
+        component: LoginForm,
         headline: 'Welcome back',
         description:
             'Continue your recovery journey. Enter your details below.',
@@ -24,7 +24,7 @@ export const authForms: AuthFormConfig = {
         headline: 'Start your recovery journey',
         description:
             'Create your account and take the first step towards better health.',
-        component: <SignupForm/>,
+        component: SignupForm,
         googleLogin: true,
         cta: {
             text: 'Already have an account?',
@@ -36,19 +36,19 @@ export const authForms: AuthFormConfig = {
         headline: 'Forgot password',
         description:
             'Enter your email to reset your password',
-        component: <ForgotPasswordForm/>
+        component: ForgotPasswordForm
     },
     'update-password': {
         headline: 'Update password',
         description:
             'Enter your new password below',
-        component: <Fragment/> // todo: create update password form
+        component: Fragment
     },
     verify: {
         headline: 'Verify email',
         description:
             'Enter the verification code sent to your email',
-        component: <OtpForm/>,
+        component: OtpForm,
         cta: {
             text: `Didn't receive the code?`,
             linkText: 'Resend code',

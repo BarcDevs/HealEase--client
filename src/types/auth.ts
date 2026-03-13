@@ -1,4 +1,7 @@
-import { ComponentProps, ReactNode } from 'react'
+import {
+    ComponentProps,
+    ComponentType
+} from 'react'
 
 import { Link } from '@tanstack/react-router'
 
@@ -12,7 +15,7 @@ export type AuthType =
 export type AuthFormConfig = Record<AuthType, {
     headline: string
     description?: string
-    component: ReactNode
+    component: ComponentType
     googleLogin?: boolean
     cta?: {
         text: string
