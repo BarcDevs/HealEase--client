@@ -14,17 +14,18 @@ import { env } from '@/config'
 
 import { refreshAuthData } from '@/handlers/auth.ts'
 
+import { getMe } from '@/api/auth.ts'
+
 const RootLayout = Sentry.withProfiler(
     ({}) => {
         const { checkAuth } = useAuth()
 
         useEffect(() => {
-            const initAuth = async () => {
-                await checkAuth()
-                await refreshAuthData()
-            }
+            checkAuth()
 
-            initAuth()
+            getMe().catch(
+                () => null
+            )
 
             const interval = setInterval(() => {
                 refreshAuthData()

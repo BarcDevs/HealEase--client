@@ -2,10 +2,18 @@ import axios from 'axios'
 
 import config from '@/config'
 
-import {getCsrfTokenFromStore, refreshAuthData} from '@/handlers/auth'
+import {
+    getCsrfTokenFromStore,
+    refreshAuthData
+} from '@/handlers/auth'
+
+import { store } from '@/store'
+import { logoutAction } from '@/store/authSlice'
+import { removeTokenAction } from '@/store/tokenSlice'
 
 export const api = axios.create({
-    baseURL: `${config.serverUrl}/api/${config.serverApiVersion}`,
+    baseURL:
+        `${config.serverUrl}/api/${config.serverApiVersion}`,
     withCredentials: true
 })
 
@@ -15,7 +23,8 @@ api.interceptors.request.use(config => {
     if (
         csrfToken &&
         ['post', 'put', 'patch', 'delete']
-            .includes((config.method || '').toLowerCase())
+            .includes((config.method || '')
+                .toLowerCase())
     ) {
         config.headers['x-csrf-token'] = csrfToken
     }
@@ -23,22 +32,33 @@ api.interceptors.request.use(config => {
     return config
 })
 
-api.interceptors.response.use(undefined, async error => {
-    const originalRequest = error.config
+api.interceptors.response.use(
+    undefined,
+    async error => {
+        const originalRequest = error.config
 
-    const isCsrfError =
-        error.response?.status === 403 &&
-        error.response?.data?.message?.toLowerCase().includes('csrf')
+        const isUnauthorized = error
+            .response?.status === 401
 
-    if (isCsrfError && !originalRequest._retry) {
-        originalRequest._retry = true
+        if (isUnauthorized) {
+            store.dispatch(logoutAction())
+            store.dispatch(removeTokenAction())
+        }
 
-        const refreshed = await refreshAuthData()
+        const isCsrfError =
+            error.response?.status === 403 &&
+            error.response?.data?.message?.toLowerCase()
+                .includes('csrf')
 
-        if (refreshed)
-            return api(originalRequest)
-    }
+        if (isCsrfError && !originalRequest._retry) {
+            originalRequest._retry = true
 
-    return Promise.reject(error)
-})
+            const refreshed = await refreshAuthData()
+
+            if (refreshed)
+                return api(originalRequest)
+        }
+
+        return Promise.reject(error)
+    })
 
