@@ -1,25 +1,22 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 
 import * as Sentry from '@sentry/react'
-import {Outlet} from '@tanstack/react-router'
+import { Outlet } from '@tanstack/react-router'
 import {
-  TanStackRouterDevtools,
+    TanStackRouterDevtools
 } from '@tanstack/react-router-devtools'
 
-import Footer from '@/components/layout/root/Footer.tsx'
-import Header from '@/components/layout/root/Header.tsx'
+import { useAuth } from '@/hooks/useAuth.ts'
 
-import {useAuth} from '@/hooks/useAuth.ts'
+import { minuteInMs } from '@/constants/time'
 
-import {minuteInMs} from '@/constants/time'
+import { env } from '@/config'
 
-import {env} from '@/config'
-
-import {refreshAuthData} from '@/handlers/auth.ts'
+import { refreshAuthData } from '@/handlers/auth.ts'
 
 const RootLayout = Sentry.withProfiler(
     ({}) => {
-        const {checkAuth} = useAuth()
+        const { checkAuth } = useAuth()
 
         useEffect(() => {
             const initAuth = async () => {
@@ -38,13 +35,9 @@ const RootLayout = Sentry.withProfiler(
 
         return (
             <>
-                <Header/>
-
-                <div className={'relative flex w-full flex-col'}>
+                <div>
                     <Outlet/>
                 </div>
-
-                <Footer/>
 
                 {env.DEV && <TanStackRouterDevtools/>}
             </>
