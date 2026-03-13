@@ -22,6 +22,7 @@ Keep components small (~40 lines), one per file. Use shadcn/ui components when a
 - Use hooks at top of component
 - Extract reusable logic and helper functions to separate files
 - AVOID BREAK LINES IN CLASSNAMES - NOT THE STRING ITSELF AND NOT AROUND IT
+- If you need to specify certain part of a component with a comment, that probably means that part should be extracted into a separate component
 
 ## shadcn/ui
 - Always use shadcn/ui components when available
