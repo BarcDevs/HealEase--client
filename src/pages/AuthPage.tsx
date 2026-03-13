@@ -1,43 +1,46 @@
-import {Link} from '@tanstack/react-router'
+import { AuthType } from '@/types/auth.ts'
 
-import {AuthType, forms} from '@/components/auth/authFormsIndex.tsx'
-import GoogleLoginButton from '@/components/auth/GoogleLoginButton.tsx'
-import Page from '@/components/shared/ui/Page.tsx'
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card.tsx'
+import { AuthDisplayContent } from '@/components/auth/authDisplay/AuthDisplayContent.tsx'
+import { AuthFormSection } from '@/components/auth/AuthFormSection.tsx'
+import { authForms } from '@/components/auth/authFormsIndex.tsx'
+import { getFormComponent } from '@/components/auth/getFormComponent.ts'
 
-const AuthPage = ({type}: { type: AuthType }) => (
-    <Page>
-        <Card className={'mx-auto max-w-sm'}>
-            <CardHeader className={'space-y-1'}>
-                <CardTitle className={'text-2xl font-bold'}>
-                    {forms[type].headline}
-                </CardTitle>
-                <CardDescription>
-                    {forms[type].description}
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className={'space-y-4'}>
-                    {forms[type].component}
-                    {forms[type].googleLogin &&
-                        <GoogleLoginButton type={type === 'signup' ? 'signup' : 'login'}/>}
-                </div>
+type AuthPageProps = {
+    type: AuthType
+}
 
-                {forms[type].reference &&
-                    <div className={'mt-4 text-center text-sm'}>
-                        {forms[type].reference?.text}
-                        <Link
-                            to={forms[type].reference?.link || '/'}
-                            className={'font-semibold text-blue-600 hover:text-blue-700'}
-                        >&nbsp;
-                            <u>
-                                {forms[type].reference?.linkText}
-                            </u>
-                        </Link>
-                    </div>}
-            </CardContent>
-        </Card>
-        )
-    </Page>
-)
-export default AuthPage
+export const AuthPage = ({
+    type
+}: AuthPageProps) => {
+    const config = authForms[type]
+    const isLogin = type === 'login'
+    const isSignup = type === 'signup'
+    const hasContentSection = isLogin || isSignup
+    const FormComponent = getFormComponent(type)
+
+    const formSection = (
+        <AuthFormSection
+            headline={config.headline}
+            description={config.description}
+            cta={config.cta}
+            FormComponent={FormComponent}
+        />
+    )
+
+    const contentSection = hasContentSection && (
+        <AuthDisplayContent type={type}/>
+    )
+
+    return (
+        <div className={'flex min-h-screen'}>
+            {hasContentSection ? (
+                <>
+                    {isLogin ? formSection : contentSection}
+                    {isLogin ? contentSection : formSection}
+                </>
+            ) : (
+                formSection
+            )}
+        </div>
+    )
+}
